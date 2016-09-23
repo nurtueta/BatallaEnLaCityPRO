@@ -8,26 +8,37 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import Tanque.Enemigo;
 import Tanque.Jugador;
 
 
 
 public class Logica {
-	//
+	
 	//variables
-	protected int[][] mapa;
+	protected GameObject[][] mapa;
+	protected Jugador miJugador;
+	private Enemigo [] misEnemigos;
 	
 	//constructor
 	public Logica(){
-		mapa=new int[20][20];
+		mapa=new Celda[20][20];
 		generacionDeMapaLogico();	
+		
+		//Creación del jugador
+		miJugador = new Jugador();
+		
+		//Creación de los enemigos
+		misEnemigos = new Enemigo [4];
+		
 	}
+	
 	//Commands
-	public	int[][] getMapaLogico(){
+	public	GameObject[][] getMapaLogico(){
 		return mapa;
 	}
-	public void generacionDeMapaLogico(){
-
+	public void generacionDeMapaLogico()
+	{
 	  	FileReader fi;
 		try {
 			fi = new FileReader("archivo/Hello1.txt");
@@ -39,28 +50,28 @@ public class Logica {
 	      		char s = cadena.charAt(j);
 	      		
 	      		if(s=='A'){
-	      			mapa[i][j]= 5;
+	      			mapa[i][j]= new Agua();
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= 2;
+	      			mapa[i][j]= new Ladrillo();
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= 3;
+	      			mapa[i][j]= new Acero();
 	      		}else
 	      		if(s=='B'){
-	      			mapa[i][j]= 4;
-	      		}else
+	      			mapa[i][j]= new Arbol();
+	      		}/*else
 	      		if(s=='E'){
-	      			mapa[i][j]= 26;
+	      			mapa[i][j]= 26; Aguila == Eagle
 	      		}else
 	      		if(s=='P'){
-	      			mapa[i][j]= 28;
+	      			mapa[i][j]= 28; Portal enemigo
 	      		}else
 	      		if(s=='R'){
-	      			mapa[i][j]= 27;
-	      		}
+	      			mapa[i][j]= 27; Respown
+	      		}*/
 	      		else{
-	      			mapa[i][j]= 1;
+	      			mapa[i][j]= new Piso();
 	      		}
 	      		}
 	      	i++;
@@ -70,10 +81,11 @@ public class Logica {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-}
+	}
 			
-	public void mover(Jugador j,int direccion){
-		
+	public void mover(Jugador j,int direccion)
+	{
+		/*
 		int pF = j.getPosFila();
 		int pC = j.getPosColumna();
 		boolean movio=false;
@@ -160,13 +172,16 @@ public class Logica {
 					}
 					break;
 		}
+		*/
 	}
 	
-	public void disparar(Jugador j){
+	public void disparar(Jugador j)
+	{
 		
 	}
 	
-	public void mostrarMapa(){
+	public void mostrarMapa()
+	{
 		for(int i=0; i<mapa.length;i++){
 			for(int j=0;j<mapa[0].length;j++)
 				System.out.print(mapa[i][j]+" ");
@@ -174,9 +189,15 @@ public class Logica {
 		}
 	}
 
-	public void ingresarJugador(Jugador j){
-		mapa[j.getPosFila()][j.getPosColumna()]=22;
+	public void ingresarJugador(int x, int y)
+	{
+		mapa[x][y]=miJugador;
+		miJugador.setPos(x, y);
 	}
 	
+	public Jugador getJugador()
+	{
+		return miJugador;
+	}
 	
 }

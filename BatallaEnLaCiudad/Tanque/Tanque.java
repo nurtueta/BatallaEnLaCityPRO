@@ -1,8 +1,8 @@
 package Tanque;
 
-import javax.swing.JLabel;
+import Logica.GameObject;
 
-public abstract class Tanque extends JLabel {
+public abstract class Tanque extends GameObject {
 
 	abstract int getVida();
 	

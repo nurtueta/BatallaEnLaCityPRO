@@ -1,7 +1,7 @@
 package PowerUp;
 
-import javax.swing.JLabel;
+import Logica.GameObject;
 
-public class PowerUp extends JLabel{
+public class PowerUp extends GameObject{
 
 }

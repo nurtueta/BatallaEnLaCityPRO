@@ -1,4 +1,4 @@
-package Logica;
+package Grafica;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,6 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Logica.GameObject;
+import Logica.Ladrillo;
+import Logica.Logica;
+import Tanque.Enemigo;
 import Tanque.Jugador;
 import Tanque.Tanque;
 
@@ -20,8 +24,6 @@ public class GUI extends JFrame {
 	
      private JPanel contentPane;
 	 private Logica mapaLogica;
-	 private Jugador miJugador;
-	 private int [][] M;
 	 
 	    /**
 	     * Launch the application.
@@ -61,13 +63,14 @@ public class GUI extends JFrame {
 	        setContentPane(contentPane);
 	        
 	        //Agrego al panel el label del jugador
-	        miJugador = new Jugador();
-			 
+	        Jugador miJugador = mapaLogica.getJugador();
+	        miJugador.getGrafico().setVisible(true);
 	        miJugador.setVisible(true);
 	        miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
 			// j.setBounds(290, 400, 30, 30);
 	        miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
 			 contentPane.add(miJugador);
+			 
 			
 			//Genero el mapa en base al archivo seteado.
 			 mapaLogica.generacionDeMapaLogico();
@@ -94,27 +97,28 @@ public class GUI extends JFrame {
 					 		
 					 		mapaLogica.mover(miJugador,3);
 					 		//miJugador.setBounds(miJugador.getX(), miJugador.getY()-5, miJugador.getWidth(), miJugador.getHeight());
-					 		miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
+					 		//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
 					 		//System.out.println(miJugador.getX()+","+miJugador.getY());
+					 		
 					 		pintarTablero();
 					 		break;
 						case KeyEvent.VK_DOWN :
 							//miJugador.setBounds(miJugador.getX(), miJugador.getY()+5, miJugador.getWidth(), miJugador.getHeight());
-							miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
+							//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
 							mapaLogica.mover(miJugador,4);
 							pintarTablero();
 							//System.out.println(miJugador.getX()+","+miJugador.getY());
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				//j.setBounds(miJugador.getX()+5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
-	        				miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+	        				//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
 	        				mapaLogica.mover(miJugador,1);
 	        				pintarTablero();
 	        				//System.out.println(miJugador.getX()+","+miJugador.getY());
 	        				break;
     					case KeyEvent.VK_LEFT :
     						//j.setBounds(miJugador.getX()-5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
-    						miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
+    						//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
     						mapaLogica.mover(miJugador,2);
     						pintarTablero();
     						//System.out.println(miJugador.getX()+","+miJugador.getY());
@@ -142,9 +146,9 @@ public class GUI extends JFrame {
 	    //para definir el estado del tablero
 	    private void pintarTablero()
 	    {	 System.out.println(miJugador.getPosColumna()+" "+miJugador.getPosFila());
-	    	 miJugador.setVisible(true);
+	    	 //miJugador.setVisible(true);
 			 //miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
-	    	 miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
+	    	 //miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
 			//
 	    }
 

@@ -55,5 +55,9 @@ public class Jugador extends Tanque{
 		return tipo;
 	}
 	
+	public void mover()
+	{
+		
+	}
 	
 }
