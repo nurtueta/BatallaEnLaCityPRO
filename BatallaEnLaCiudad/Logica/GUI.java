@@ -1,0 +1,153 @@
+package Logica;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Vector;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Tanque.Jugador;
+import Tanque.Tanque;
+
+public class GUI extends JFrame {
+	
+     private JPanel contentPane;
+	 private Logica mapaLogica;
+	 private Jugador miJugador;
+	 private int [][] M;
+	 
+	    /**
+	     * Launch the application.
+	     */
+	   
+	    public static void main(String[] args) {
+	        EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                try {
+	                    GUI frame = new GUI();
+	                    frame.setVisible(true);
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        });
+	    }
+	 
+	    /**
+	     * Create the frame.
+	     */
+	    public GUI() {
+	    	
+	    	mapaLogica = new Logica();
+	    	
+	        //seteo inicial
+	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        this.setTitle("Battle City 2016");
+	        this.setResizable(false);
+	        //this.setIconImage(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/tanqueArriba.png")));
+	       
+	        //setteo del panel contenedor
+	        setBounds(400, 55, 600, 600);
+	        contentPane = new JPanel();
+	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	        contentPane.setLayout(null);
+	        setContentPane(contentPane);
+	        
+	        //Agrego al panel el label del jugador
+	        miJugador = new Jugador();
+			 
+	        miJugador.setVisible(true);
+	        miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
+			// j.setBounds(290, 400, 30, 30);
+	        miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
+			 contentPane.add(miJugador);
+			
+			//Genero el mapa en base al archivo seteado.
+			 mapaLogica.generacionDeMapaLogico();
+			
+			 M=mapaLogica.getMapaLogico();
+			 for(int i=0;i<20;i++)
+				 for(int j=0;j<20;j++){
+					 if(M[i][j]==2){
+						 Ladrillo l = new Ladrillo();
+				 		 l.setVisible(true);
+				 		 l.setBounds(j*30,i*30,30,30);
+				 		 l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/ladrillo.png")));
+				 		 contentPane.add(l);
+					 }	
+					 
+				 }
+	        
+	        //agrego el oyente al teclado en el panel contenedor
+	        this.addKeyListener( new KeyListener() {
+				
+				public void keyPressed(KeyEvent e) {
+					 switch(e.getKeyCode()){
+					 	case KeyEvent.VK_UP : 
+					 		
+					 		mapaLogica.mover(miJugador,3);
+					 		//miJugador.setBounds(miJugador.getX(), miJugador.getY()-5, miJugador.getWidth(), miJugador.getHeight());
+					 		miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
+					 		//System.out.println(miJugador.getX()+","+miJugador.getY());
+					 		pintarTablero();
+					 		break;
+						case KeyEvent.VK_DOWN :
+							//miJugador.setBounds(miJugador.getX(), miJugador.getY()+5, miJugador.getWidth(), miJugador.getHeight());
+							miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
+							mapaLogica.mover(miJugador,4);
+							pintarTablero();
+							//System.out.println(miJugador.getX()+","+miJugador.getY());
+							break;
+	        			case KeyEvent.VK_RIGHT :
+	        				//j.setBounds(miJugador.getX()+5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
+	        				miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+	        				mapaLogica.mover(miJugador,1);
+	        				pintarTablero();
+	        				//System.out.println(miJugador.getX()+","+miJugador.getY());
+	        				break;
+    					case KeyEvent.VK_LEFT :
+    						//j.setBounds(miJugador.getX()-5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
+    						miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
+    						mapaLogica.mover(miJugador,2);
+    						pintarTablero();
+    						//System.out.println(miJugador.getX()+","+miJugador.getY());
+    						break;
+					 }
+					 
+	        	}
+
+				public void keyReleased(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void keyTyped(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+	        });
+	        
+	        
+	    }
+	    
+	    //Recorremos la matriz contenida en la parte logica de la gui
+	    //para definir el estado del tablero
+	    private void pintarTablero()
+	    {	 System.out.println(miJugador.getPosColumna()+" "+miJugador.getPosFila());
+	    	 miJugador.setVisible(true);
+			 //miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
+	    	 miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
+			//
+	    }
+
+	    
+	   
+}

@@ -1,0 +1,50 @@
+public void generacionDeMapaLogico(){
+
+	  	FileReader fi;
+		try {
+			fi = new FileReader("archivo/Hello1.txt");
+	        BufferedReader b = new BufferedReader(fi);
+	        String cadena;
+		int i=0;
+	      while((cadena = b.readLine())!=null) {
+	      	 for(int j=0;j<cadena.length();j++){
+	      		char s = cadena.charAt(j);
+	      		
+	      		if(s=='A'){
+	      			mapa[i][j]= 5;
+	      		}else
+	      		if(s=='L'){
+	      			mapa[i][j]= 2;
+	      		}else
+	      		if(s=='I'){
+	      			mapa[i][j]= 3;
+	      		}else
+	      		if(s=='B'){
+	      			mapa[i][j]= 4;
+	      		}else
+	      		if(s=='E'){
+	      			mapa[i][j]= 26;
+	      		}else
+	      		if(s=='P'){
+	      			mapa[i][j]= 28;
+	      		}else
+	      		if(s=='R'){
+	      			mapa[i][j]= 27;
+	      		}
+	      		else{
+	      			mapa[i][j]= 1;
+	      		}
+	      		}
+	      	i++;
+	      	}  /*
+		for(int f=0;f<40;f++){
+			for(int j=0;j<40;j++)
+		  	System.out.print(mapa[f][j]); //prints the characters one by one
+		 System.out.println();
+		 }*/
+	    
+			fi.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+}
