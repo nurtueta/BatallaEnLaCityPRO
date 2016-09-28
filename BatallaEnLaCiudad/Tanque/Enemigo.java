@@ -15,25 +15,25 @@ public class Enemigo extends Tanque{
 	}
 
 	@Override
-	int getPosFila() {
+	int getFila() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	void setPosFila(int f) {
+	void setFila(int f) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	int getPosColumna() {
+	int getColumna() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	void setPosColumna(int c) {
+	void setColumna(int c) {
 		// TODO Auto-generated method stub
 		
 	}

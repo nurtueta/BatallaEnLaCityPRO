@@ -56,13 +56,13 @@ public abstract class ComponenteGrafico extends JLabel {
 			velocidad = v;
 		}
 		
-		public void setMiX(int x)
+		public void setX(int x)
 		{
 			miX=x;
 			this.setBounds(miX*alto , miY*ancho, ancho, alto);
 		}
 		
-		public void setMiY(int y)
+		public void setY(int y)
 		{
 			miY=y;
 			this.setBounds(miX*alto , miY*ancho, ancho, alto);
@@ -97,12 +97,12 @@ public abstract class ComponenteGrafico extends JLabel {
 			return velocidad;
 		}
 		
-		public int getMiX()
+		public int getX()
 		{
 			return miX;
 		}
 		
-		public int getMiY()
+		public int getY()
 		{
 			return miY;
 		}

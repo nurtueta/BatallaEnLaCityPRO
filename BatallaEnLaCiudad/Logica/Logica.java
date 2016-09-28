@@ -1,12 +1,6 @@
 package Logica;
 
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.*;
 
 import Grafica.*;
 import Logica.Bloque.*;
@@ -145,8 +139,8 @@ public class Logica {
 	public void ingresarJugador(int x, int y)
 	{
 		mapa[x][y]=miJugador;
-		miJugador.setPosFila(x);
-		miJugador.setPosColumna(y);
+		miJugador.setFila(x);
+		miJugador.setColumna(y);
 	}
 	
 	public Jugador getJugador()

@@ -9,13 +9,13 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	abstract void setVida(int v);
 	
-	abstract int getPosFila();
+	abstract int getFila();
 	
-	abstract void setPosFila(int f);
+	abstract void setFila(int f);
 	
-	abstract int getPosColumna();
+	abstract int getColumna();
 	
-	abstract void setPosColumna(int c);
+	abstract void setColumna(int c);
 	
 	abstract int getTipo();
 }
