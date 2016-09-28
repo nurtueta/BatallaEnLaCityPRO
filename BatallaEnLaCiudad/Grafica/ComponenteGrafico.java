@@ -47,6 +47,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		public void setImagenActual(int i)
 		{
 			this.setIcon(misImagenes[i]);
+	        //this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/acero.png")));
+
 			
 		}
 		
