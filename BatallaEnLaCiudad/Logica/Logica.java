@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import Grafica.ComponenteGrafico;
+import Grafica.*;
 import Logica.Bloque.*;
 import Tanque.Enemigo;
 import Tanque.Jugador;
@@ -84,8 +84,11 @@ public class Logica {
 			e.printStackTrace();
 		}
 	}
-			
-	public void mover(Jugador j,int direccion)
+	
+	public	void	mover(int direccion){
+		mover(miJugador,direccion);
+	}
+	private void mover(Jugador j,int direccion)
 	{
 		
 		int f= j.getX();
@@ -94,44 +97,19 @@ public class Logica {
 		
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
-						if(mapa[f][c].movimientoPosible())
-						if(mapa[f][c+1]==1){
-							mapa[f][c+1]=22;
+						if(mapa[f][c].movimientoPosible()){
+							mapa[f][c+1]=mapa[f][c];
+							mapa[f][c]= new PisoGrafico(f,c);
 							movio=true;
-						}						
-						else 
-							if(mapa[f][c+1]==4){
-								mapa[f][c+1]=10;
-								movio=true;
-							}
-						if(movio){
-							if((mapa[f][c]<14) && (mapa[f][c]>9))
-								mapa[f][c]=4;
-							else
-								mapa[f][c]=1;
-							j.setPosColumna(c+1);
-						}else
-							mapa[f][c]=22;
+						}	
 					}
-					break;
+						break;
 			case 2: if(c>0){
-						if(mapa[f][c-1]==1){
-							mapa[f][c-1]=23;
+						if(mapa[f][c-1].movimientoPosible()){
+							mapa[f][c-1]=mapa[f][c];
+							mapa[f][c]=new PisoGrafico(f,c);
 							movio=true;
 						}
-						else
-							if(mapa[f][c-1]==4){
-								mapa[f][c-1]=11;
-								movio=true;
-							}
-						if(movio){
-							if((mapa[f][c]<14) && (mapa[f][c]>9))
-								mapa[f][c]=4;
-							else
-								mapa[f][c]=1;
-							j.setPosColumna(c-1);
-						}else
-							mapa[f][c]=23;
 					}
 					break;
 			case 3: if(f>0){
@@ -139,39 +117,13 @@ public class Logica {
 							mapa[f-1][c]=24;
 							movio=true;
 						}
-						else
-							if(mapa[f-1][c]==4){
-								mapa[f-1][c]=12;
-								movio=true;
-							}
-						if(movio){
-							if((mapa[f][c]<14) && (mapa[f][c]>9))
-								mapa[f][c]=4;
-							else
-								mapa[f][c]=1;
-							j.setPosFila(f-1);
-						}else
-							mapa[f][c]=24;
-					}
+					}	
 					break;
 			case 4: if(c<(mapa.length-1)){
 						if(mapa[f+1][c]==1){
 							mapa[f+1][c]=25;
 							movio=true;
 						}
-						else
-							if(mapa[f+1][c]==4){
-								mapa[f+1][c]=13;
-								movio=true;
-							}
-						if(movio){
-							if((mapa[f][c]<14) && (mapa[f][c]>9))
-								mapa[f][c]=4;
-							else
-								mapa[f][c]=1;
-							j.setPosFila(f+1);
-						}else
-							mapa[f][c]=25;
 					}
 					break;
 		}
