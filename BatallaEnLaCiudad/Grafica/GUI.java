@@ -67,10 +67,7 @@ public class GUI extends JFrame {
 	        mapaLogica.generacionDeMapaLogico();
 			M=mapaLogica.getMapaLogico();
 	        generarPanel();
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b8e44e42a3ffa3d96395b62bf4bfb5c43f1cb90
 	        setVisible(true);
 	        
 	        /*
@@ -143,11 +140,9 @@ public class GUI extends JFrame {
 	    			
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
-<<<<<<< HEAD
 			 		M[i][j].setVisible(true);
 			 		contentPane.add(M[i][j]);
 			 		
-=======
 			 		contentPane.add(M[i][j]);
 			 		JLabel prueba = new JLabel();
 			 		//prueba.
@@ -158,7 +153,6 @@ public class GUI extends JFrame {
 			 					 		
 			 		M[i][j].setVisible(true);
 			 		//contentPane.repaint();
->>>>>>> 5b8e44e42a3ffa3d96395b62bf4bfb5c43f1cb90
 			 	}
 	    }
 			
