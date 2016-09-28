@@ -16,5 +16,11 @@ public class LadrilloGrafico extends CeldaGrafica{
 	{
 		this.setImagenActual(0);
 	}
+
+	@Override
+	public boolean movimientoPosible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

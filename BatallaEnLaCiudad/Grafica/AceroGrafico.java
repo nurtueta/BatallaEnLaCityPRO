@@ -8,4 +8,10 @@ public class AceroGrafico extends CeldaGrafica{
 		super(x, y);
 		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/acero.png")), 4);	}
 
+	@Override
+	public boolean movimientoPosible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

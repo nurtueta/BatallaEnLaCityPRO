@@ -1,6 +1,8 @@
 package Grafica;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -54,6 +56,8 @@ public class GUI extends JFrame {
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        setContentPane(contentPane);
+	        
+	        generarPanel();
 	        /*
 	        //Agrego al panel el label del jugador
 	        Jugador miJugador = mapaLogica.getJugador();
@@ -67,39 +71,39 @@ public class GUI extends JFrame {
 			//Genero el mapa en base al archivo seteado.
 			
 						
-	       /* 
+	       
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 				
-				public void keyPressed(KeyEvent e) {
+				public void keyPressed1(KeyEvent e) {
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP : 
 					 		
-					 		mapaLogica.mover(miJugador,3);
+					 		mapaLogica.mover(3);
 					 		//miJugador.setBounds(miJugador.getX(), miJugador.getY()-5, miJugador.getWidth(), miJugador.getHeight());
 					 		//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
 					 		//System.out.println(miJugador.getX()+","+miJugador.getY());
-					 		pintarTablero();
+					 		generarPanel();
 					 		break;
 						case KeyEvent.VK_DOWN :
 							//miJugador.setBounds(miJugador.getX(), miJugador.getY()+5, miJugador.getWidth(), miJugador.getHeight());
 							//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
-							mapaLogica.mover(miJugador,4);
-							pintarTablero();
+							mapaLogica.mover(4);
+							generarPanel();
 							//System.out.println(miJugador.getX()+","+miJugador.getY());
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				//j.setBounds(miJugador.getX()+5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
 	        				//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
-	        				mapaLogica.mover(miJugador,1);
-	        				pintarTablero();
+	        				mapaLogica.mover(1);
+	        				generarPanel();
 	        				//System.out.println(miJugador.getX()+","+miJugador.getY());
 	        				break;
     					case KeyEvent.VK_LEFT :
     						//j.setBounds(miJugador.getX()-5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
     						//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
-    						mapaLogica.mover(miJugador,2);
-    						pintarTablero();
+    						mapaLogica.mover(2);
+    						generarPanel();
     						//System.out.println(miJugador.getX()+","+miJugador.getY());
     						break;
 					 }
@@ -116,20 +120,32 @@ public class GUI extends JFrame {
 					
 				}
 
+				public void keyPressed(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void keyReleased(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void keyTyped(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
 	        });
 	        
 	        
 	    }
-	    */
-
-	    }	
+	    	
 	    
 	    private void generarPanel(){
 	    	
 	    	mapaLogica.generacionDeMapaLogico();
-			
 			M=mapaLogica.getMapaLogico();
-			 	
+			
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++)
 			 		contentPane.add(M[i][j]);

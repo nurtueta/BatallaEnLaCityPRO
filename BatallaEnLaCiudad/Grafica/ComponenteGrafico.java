@@ -3,11 +3,8 @@ package Grafica;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-<<<<<<< HEAD
-public abstract class ComponenteGrafico extends JLabel{
-=======
+
 public abstract class ComponenteGrafico extends JLabel {
->>>>>>> origin/master
 	
 	protected JLabel imagenActual;
 	protected Icon misImagenes[];
@@ -18,9 +15,11 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	//CONSTRUCTORES
 	public	ComponenteGrafico(){}
+	
 	public ComponenteGrafico(int x, int y)
 	{	
 		imagenActual = null;
+		misImagenes=new Icon[15];
 		velocidad = 0;
 		miX = x;
 		miY = y;
@@ -32,7 +31,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		
 		//Asignacion de imagen actual por defecto a la imagen del piso
 		//this.setImagenActual(0);
-		
+		misImagenes=new Icon[15];
 		velocidad = vel;
 		miX = x;
 		miY = y;
