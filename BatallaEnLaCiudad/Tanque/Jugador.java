@@ -3,19 +3,11 @@ package Tanque;
 public class Jugador extends Tanque{
 	//variables
 	
-	protected int vida;
-	protected int powerUpDeTanque;
-	protected int posFila;
-	protected int posColumna;
-	protected int tipo;
+	
 	
 	//constructor
 	public Jugador(){
-		vida=100;
-		powerUpDeTanque=0;
-		tipo=1;
-		posFila=1;
-		posColumna=1;
+		super();
 	}
 	
 	//comandos
@@ -51,9 +43,7 @@ public class Jugador extends Tanque{
 		posColumna=c;
 	}
 	
-	public int getTipo(){
-		return tipo;
-	}
+	
 	
 	public void mover()
 	{

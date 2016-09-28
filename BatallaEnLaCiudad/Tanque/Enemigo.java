@@ -1,6 +1,10 @@
 package Tanque;
 
 public class Enemigo extends Tanque{
+	
+	public	Enemigo(){
+		super();
+	}
 
 	@Override
 	int getVida() {
@@ -38,11 +42,7 @@ public class Enemigo extends Tanque{
 		
 	}
 
-	@Override
-	int getTipo() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public boolean movimientoPosible() {
