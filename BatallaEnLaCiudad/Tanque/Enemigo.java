@@ -44,4 +44,9 @@ public class Enemigo extends Tanque{
 		return 0;
 	}
 
+	@Override
+	public boolean movimientoPosible() {
+		return false;
+	}
+
 }

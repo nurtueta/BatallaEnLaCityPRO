@@ -62,6 +62,9 @@ public abstract class ComponenteGrafico extends JLabel{
 	
 		//CONSULTAS
 		
+
+		public abstract boolean movimientoPosible();
+		
 		public JLabel getImagenActual()
 		{
 			return imagenActual;

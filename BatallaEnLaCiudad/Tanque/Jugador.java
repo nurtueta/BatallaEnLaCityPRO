@@ -59,5 +59,10 @@ public class Jugador extends Tanque{
 	{
 		
 	}
+
+	@Override
+	public boolean movimientoPosible() {
+		return false;
+	}
 	
 }
