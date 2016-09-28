@@ -58,18 +58,22 @@ public class GUI extends JFrame {
 	        setContentPane(contentPane);
 	        
 	        generarPanel();
+<<<<<<< HEAD
 	        setVisible(true);
 	       
 	        /*
+=======
+	       // setVisible(true);
+	       /* 
+>>>>>>> 5d6627cc3131ba7f0b1e5518550564928d87a0d9
 	        //Agrego al panel el label del jugador
 	        Jugador miJugador = mapaLogica.getJugador();
-	        miJugador.getGrafico().setVisible(true);
+	       // miJugador.getGrafico().setVisible(true);
 	        miJugador.setVisible(true);
 	        miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
-			// j.setBounds(290, 400, 30, 30);
-	        miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
-			 contentPane.add(miJugador);*/
-			 
+	        miJugador.setBounds(miJugador.getColumna()*30, miJugador.getFila()*30, 30, 30);
+			 contentPane.add(miJugador);
+			 */
 			//Genero el mapa en base al archivo seteado.
 			
 						
@@ -151,6 +155,8 @@ public class GUI extends JFrame {
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
 			 		contentPane.add(M[i][j]);
+			 					 		
+			 		M[i][j].setVisible(true);
 			 	}
 	    }
 			
