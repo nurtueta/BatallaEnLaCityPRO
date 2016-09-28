@@ -137,7 +137,7 @@ public class Logica {
 	{
 		for(int i=0; i<mapa.length;i++){
 			for(int j=0;j<mapa[0].length;j++)
-				System.out.print(mapa[i][j]+" ");
+				System.out.print(mapa[i][j]+"  \n ");
 			System.out.println();
 		}
 	}
