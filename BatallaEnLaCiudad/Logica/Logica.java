@@ -87,7 +87,6 @@ public class Logica {
 		
 		int f= j.getX();
 		int c = j.getY();
-		boolean movio=false;
 		
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
@@ -119,6 +118,8 @@ public class Logica {
 					}
 					break;
 		}
+		j.setX(c);
+		j.setY(f);
 		
 	}
 	
