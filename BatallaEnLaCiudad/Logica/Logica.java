@@ -54,10 +54,10 @@ public class Logica {
 	      			mapa[i][j]= new Agua(j,i);
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= new Ladrillo(i,j);
+	      			mapa[i][j]= new Ladrillo(j,i);
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= new Acero(i,j);
+	      			mapa[i][j]= new Acero(j,i);
 	      		}else
 	      		if(s=='B'){
 	      			mapa[i][j]= new Arbol(j,i);
@@ -72,7 +72,7 @@ public class Logica {
 	      			mapa[i][j]= 27; Respown
 	      		}*/
 	      		else{
-	      			mapa[i][j]= new Piso(i,j);
+	      			mapa[i][j]= new Piso(j,i);
 	      		}
 	      		}
 	      	i++;
@@ -86,6 +86,13 @@ public class Logica {
 	
 	public	void	mover(int direccion){
 		mover(miJugador,direccion);
+	}
+	/**
+	 * 
+	 * @param c componente a ser eliminada
+	 */
+	public	void	eliminar(ComponenteGrafico c){
+		mapa[c.getX()][c.getY()]= new Piso(c.getX(),c.getY());
 	}
 	private void mover(Jugador j,int direccion)
 	{

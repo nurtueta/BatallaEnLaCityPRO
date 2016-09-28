@@ -52,23 +52,22 @@ public class GUI extends JFrame {
 	       
 	        //setteo del panel contenedor
 	        
-	        setBounds(0, 0, 600, 600);
+	        setBounds(50,50,600,600);
 	        contentPane = new JPanel();
 	        contentPane.setBorder(null);
-	        
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
-	        /*this.getContentPane().setLayout(null);
+	        this.getContentPane().setLayout(null);
 	        this.getContentPane().setBounds(50,50,600,600);
-	        this.getContentPane().setVisible(true);*/
-	        
-	        mapaLogica.generacionDeMapaLogico();
+	        this.getContentPane().setVisible(true);
+	       // mapaLogica.generacionDeMapaLogico();
 			M=mapaLogica.getMapaLogico();
 	        generarPanel();
 
-	        setVisible(true);
+	        
+	       setVisible(true);
 	        
 	        /*
 	        //agrego el oyente al teclado en el panel contenedor
