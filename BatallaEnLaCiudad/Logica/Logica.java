@@ -51,10 +51,10 @@ public class Logica {
 	      			mapa[i][j]= new Agua(j,i);
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= new Ladrillo(j,i);
+	      			mapa[i][j]= new Ladrillo(i,j);
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= new Acero(j,i);
+	      			mapa[i][j]= new Acero(i,j);
 	      		}else
 	      		if(s=='B'){
 	      			mapa[i][j]= new Arbol(j,i);
@@ -69,7 +69,7 @@ public class Logica {
 	      			mapa[i][j]= 27; Respown
 	      		}*/
 	      		else{
-	      			mapa[i][j]= new Piso(j,i);
+	      			mapa[i][j]= new Piso(i,j);
 	      		}
 	      		}
 	      	i++;

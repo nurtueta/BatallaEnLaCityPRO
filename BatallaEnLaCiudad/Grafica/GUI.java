@@ -57,27 +57,12 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        setContentPane(contentPane);
 	        
+	        mapaLogica.generacionDeMapaLogico();
+			M=mapaLogica.getMapaLogico();
 	        generarPanel();
-<<<<<<< HEAD
 	        setVisible(true);
-	       
+	        
 	        /*
-=======
-	       // setVisible(true);
-	       /* 
->>>>>>> 5d6627cc3131ba7f0b1e5518550564928d87a0d9
-	        //Agrego al panel el label del jugador
-	        Jugador miJugador = mapaLogica.getJugador();
-	       // miJugador.getGrafico().setVisible(true);
-	        miJugador.setVisible(true);
-	        miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
-	        miJugador.setBounds(miJugador.getColumna()*30, miJugador.getFila()*30, 30, 30);
-			 contentPane.add(miJugador);
-			 */
-			//Genero el mapa en base al archivo seteado.
-			
-						
-	       
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 				
@@ -137,26 +122,19 @@ public class GUI extends JFrame {
 				}
 
 				public void keyTyped(KeyEvent arg0) {
-					// TODO Auto-generated method stub
-					
+					// TODO Auto-generated method stub	
 				}
-
-	        });
-	        
-	        
+	        });	   */     	        
 	    }
 	    	
 	    
 	    private void generarPanel(){
-	    	
-	    	mapaLogica.generacionDeMapaLogico();
-			M=mapaLogica.getMapaLogico();
-			
+	    			
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
-			 		contentPane.add(M[i][j]);
-			 					 		
 			 		M[i][j].setVisible(true);
+			 		contentPane.add(M[i][j]);
+			 		
 			 	}
 	    }
 			

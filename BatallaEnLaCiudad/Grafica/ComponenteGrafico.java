@@ -7,8 +7,8 @@ import javax.swing.JLabel;
 
 public abstract class ComponenteGrafico extends JLabel {
 	
-	protected JLabel imagenActual;
-	protected Icon misImagenes[];
+	//protected JLabel imagenActual;
+	//protected Icon misImagenes[];
 	protected final int alto  = 30;
 	protected final int ancho = 30;
 	protected int velocidad;
@@ -21,12 +21,12 @@ public abstract class ComponenteGrafico extends JLabel {
 	{	
 		super();
 		
-		imagenActual = null;
-		misImagenes=new Icon[15];
-		velocidad = 0;
+		//imagenActual = null;
+		//misImagenes=new Icon[15];
+		//velocidad = 0;
 		miX = x;
 		miY = y;
-		this.setBounds(miX*alto , miY*ancho, ancho, alto);
+		this.setBounds(miX*30 ,miY*30, 50, alto);
 		
 	}
 	
@@ -35,8 +35,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		super();
 		//Asignacion de imagen actual por defecto a la imagen del piso
 		//this.setImagenActual(0);
-		misImagenes=new Icon[15];
-		velocidad = vel;
+		//misImagenes=new Icon[15];
+		//velocidad = vel;
 		miX = x;
 		miY = y;
 		this.setBounds(miX*alto , miY*ancho, ancho, alto);
@@ -45,7 +45,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	//METODOS
 	
 		//COMANDOS
-		public void setImagenActual(int i)
+		/*public void setImagenActual(int i)
 		{
 			this.setIcon(misImagenes[i]);
 	        //this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/acero.png")));
@@ -56,7 +56,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		public void setImagenEnPos(Icon img, int i)
 		{
 			misImagenes[i] = img;
-		}
+		}*/
 	
 		public void setVelocidad(int v)
 		{
@@ -80,15 +80,15 @@ public abstract class ComponenteGrafico extends JLabel {
 
 		public abstract boolean movimientoPosible();
 		
-		public JLabel getImagenActual()
+		/*public JLabel getImagenActual()
 		{
 			return imagenActual;
-		}
+		}*/
 		
-		public Icon getImagenPos(int i)
+		/*public Icon getImagenPos(int i)
 		{
 			return misImagenes[i];
-		}
+		}*/
 		
 		public int getAlto()
 		{
