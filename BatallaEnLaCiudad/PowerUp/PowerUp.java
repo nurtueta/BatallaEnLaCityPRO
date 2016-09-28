@@ -1,7 +1,13 @@
 package PowerUp;
 
-import Logica.GameObject;
+import Grafica.ComponenteGrafico;
 
-public class PowerUp extends GameObject{
+public class PowerUp extends ComponenteGrafico{
+
+	@Override
+	public boolean movimientoPosible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

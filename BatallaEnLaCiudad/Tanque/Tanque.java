@@ -1,7 +1,6 @@
 package Tanque;
 
 import Grafica.ComponenteGrafico;
-import Logica.GameObject;
 
 public abstract class Tanque extends ComponenteGrafico {
 	
