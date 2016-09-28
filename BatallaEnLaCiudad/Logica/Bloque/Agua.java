@@ -1,4 +1,4 @@
-package Logica.Celda;
+package Logica.Bloque;
 
 
 public class Agua extends Celda {

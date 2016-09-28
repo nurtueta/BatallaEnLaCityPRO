@@ -1,7 +1,7 @@
-package Logica.Celda;
+package Logica.Bloque;
 
 
-public class Arbol extends Celda{
+public class Piso extends Celda{
 
 	@Override
 	public boolean movimientoPosible() {

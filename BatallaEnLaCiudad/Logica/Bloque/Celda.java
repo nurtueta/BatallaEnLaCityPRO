@@ -1,4 +1,4 @@
-package Logica.Celda;
+package Logica.Bloque;
 
 import Grafica.CeldaGrafica;
 import Logica.GameObject;
