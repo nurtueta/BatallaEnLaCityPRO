@@ -94,9 +94,9 @@ public class Logica {
 		
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
-						if(mapa[f][c].movimientoPosible())
-						if(mapa[f][c+1]==1){
-							mapa[f][c+1]=22;
+						if(mapa[f][c].movimientoPosible()){
+							mapa[f][c+1]=mapa[f][c];
+							mapa[f][c]
 							movio=true;
 						}						
 						else 

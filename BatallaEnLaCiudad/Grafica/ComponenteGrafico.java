@@ -3,11 +3,9 @@ package Grafica;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-<<<<<<< HEAD
-public abstract class ComponenteGrafico extends JLabel{
-=======
+
 public abstract class ComponenteGrafico extends JLabel {
->>>>>>> origin/master
+
 	
 	protected JLabel imagenActual;
 	protected Icon misImagenes[];
