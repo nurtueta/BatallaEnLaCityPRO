@@ -24,6 +24,7 @@ public class GUI extends JFrame {
 	
      private JPanel contentPane;
 	 private Logica mapaLogica;
+	 private GameObject[][] M;
 	 
 	    /**
 	     * Launch the application.
@@ -61,7 +62,7 @@ public class GUI extends JFrame {
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        setContentPane(contentPane);
-	        
+	        /*
 	        //Agrego al panel el label del jugador
 	        Jugador miJugador = mapaLogica.getJugador();
 	        miJugador.getGrafico().setVisible(true);
@@ -69,25 +70,18 @@ public class GUI extends JFrame {
 	        miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
 			// j.setBounds(290, 400, 30, 30);
 	        miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
-			 contentPane.add(miJugador);
+			 contentPane.add(miJugador);*/
 			 
-			
 			//Genero el mapa en base al archivo seteado.
-			 mapaLogica.generacionDeMapaLogico();
+			mapaLogica.generacionDeMapaLogico();
 			
-			 M=mapaLogica.getMapaLogico();
-			 for(int i=0;i<20;i++)
-				 for(int j=0;j<20;j++){
-					 if(M[i][j]==2){
-						 Ladrillo l = new Ladrillo();
-				 		 l.setVisible(true);
-				 		 l.setBounds(j*30,i*30,30,30);
-				 		 l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/ladrillo.png")));
-				 		 contentPane.add(l);
-					 }	
-					 
-				 }
-	        
+			M=mapaLogica.getMapaLogico();
+			 	
+			for(int i=0;i<20;i++)
+			 	for(int j=0;j<20;j++){
+			 		contentPane.add(M[i][j]);
+						
+	       /* 
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 				
@@ -99,7 +93,6 @@ public class GUI extends JFrame {
 					 		//miJugador.setBounds(miJugador.getX(), miJugador.getY()-5, miJugador.getWidth(), miJugador.getHeight());
 					 		//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
 					 		//System.out.println(miJugador.getX()+","+miJugador.getY());
-					 		
 					 		pintarTablero();
 					 		break;
 						case KeyEvent.VK_DOWN :
@@ -141,17 +134,8 @@ public class GUI extends JFrame {
 	        
 	        
 	    }
-	    
-	    //Recorremos la matriz contenida en la parte logica de la gui
-	    //para definir el estado del tablero
-	    private void pintarTablero()
-	    {	 System.out.println(miJugador.getPosColumna()+" "+miJugador.getPosFila());
-	    	 //miJugador.setVisible(true);
-			 //miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
-	    	 //miJugador.setBounds(miJugador.getPosColumna()*30, miJugador.getPosFila()*30, 30, 30);
-			//
-	    }
+	    */
 
-	    
-	   
+			 	}
+			 	}   
 }

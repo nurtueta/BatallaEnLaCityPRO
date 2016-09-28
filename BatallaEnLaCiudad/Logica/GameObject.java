@@ -12,7 +12,7 @@ import java.awt.*;
     @author Sam Baldwin
 */
 
-public abstract class GameObject
+public abstract class GameObject extends JLabel
 {
 	protected int xPos;   // Measured in Tiles
 	protected int yPos;   // Measured in Tiles
@@ -27,7 +27,7 @@ public abstract class GameObject
 	
 	//protected GameGrid.GridValue[][] collisionValue;
 	
-	protected boolean interactuable;
+	protected boolean interactuable=true;
 	
 	
 	public GameObject()
@@ -55,8 +55,8 @@ public abstract class GameObject
 		@param height Height of GameObject
 		@param interactable Whether or not the object may be interacted with
     	*/
-	public GameObject(int x, int y, int width, int height, boolean interactable)
-	{
+	public GameObject(ComponenteGrafico objeto)
+	{/*
 		this.width = width;
 		this.height = height;
 		
@@ -75,7 +75,9 @@ public abstract class GameObject
 		
 		// Set the position (Has to be after the Initialization of collisionValues
 		this.setPos(x, y);
-		
+		*/
+		miGrafica=objeto;
+		this.setBounds(miGrafica.getMiX(), miGrafica.getMiY(), miGrafica.getAncho(),miGrafica.getAlto());
 		
 	}
 	
@@ -129,9 +131,10 @@ public abstract class GameObject
 	{
 		return miGrafica;
 	}
-	
+	/*
 	public void setPos(int x, int y)
 	{
+		/*
 		this.xPos = x;
 		this.yPos = y;
 		
@@ -148,12 +151,11 @@ public abstract class GameObject
 					GameMain.getRenderer().getGameGrid().setCollisionGrid(collisionValue[wCounter][hCounter],
 										  	     (xPos + wCounter), (yPos + hCounter));
 				}
-				*/						     
-			}
-		}
-				
+						
+		
+		
 	}
-	
+	*/
 	public void updatePos()
 	{
 		//GameMain.getRenderer().getGameGrid().setObjectGrid(this, xPos, yPos);
