@@ -3,7 +3,11 @@ package Grafica;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+<<<<<<< HEAD
 public abstract class ComponenteGrafico extends JLabel{
+=======
+public abstract class ComponenteGrafico extends JLabel {
+>>>>>>> origin/master
 	
 	protected JLabel imagenActual;
 	protected Icon misImagenes[];
@@ -15,21 +19,24 @@ public abstract class ComponenteGrafico extends JLabel{
 	//CONSTRUCTORES
 	public	ComponenteGrafico(){}
 	public ComponenteGrafico(int x, int y)
-	{
+	{	
 		imagenActual = null;
 		velocidad = 0;
 		miX = x;
 		miY = y;
+		this.setBounds(miX*alto , miY*ancho, ancho, alto);
 	}
 	
 	public ComponenteGrafico(int vel, int x, int y)
-	{
+	{	
+		
 		//Asignacion de imagen actual por defecto a la imagen del piso
-		this.setImagenActual(0);
+		//this.setImagenActual(0);
 		
 		velocidad = vel;
 		miX = x;
 		miY = y;
+		this.setBounds(miX*alto , miY*ancho, ancho, alto);
 	}
 	
 	//METODOS
@@ -52,12 +59,14 @@ public abstract class ComponenteGrafico extends JLabel{
 		
 		public void setMiX(int x)
 		{
-			miX = x;
+			miX=x;
+			this.setBounds(miX*alto , miY*ancho, ancho, alto);
 		}
 		
 		public void setMiY(int y)
 		{
-			miY = y;
+			miY=y;
+			this.setBounds(miX*alto , miY*ancho, ancho, alto);
 		}
 	
 		//CONSULTAS
@@ -98,5 +107,6 @@ public abstract class ComponenteGrafico extends JLabel{
 		{
 			return miY;
 		}
+		
 	
 }
