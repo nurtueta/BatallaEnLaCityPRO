@@ -2,6 +2,8 @@ package Logica;
 
 import java.io.*;
 
+import javax.swing.ImageIcon;
+
 import Grafica.*;
 import Logica.Bloque.*;
 import Tanque.Enemigo;

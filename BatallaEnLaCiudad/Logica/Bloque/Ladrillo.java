@@ -8,9 +8,10 @@ public class Ladrillo extends Celda{
 	
 	public Ladrillo(int x,int y) {
 		super(x,y);
-		
-		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/fondo.png")), 0);
-		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/ladrillo.png")), 1);
+		this.setImagenEnPos(new ImageIcon("ladrillo.png"), 4);
+		this.setImagenActual(4);
+		//this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/fondo.png")), 0);
+		//this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/ladrillo.png")), 1);
 	}
 	
 	@Override
