@@ -12,7 +12,7 @@ import java.awt.*;
     @author Sam Baldwin
 */
 
-public abstract class GameObject
+public abstract class GameObject extends JLabel
 {
 	protected int xPos;   // Measured in Tiles
 	protected int yPos;   // Measured in Tiles

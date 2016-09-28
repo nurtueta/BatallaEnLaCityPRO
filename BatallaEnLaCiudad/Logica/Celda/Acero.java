@@ -1,9 +1,11 @@
-package Logica;
+package Logica.Celda;
 
-public class Agua extends Celda {
+
+public class Acero extends Celda{
 
 	@Override
 	public boolean movimientoPosible() {
+
 		return false;
 	}
 

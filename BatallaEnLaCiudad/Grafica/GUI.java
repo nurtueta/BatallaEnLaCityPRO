@@ -1,21 +1,13 @@
 package Grafica;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
 import java.util.Vector;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import Logica.GameObject;
-import Logica.Ladrillo;
-import Logica.Logica;
+import Logica.*;
+import Logica.Celda.*;
 import Tanque.Enemigo;
 import Tanque.Jugador;
 import Tanque.Tanque;

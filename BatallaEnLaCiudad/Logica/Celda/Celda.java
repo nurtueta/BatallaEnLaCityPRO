@@ -1,6 +1,7 @@
-package Logica;
+package Logica.Celda;
 
 import Grafica.CeldaGrafica;
+import Logica.GameObject;
 
 public abstract class Celda extends GameObject
 {	
