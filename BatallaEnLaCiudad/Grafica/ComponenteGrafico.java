@@ -1,6 +1,7 @@
 package Grafica;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 
@@ -18,17 +19,19 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public ComponenteGrafico(int x, int y)
 	{	
+		super();
 		imagenActual = null;
 		misImagenes=new Icon[15];
 		velocidad = 0;
 		miX = x;
 		miY = y;
 		this.setBounds(miX*alto , miY*ancho, ancho, alto);
+		
 	}
 	
 	public ComponenteGrafico(int vel, int x, int y)
 	{	
-		
+		super();
 		//Asignacion de imagen actual por defecto a la imagen del piso
 		//this.setImagenActual(0);
 		misImagenes=new Icon[15];
@@ -43,7 +46,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		//COMANDOS
 		public void setImagenActual(int i)
 		{
-			imagenActual.setIcon(misImagenes[i]);
+			this.setIcon(misImagenes[i]);
+			
 		}
 		
 		public void setImagenEnPos(Icon img, int i)

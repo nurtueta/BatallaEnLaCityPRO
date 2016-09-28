@@ -58,6 +58,7 @@ public class GUI extends JFrame {
 	        setContentPane(contentPane);
 	        
 	        generarPanel();
+	        setVisible(true);
 	        /*
 	        //Agrego al panel el label del jugador
 	        Jugador miJugador = mapaLogica.getJugador();
@@ -147,8 +148,9 @@ public class GUI extends JFrame {
 			M=mapaLogica.getMapaLogico();
 			
 			for(int i=0;i<20;i++)
-			 	for(int j=0;j<20;j++)
+			 	for(int j=0;j<20;j++){
 			 		contentPane.add(M[i][j]);
+			 	}
 	    }
 			
 }
