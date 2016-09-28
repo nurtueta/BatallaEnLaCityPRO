@@ -51,15 +51,26 @@ public class GUI extends JFrame {
 	        //this.setIconImage(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/tanqueArriba.png")));
 	       
 	        //setteo del panel contenedor
-	        setBounds(400, 55, 600, 600);
+	        
+	        setBounds(50, 50, 600, 600);
 	        contentPane = new JPanel();
+	        contentPane.setBorder(null);
+	        
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
+	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
+	        /*this.getContentPane().setLayout(null);
+	        this.getContentPane().setBounds(50,50,600,600);
+	        this.getContentPane().setVisible(true);*/
 	        
 	        mapaLogica.generacionDeMapaLogico();
 			M=mapaLogica.getMapaLogico();
 	        generarPanel();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b8e44e42a3ffa3d96395b62bf4bfb5c43f1cb90
 	        setVisible(true);
 	        
 	        /*
@@ -132,9 +143,22 @@ public class GUI extends JFrame {
 	    			
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
+<<<<<<< HEAD
 			 		M[i][j].setVisible(true);
 			 		contentPane.add(M[i][j]);
 			 		
+=======
+			 		contentPane.add(M[i][j]);
+			 		JLabel prueba = new JLabel();
+			 		//prueba.
+			 		/*M[i][j].setBounds(j*30,i*30,30,30);
+			 		M[i][j].setAlignmentX(j*30);
+			 		M[i][j].setAlignmentY(i*100);
+			 		*/
+			 					 		
+			 		M[i][j].setVisible(true);
+			 		//contentPane.repaint();
+>>>>>>> 5b8e44e42a3ffa3d96395b62bf4bfb5c43f1cb90
 			 	}
 	    }
 			
