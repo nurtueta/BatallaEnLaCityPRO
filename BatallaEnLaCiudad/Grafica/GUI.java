@@ -16,7 +16,7 @@ public class GUI extends JFrame {
 	
      private JPanel contentPane;
 	 private Logica mapaLogica;
-	 private GameObject[][] M;
+	 private ComponenteGrafico[][] M;
 	 
 	    /**
 	     * Launch the application.
@@ -65,13 +65,7 @@ public class GUI extends JFrame {
 			 contentPane.add(miJugador);*/
 			 
 			//Genero el mapa en base al archivo seteado.
-			mapaLogica.generacionDeMapaLogico();
 			
-			M=mapaLogica.getMapaLogico();
-			 	
-			for(int i=0;i<20;i++)
-			 	for(int j=0;j<20;j++){
-			 		contentPane.add(M[i][j]);
 						
 	       /* 
 	        //agrego el oyente al teclado en el panel contenedor
@@ -128,6 +122,17 @@ public class GUI extends JFrame {
 	    }
 	    */
 
-			 	}
-			 	}   
+	    }	
+	    
+	    private void generarPanel(){
+	    	
+	    	mapaLogica.generacionDeMapaLogico();
+			
+			M=mapaLogica.getMapaLogico();
+			 	
+			for(int i=0;i<20;i++)
+			 	for(int j=0;j<20;j++)
+			 		contentPane.add(M[i][j]);
+	    }
+			
 }
