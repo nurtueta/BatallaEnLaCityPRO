@@ -8,12 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import Logica.Celda.Agua;
-import Logica.Celda.Arbol;
-import Logica.Celda.Celda;
-import Logica.Celda.Ladrillo;
-import Logica.Celda.Piso;
-import Logica.Celda.*;
+import Logica.Bloque.*;
 import Tanque.Enemigo;
 import Tanque.Jugador;
 

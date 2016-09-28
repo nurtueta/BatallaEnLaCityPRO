@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Logica.*;
-import Logica.Celda.*;
+import Logica.Bloque.*;
 import Tanque.Enemigo;
 import Tanque.Jugador;
 import Tanque.Tanque;
