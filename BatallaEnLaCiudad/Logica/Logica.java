@@ -43,8 +43,11 @@ public class Logica {
 	        BufferedReader b = new BufferedReader(fi);
 	        String cadena;
 		int i=0;
+		
 	      while((cadena = b.readLine())!=null) {
+	    	  
 	      	 for(int j=0;j<cadena.length();j++){
+	      		 
 	      		char s = cadena.charAt(j);
 	      		
 	      		if(s=='A'){

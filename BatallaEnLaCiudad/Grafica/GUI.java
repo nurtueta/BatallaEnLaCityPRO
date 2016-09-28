@@ -155,6 +155,7 @@ public class GUI extends JFrame {
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
 			 		contentPane.add(M[i][j]);
+			 		
 			 					 		
 			 		M[i][j].setVisible(true);
 			 	}
