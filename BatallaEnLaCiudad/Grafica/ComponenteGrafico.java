@@ -3,7 +3,7 @@ package Grafica;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-public abstract class ComponenteGrafico {
+public abstract class ComponenteGrafico extends JLabel{
 	
 	protected JLabel imagenActual;
 	protected Icon misImagenes[];
@@ -13,7 +13,7 @@ public abstract class ComponenteGrafico {
 	protected int miX,miY;
 	
 	//CONSTRUCTORES
-	
+	public	ComponenteGrafico(){}
 	public ComponenteGrafico(int x, int y)
 	{
 		imagenActual = null;

@@ -16,7 +16,7 @@ public class GUI extends JFrame {
 	
      private JPanel contentPane;
 	 private Logica mapaLogica;
-	 private GameObject[][] M;
+	 private ComponenteGrafico[][] M;
 	 
 	    /**
 	     * Launch the application.

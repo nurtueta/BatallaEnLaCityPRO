@@ -1,8 +1,9 @@
 package Tanque;
 
+import Grafica.ComponenteGrafico;
 import Logica.GameObject;
 
-public abstract class Tanque extends GameObject {
+public abstract class Tanque extends ComponenteGrafico {
 
 	abstract int getVida();
 	

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import Grafica.ComponenteGrafico;
 import Logica.Bloque.*;
 import Tanque.Enemigo;
 import Tanque.Jugador;
@@ -17,7 +18,7 @@ import Tanque.Jugador;
 public class Logica {
 	
 	//variables
-	protected GameObject[][] mapa;
+	protected ComponenteGrafico[][] mapa;
 	protected Jugador miJugador;
 	private Enemigo [] misEnemigos;
 	
@@ -35,7 +36,7 @@ public class Logica {
 	}
 	
 	//Commands
-	public	GameObject[][] getMapaLogico(){
+	public	ComponenteGrafico[][] getMapaLogico(){
 		return mapa;
 	}
 	public void generacionDeMapaLogico()
@@ -87,12 +88,13 @@ public class Logica {
 	public void mover(Jugador j,int direccion)
 	{
 		/*
-		int pF = j.getPosFila();
-		int pC = j.getPosColumna();
+		int pF = j.getX();
+		int pC = j.getY();
 		boolean movio=false;
 		
 		switch (direccion) {
 			case 1: if(pC<(mapa[0].length-1)){
+						if(mapa[][]
 						if(mapa[pF][pC+1]==1){
 							mapa[pF][pC+1]=22;
 							movio=true;
@@ -193,7 +195,8 @@ public class Logica {
 	public void ingresarJugador(int x, int y)
 	{
 		mapa[x][y]=miJugador;
-		miJugador.setPos(x, y);
+		miJugador.setPosFila(x);
+		miJugador.setPosColumna(y);
 	}
 	
 	public Jugador getJugador()
