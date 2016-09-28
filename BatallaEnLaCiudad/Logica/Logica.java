@@ -24,7 +24,7 @@ public class Logica {
 	
 	//constructor
 	public Logica(){
-		mapa=new Celda[20][20];
+		mapa=new ComponenteGrafico[20][20];
 		generacionDeMapaLogico();	
 		
 		//Creación del jugador
@@ -87,91 +87,91 @@ public class Logica {
 			
 	public void mover(Jugador j,int direccion)
 	{
-		/*
-		int pF = j.getX();
-		int pC = j.getY();
+		
+		int f= j.getX();
+		int c = j.getY();
 		boolean movio=false;
 		
 		switch (direccion) {
-			case 1: if(pC<(mapa[0].length-1)){
-						if(mapa[][]
-						if(mapa[pF][pC+1]==1){
-							mapa[pF][pC+1]=22;
+			case 1: if(c<(mapa[0].length-1)){
+						if(mapa[f][c].movimientoPosible())
+						if(mapa[f][c+1]==1){
+							mapa[f][c+1]=22;
 							movio=true;
 						}						
 						else 
-							if(mapa[pF][pC+1]==4){
-								mapa[pF][pC+1]=10;
+							if(mapa[f][c+1]==4){
+								mapa[f][c+1]=10;
 								movio=true;
 							}
 						if(movio){
-							if((mapa[pF][pC]<14) && (mapa[pF][pC]>9))
-								mapa[pF][pC]=4;
+							if((mapa[f][c]<14) && (mapa[f][c]>9))
+								mapa[f][c]=4;
 							else
-								mapa[pF][pC]=1;
-							j.setPosColumna(pC+1);
+								mapa[f][c]=1;
+							j.setPosColumna(c+1);
 						}else
-							mapa[pF][pC]=22;
+							mapa[f][c]=22;
 					}
 					break;
-			case 2: if(pC>0){
-						if(mapa[pF][pC-1]==1){
-							mapa[pF][pC-1]=23;
+			case 2: if(c>0){
+						if(mapa[f][c-1]==1){
+							mapa[f][c-1]=23;
 							movio=true;
 						}
 						else
-							if(mapa[pF][pC-1]==4){
-								mapa[pF][pC-1]=11;
+							if(mapa[f][c-1]==4){
+								mapa[f][c-1]=11;
 								movio=true;
 							}
 						if(movio){
-							if((mapa[pF][pC]<14) && (mapa[pF][pC]>9))
-								mapa[pF][pC]=4;
+							if((mapa[f][c]<14) && (mapa[f][c]>9))
+								mapa[f][c]=4;
 							else
-								mapa[pF][pC]=1;
-							j.setPosColumna(pC-1);
+								mapa[f][c]=1;
+							j.setPosColumna(c-1);
 						}else
-							mapa[pF][pC]=23;
+							mapa[f][c]=23;
 					}
 					break;
-			case 3: if(pF>0){
-						if(mapa[pF-1][pC]==1){
-							mapa[pF-1][pC]=24;
+			case 3: if(f>0){
+						if(mapa[f-1][c]==1){
+							mapa[f-1][c]=24;
 							movio=true;
 						}
 						else
-							if(mapa[pF-1][pC]==4){
-								mapa[pF-1][pC]=12;
+							if(mapa[f-1][c]==4){
+								mapa[f-1][c]=12;
 								movio=true;
 							}
 						if(movio){
-							if((mapa[pF][pC]<14) && (mapa[pF][pC]>9))
-								mapa[pF][pC]=4;
+							if((mapa[f][c]<14) && (mapa[f][c]>9))
+								mapa[f][c]=4;
 							else
-								mapa[pF][pC]=1;
-							j.setPosFila(pF-1);
+								mapa[f][c]=1;
+							j.setPosFila(f-1);
 						}else
-							mapa[pF][pC]=24;
+							mapa[f][c]=24;
 					}
 					break;
-			case 4: if(pC<(mapa.length-1)){
-						if(mapa[pF+1][pC]==1){
-							mapa[pF+1][pC]=25;
+			case 4: if(c<(mapa.length-1)){
+						if(mapa[f+1][c]==1){
+							mapa[f+1][c]=25;
 							movio=true;
 						}
 						else
-							if(mapa[pF+1][pC]==4){
-								mapa[pF+1][pC]=13;
+							if(mapa[f+1][c]==4){
+								mapa[f+1][c]=13;
 								movio=true;
 							}
 						if(movio){
-							if((mapa[pF][pC]<14) && (mapa[pF][pC]>9))
-								mapa[pF][pC]=4;
+							if((mapa[f][c]<14) && (mapa[f][c]>9))
+								mapa[f][c]=4;
 							else
-								mapa[pF][pC]=1;
-							j.setPosFila(pF+1);
+								mapa[f][c]=1;
+							j.setPosFila(f+1);
 						}else
-							mapa[pF][pC]=25;
+							mapa[f][c]=25;
 					}
 					break;
 		}
