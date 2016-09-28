@@ -1,9 +1,13 @@
 package Logica.Bloque;
 
+import javax.swing.ImageIcon;
 
 public class Piso extends Celda{
 
-	@Override
+	public Piso() {
+		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/fondo.png")), 0);	}
+
+	
 	public boolean movimientoPosible() {
 		return true;
 	}

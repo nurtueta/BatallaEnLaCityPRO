@@ -110,12 +110,12 @@ public class GUI extends JFrame {
 					 
 	        	}
 
-				public void keyReleased(KeyEvent arg0) {
+				public void keyReleased1(KeyEvent arg0) {
 					// TODO Auto-generated method stub
 					
 				}
 
-				public void keyTyped(KeyEvent arg0) {
+				public void keyTyped1(KeyEvent arg0) {
 					// TODO Auto-generated method stub
 					
 				}
