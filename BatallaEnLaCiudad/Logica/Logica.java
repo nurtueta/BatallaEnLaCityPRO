@@ -85,8 +85,8 @@ public class Logica {
 	private void mover(Jugador j,int direccion)
 	{
 		
-		int f= j.getX();
-		int c = j.getY();
+		int c= j.getX();
+		int f = j.getY();
 		
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){

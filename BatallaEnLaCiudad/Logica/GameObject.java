@@ -77,12 +77,9 @@ public abstract class GameObject extends JLabel
 		this.setPos(x, y);
 		*/
 		miGrafica=objeto;
-<<<<<<< HEAD
-		//this.setBounds(miGrafica.getMiX(), miGrafica.getMiY(), miGrafica.getAncho(),miGrafica.getAlto());
-=======
-		this.setBounds(miGrafica.getX(), miGrafica.getY(), miGrafica.getAncho(),miGrafica.getAlto());
->>>>>>> fb413995c58a1a2606288d625ab66d434e4676d3
 		
+		//this.setBounds(miGrafica.getX(), miGrafica.getY(), miGrafica.getAncho(),miGrafica.getAlto());
+
 	}
 	
 	public boolean isInteractable()
