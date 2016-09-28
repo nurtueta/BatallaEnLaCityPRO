@@ -20,6 +20,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	public ComponenteGrafico(int x, int y)
 	{	
 		super();
+		
 		imagenActual = null;
 		misImagenes=new Icon[15];
 		velocidad = 0;
