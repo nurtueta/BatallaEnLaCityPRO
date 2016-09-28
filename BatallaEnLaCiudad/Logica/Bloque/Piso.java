@@ -4,7 +4,8 @@ import javax.swing.ImageIcon;
 
 public class Piso extends Celda{
 
-	public Piso() {
+	public Piso(int x,int y) {
+		super(x,y);
 		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/fondo.png")), 0);	}
 
 	

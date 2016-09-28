@@ -21,10 +21,10 @@ public class Logica {
 		mapa=new ComponenteGrafico[20][20];
 		generacionDeMapaLogico();	
 		
-		//Creación del jugador
+		//Creaciï¿½n del jugador
 		miJugador = new Jugador();
 		
-		//Creación de los enemigos
+		//Creaciï¿½n de los enemigos
 		misEnemigos = new Enemigo [4];
 		
 	}
@@ -46,16 +46,16 @@ public class Logica {
 	      		char s = cadena.charAt(j);
 	      		
 	      		if(s=='A'){
-	      			mapa[i][j]= new Agua();
+	      			mapa[i][j]= new Agua(j,i);
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= new Ladrillo();
+	      			mapa[i][j]= new Ladrillo(j,i);
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= new Acero();
+	      			mapa[i][j]= new Acero(j,i);
 	      		}else
 	      		if(s=='B'){
-	      			mapa[i][j]= new Arbol();
+	      			mapa[i][j]= new Arbol(j,i);
 	      		}/*else
 	      		if(s=='E'){
 	      			mapa[i][j]= 26; Aguila == Eagle
@@ -67,7 +67,7 @@ public class Logica {
 	      			mapa[i][j]= 27; Respown
 	      		}*/
 	      		else{
-	      			mapa[i][j]= new Piso();
+	      			mapa[i][j]= new Piso(j,i);
 	      		}
 	      		}
 	      	i++;

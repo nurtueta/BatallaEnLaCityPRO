@@ -4,7 +4,8 @@ import javax.swing.ImageIcon;
 
 public class Arbol extends Celda{
 
-	public Arbol() {
+	public Arbol(int x,int y) {
+		super(x,y);
 		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/arboles.png")), 3);	}
 
 	public boolean movimientoPosible() {

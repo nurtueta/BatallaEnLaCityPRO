@@ -77,7 +77,7 @@ public abstract class GameObject extends JLabel
 		this.setPos(x, y);
 		*/
 		miGrafica=objeto;
-		this.setBounds(miGrafica.getMiX(), miGrafica.getMiY(), miGrafica.getAncho(),miGrafica.getAlto());
+		//this.setBounds(miGrafica.getMiX(), miGrafica.getMiY(), miGrafica.getAncho(),miGrafica.getAlto());
 		
 	}
 	

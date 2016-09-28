@@ -6,7 +6,8 @@ import javax.swing.JLabel;
 
 public class Ladrillo extends Celda{
 	
-	public Ladrillo() {
+	public Ladrillo(int x,int y) {
+		super(x,y);
 		
 		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/fondo.png")), 0);
 		this.setImagenEnPos(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/ladrillo.png")), 1);
