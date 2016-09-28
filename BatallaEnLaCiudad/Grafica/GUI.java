@@ -52,7 +52,7 @@ public class GUI extends JFrame {
 	       
 	        //setteo del panel contenedor
 	        
-	        setBounds(50, 50, 600, 600);
+	        setBounds(0, 0, 600, 600);
 	        contentPane = new JPanel();
 	        contentPane.setBorder(null);
 	        
