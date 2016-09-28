@@ -97,10 +97,9 @@ public class Logica {
 		
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
-						if(mapa[f][c].movimientoPosible()){
+						if(mapa[f][c+1].movimientoPosible()){
 							mapa[f][c+1]=mapa[f][c];
 							mapa[f][c]= new PisoGrafico(f,c);
-							movio=true;
 						}	
 					}
 						break;
@@ -108,26 +107,25 @@ public class Logica {
 						if(mapa[f][c-1].movimientoPosible()){
 							mapa[f][c-1]=mapa[f][c];
 							mapa[f][c]=new PisoGrafico(f,c);
-							movio=true;
 						}
 					}
 					break;
 			case 3: if(f>0){
-						if(mapa[f-1][c]==1){
-							mapa[f-1][c]=24;
-							movio=true;
+						if(mapa[f-1][c].movimientoPosible()){
+							mapa[f-1][c]=mapa[f][c];
+							mapa[f][c]=new PisoGrafico(f,c);
 						}
 					}	
 					break;
-			case 4: if(c<(mapa.length-1)){
-						if(mapa[f+1][c]==1){
-							mapa[f+1][c]=25;
-							movio=true;
+			case 4: if(f<(mapa.length-1)){
+						if(mapa[f+1][c].movimientoPosible()){
+							mapa[f+1][c]=mapa[f][c];
+							mapa[f][c]=new PisoGrafico(f,c);
 						}
 					}
 					break;
 		}
-		*/
+		
 	}
 	
 	public void disparar(Jugador j)
