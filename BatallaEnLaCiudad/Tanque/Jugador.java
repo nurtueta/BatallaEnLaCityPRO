@@ -35,19 +35,19 @@ public class Jugador extends Tanque{
 		powerUpDeTanque=pu;
 	}
 	
-	public int getPosFila(){
+	public int getFila(){
 		return posFila;
 	}
 	
-	public void setPosFila(int f){
+	public void setFila(int f){
 		posFila=f;
 	}
 	
-	public int getPosColumna(){
+	public int getColumna(){
 		return posColumna;
 	}
 	
-	public void setPosColumna(int c){
+	public void setColumna(int c){
 		posColumna=c;
 	}
 	
