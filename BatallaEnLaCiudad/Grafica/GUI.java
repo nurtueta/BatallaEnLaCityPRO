@@ -52,24 +52,38 @@ public class GUI extends JFrame {
 	       
 	        //setteo del panel contenedor
 	        
+<<<<<<< HEAD
 	        setBounds(200, 200, 600, 600);
+=======
+	        setBounds(50,50,600,600);
+>>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 	        contentPane = new JPanel();
 	        contentPane.setBorder(null);
-	        
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
+<<<<<<< HEAD
 	        
 	        /*this.getContentPane().setLayout(null);
+=======
+	        setContentPane(contentPane);
+	        this.getContentPane().setLayout(null);
+>>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 	        this.getContentPane().setBounds(50,50,600,600);
-	        this.getContentPane().setVisible(true);*/
-	        
-	        mapaLogica.generacionDeMapaLogico();
+	        this.getContentPane().setVisible(true);
+	       // mapaLogica.generacionDeMapaLogico();
 			M=mapaLogica.getMapaLogico();
+<<<<<<< HEAD
 	        
 			generarPanel();
 	        setContentPane(contentPane);
 	        setVisible(true);
+=======
+	        generarPanel();
+
+	        
+	       setVisible(true);
+>>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 	        
 	        /*
 	        //agrego el oyente al teclado en el panel contenedor
@@ -141,8 +155,24 @@ public class GUI extends JFrame {
 	    			
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
+<<<<<<< HEAD
 			 		M[j][i].setVisible(true);
 			 		contentPane.add(M[j][i]);
+=======
+			 		M[i][j].setVisible(true);
+			 		contentPane.add(M[i][j]);
+			 		
+			 		contentPane.add(M[i][j]);
+			 		JLabel prueba = new JLabel();
+			 		//prueba.
+			 		/*M[i][j].setBounds(j*30,i*30,30,30);
+			 		M[i][j].setAlignmentX(j*30);
+			 		M[i][j].setAlignmentY(i*100);
+			 		*/
+			 					 		
+			 		M[i][j].setVisible(true);
+			 		//contentPane.repaint();
+>>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 			 	}
 	    }
 			

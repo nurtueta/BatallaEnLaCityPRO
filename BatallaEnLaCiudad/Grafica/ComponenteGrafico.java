@@ -26,8 +26,15 @@ public abstract class ComponenteGrafico extends JLabel {
 		//velocidad = 0;
 		miX = x;
 		miY = y;
+<<<<<<< HEAD
 		this.setBounds(miX*alto , miY*ancho, ancho, alto);
 	
+=======
+		this.setBounds(miX*30 ,miY*30, 50, alto);
+
+		this.setBounds(miX*alto , miY*ancho, ancho, alto);
+		this.setVisible(true);
+>>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 		
 	}
 	
