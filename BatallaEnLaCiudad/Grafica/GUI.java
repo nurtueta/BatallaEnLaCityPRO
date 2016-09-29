@@ -3,16 +3,9 @@ package Grafica;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Vector;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import Logica.*;
-import Logica.Bloque.*;
-import Tanque.Enemigo;
-import Tanque.Jugador;
-import Tanque.Tanque;
 
 public class GUI extends JFrame {
 	
@@ -48,44 +41,28 @@ public class GUI extends JFrame {
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setTitle("Battle City 2016");
 	        this.setResizable(false);
-	        //this.setIconImage(new ImageIcon(this.getClass().getResource("/BatallaEnLaCiudad/Recursos/tanqueArriba.png")));
-	       
+	        
 	        //setteo del panel contenedor
 	        
-<<<<<<< HEAD
-	        setBounds(200, 200, 600, 600);
-=======
+	        
+	        
 	        setBounds(50,50,600,600);
->>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 	        contentPane = new JPanel();
-	        contentPane.setBorder(null);
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
-<<<<<<< HEAD
-	        
-	        /*this.getContentPane().setLayout(null);
-=======
 	        setContentPane(contentPane);
-	        this.getContentPane().setLayout(null);
->>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
-	        this.getContentPane().setBounds(50,50,600,600);
-	        this.getContentPane().setVisible(true);
-	       // mapaLogica.generacionDeMapaLogico();
+	        
+	        
+	        
+	       	mapaLogica.generacionDeMapaLogico();
 			M=mapaLogica.getMapaLogico();
-<<<<<<< HEAD
 	        
 			generarPanel();
-	        setContentPane(contentPane);
+	        
 	        setVisible(true);
-=======
-	        generarPanel();
-
 	        
-	       setVisible(true);
->>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
 	        
-	        /*
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 				
@@ -94,31 +71,31 @@ public class GUI extends JFrame {
 					 	case KeyEvent.VK_UP : 
 					 		
 					 		mapaLogica.mover(3);
-					 		//miJugador.setBounds(miJugador.getX(), miJugador.getY()-5, miJugador.getWidth(), miJugador.getHeight());
-					 		//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
-					 		//System.out.println(miJugador.getX()+","+miJugador.getY());
-					 		generarPanel();
+					 		refrescarPanel();
 					 		break;
 						case KeyEvent.VK_DOWN :
-							//miJugador.setBounds(miJugador.getX(), miJugador.getY()+5, miJugador.getWidth(), miJugador.getHeight());
-							//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
 							mapaLogica.mover(4);
-							generarPanel();
-							//System.out.println(miJugador.getX()+","+miJugador.getY());
+							refrescarPanel();
 							break;
 	        			case KeyEvent.VK_RIGHT :
-	        				//j.setBounds(miJugador.getX()+5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
-	        				//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
 	        				mapaLogica.mover(1);
-	        				generarPanel();
-	        				//System.out.println(miJugador.getX()+","+miJugador.getY());
+	        				refrescarPanel();
 	        				break;
     					case KeyEvent.VK_LEFT :
-    						//j.setBounds(miJugador.getX()-5, miJugador.getY(), miJugador.getWidth(), miJugador.getHeight());
-    						//miJugador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
     						mapaLogica.mover(2);
-    						generarPanel();
-    						//System.out.println(miJugador.getX()+","+miJugador.getY());
+    						refrescarPanel();
+    						break;
+    					case KeyEvent.VK_Q :
+    						mapaLogica.crearEnemigo(1, 1);
+    						refrescarPanel();
+    						break;
+    					case KeyEvent.VK_W :
+    						mapaLogica.eliminar(mapaLogica.getEnemigo(1));
+    						refrescarPanel();
+    						break;
+    					case KeyEvent.VK_E :
+    						mapaLogica.eliminar(mapaLogica.getComponente(1, 1));
+    						refrescarPanel();
     						break;
 					 }
 					 
@@ -147,33 +124,22 @@ public class GUI extends JFrame {
 				public void keyTyped(KeyEvent arg0) {
 					// TODO Auto-generated method stub	
 				}
-	        });	   */     	        
+	        });	       	        
 	    }
 	    	
 	    
 	    public void generarPanel(){
-	    			
+	    	
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
-<<<<<<< HEAD
-			 		M[j][i].setVisible(true);
-			 		contentPane.add(M[j][i]);
-=======
-			 		M[i][j].setVisible(true);
-			 		contentPane.add(M[i][j]);
-			 		
-			 		contentPane.add(M[i][j]);
-			 		JLabel prueba = new JLabel();
-			 		//prueba.
-			 		/*M[i][j].setBounds(j*30,i*30,30,30);
-			 		M[i][j].setAlignmentX(j*30);
-			 		M[i][j].setAlignmentY(i*100);
-			 		*/
-			 					 		
-			 		M[i][j].setVisible(true);
-			 		//contentPane.repaint();
->>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
+			 		//M[i][j].setVisible(true);
+			 		System.out.println(M[i][j].getX());
+			 		this.add(M[i][j]);
 			 	}
+	    }
+	    
+	    private void refrescarPanel(){
+	    	this.repaint();
 	    }
 			
 }

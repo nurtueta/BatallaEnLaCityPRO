@@ -1,52 +1,39 @@
 package Tanque;
 
-public class Enemigo extends Tanque{
+public abstract class Enemigo extends Tanque{
+	
+	/*Constructor*/
 	
 	public	Enemigo(){
 		super();
 	}
-
-	@Override
-	int getVida() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	void setVida(int v) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	int getFila() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	void setFila(int f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	int getColumna() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	void setColumna(int c) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
+	/*Comandos*/
+	
+	//seteo la imagen en la posicion del tanque enemigo
+	public abstract void posicionImagen(int i);
+	
+	//seteo la vida del tanque
+	public abstract void setVida(int v);
 
-	@Override
-	public boolean movimientoPosible() {
-		return false;
-	}
+	//seteo la posicion en Y
+	public abstract void setFila(int f);
 
+	//seteo la posicion en X
+	public abstract void setColumna(int c);
+
+	/*Consultas*/
+	
+	//devuelvo si puedo mover a la posicion del tanque
+	abstract public boolean movimientoPosible();
+	
+	//devuelvo la posicion en X
+	public abstract int getColumna();
+	
+	//devuelvo la posicion en Y
+	public abstract int getFila();
+	
+	//devuelvo la vida del tanque
+	public abstract int getVida();
+	
 }

@@ -1,126 +1,102 @@
 package Grafica;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 
 public abstract class ComponenteGrafico extends JLabel {
 	
-	//protected JLabel imagenActual;
-	//protected Icon misImagenes[];
+	/*Variables*/
+	
 	protected final int alto  = 30;
 	protected final int ancho = 30;
 	protected int velocidad;
 	protected int miX,miY;
 	
-	//CONSTRUCTORES
+	/*Constructores*/
+	
 	public	ComponenteGrafico(){}
 	
 	public ComponenteGrafico(int x, int y)
 	{	
 		super();
-		
-		//imagenActual = null;
-		//misImagenes=new Icon[15];
-		//velocidad = 0;
+		velocidad = 0;
 		miX = x;
 		miY = y;
-<<<<<<< HEAD
-		this.setBounds(miX*alto , miY*ancho, ancho, alto);
-	
-=======
-		this.setBounds(miX*30 ,miY*30, 50, alto);
-
-		this.setBounds(miX*alto , miY*ancho, ancho, alto);
-		this.setVisible(true);
->>>>>>> 023d52740c4bf3384e843ad9ab0abcdc1d6bf5c2
+		
+		//seteo el componente grafico en el lugar correspondiente
+		setBounds(miX*alto , miY*ancho, ancho, alto);
+		setVisible(true);
 		
 	}
 	
 	public ComponenteGrafico(int vel, int x, int y)
 	{	
 		super();
-		//Asignacion de imagen actual por defecto a la imagen del piso
-		//this.setImagenActual(0);
-		//misImagenes=new Icon[15];
-		//velocidad = vel;
+		velocidad = vel;
 		miX = x;
 		miY = y;
+		
+		//seteo el componente grafico en el lugar correspondiente
+		setBounds(miX*alto , miY*ancho, ancho, alto);
+		setVisible(true);
+	}
+	
+	/*Comandos*/
+	
+	//seteo la velocidad del componente grafico
+	public void setVelocidad(int v)
+	{
+		velocidad = v;
+	}
+	
+	//seteo la posicion en X
+	public void setX(int x)
+	{
+		miX=x;
 		this.setBounds(miX*alto , miY*ancho, ancho, alto);
 	}
 	
-	//METODOS
-	
-		//COMANDOS
-		/*public void setImagenActual(int i)
-		{
-			this.setIcon(misImagenes[i]);
-	        //this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/acero.png")));
+	//seteo la posicion en Y
+	public void setY(int y)
+	{
+		miY=y;
+		this.setBounds(miX*alto , miY*ancho, ancho, alto);
+	}
 
-			
-		}
-		
-		public void setImagenEnPos(Icon img, int i)
-		{
-			misImagenes[i] = img;
-		}*/
-	
-		public void setVelocidad(int v)
-		{
-			velocidad = v;
-		}
-		
-		public void setX(int x)
-		{
-			miX=x;
-			this.setBounds(miX*alto , miY*ancho, ancho, alto);
-		}
-		
-		public void setY(int y)
-		{
-			miY=y;
-			this.setBounds(miX*alto , miY*ancho, ancho, alto);
-		}
-	
-		//CONSULTAS
-		
+	/*Consultas*/
 
-		public abstract boolean movimientoPosible();
-		
-		/*public JLabel getImagenActual()
-		{
-			return imagenActual;
-		}*/
-		
-		/*public Icon getImagenPos(int i)
-		{
-			return misImagenes[i];
-		}*/
-		
-		public int getAlto()
-		{
-			return alto;
-		}
-		
-		public int getAncho(){
-			return ancho;
-		}
-		
-		public int getVelocidad()
-		{
-			return velocidad;
-		}
-		
-		public int getX()
-		{
-			return miX;
-		}
-		
-		public int getY()
-		{
-			return miY;
-		}
+	//pregunnto si es posible mover a esta posicion
+	public abstract boolean movimientoPosible();
+	
+	//devuelvo alto de la imagen
+	public int getAlto()
+	{
+		return alto;
+	}
+	
+	//devuelvo ancho de la imagen
+	public int getAncho(){
+		return ancho;
+	}
+	
+	//devuelvo la velocidad del objeto
+	public int getVelocidad()
+	{
+		return velocidad;
+	}
+	
+	//devuelvo la posicion en X
+	public int getX()
+	{
+		return miX;
+	}
+	
+	//devuelvo la posicion en Y
+	public int getY()
+	{
+		return miY;
+	}
+	
+	
 		
 	
 }

@@ -4,28 +4,34 @@ import Grafica.ComponenteGrafico;
 
 public abstract class Tanque extends ComponenteGrafico {
 	
+	/*Variables*/
+	
 	protected int vida;
 	protected int powerUpDeTanque;
-	protected int posFila;
-	protected int posColumna;
+	
+	/*Constructor*/
 	
 	public	Tanque(){
 		vida=100;
 		powerUpDeTanque=0;
-		posFila=1;
-		posColumna=1;
 	}
 
-	abstract int getVida();
+	/*Comandos*/
 	
-	abstract void setVida(int v);
+	public abstract void setDireccion(int d);
 	
-	abstract int getFila();
+	public abstract void setVida(int v);
 	
-	abstract void setFila(int f);
+	public abstract void setFila(int f);
 	
-	abstract int getColumna();
+	public abstract void setColumna(int c);
 	
-	abstract void setColumna(int c);
+	/*Consultas*/
+	
+	public abstract int getVida();
+	
+	public abstract int getFila();
+	
+	public abstract int getColumna();
 	
 }
