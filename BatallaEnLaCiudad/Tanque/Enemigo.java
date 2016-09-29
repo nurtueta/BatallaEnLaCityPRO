@@ -4,8 +4,8 @@ public abstract class Enemigo extends Tanque{
 	
 	/*Constructor*/
 	
-	public	Enemigo(){
-		super();
+	public	Enemigo(int x,int y){
+		super(x,y);
 	}
 	
 	/*Comandos*/

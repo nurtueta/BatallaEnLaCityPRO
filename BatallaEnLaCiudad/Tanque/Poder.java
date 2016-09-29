@@ -2,6 +2,11 @@ package Tanque;
 
 public class Poder extends Enemigo{
 
+	public Poder(int x, int y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public int getVida() {
 		// TODO Auto-generated method stub

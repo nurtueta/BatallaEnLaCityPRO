@@ -61,7 +61,14 @@ public abstract class ComponenteGrafico extends JLabel {
 		miY=y;
 		this.setBounds(miX*alto , miY*ancho, ancho, alto);
 	}
+	
+	public void setPosicionX(int x){
+		miX=x;
+	}
 
+	public void setPosicionY(int y){
+		miY=y;
+	}
 	/*Consultas*/
 
 	//pregunnto si es posible mover a esta posicion
@@ -87,13 +94,21 @@ public abstract class ComponenteGrafico extends JLabel {
 	//devuelvo la posicion en X
 	public int getX()
 	{
+		return miX*ancho;
+	}
+	
+	public int getPosicionX(){
 		return miX;
+	}
+	
+	public int getPosicionY(){
+		return miY;
 	}
 	
 	//devuelvo la posicion en Y
 	public int getY()
 	{
-		return miY;
+		return miY*alto;
 	}
 	
 	

@@ -2,6 +2,11 @@ package Tanque;
 
 public class Blindado extends Enemigo{
 
+	public Blindado(int x, int y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public int getVida() {
 		// TODO Auto-generated method stub

@@ -21,18 +21,19 @@ public class Logica {
 	/*Variables*/
 	
 	protected ComponenteGrafico[][] mapa;
-	protected Tanque miJugador;
-	private Tanque [] misEnemigos;
+	protected ComponenteGrafico miJugador;
+	private ComponenteGrafico [] misEnemigos;
 	
 	/*Constructor*/
 	
 	public Logica(){
 		mapa=new ComponenteGrafico[20][20];
-		generacionDeMapaLogico();
 		
+		generacionDeMapaLogico();
 		//Creacion del jugador 
-		miJugador = new Jugador();
+		miJugador = new Jugador(1,1);
 		ingresarJugador(1,1);
+		
 		
 		
 		//Creacin de los enemigos
@@ -99,16 +100,16 @@ public class Logica {
 	}
 	
 	//Mover al jugador
-	public	void mover(int direccion){
+	public void mover(int direccion){
 		mover(miJugador,direccion);
 	}
 
 	//Mover para el jugador y los enemigos
-	private void mover(Tanque j,int direccion)
+	private void mover(ComponenteGrafico j,int direccion)
 	{
 		
-		int f= j.getY();
-		int c = j.getX();
+		int f= j.getPosicionY();
+		int c = j.getPosicionX();
 		
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
@@ -140,8 +141,8 @@ public class Logica {
 					}
 					break;
 		}
-		j.setX(c);
-		j.setY(f);
+		j.setPosicionX(c);
+		j.setPosicionY(f);
 		
 	}
 	
@@ -153,42 +154,42 @@ public class Logica {
 	
 	//elimino la celda del mapa y le asigno el piso vacio.
 	public void eliminar(ComponenteGrafico c){
-		mapa[c.getX()][c.getY()]= new Piso(c.getX(),c.getY());
+		mapa[c.getPosicionX()][c.getPosicionY()]= new Piso(c.getPosicionX(),c.getPosicionY());
 	}
 	
 	//ingreso jugador
 	public void ingresarJugador(int x, int y)
 	{
+		miJugador.setPosicionY(y);
+		miJugador.setPosicionX(x);
 		mapa[x][y]=miJugador;
-		miJugador.setFila(y);
-		miJugador.setColumna(x);
+		System.out.println(miJugador);
 	}
 	
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
 	public void crearEnemigo(int p,int t){
 		switch (t){
 			case 1: 
-				misEnemigos[p]=new Basico();
-				agregarEnemigo(misEnemigos[p]);
+				misEnemigos[p]=new Basico(5,5);
+				agregarEnemigo(misEnemigos[p],5,5);
 				break;
 			case 2: 
-				misEnemigos[p]=new Blindado();
-				agregarEnemigo(misEnemigos[p]);
+				misEnemigos[p]=new Blindado(5,5);
+				agregarEnemigo(misEnemigos[p],5,5);
 				break;
 			case 3:
-				misEnemigos[p]=new Rapido();
-				agregarEnemigo(misEnemigos[p]);
+				misEnemigos[p]=new Rapido(5,5);
+				agregarEnemigo(misEnemigos[p],5,5);
 				break;
 		}
 	}
 	
 	//agrego el enemigo creado al mapa
-	private void agregarEnemigo(Tanque e){
+	private void agregarEnemigo(ComponenteGrafico e,int x,int y){
 		//genero x,y en los respawn
-		int x=5,y=5;
 		mapa[x][y]=e;
-		e.setFila(y);
-		e.setColumna(x);
+		e.setPosicionY(y);
+		e.setPosicionX(x);
 	}
 	
 	//cambio de nivel al jugador
@@ -196,7 +197,7 @@ public class Logica {
 		switch (i){
 			case 1:
 				eliminar(miJugador);
-				ingresarJugador(miJugador.getX(), miJugador.getY());
+				ingresarJugador(miJugador.getPosicionX(), miJugador.getPosicionY());
 				break;
 		}
 	}
@@ -209,12 +210,12 @@ public class Logica {
 	}
 	
 	//devuelvo tanque en la posicion p
-	public Tanque getEnemigo(int p){
+	public ComponenteGrafico getEnemigo(int p){
 		return misEnemigos[p];
 	}
 	
 	//devuelvo jugador
-	public Tanque getJugador(){
+	public ComponenteGrafico getJugador(){
 		return miJugador;
 	}
 	

@@ -6,8 +6,8 @@ public class Basico extends Enemigo{
 
 	/*Constructor*/
 	
-	public Basico(){
-		super();
+	public Basico(int x,int y){
+		super(x,y);
 		posicionImagen(1);
 	}
 	
@@ -39,12 +39,12 @@ public class Basico extends Enemigo{
 
 	//seteo la posicion en Y
 	public void setFila(int f) {
-		setY(f);
+		setPosicionY(f);
 	}
 
 	//seteo la posicion en X
 	public void setColumna(int c) {
-		setX(c);
+		setPosicionX(c);
 	}
 
 	//seteo la direccion del tanque
@@ -61,12 +61,12 @@ public class Basico extends Enemigo{
 	
 	//devuelvo la posicion en X
 	public int getColumna() {
-		return getX();
+		return getPosicionX();
 	}
 	
 	//devuelvo la posicion en Y
 	public int getFila() {
-		return getY();
+		return getPosicionY();
 	}
 	
 	//devuelvo la vida del tanque

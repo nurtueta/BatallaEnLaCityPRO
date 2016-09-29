@@ -11,9 +11,11 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	/*Constructor*/
 	
-	public	Tanque(){
+	public	Tanque(int x,int y){
+		super(x,y);
 		vida=100;
 		powerUpDeTanque=0;
+		
 	}
 
 	/*Comandos*/
