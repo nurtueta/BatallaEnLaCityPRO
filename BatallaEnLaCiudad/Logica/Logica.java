@@ -3,6 +3,7 @@ package Logica;
 import java.io.*;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import Grafica.*;
 import Logica.Bloque.*;
@@ -51,7 +52,7 @@ public class Logica {
 	      		char s = cadena.charAt(j);
 	      		
 	      		if(s=='A'){
-	      			mapa[i][j]= new Agua(j,i);
+	      			mapa[i][j]= new Agua(i,j);
 	      		}else
 	      		if(s=='L'){
 	      			mapa[i][j]= new Ladrillo(i,j);
@@ -60,7 +61,7 @@ public class Logica {
 	      			mapa[i][j]= new Acero(i,j);
 	      		}else
 	      		if(s=='B'){
-	      			mapa[i][j]= new Arbol(j,i);
+	      			mapa[i][j]= new Arbol(i,j);
 	      		}/*else
 	      		if(s=='E'){
 	      			mapa[i][j]= 26; Aguila == Eagle
@@ -84,9 +85,10 @@ public class Logica {
 		}
 	}
 	
-	public	void	mover(int direccion){
+	/*public	void	mover(int direccion){
 		mover(miJugador,direccion);
 	}
+	
 	private void mover(Jugador j,int direccion)
 	{
 		
@@ -126,7 +128,7 @@ public class Logica {
 		j.setX(c);
 		j.setY(f);
 		
-	}
+	}*/
 	
 	public void disparar(Jugador j)
 	{
