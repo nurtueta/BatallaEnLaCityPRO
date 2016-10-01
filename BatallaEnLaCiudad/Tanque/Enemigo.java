@@ -9,7 +9,7 @@ public abstract class Enemigo extends Tanque{
 	}
 	
 	/*Comandos*/
-	
+	/*
 	//seteo la imagen en la posicion del tanque enemigo
 	public abstract void posicionImagen(int i);
 	
@@ -23,7 +23,7 @@ public abstract class Enemigo extends Tanque{
 	public abstract void setColumna(int c);
 
 	/*Consultas*/
-	
+	/*
 	//devuelvo si puedo mover a la posicion del tanque
 	abstract public boolean movimientoPosible();
 	
@@ -35,5 +35,5 @@ public abstract class Enemigo extends Tanque{
 	
 	//devuelvo la vida del tanque
 	public abstract int getVida();
-	
+	*/
 }

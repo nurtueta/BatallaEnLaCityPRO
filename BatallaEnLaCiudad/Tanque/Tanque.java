@@ -19,7 +19,7 @@ public abstract class Tanque extends ComponenteGrafico {
 	}
 
 	/*Comandos*/
-	
+	/*
 	public abstract void setDireccion(int d);
 	
 	public abstract void setVida(int v);
@@ -29,11 +29,11 @@ public abstract class Tanque extends ComponenteGrafico {
 	public abstract void setColumna(int c);
 	
 	/*Consultas*/
-	
+	/*
 	public abstract int getVida();
 	
 	public abstract int getFila();
 	
 	public abstract int getColumna();
-	
+	*/
 }

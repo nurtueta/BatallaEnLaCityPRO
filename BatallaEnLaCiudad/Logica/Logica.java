@@ -37,8 +37,8 @@ public class Logica {
 		
 		
 		//Creacin de los enemigos
-		misEnemigos = new Enemigo [4];
-		crearEnemigo(1,1);//(x,y): x=posicion en arreglo, y=tipo de enemigo
+		misEnemigos = new ComponenteGrafico [4];
+		//crearEnemigo(1,1);//(x,y): x=posicion en arreglo, y=tipo de enemigo
 		
 	}
 	
@@ -57,22 +57,22 @@ public class Logica {
 			fi = new FileReader("archivo/Hello1.txt");
 	        BufferedReader b = new BufferedReader(fi);
 	        String cadena;
-		int i=0;
+		int j=0;
 		
 	      while((cadena = b.readLine())!=null) {
 	    	  
-	      	 for(int j=0;j<cadena.length();j++){
+	      	 for(int i=0;i<cadena.length();i++){
 	      		 
-	      		char s = cadena.charAt(j);
+	      		char s = cadena.charAt(i);
 	      		
 	      		if(s=='A'){
 	      			mapa[i][j]= new Agua(i,j);
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= new Ladrillo(j,i);
+	      			mapa[i][j]= new Ladrillo(i,j);
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= new Acero(j,i);
+	      			mapa[i][j]= new Acero(i,j);
 	      		}else
 	      		if(s=='B'){
 	      			mapa[i][j]= new Arbol(i,j);
@@ -87,10 +87,10 @@ public class Logica {
 	      			mapa[i][j]= 27; Respown
 	      		}*/
 	      		else{
-	      			mapa[i][j]= new Piso(j,i);
+	      			mapa[i][j]= new Piso(i,j);
 	      		}
 	      		}
-	      	i++;
+	      	j++;
 	      	}  
 	    
 			fi.close();
@@ -115,28 +115,28 @@ public class Logica {
 			case 1: if(c<(mapa[0].length-1)){
 						if(mapa[f][c+1].movimientoPosible()){
 							mapa[f][c+1]=mapa[f][c];
-							mapa[f][c]= new PisoGrafico(f,c);
+							mapa[f][c]= new Piso(f,c);
 						}	
 					}
 						break;
 			case 2: if(c>0){
 						if(mapa[f][c-1].movimientoPosible()){
 							mapa[f][c-1]=mapa[f][c];
-							mapa[f][c]=new PisoGrafico(f,c);
+							mapa[f][c]=new Piso(f,c);
 						}
 					}
 					break;
 			case 3: if(f>0){
 						if(mapa[f-1][c].movimientoPosible()){
 							mapa[f-1][c]=mapa[f][c];
-							mapa[f][c]=new PisoGrafico(f,c);
+							mapa[f][c]=new Piso(f,c);
 						}
 					}	
 					break;
 			case 4: if(f<(mapa.length-1)){
 						if(mapa[f+1][c].movimientoPosible()){
 							mapa[f+1][c]=mapa[f][c];
-							mapa[f][c]=new PisoGrafico(f,c);
+							mapa[f][c]=new Piso(f,c);
 						}
 					}
 					break;
@@ -154,7 +154,10 @@ public class Logica {
 	
 	//elimino la celda del mapa y le asigno el piso vacio.
 	public void eliminar(ComponenteGrafico c){
-		mapa[c.getPosicionX()][c.getPosicionY()]= new Piso(c.getPosicionX(),c.getPosicionY());
+		
+		//mapa[c.getPosicionX()][c.getPosicionY()]=null;
+		mapa[c.getPosicionX()][c.getPosicionY()]= new Jugador(c.getPosicionX(),c.getPosicionY());
+		//c.setVisible(false);
 	}
 	
 	//ingreso jugador
@@ -167,29 +170,17 @@ public class Logica {
 	}
 	
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
-	public void crearEnemigo(int p,int t){
-		switch (t){
-			case 1: 
-				misEnemigos[p]=new Basico(5,5);
-				agregarEnemigo(misEnemigos[p],5,5);
-				break;
-			case 2: 
-				misEnemigos[p]=new Blindado(5,5);
-				agregarEnemigo(misEnemigos[p],5,5);
-				break;
-			case 3:
-				misEnemigos[p]=new Rapido(5,5);
-				agregarEnemigo(misEnemigos[p],5,5);
-				break;
-		}
+	public void crearEnemigo(ComponenteGrafico c){
+		mapa[c.getPosicionX()][c.getPosicionY()]= new Basico(c.getPosicionX(),c.getPosicionY());
 	}
 	
 	//agrego el enemigo creado al mapa
 	private void agregarEnemigo(ComponenteGrafico e,int x,int y){
 		//genero x,y en los respawn
-		mapa[x][y]=e;
+		
 		e.setPosicionY(y);
 		e.setPosicionX(x);
+		mapa[x][y]=e;
 	}
 	
 	//cambio de nivel al jugador

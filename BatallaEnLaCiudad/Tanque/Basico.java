@@ -8,7 +8,8 @@ public class Basico extends Enemigo{
 	
 	public Basico(int x,int y){
 		super(x,y);
-		posicionImagen(1);
+		this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+		//posicionImagen(1);
 	}
 	
 	/*Comandos*/
@@ -39,17 +40,17 @@ public class Basico extends Enemigo{
 
 	//seteo la posicion en Y
 	public void setFila(int f) {
-		setPosicionY(f);
+		//setPosicionY(f);
 	}
 
 	//seteo la posicion en X
 	public void setColumna(int c) {
-		setPosicionX(c);
+		//setPosicionX(c);
 	}
 
 	//seteo la direccion del tanque
 	public void setDireccion(int d) {
-		posicionImagen(d);
+		//posicionImagen(d);
 	}
 	
 	/*Consultas*/
@@ -61,17 +62,20 @@ public class Basico extends Enemigo{
 	
 	//devuelvo la posicion en X
 	public int getColumna() {
-		return getPosicionX();
+		return 0;
+		//return getPosicionX();
 	}
 	
 	//devuelvo la posicion en Y
 	public int getFila() {
-		return getPosicionY();
-	}
+		return 0;
+		//return getPosicionY();
+	}//¿¿
 	
 	//devuelvo la vida del tanque
 	public int getVida() {
 		return vida;
 	}
+	
 	
 }

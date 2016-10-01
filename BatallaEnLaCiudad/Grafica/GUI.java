@@ -46,16 +46,14 @@ public class GUI extends JFrame {
 	        
 	        
 	        
-	        setBounds(50,50,700,700);
+	        setBounds(0,0,650,650);
 	        contentPane = new JPanel();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
+	       
 	        
-	        
-	        
-	       	mapaLogica.generacionDeMapaLogico();
 			M=mapaLogica.getMapaLogico();
 	        
 			generarPanel();
@@ -66,41 +64,6 @@ public class GUI extends JFrame {
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 				
-				public void KeyPressed(KeyEvent e) {
-					 switch(e.getKeyCode()){
-					 	case KeyEvent.VK_UP : 
-					 		
-					 		mapaLogica.mover(3);
-					 		generarPanel();
-					 		break;
-						case KeyEvent.VK_DOWN :
-							mapaLogica.mover(4);
-							generarPanel();
-							break;
-	        			case KeyEvent.VK_RIGHT :
-	        				mapaLogica.mover(1);
-	        				generarPanel();
-	        				break;
-    					case KeyEvent.VK_LEFT :
-    						mapaLogica.mover(2);
-    						generarPanel();
-    						break;
-    					case KeyEvent.VK_Q :
-    						mapaLogica.crearEnemigo(1, 1);
-    						generarPanel();
-    						System.out.println("anda");
-    						break;
-    					case KeyEvent.VK_W :
-    						mapaLogica.eliminar(mapaLogica.getEnemigo(1));
-    						generarPanel();
-    						break;
-    					case KeyEvent.VK_E :
-    						mapaLogica.eliminar(mapaLogica.getComponente(0, 0));
-    						generarPanel();
-    						break;
-					 }
-					 
-	        	}
 
 				public void keyReleased1(KeyEvent arg0) {
 					// TODO Auto-generated method stub
@@ -112,9 +75,42 @@ public class GUI extends JFrame {
 					
 				}
 
-				public void keyPressed(KeyEvent arg0) {
+				public void keyPressed(KeyEvent e) {
 					// TODO Auto-generated method stub
-					
+					 switch(e.getKeyCode()){
+					 	case KeyEvent.VK_UP : 
+					 		mapaLogica.mover(3);
+					 		generarPanel();
+					 		break;
+						case KeyEvent.VK_DOWN :
+							mapaLogica.mover(4);
+							generarPanel();
+							break;
+	        			case KeyEvent.VK_RIGHT :
+	        				mapaLogica.mover(1);
+	        				generarPanel();
+	        				break;
+	 					case KeyEvent.VK_LEFT :
+	 						mapaLogica.mover(2);
+	 						generarPanel();
+	 						break;
+	 					case KeyEvent.VK_Q :
+	 						mapaLogica.getComponente(5,0).setEnabled(false);
+	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
+	 						generarPanel();
+	 						break;
+	 					case KeyEvent.VK_W :
+	 						mapaLogica.getComponente(5,0).setEnabled(false);
+	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
+	 						generarPanel();
+	 						break;
+	 					case KeyEvent.VK_E :
+	 						mapaLogica.getComponente(3, 2).setEnabled(false);
+	 						mapaLogica.eliminar(mapaLogica.getComponente(3, 2));
+	 						generarPanel();
+	 						break;
+						 }
+					 
 				}
 
 				public void keyReleased(KeyEvent arg0) {
@@ -130,15 +126,10 @@ public class GUI extends JFrame {
 	    	
 	    
 	    public void generarPanel(){
-	    	
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
-			 		//M[i][j].setVisible(true);
-			 		
 			 		this.add(M[i][j]);
-			 		//setComponentZOrder(M[i][j], 0);
 			 	}
-			this.repaint();
 	    }
 	    
 	    private void refrescarPanel(){

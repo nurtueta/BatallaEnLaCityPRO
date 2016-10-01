@@ -23,7 +23,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		miY = y;
 		
 		//seteo el componente grafico en el lugar correspondiente
-		setBounds(miX*alto , miY*ancho, ancho, alto);
+		setBounds(miX*ancho , miY*alto, ancho, alto);
 		setVisible(true);
 		
 	}
@@ -36,7 +36,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		miY = y;
 		
 		//seteo el componente grafico en el lugar correspondiente
-		setBounds(miX*alto , miY*ancho, ancho, alto);
+		setBounds(miX*ancho , miY*alto, ancho, alto);
 		setVisible(true);
 	}
 	
@@ -51,19 +51,19 @@ public abstract class ComponenteGrafico extends JLabel {
 	//seteo la posicion en X
 	public void setX(int x)
 	{
-		miX=x;
-		this.setBounds(miX*alto , miY*ancho, ancho, alto);
+		miX=x*ancho;
 	}
 	
 	//seteo la posicion en Y
 	public void setY(int y)
 	{
-		miY=y;
-		this.setBounds(miX*alto , miY*ancho, ancho, alto);
+		miY=y*alto;
+		
 	}
 	
 	public void setPosicionX(int x){
 		miX=x;
+		
 	}
 
 	public void setPosicionY(int y){
