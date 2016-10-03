@@ -18,6 +18,10 @@ public abstract class Tanque extends Celda {
 		powerUpDeTanque=0;
 		
 	}
+	public	boolean movimientoPosible(){
+		return false;
+		
+	}
 
 	/*Comandos*/
 	/*

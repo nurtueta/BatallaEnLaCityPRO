@@ -1,5 +1,8 @@
 package Tanque;
 
+import java.awt.Image;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Basico extends Enemigo{
@@ -8,7 +11,11 @@ public class Basico extends Enemigo{
 	
 	public Basico(int x,int y){
 		super(x,y);
-		this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
+		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondo.png")));
+		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		this.setIcon(icono);
 		//posicionImagen(1);
 	}
 	

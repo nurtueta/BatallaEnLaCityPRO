@@ -35,22 +35,30 @@ public class Logica {
 		ingresarJugador(1,1);
 		
 		
-		
-		//Creacion de los enemigos
-	//	misEnemigos = new Enemigo [4];
-	//misEnemigos[0]= new Basico(5,0);
-		//crearEnemigo(1,1);//(x,y): x=posicion en arreglo, y=tipo de enemigo
-		
 	}
 	
-	/*Commandos*/
+	 
+	/*
+	 * 
+	 * 
+	 * Comandos
+	 * 
+	 * 
+	 * */
+	
 
-	//Devuelvo el mapa creado
+	/**
+	 * Permite ver el mapa logico
+	 * @return Una matriz que represanta al mapa logico
+	 */
 	public	ComponenteGrafico[][] getMapaLogico(){
 		return mapa;
 	}
 	
-	//Genero mapa a partir de un archivo
+	/**
+	 * Genera una matriz interna en Logica producto
+	 *  de la traduccion de un archivo .txt
+	 */
 	public void generacionDeMapaLogico()
 	{
 	  	FileReader fi;
@@ -105,7 +113,11 @@ public class Logica {
 		mover(miJugador,direccion);
 	}
 
-	//Mover para el jugador y los enemigos
+	/**
+	 * Mueve al Jugador o Enemigo pasado por parametro en la direccion indicada
+	 * @param j Jugador o Enemigo
+	 * @param direccion Direccion de movimiento
+	 */
 	private void mover(ComponenteGrafico j,int direccion)
 	{
 		
@@ -177,7 +189,6 @@ public class Logica {
 	
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
 	public void crearEnemigo(){
-		//mapa[c.getPosicionX()][c.getPosicionY()]= new Basico(c.getPosicionX(),c.getPosicionY());
 		Enemigo nuevoEnemigo = new Basico(5,0);
 		if( nuevoEnemigo.crearEnemigo()){
 			mapa[5][0]= nuevoEnemigo;

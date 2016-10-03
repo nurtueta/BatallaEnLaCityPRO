@@ -80,48 +80,41 @@ public class GUI extends JFrame {
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP : 
 					 		mapaLogica.mover(3);
-					 		generarPanel();
-					 		contentPane.repaint();
+					 		generarPanel();			//Mover el Jugador hacia Arriba
 					 		break;
 						case KeyEvent.VK_DOWN :
 							mapaLogica.mover(4);
-							//contentPane.add();
-							generarPanel();
-							contentPane.repaint();
+							generarPanel();			//Mover el Jugador hacia Abajo
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				mapaLogica.mover(1);
-	        				generarPanel();
-	        				contentPane.repaint();
+	        				generarPanel();			//Mover el Jugador hacia la Derecha
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						mapaLogica.mover(2);
-	 						generarPanel();
-	 						contentPane.repaint();
+	 						generarPanel();			//Mover el Jugador hacia la Izquierda
 	 						break;
 	 					case KeyEvent.VK_Q :
-	 						
 	 						contentPane.remove(mapaLogica.getComponente(5,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
-	 						contentPane.add(M[5][0]);
-	 						contentPane.repaint();
+	 						contentPane.add(M[5][0]);	//Eliminar bloque en posicion
 	 						break;
 	 					case KeyEvent.VK_W :
 	 						contentPane.remove(mapaLogica.getComponente(5,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
-	 						mapaLogica.crearEnemigo();
-	 						
+	 						mapaLogica.crearEnemigo();	//Crear enemigo en posicion
 	 						contentPane.add(M[5][0]);
-	 						contentPane.repaint();
 	 						break;
 	 					case KeyEvent.VK_E :
 	 						
 	 						contentPane.remove(mapaLogica.getComponente(3,2));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(3, 2));
 	 						contentPane.add(M[3][2]);
-	 						contentPane.repaint();
 	 						
 						 }
+					 
+					 M=mapaLogica.getMapaLogico();
+					 contentPane.repaint();
 					 
 				}
 
