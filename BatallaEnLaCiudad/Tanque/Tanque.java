@@ -1,8 +1,9 @@
 package Tanque;
 
 import Grafica.ComponenteGrafico;
+import Logica.Bloque.Celda;
 
-public abstract class Tanque extends ComponenteGrafico {
+public abstract class Tanque extends Celda {
 	
 	/*Variables*/
 	

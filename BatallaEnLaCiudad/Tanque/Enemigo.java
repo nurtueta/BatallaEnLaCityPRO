@@ -10,7 +10,26 @@ public abstract class Enemigo extends Tanque{
 	public	Enemigo(int x,int y){
 		super(x,y);
 	}
+	public	boolean	crearEnemigo(){
+		boolean hayEspacio=false;
+		int i=0;
+		while(!hayEspacio &&i<=5){
+			if(misEnemigos[i]==null){
+				misEnemigos[i]=this;
+				hayEspacio=true;
+				System.out.println(this);
+			}
+			System.out.println(i);
+			i++;
+		}
+		return hayEspacio;
+	}
 	
+	public	void	eliminar(){
+		for(int i=0;i<6;i++)
+			if(misEnemigos[i]==this)
+				misEnemigos[i]=null;
+	}
 	/*Comandos*/
 	/*
 	//seteo la imagen en la posicion del tanque enemigo

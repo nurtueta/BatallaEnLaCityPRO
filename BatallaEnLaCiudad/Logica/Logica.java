@@ -64,7 +64,7 @@ public class Logica {
 	    	  
 	      	 for(int i=0;i<cadena.length();i++){
 	      		 
-	      		char s = cadena.charAt(i);
+	      		char s = cadena.charAt(j);
 	      		
 	      		if(s=='A'){
 	      			mapa[i][j]= new Agua(i,j);
@@ -100,7 +100,7 @@ public class Logica {
 		}
 	}
 	
-	//Mover al jugador
+	// al jugador
 	public void mover(int direccion){
 		mover(miJugador,direccion);
 	}
@@ -111,37 +111,57 @@ public class Logica {
 		
 		int f= j.getPosicionY();
 		int c = j.getPosicionX();
-		
+		boolean movio=false;
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
 						if(mapa[f][c+1].movimientoPosible()){
+							ComponenteGrafico aux = mapa[f][c+1];
 							mapa[f][c+1]=mapa[f][c];
-							mapa[f][c]= new Piso(f,c);
+							mapa[f][c]= aux;
+							movio=true;
+							c++;
 						}	
 					}
 						break;
 			case 2: if(c>0){
 						if(mapa[f][c-1].movimientoPosible()){
+							ComponenteGrafico aux = mapa[f][c-1];
+
 							mapa[f][c-1]=mapa[f][c];
-							mapa[f][c]=new Piso(f,c);
+							mapa[f][c]=aux;
+							movio=true;
+							c--;
 						}
 					}
 					break;
 			case 3: if(f>0){
 						if(mapa[f-1][c].movimientoPosible()){
+							ComponenteGrafico aux = mapa[f-1][c];
+
 							mapa[f-1][c]=mapa[f][c];
-							mapa[f][c]=new Piso(f,c);
+							
+							mapa[f][c]=aux;
+							movio=true;
+							f--;
 						}
 					}	
 					break;
 			case 4: if(f<(mapa.length-1)){
 						if(mapa[f+1][c].movimientoPosible()){
+							ComponenteGrafico aux = mapa[f+1][c];
+
 							mapa[f+1][c]=mapa[f][c];
-							mapa[f][c]=new Piso(f,c);
+							mapa[f][c]=aux;
+							movio=true;
+							f++;
 						}
 					}
 					break;
-		}
+			}
+	/*	if(movio){
+			mapa[f][c].setPosicionX(c);
+			mapa[f][c].setPosicionY(f);
+		}*/
 		j.setPosicionX(c);
 		j.setPosicionY(f);
 		
@@ -174,8 +194,13 @@ public class Logica {
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
 	public void crearEnemigo(){
 		//mapa[c.getPosicionX()][c.getPosicionY()]= new Basico(c.getPosicionX(),c.getPosicionY());
-		
-		mapa[5][0]= misEnemigos[0];
+		Enemigo nuevoEnemigo = new Basico(5,0);
+		if( nuevoEnemigo.crearEnemigo()){
+			mapa[5][0]= nuevoEnemigo;
+			System.out.println(mapa[5][0]+"hola");
+		}
+		else
+			System.out.println("esto no entra en el if");
 	}
 	
 	//agrego el enemigo creado al mapa
@@ -205,9 +230,9 @@ public class Logica {
 	}
 	
 	//devuelvo tanque en la posicion p
-	public ComponenteGrafico getEnemigo(int p){
+	/*public ComponenteGrafico getEnemigo(int p){
 		return misEnemigos[p];
-	}
+	}*/
 	
 	//devuelvo jugador
 	public ComponenteGrafico getJugador(){

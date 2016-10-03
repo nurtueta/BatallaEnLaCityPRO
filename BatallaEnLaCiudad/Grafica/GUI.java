@@ -85,6 +85,7 @@ public class GUI extends JFrame {
 					 		break;
 						case KeyEvent.VK_DOWN :
 							mapaLogica.mover(4);
+							//contentPane.add();
 							generarPanel();
 							contentPane.repaint();
 							break;
@@ -109,6 +110,7 @@ public class GUI extends JFrame {
 	 						contentPane.remove(mapaLogica.getComponente(5,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
 	 						mapaLogica.crearEnemigo();
+	 						
 	 						contentPane.add(M[5][0]);
 	 						contentPane.repaint();
 	 						break;
