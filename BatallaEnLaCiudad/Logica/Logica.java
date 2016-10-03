@@ -64,19 +64,19 @@ public class Logica {
 	    	  
 	      	 for(int i=0;i<cadena.length();i++){
 	      		 
-	      		char s = cadena.charAt(j);
+	      		char s = cadena.charAt(i);
 	      		
 	      		if(s=='A'){
-	      			mapa[i][j]= new Agua(i,j);
+	      			mapa[i][j]= new Agua(j,i);
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= new Ladrillo(i,j);
+	      			mapa[i][j]= new Ladrillo(j,i);
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= new Acero(i,j);
+	      			mapa[i][j]= new Acero(j,i);
 	      		}else
 	      		if(s=='B'){
-	      			mapa[i][j]= new Arbol(i,j);
+	      			mapa[i][j]= new Arbol(j,i);
 	      		}/*else
 	      		if(s=='E'){
 	      			mapa[i][j]= 26; Aguila == Eagle
@@ -88,7 +88,7 @@ public class Logica {
 	      			mapa[i][j]= 27; Respown
 	      		}*/
 	      		else{
-	      			mapa[i][j]= new Piso(i,j);
+	      			mapa[i][j]= new Piso(j,i);
 	      		}
 	      		}
 	      	j++;
