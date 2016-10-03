@@ -1,5 +1,8 @@
 package Tanque;
 
+import java.awt.Image;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Jugador extends Tanque{
@@ -15,21 +18,24 @@ public class Jugador extends Tanque{
 	
 	//seteo la posicion del tanque
 	public void posicionImagen(int i){
+		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
 				
 				break;
 			case 2:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png"));
 				break;
 			case 3:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png"));
 				break;
 			case 4:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png"));
 				break;
 		}
+		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		this.setIcon(icono);
 	}
 	
 	//seteo la vida del tanque

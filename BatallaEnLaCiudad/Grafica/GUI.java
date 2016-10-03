@@ -138,10 +138,13 @@ public class GUI extends JFrame {
 	    	
 	    
 	    public void generarPanel(){
+	    	M=mapaLogica.getMapaLogico();
+	    	contentPane.removeAll();
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
 			 		this.add(M[i][j]);
 			 	}
+			this.repaint();
 	    }
 	    
 	    private void refrescarPanel(){

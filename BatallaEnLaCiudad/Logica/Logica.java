@@ -115,9 +115,8 @@ public class Logica {
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
 						if(mapa[f][c+1].movimientoPosible()){
-							ComponenteGrafico aux = this.getComponente(c+1, f);
-							mapa[f][c+1]=this.getComponente(c, f);
-							mapa[f][c]= aux;
+							mapa[f][c+1]=j;
+							mapa[f][c]= new Piso(f,c);
 							movio=true;
 							c++;
 						}	
@@ -125,43 +124,34 @@ public class Logica {
 						break;
 			case 2: if(c>0){
 						if(mapa[f][c-1].movimientoPosible()){
-							ComponenteGrafico aux = this.getComponente(c-1, f);
 
-							mapa[f][c-1]=this.getComponente(c, f);
-							mapa[f][c]=aux;
-							movio=true;
+							mapa[f][c-1]=j;
+							mapa[f][c]= new Piso(f,c);
 							c--;
 						}
 					}
 					break;
 			case 3: if(f>0){
 						if(mapa[f-1][c].movimientoPosible()){
-							ComponenteGrafico aux = this.getComponente(c, f-1);
 
-							mapa[f-1][c]=this.getComponente(c, f);
+							mapa[f-1][c]=j;
 							
-							mapa[f][c]=aux;
-							movio=true;
+							mapa[f][c]= new Piso(f,c);
 							f--;
 						}
 					}	
 					break;
 			case 4: if(f<(mapa.length-1)){
 						if(mapa[f+1][c].movimientoPosible()){
-							ComponenteGrafico aux = this.getComponente(c,f+1);
 
-							mapa[f+1][c]=this.getComponente(c,f);
-							mapa[f][c]=aux;
-							movio=true;
+							mapa[f+1][c]=j;
+							mapa[f][c]= new Piso(f,c);
 							f++;
 						}
 					}
 					break;
 			}
-		if(movio){
-			mapa[f][c].setPosicionX(c);
-			mapa[f][c].setPosicionY(f);
-		}
+
 		j.setPosicionX(c);
 		j.setPosicionY(f);
 		
