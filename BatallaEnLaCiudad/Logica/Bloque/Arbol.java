@@ -13,4 +13,10 @@ public class Arbol extends Celda{
 		return true;
 	}
 
+	@Override
+	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

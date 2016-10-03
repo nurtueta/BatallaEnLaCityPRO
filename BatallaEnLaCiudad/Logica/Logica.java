@@ -22,7 +22,7 @@ public class Logica {
 	
 	protected ComponenteGrafico[][] mapa;
 	protected ComponenteGrafico miJugador;
-	private ComponenteGrafico [] misEnemigos;
+	//private Enemigo [] misEnemigos;
 	
 	/*Constructor*/
 	
@@ -36,8 +36,9 @@ public class Logica {
 		
 		
 		
-		//Creacin de los enemigos
-		misEnemigos = new ComponenteGrafico [4];
+		//Creacion de los enemigos
+	//	misEnemigos = new Enemigo [4];
+	//misEnemigos[0]= new Basico(5,0);
 		//crearEnemigo(1,1);//(x,y): x=posicion en arreglo, y=tipo de enemigo
 		
 	}
@@ -156,7 +157,8 @@ public class Logica {
 	public void eliminar(ComponenteGrafico c){
 		
 		//mapa[c.getPosicionX()][c.getPosicionY()]=null;
-		mapa[c.getPosicionX()][c.getPosicionY()]= new Jugador(c.getPosicionX(),c.getPosicionY());
+		mapa[c.getPosicionX()][c.getPosicionY()]= new Piso(c.getPosicionX(),c.getPosicionY());
+		c.eliminar();
 		//c.setVisible(false);
 	}
 	
@@ -170,8 +172,10 @@ public class Logica {
 	}
 	
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
-	public void crearEnemigo(ComponenteGrafico c){
-		mapa[c.getPosicionX()][c.getPosicionY()]= new Basico(c.getPosicionX(),c.getPosicionY());
+	public void crearEnemigo(){
+		//mapa[c.getPosicionX()][c.getPosicionY()]= new Basico(c.getPosicionX(),c.getPosicionY());
+		
+		mapa[5][0]= misEnemigos[0];
 	}
 	
 	//agrego el enemigo creado al mapa

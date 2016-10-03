@@ -81,34 +81,44 @@ public class GUI extends JFrame {
 					 	case KeyEvent.VK_UP : 
 					 		mapaLogica.mover(3);
 					 		generarPanel();
+					 		contentPane.repaint();
 					 		break;
 						case KeyEvent.VK_DOWN :
 							mapaLogica.mover(4);
 							generarPanel();
+							contentPane.repaint();
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				mapaLogica.mover(1);
 	        				generarPanel();
+	        				contentPane.repaint();
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						mapaLogica.mover(2);
 	 						generarPanel();
+	 						contentPane.repaint();
 	 						break;
 	 					case KeyEvent.VK_Q :
-	 						mapaLogica.getComponente(5,0).setEnabled(false);
+	 						
+	 						contentPane.remove(mapaLogica.getComponente(5,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
-	 						generarPanel();
+	 						contentPane.add(M[5][0]);
+	 						contentPane.repaint();
 	 						break;
 	 					case KeyEvent.VK_W :
-	 						mapaLogica.getComponente(5,0).setEnabled(false);
+	 						contentPane.remove(mapaLogica.getComponente(5,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
-	 						generarPanel();
+	 						mapaLogica.crearEnemigo();
+	 						contentPane.add(M[5][0]);
+	 						contentPane.repaint();
 	 						break;
 	 					case KeyEvent.VK_E :
-	 						mapaLogica.getComponente(3, 2).setEnabled(false);
+	 						
+	 						contentPane.remove(mapaLogica.getComponente(3,2));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(3, 2));
-	 						generarPanel();
-	 						break;
+	 						contentPane.add(M[3][2]);
+	 						contentPane.repaint();
+	 						
 						 }
 					 
 				}

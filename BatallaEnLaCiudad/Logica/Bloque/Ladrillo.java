@@ -13,4 +13,10 @@ public class Ladrillo extends Celda{
 		return false;
 	}
 
+	@Override
+	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

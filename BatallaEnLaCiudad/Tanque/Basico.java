@@ -76,6 +76,12 @@ public class Basico extends Enemigo{
 	public int getVida() {
 		return vida;
 	}
+
+	@Override
+	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

@@ -2,6 +2,9 @@ package Tanque;
 
 public abstract class Enemigo extends Tanque{
 	
+	
+	/*Atributo de clase*/
+	public static Enemigo []misEnemigos=new Enemigo[6];
 	/*Constructor*/
 	
 	public	Enemigo(int x,int y){

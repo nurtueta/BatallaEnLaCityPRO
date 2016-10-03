@@ -83,4 +83,10 @@ public class Jugador extends Tanque{
 	public int getVida(){
 		return vida;
 	}
+
+	@Override
+	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

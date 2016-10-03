@@ -13,4 +13,10 @@ public class Agua extends Celda {
 		return false;
 	}
 
+	@Override
+	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

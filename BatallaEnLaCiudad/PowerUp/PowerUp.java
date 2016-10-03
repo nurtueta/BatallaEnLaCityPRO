@@ -8,4 +8,10 @@ public class PowerUp extends ComponenteGrafico{
 		return false;
 	}
 
+	@Override
+	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
