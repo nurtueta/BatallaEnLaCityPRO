@@ -109,51 +109,45 @@ public class Logica {
 	private void mover(ComponenteGrafico j,int direccion)
 	{
 		
-		int f= j.getPosicionY();
-		int c = j.getPosicionX();
-		boolean movio=false;
+		int Y= j.getPosicionY();
+		int X = j.getPosicionX();
 		switch (direccion) {
-			case 1: if(c<(mapa[0].length-1)){
-						if(mapa[f][c+1].movimientoPosible()){
-							mapa[f][c+1]=j;
-							mapa[f][c]= new Piso(f,c);
-							movio=true;
-							c++;
+			case 1: if(X<(mapa[0].length-1)){
+						if(mapa[Y][X+1].movimientoPosible()){
+							mapa[Y][X+1]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							X++;
 						}	
 					}
 						break;
-			case 2: if(c>0){
-						if(mapa[f][c-1].movimientoPosible()){
-
-							mapa[f][c-1]=j;
-							mapa[f][c]= new Piso(f,c);
-							c--;
+			case 2: if(X>0){
+						if(mapa[Y][X-1].movimientoPosible()){
+							mapa[Y][X-1]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							X--;
 						}
 					}
 					break;
-			case 3: if(f>0){
-						if(mapa[f-1][c].movimientoPosible()){
-
-							mapa[f-1][c]=j;
-							
-							mapa[f][c]= new Piso(f,c);
-							f--;
+			case 3: if(Y>0){
+						if(mapa[Y-1][X].movimientoPosible()){
+							mapa[Y-1][X]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							Y--;
 						}
 					}	
 					break;
-			case 4: if(f<(mapa.length-1)){
-						if(mapa[f+1][c].movimientoPosible()){
-
-							mapa[f+1][c]=j;
-							mapa[f][c]= new Piso(f,c);
-							f++;
+			case 4: if(Y<(mapa.length-1)){
+						if(mapa[Y+1][X].movimientoPosible()){
+							mapa[Y+1][X]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							Y++;
 						}
 					}
 					break;
 			}
 
-		j.setPosicionX(c);
-		j.setPosicionY(f);
+		j.setPosicionX(X);
+		j.setPosicionY(Y);
 		
 	}
 	
