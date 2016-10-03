@@ -1,12 +1,19 @@
 package Logica.Bloque;
 
+import java.awt.Image;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Piso extends Celda{
 
 	public Piso(int x,int y) {
 		super(x,y);
-		this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondo.png")));
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/fondo.png"));
+		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondo.png")));
+		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		this.setIcon(icono);
+		
 	}
 	
 	public boolean movimientoPosible() {
