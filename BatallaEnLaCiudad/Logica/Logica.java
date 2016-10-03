@@ -67,16 +67,16 @@ public class Logica {
 	      		char s = cadena.charAt(i);
 	      		
 	      		if(s=='A'){
-	      			mapa[i][j]= new Agua(j,i);
+	      			mapa[j][i]= new Agua(i,j);
 	      		}else
 	      		if(s=='L'){
-	      			mapa[i][j]= new Ladrillo(j,i);
+	      			mapa[j][i]= new Ladrillo(i,j);
 	      		}else
 	      		if(s=='I'){
-	      			mapa[i][j]= new Acero(j,i);
+	      			mapa[j][i]= new Acero(i,j);
 	      		}else
 	      		if(s=='B'){
-	      			mapa[i][j]= new Arbol(j,i);
+	      			mapa[j][i]= new Arbol(i,j);
 	      		}/*else
 	      		if(s=='E'){
 	      			mapa[i][j]= 26; Aguila == Eagle
@@ -88,7 +88,7 @@ public class Logica {
 	      			mapa[i][j]= 27; Respown
 	      		}*/
 	      		else{
-	      			mapa[i][j]= new Piso(j,i);
+	      			mapa[j][i]= new Piso(i,j);
 	      		}
 	      		}
 	      	j++;
@@ -115,8 +115,8 @@ public class Logica {
 		switch (direccion) {
 			case 1: if(c<(mapa[0].length-1)){
 						if(mapa[f][c+1].movimientoPosible()){
-							ComponenteGrafico aux = mapa[f][c+1];
-							mapa[f][c+1]=mapa[f][c];
+							ComponenteGrafico aux = this.getComponente(c+1, f);
+							mapa[f][c+1]=this.getComponente(c, f);
 							mapa[f][c]= aux;
 							movio=true;
 							c++;
@@ -125,9 +125,9 @@ public class Logica {
 						break;
 			case 2: if(c>0){
 						if(mapa[f][c-1].movimientoPosible()){
-							ComponenteGrafico aux = mapa[f][c-1];
+							ComponenteGrafico aux = this.getComponente(c-1, f);
 
-							mapa[f][c-1]=mapa[f][c];
+							mapa[f][c-1]=this.getComponente(c, f);
 							mapa[f][c]=aux;
 							movio=true;
 							c--;
@@ -136,9 +136,9 @@ public class Logica {
 					break;
 			case 3: if(f>0){
 						if(mapa[f-1][c].movimientoPosible()){
-							ComponenteGrafico aux = mapa[f-1][c];
+							ComponenteGrafico aux = this.getComponente(c, f-1);
 
-							mapa[f-1][c]=mapa[f][c];
+							mapa[f-1][c]=this.getComponente(c, f);
 							
 							mapa[f][c]=aux;
 							movio=true;
@@ -148,9 +148,9 @@ public class Logica {
 					break;
 			case 4: if(f<(mapa.length-1)){
 						if(mapa[f+1][c].movimientoPosible()){
-							ComponenteGrafico aux = mapa[f+1][c];
+							ComponenteGrafico aux = this.getComponente(c,f+1);
 
-							mapa[f+1][c]=mapa[f][c];
+							mapa[f+1][c]=this.getComponente(c,f);
 							mapa[f][c]=aux;
 							movio=true;
 							f++;
@@ -158,10 +158,10 @@ public class Logica {
 					}
 					break;
 			}
-	/*	if(movio){
+		if(movio){
 			mapa[f][c].setPosicionX(c);
 			mapa[f][c].setPosicionY(f);
-		}*/
+		}
 		j.setPosicionX(c);
 		j.setPosicionY(f);
 		
@@ -177,7 +177,7 @@ public class Logica {
 	public void eliminar(ComponenteGrafico c){
 		
 		//mapa[c.getPosicionX()][c.getPosicionY()]=null;
-		mapa[c.getPosicionX()][c.getPosicionY()]= new Piso(c.getPosicionX(),c.getPosicionY());
+		mapa[c.getPosicionY()][c.getPosicionX()]= new Piso(c.getPosicionX(),c.getPosicionY());
 		c.eliminar();
 		//c.setVisible(false);
 	}
@@ -187,7 +187,7 @@ public class Logica {
 	{
 		miJugador.setPosicionY(y);
 		miJugador.setPosicionX(x);
-		mapa[x][y]=miJugador;
+		mapa[y][x]=miJugador;
 		System.out.println(miJugador);
 	}
 	
@@ -226,7 +226,7 @@ public class Logica {
 	
 	//devuelvo el componente grafico en la posicion (x,y)
 	public ComponenteGrafico getComponente(int x,int y){
-		return mapa[x][y];
+		return mapa[y][x];
 	}
 	
 	//devuelvo tanque en la posicion p
