@@ -95,25 +95,28 @@ public class GUI extends JFrame {
 	 						generarPanel();			//Mover el Jugador hacia la Izquierda
 	 						break;
 	 					case KeyEvent.VK_Q :
-	 						contentPane.remove(mapaLogica.getComponente(5,0));
-	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
-	 						contentPane.add(M[5][0]);	//Eliminar bloque en posicion
+	 						contentPane.remove(mapaLogica.getComponente(5,1));
+	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 1));
+	 						contentPane.add(M[1][5]);	//Eliminar bloque en posicion
+	 					
 	 						break;
 	 					case KeyEvent.VK_W :
-	 						contentPane.remove(mapaLogica.getComponente(5,0));
-	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 0));
-	 						mapaLogica.crearEnemigo();	//Crear enemigo en posicion
-	 						contentPane.add(M[5][0]);
+	 						contentPane.remove(mapaLogica.getComponente(5,1));
+	 						//mapaLogica.eliminar(mapaLogica.getComponente(5, 1));
+	 						mapaLogica.crearEnemigo(1);	//Crear enemigo en posicion
+	 						contentPane.add(M[1][5]);
+	 					
 	 						break;
 	 					case KeyEvent.VK_E :
 	 						
-	 						contentPane.remove(mapaLogica.getComponente(3,2));
-	 						mapaLogica.eliminar(mapaLogica.getComponente(3, 2));
-	 						contentPane.add(M[3][2]);
+	 						contentPane.remove(mapaLogica.getComponente(0,0));
+	 						mapaLogica.eliminar(mapaLogica.getComponente(0, 0));
+	 						contentPane.add(M[0][0]);
+	 				
 	 						
 						 }
 					 
-					 M=mapaLogica.getMapaLogico();
+					// M=mapaLogica.getMapaLogico();
 					 contentPane.repaint();
 					 
 				}
@@ -131,7 +134,7 @@ public class GUI extends JFrame {
 	    	
 	    
 	    public void generarPanel(){
-	    	M=mapaLogica.getMapaLogico();
+	    	//M=mapaLogica.getMapaLogico();
 	    	contentPane.removeAll();
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){

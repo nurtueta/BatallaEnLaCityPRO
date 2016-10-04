@@ -22,7 +22,7 @@ public class Logica {
 	
 	protected ComponenteGrafico[][] mapa;
 	protected ComponenteGrafico miJugador;
-	//private Enemigo [] misEnemigos;
+	protected ComponenteGrafico [] misEnemigos;
 	
 	/*Constructor*/
 	
@@ -34,7 +34,7 @@ public class Logica {
 		miJugador = new Jugador(1,1);
 		ingresarJugador(1,1);
 		
-		
+		misEnemigos=new Enemigo[5];
 	}
 	
 	 
@@ -171,12 +171,18 @@ public class Logica {
 	
 	//elimino la celda del mapa y le asigno el piso vacio.
 	public void eliminar(ComponenteGrafico c){
-		
-		//mapa[c.getPosicionX()][c.getPosicionY()]=null;
-		mapa[c.getPosicionY()][c.getPosicionX()]= new Piso(c.getPosicionX(),c.getPosicionY());
-		c.eliminar();
-		//c.setVisible(false);
+		boolean esEnemigo=false;
+		for(int i=0;i<5;i++)
+			if(misEnemigos[i]==c){
+				misEnemigos[i]=null;
+				mapa[c.getPosicionY()][c.getPosicionX()]=new Piso(c.getPosicionX(),c.getPosicionY());
+				esEnemigo=true;
+			}
+		if(!esEnemigo){
+			mapa[c.getPosicionY()][c.getPosicionX()]= new Piso(c.getPosicionX(),c.getPosicionY());
+		}
 	}
+	
 	
 	//ingreso jugador
 	public void ingresarJugador(int x, int y)
@@ -188,23 +194,23 @@ public class Logica {
 	}
 	
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
-	public void crearEnemigo(){
-		Enemigo nuevoEnemigo = new Basico(5,0);
-		if( nuevoEnemigo.crearEnemigo()){
-			mapa[5][0]= nuevoEnemigo;
-			System.out.println(mapa[5][0]+"hola");
+	public	boolean	crearEnemigo(int e){
+		boolean hayEspacio=false;
+		int i=0;
+		while(!hayEspacio &&i<=5){
+			if(misEnemigos[i]==null){
+				switch(e){
+					case 1:misEnemigos[i]=new Basico(5,1);
+						mapa[1][5]=misEnemigos[i];
+							break;
+				}
+				hayEspacio=true;
+				System.out.println(this);
+			}
+			System.out.println(i);
+			i++;
 		}
-		else
-			System.out.println("esto no entra en el if");
-	}
-	
-	//agrego el enemigo creado al mapa
-	private void agregarEnemigo(ComponenteGrafico e,int x,int y){
-		//genero x,y en los respawn
-		
-		e.setPosicionY(y);
-		e.setPosicionX(x);
-		mapa[x][y]=e;
+		return hayEspacio;
 	}
 	
 	//cambio de nivel al jugador

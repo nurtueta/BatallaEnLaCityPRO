@@ -114,6 +114,6 @@ public abstract class ComponenteGrafico extends JLabel {
 	public	abstract void	eliminar();
 	
 	public abstract void posicionImagen(int i);
-		
+
 	
 }

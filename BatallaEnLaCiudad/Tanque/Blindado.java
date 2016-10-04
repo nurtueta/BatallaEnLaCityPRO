@@ -62,7 +62,7 @@ public class Blindado extends Enemigo{
 
 	@Override
 	public void eliminar() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
