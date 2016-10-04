@@ -14,4 +14,10 @@ public class PowerUp extends ComponenteGrafico{
 		
 	}
 
+	@Override
+	public void posicionImagen(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

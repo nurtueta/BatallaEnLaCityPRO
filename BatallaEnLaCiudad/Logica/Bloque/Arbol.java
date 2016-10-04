@@ -19,4 +19,12 @@ public class Arbol extends Celda{
 		
 	}
 
+	@Override
+	public void posicionImagen(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
 }

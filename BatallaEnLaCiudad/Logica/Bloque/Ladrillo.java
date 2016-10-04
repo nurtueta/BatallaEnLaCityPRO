@@ -28,4 +28,10 @@ public class Ladrillo extends Celda{
 		
 	}
 
+	@Override
+	public void posicionImagen(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

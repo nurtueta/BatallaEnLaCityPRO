@@ -160,7 +160,7 @@ public class Logica {
 
 		j.setPosicionX(X);
 		j.setPosicionY(Y);
-		
+		j.posicionImagen(direccion);
 	}
 	
 	//disparo del jugador

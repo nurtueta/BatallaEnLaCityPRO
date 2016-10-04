@@ -22,6 +22,7 @@ public abstract class Tanque extends Celda {
 		return false;
 		
 	}
+	
 
 	/*Comandos*/
 	/*
