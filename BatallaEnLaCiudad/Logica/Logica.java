@@ -169,7 +169,10 @@ public class Logica {
 		
 	}
 	
-	//elimino la celda del mapa y le asigno el piso vacio.
+	/**
+	 * Elimina un ComponenteGrafico del mapa y deja solo el suelo.
+	 * @param c ComponenteGrafico a eliminar.
+	 */
 	public void eliminar(ComponenteGrafico c){
 		boolean esEnemigo=false;
 		for(int i=0;i<5;i++)

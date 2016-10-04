@@ -105,12 +105,14 @@ public abstract class ComponenteGrafico extends JLabel {
 		return miY;
 	}
 	
-	//devuelvo la posicion en Y
+	
 	public int getY()
 	{
 		return miY*alto;
 	}
-	
+	/**
+	 * Destruye al componente que recibe el mensaje.
+	 */
 	public	abstract void	eliminar();
 	
 	public abstract void posicionImagen(int i);
