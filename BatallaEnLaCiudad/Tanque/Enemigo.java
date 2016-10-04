@@ -5,11 +5,13 @@ public abstract class Enemigo extends Tanque{
 	
 	/*Atributo de clase*/
 	public static Enemigo []misEnemigos=new Enemigo[6];
+	
 	/*Constructor*/
 	
 	public	Enemigo(int x,int y){
 		super(x,y);
 	}
+	
 	public	boolean	crearEnemigo(){
 		boolean hayEspacio=false;
 		int i=0;
