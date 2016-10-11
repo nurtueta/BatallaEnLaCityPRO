@@ -3,11 +3,17 @@ package Grafica;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Iterator;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import Logica.*;
+import TDALista.EmptyListException;
+import TDALista.InvalidPositionException;
 import TDALista.Lista;
+import TDALista.Position;
 import TDALista.PositionList;
+import Tanque.Enemigo;
 
 public class GUI extends JFrame {
 	
@@ -17,7 +23,8 @@ public class GUI extends JFrame {
 	 private Movimiento hiloBalas;
 	 private Movimiento hiloEnemigos;
 	 protected PositionList<Disparo> listaDisparos;
-	 protected PositionList<Disparo> disparosEliminables;
+	 protected PositionList<Position<Disparo>> disparosEliminables;
+	 protected PositionList<Enemigo> listaEnemigos;
 	 
 	    /**
 	     * Launch the application.
@@ -64,7 +71,8 @@ public class GUI extends JFrame {
 	        
 
 			listaDisparos = new Lista<Disparo>();
-			disparosEliminables = new Lista<Disparo>();
+			disparosEliminables = new Lista<Position<Disparo>>();
+			listaEnemigos = new Lista<Enemigo> ();
 			
 			hiloBalas = new MovimientoBalas(this);
 			hiloEnemigos = new MovimientoEnemigos(this);
@@ -123,13 +131,13 @@ public class GUI extends JFrame {
 	 						contentPane.remove(mapaLogica.getComponente(0,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(0, 0));
 	 						contentPane.add(M[0][0]);
-	 						
+	 						break;
 	 					case KeyEvent.VK_SPACE:
-	 						
-	 						
-						 }
+	 						crearDisparo();
+	 						break;
+					 }
 					 
-					// M=mapaLogica.getMapaLogico();
+					 // M=mapaLogica.getMapaLogico();
 					 contentPane.repaint();
 					 
 				}
@@ -160,14 +168,78 @@ public class GUI extends JFrame {
 	    	this.repaint();
 	    }
 	    
+	    public void crearDisparo()
+	    {
+	    	Disparo bala = new Disparo(mapaLogica.getJugador().getDireccion(),mapaLogica.getJugador().getX(),mapaLogica.getJugador().getY());
+				bala.setVisible(true);
+				contentPane.add(bala);
+				listaDisparos.addLast(bala);
+				try{
+					bala.setPosEnLista(listaDisparos.last());
+				}catch(EmptyListException e1){e1.printStackTrace();}
+	    }
+	    
 	    public PositionList<Disparo> getBalas()
 	    {
 	    	return listaDisparos;
 	    }
 	    
-	    public PositionList<Disparo> getBalasEliminables()
+	    public PositionList<Position<Disparo>> getBalasEliminables()
 	    {
 	    	return disparosEliminables;
 	    }
+	    
+	    public boolean finDelJuego()
+	    {
+	    	return mapaLogica.finDelJuego();
+	    }
+	    
+	    public ComponenteGrafico buscarColision(Rectangle p){	
+			
+			Iterator<Disparo> it = listaDisparos.iterator();
+			Disparo d=null;
+			boolean seguir = true;
+			
+				while(it.hasNext() && seguir)
+				{
+					d=it.next();			
+					if(p.intersects(d.getBounds())){
+						seguir=false;
+					}
+				}
+				
+				if (!seguir){
+					return d;
+				}
+				
+				
+			return null;
+		}
+	    
+	    public void agregarBala(Disparo d)
+		{
+			listaDisparos.addLast(d);
+				try{
+					d.setPosEnLista(listaDisparos.last());
+				}catch(EmptyListException e1){e1.printStackTrace();}
+		}
+		
+		public void eliminarBalas()
+		{
+			Iterator<Position<Disparo>> it = disparosEliminables.iterator();
+			try 
+			{
+				while( it.hasNext() ) 
+				{
+					Position<Disparo> bala = it.next();
+					listaDisparos.remove(bala);
+				
+				}
+				
+			}catch (InvalidPositionException e) {e.printStackTrace();}
+
+			disparosEliminables = new Lista<Position<Disparo>>();
+			
+		}
 			
 }

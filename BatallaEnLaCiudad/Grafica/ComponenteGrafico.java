@@ -10,6 +10,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected final int ancho = 30;
 	protected int velocidad;
 	protected int miX,miY;
+	protected int direccion;
 	
 	/*Constructores*/
 	
@@ -21,6 +22,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		velocidad = 0;
 		miX = x;
 		miY = y;
+		direccion = -1;
 		
 		//seteo el componente grafico en el lugar correspondiente
 		setBounds(miX*ancho , miY*alto, ancho, alto);
@@ -34,6 +36,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		velocidad = vel;
 		miX = x;
 		miY = y;
+		direccion = -1;
 		
 		//seteo el componente grafico en el lugar correspondiente
 		setBounds(miX*ancho , miY*alto, ancho, alto);
@@ -83,6 +86,12 @@ public abstract class ComponenteGrafico extends JLabel {
 	//devuelvo ancho de la imagen
 	public int getAncho(){
 		return ancho;
+	}
+	
+	//devuelvo la direccion para la que apunta el componente grafico
+	public int getDireccion()
+	{
+		return direccion;
 	}
 	
 	//devuelvo la velocidad del objeto

@@ -251,4 +251,13 @@ public class Logica {
 			System.out.println();
 		}
 	}
+	
+	public boolean finDelJuego()
+	{
+		boolean fin = false;
+		
+		return fin;
+	}
+	
+	
 }

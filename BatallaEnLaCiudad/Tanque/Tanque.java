@@ -9,7 +9,6 @@ public abstract class Tanque extends Celda {
 	
 	protected int vida;
 	protected int powerUpDeTanque;
-	protected int direccion;
 	
 	/*Constructor*/
 	
@@ -22,11 +21,6 @@ public abstract class Tanque extends Celda {
 	public	boolean movimientoPosible(){
 		return false;
 		
-	}
-	
-	public int getDireccion()
-	{
-		return direccion;
 	}
 	
 	

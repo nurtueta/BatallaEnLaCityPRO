@@ -2,6 +2,7 @@ package Logica;
 
 import javax.swing.JFrame;
 
+import Grafica.ComponenteGrafico;
 import Grafica.GUI;
 import TDALista.*;
 import Tanque.*;
@@ -15,15 +16,48 @@ public class MovimientoBalas extends Movimiento{
 	
 	public void run()
 	{
-		PositionList<Disparo> moviendo = grafica.getBalas();
+		PositionList<Disparo> balas = grafica.getBalas();
 		
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		
-		while (true)
-		{
-			
-		}
+			int posY;
+			try
+			{
+				while(!grafica.finDelJuego())
+				{
+							
+							this.sleep(10);
+							
+							for(Disparo bala: balas)
+							{
+								/*
+								ComponenteGrafico c = grafica.buscarColision(bala.getBounds());
+									if (c!=null) 
+										{ //colision con escenario + enemigo (ahora implemento solo escenario)
+											//boolean murio=c.damage(bala);
+											bala.setVisible(false);
+											grafica.getBalasEliminables().addLast(bala.getPosEnLista());
+										}
+										
+									else
+									{
+										posY = bala.getY()-8;
+										bala.setLocation(bala.getX(), posY);
+									}
+									*/
+								bala.mover();
+								System.out.println("<"+bala.getX()+" , "+bala.getY()+">");
+								
+							}
+							
+							grafica.eliminarBalas();
+							//grafica.eliminarEnemigos();
+						
+				}
+						
+			}catch(InterruptedException e){ e.printStackTrace();}
 	}
+	
 	
 	public void posicionar() 
 	{
@@ -33,7 +67,7 @@ public class MovimientoBalas extends Movimiento{
 	
 	public void inicio() 
 	{
-		
+		this.start();
 	}
 
 }
