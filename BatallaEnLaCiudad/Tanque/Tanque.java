@@ -9,6 +9,7 @@ public abstract class Tanque extends Celda {
 	
 	protected int vida;
 	protected int powerUpDeTanque;
+	protected int direccion;
 	
 	/*Constructor*/
 	
@@ -23,6 +24,13 @@ public abstract class Tanque extends Celda {
 		
 	}
 	
+	public int getDireccion()
+	{
+		return direccion;
+	}
+	
+	
+	public abstract void posicionImagen(int i);
 
 	/*Comandos*/
 	/*

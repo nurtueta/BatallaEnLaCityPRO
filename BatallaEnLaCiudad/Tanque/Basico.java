@@ -88,6 +88,12 @@ public class Basico extends Enemigo{
 	public void eliminar() {
 		
 	}
+
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

@@ -32,4 +32,10 @@ public class Piso extends Celda{
 		
 	}
 
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

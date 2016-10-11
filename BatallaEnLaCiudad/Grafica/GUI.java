@@ -6,12 +6,18 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import Logica.*;
+import TDALista.Lista;
+import TDALista.PositionList;
 
 public class GUI extends JFrame {
 	
      private JPanel contentPane;
 	 private Logica mapaLogica;
 	 private ComponenteGrafico[][] M;
+	 private Movimiento hiloBalas;
+	 private Movimiento hiloEnemigos;
+	 protected PositionList<Disparo> listaDisparos;
+	 protected PositionList<Disparo> disparosEliminables;
 	 
 	    /**
 	     * Launch the application.
@@ -44,8 +50,6 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        
-	        
 	        setBounds(0,0,650,650);
 	        contentPane = new JPanel();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,6 +62,13 @@ public class GUI extends JFrame {
 	        
 			generarPanel();
 	        
+
+			listaDisparos = new Lista<Disparo>();
+			disparosEliminables = new Lista<Disparo>();
+			
+			hiloBalas = new MovimientoBalas(this);
+			hiloEnemigos = new MovimientoEnemigos(this);
+			
 	        setVisible(true);
 	        
 	        
@@ -112,7 +123,9 @@ public class GUI extends JFrame {
 	 						contentPane.remove(mapaLogica.getComponente(0,0));
 	 						mapaLogica.eliminar(mapaLogica.getComponente(0, 0));
 	 						contentPane.add(M[0][0]);
-	 				
+	 						
+	 					case KeyEvent.VK_SPACE:
+	 						
 	 						
 						 }
 					 
@@ -145,6 +158,16 @@ public class GUI extends JFrame {
 	    
 	    private void refrescarPanel(){
 	    	this.repaint();
+	    }
+	    
+	    public PositionList<Disparo> getBalas()
+	    {
+	    	return listaDisparos;
+	    }
+	    
+	    public PositionList<Disparo> getBalasEliminables()
+	    {
+	    	return disparosEliminables;
 	    }
 			
 }

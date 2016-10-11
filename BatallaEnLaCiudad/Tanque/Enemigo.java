@@ -1,22 +1,16 @@
 package Tanque;
 
 public abstract class Enemigo extends Tanque{
-<<<<<<< HEAD
-
-=======
 	
 	
 	/*Atributo de clase*/
 	public static Enemigo []misEnemigos=new Enemigo[6];
 	
 	/*Constructor*/
->>>>>>> 4ad6083b692e323d43c14b2f2b0df3beaa3008f0
 	
 	public	Enemigo(int x,int y){
 		super(x,y);
 	}
-<<<<<<< HEAD
-=======
 	
 	public	boolean	crearEnemigo(){
 		boolean hayEspacio=false;
@@ -32,7 +26,7 @@ public abstract class Enemigo extends Tanque{
 		}
 		return hayEspacio;
 	}
->>>>>>> 4ad6083b692e323d43c14b2f2b0df3beaa3008f0
+
 	
 	/*Comandos*/
 	/*

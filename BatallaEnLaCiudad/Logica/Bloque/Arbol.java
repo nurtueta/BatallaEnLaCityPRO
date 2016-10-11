@@ -24,6 +24,12 @@ public class Arbol extends Celda{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

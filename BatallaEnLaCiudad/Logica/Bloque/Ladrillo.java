@@ -34,4 +34,10 @@ public class Ladrillo extends Celda{
 		
 	}
 
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

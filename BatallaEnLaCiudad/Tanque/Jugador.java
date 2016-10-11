@@ -17,14 +17,14 @@ public class Jugador extends Tanque{
 	/*Comandos*/
 	/**
 	 * Genera la imagen en la que el tanque mira.
-	 * @param i direccion en la que mira el tanque
+	 * @param i direccion en la que mira el tanque (actua como setter de 'direccion')
 	 */
 	public void posicionImagen(int i){
+		direccion = i;
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
 				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
-				
 				break;
 			case 2:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png"));
@@ -39,6 +39,7 @@ public class Jugador extends Tanque{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
+	
 	
 	/**
 	 * Establece la vida del Jugador.
@@ -118,6 +119,12 @@ public class Jugador extends Tanque{
 
 	@Override
 	public void eliminar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recibirDisparo() {
 		// TODO Auto-generated method stub
 		
 	}

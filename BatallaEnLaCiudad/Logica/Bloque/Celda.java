@@ -13,5 +13,6 @@ public abstract class Celda extends ComponenteGrafico
 	 */
 	public abstract boolean movimientoPosible();
 	
+	public abstract void recibirDisparo();
 	
 }

@@ -68,4 +68,11 @@ public class Poder extends Enemigo{
 		
 	}
 
+
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
