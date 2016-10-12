@@ -13,6 +13,7 @@ import TDALista.InvalidPositionException;
 import TDALista.Lista;
 import TDALista.Position;
 import TDALista.PositionList;
+import Tanque.Basico;
 import Tanque.Enemigo;
 
 public class GUI extends JFrame {
@@ -50,6 +51,10 @@ public class GUI extends JFrame {
 	    	
 	    	mapaLogica = new Logica();
 	    	
+	    	
+	    	M=mapaLogica.getMapaLogico();
+			
+	    	
 	        //seteo inicial
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setTitle("Battle City 2016");
@@ -66,9 +71,11 @@ public class GUI extends JFrame {
 	        this.setLayout(null);
 	       
 	        
-			M=mapaLogica.getMapaLogico();
+	        generarPanel();
 	        
-			generarPanel();
+	        
+			
+			
 	        
 
 			listaDisparos = new Lista<ComponenteGrafico>();
@@ -78,7 +85,9 @@ public class GUI extends JFrame {
 			hiloBalas = new MovimientoBalas(this);
 			hiloEnemigos = new MovimientoEnemigos(this);
 			hiloBalas.start();
+			hiloEnemigos.start();
 	        setVisible(true);
+	        
 	        
 	        
 	        //agrego el oyente al teclado en el panel contenedor
@@ -140,6 +149,9 @@ public class GUI extends JFrame {
 	 					case KeyEvent.VK_SPACE:
 	 						crearDisparo();
 	 						break;
+	 					case KeyEvent.VK_G:
+	 						crearEnemigo();
+	 						break;
 					 }
 					 
 					 // M=mapaLogica.getMapaLogico();
@@ -159,14 +171,14 @@ public class GUI extends JFrame {
 	    }
 	    	
 	    
-	    public void generarPanel(){
+	
+		public void generarPanel(){
 	    	//M=mapaLogica.getMapaLogico();
 	    	//contentPane.removeAll();
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
-			 		
-			 		contentPane.add(M[i][j]);
-			 		contentPane.setComponentZOrder(M[i][j], 0);
+			 		contentPane.add(mapaLogica.getComponente(i, j));
+			 		//contentPane.setComponentZOrder(mapaLogica.getComponente(i, j), 0);
 			 	}
 			this.repaint();
 	    }
@@ -185,9 +197,24 @@ public class GUI extends JFrame {
 			
 	    }
 	    
+	    private void crearEnemigo() {
+	    	ComponenteGrafico enemigo = new Basico(5,5,listaEnemigos);
+			enemigo.setVisible(true);
+			
+			contentPane.add(enemigo);
+			contentPane.setComponentZOrder(enemigo, 1);
+				
+		}
+
+	    
 	    public PositionList<ComponenteGrafico> getBalas()
 	    {
 	    	return listaDisparos;
+	    }
+	    
+	    public PositionList<ComponenteGrafico> getEnemigos()
+	    {
+	    	return listaEnemigos;
 	    }
 	    
 	    public PositionList<Position<ComponenteGrafico>> getBalasEliminables()

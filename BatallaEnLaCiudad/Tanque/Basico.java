@@ -5,15 +5,26 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+import TDALista.EmptyListException;
+import TDALista.Position;
+import TDALista.PositionList;
+
 public class Basico extends Enemigo{
 
 	/*Constructor*/
+	private static final long serialVersionUID = 1L;
+	protected Position<ComponenteGrafico> posEnLista;
 	
-	public Basico(int x,int y){
+	public Basico(int x,int y,PositionList<ComponenteGrafico> miLista){
 		super(x,y);
-		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+		miLista.addLast(this);
+		try {
+			posEnLista = miLista.last();
+		} catch (EmptyListException e) {e.printStackTrace();}
+		
+		
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
-		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondo.png")));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		//posicionImagen(1);
@@ -96,10 +107,26 @@ public class Basico extends Enemigo{
 	}
 
 	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-		
+	public void mover()
+	{
+		this.setPosicionY(getPosicionY()+1);
+		/*switch (direccion) {
+			case 1: 
+					this.setPosicionX(getPosicionX()+1);
+					
+					break;
+			case 2: 
+					this.setPosicionX(getPosicionX()-1);
+					break;
+			case 3: 
+					this.setPosicionY(getPosicionY()-1);
+					break;
+			case 4: 
+					this.setPosicionY(getPosicionY()+1);
+					break;
+			}
+		 	*/
+
 	}
-	
 	
 }

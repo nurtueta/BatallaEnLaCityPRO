@@ -34,6 +34,7 @@ public class Logica {
 		miJugador = new Jugador(1,1);
 		ingresarJugador(1,1);
 		
+		
 		misEnemigos=new Enemigo[5];
 	}
 	
@@ -193,7 +194,6 @@ public class Logica {
 		miJugador.setPosicionY(y);
 		miJugador.setPosicionX(x);
 		mapa[y][x]=miJugador;
-		System.out.println(miJugador);
 	}
 	
 	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
@@ -203,7 +203,7 @@ public class Logica {
 		while(!hayEspacio &&i<=5){
 			if(misEnemigos[i]==null){
 				switch(e){
-					case 1:misEnemigos[i]=new Basico(5,1);
+					case 1:misEnemigos[i]=new Basico(5,1,null);
 						mapa[1][5]=misEnemigos[i];
 							break;
 				}

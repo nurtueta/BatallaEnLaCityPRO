@@ -26,7 +26,6 @@ public class Disparo extends Celda{
 		
 		super(x,y);
 		miLista.addLast(this);
-		//this.setLay
 		
 		try {
 			posEnLista = miLista.last();
