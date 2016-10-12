@@ -31,4 +31,10 @@ public class Agua extends Celda {
 		
 	}
 
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

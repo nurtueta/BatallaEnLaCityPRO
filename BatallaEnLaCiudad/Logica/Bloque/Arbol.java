@@ -30,6 +30,12 @@ public class Arbol extends Celda{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

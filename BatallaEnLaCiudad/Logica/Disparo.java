@@ -6,9 +6,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Grafica.ComponenteGrafico;
 import Logica.Bloque.Celda;
 import Logica.Bloque.Piso;
+import TDALista.EmptyListException;
 import TDALista.Position;
+import TDALista.PositionList;
 
 public class Disparo extends Celda{
 	/**
@@ -16,29 +19,37 @@ public class Disparo extends Celda{
 	 */
 	private static final long serialVersionUID = 1L;
 	protected int direccion;
-	protected Position<Disparo> posEnLista;
+	protected Position<ComponenteGrafico> posEnLista;
 	
-	public Disparo(int d, int x, int y)
+	public Disparo(int d, int x, int y,PositionList<ComponenteGrafico> miLista)
 	{	
+		
 		super(x,y);
+		miLista.addLast(this);
+		//this.setLay
+		
+		try {
+			posEnLista = miLista.last();
+		} catch (EmptyListException e) {e.printStackTrace();}
+		
 		direccion = d;
 		ImageIcon fot = new ImageIcon();
 		switch (d){
 			case 1:
 				fot =new ImageIcon(getClass().getResource("/Imagenes/balaDerecha.png"));
-				this.setX(x+ancho);
+				this.setPosicionX(x+1);
 				break;
 			case 2:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/balaIzquierda.png"));
-				this.setX(x-ancho);
+				this.setPosicionX(x-1);
 				break;
 			case 3:
 				fot =new ImageIcon(getClass().getResource("/Imagenes/balaArriba.png"));
-				this.setY(y-alto);
+				this.setPosicionY(y-1);
 				break;
 			case 4:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/balaAbajo.png"));
-				this.setY(y+alto);
+				this.setPosicionY(y+1);
 				break;
 		}
 		
@@ -48,12 +59,7 @@ public class Disparo extends Celda{
 		this.setIcon(icono);
 	}
 
-	public void setPosEnLista(Position<Disparo> p)
-	{
-		posEnLista = p;
-	}
-	
-	public Position<Disparo> getPosEnLista ()
+	public Position<ComponenteGrafico> getPosEnLista ()
 	{
 		return posEnLista;
 	}
@@ -91,7 +97,7 @@ public class Disparo extends Celda{
 							X++;
 						}	
 					*/
-						this.setX(getX()+ancho);
+						this.setPosicionX(getPosicionX()+1);
 					
 						break;
 			case 2: /*
@@ -103,7 +109,7 @@ public class Disparo extends Celda{
 						}
 					}
 					*/
-					this.setX(getX()-ancho);
+					this.setPosicionX(getPosicionX()-1);
 					break;
 			case 3: /*
 					if(Y>0){
@@ -114,7 +120,7 @@ public class Disparo extends Celda{
 						}
 					}
 					*/
-					this.setY(getY()-alto);
+					this.setPosicionY(getPosicionY()-1);
 					break;
 			case 4: 
 					/*
@@ -127,7 +133,7 @@ public class Disparo extends Celda{
 						}
 					}
 					 */
-					this.setY(getY()+alto);
+					this.setPosicionY(getPosicionY()+1);
 					break;
 			}
 

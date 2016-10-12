@@ -38,4 +38,10 @@ public class Piso extends Celda{
 		
 	}
 
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

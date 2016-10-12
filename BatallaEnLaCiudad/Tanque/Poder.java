@@ -75,4 +75,11 @@ public class Poder extends Enemigo{
 		
 	}
 
+
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

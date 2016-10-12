@@ -22,9 +22,9 @@ public class GUI extends JFrame {
 	 private ComponenteGrafico[][] M;
 	 private Movimiento hiloBalas;
 	 private Movimiento hiloEnemigos;
-	 protected PositionList<Disparo> listaDisparos;
-	 protected PositionList<Position<Disparo>> disparosEliminables;
-	 protected PositionList<Enemigo> listaEnemigos;
+	 protected PositionList<ComponenteGrafico> listaDisparos;
+	 protected PositionList<Position<ComponenteGrafico>> disparosEliminables;
+	 protected PositionList<ComponenteGrafico> listaEnemigos;
 	 
 	    /**
 	     * Launch the application.
@@ -63,6 +63,7 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
+	        this.setLayout(null);
 	       
 	        
 			M=mapaLogica.getMapaLogico();
@@ -70,13 +71,13 @@ public class GUI extends JFrame {
 			generarPanel();
 	        
 
-			listaDisparos = new Lista<Disparo>();
-			disparosEliminables = new Lista<Position<Disparo>>();
-			listaEnemigos = new Lista<Enemigo> ();
+			listaDisparos = new Lista<ComponenteGrafico>();
+			disparosEliminables = new Lista<Position<ComponenteGrafico>>();
+			listaEnemigos = new Lista<ComponenteGrafico> ();
 			
 			hiloBalas = new MovimientoBalas(this);
 			hiloEnemigos = new MovimientoEnemigos(this);
-			
+			hiloBalas.start();
 	        setVisible(true);
 	        
 	        
@@ -99,19 +100,23 @@ public class GUI extends JFrame {
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP : 
 					 		mapaLogica.mover(3);
-					 		generarPanel();			//Mover el Jugador hacia Arriba
+					 		contentPane.repaint();
+					 		//generarPanel();			//Mover el Jugador hacia Arriba
 					 		break;
 						case KeyEvent.VK_DOWN :
 							mapaLogica.mover(4);
-							generarPanel();			//Mover el Jugador hacia Abajo
+							contentPane.repaint();
+							//generarPanel();			//Mover el Jugador hacia Abajo
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				mapaLogica.mover(1);
-	        				generarPanel();			//Mover el Jugador hacia la Derecha
+	        				contentPane.repaint();
+	        				//generarPanel();			//Mover el Jugador hacia la Derecha
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						mapaLogica.mover(2);
-	 						generarPanel();			//Mover el Jugador hacia la Izquierda
+	 						contentPane.repaint();
+	 						//generarPanel();			//Mover el Jugador hacia la Izquierda
 	 						break;
 	 					case KeyEvent.VK_Q :
 	 						contentPane.remove(mapaLogica.getComponente(5,1));
@@ -156,10 +161,12 @@ public class GUI extends JFrame {
 	    
 	    public void generarPanel(){
 	    	//M=mapaLogica.getMapaLogico();
-	    	contentPane.removeAll();
+	    	//contentPane.removeAll();
 			for(int i=0;i<20;i++)
 			 	for(int j=0;j<20;j++){
-			 		this.add(M[i][j]);
+			 		
+			 		contentPane.add(M[i][j]);
+			 		contentPane.setComponentZOrder(M[i][j], 0);
 			 	}
 			this.repaint();
 	    }
@@ -170,21 +177,20 @@ public class GUI extends JFrame {
 	    
 	    public void crearDisparo()
 	    {
-	    	Disparo bala = new Disparo(mapaLogica.getJugador().getDireccion(),mapaLogica.getJugador().getX(),mapaLogica.getJugador().getY());
-				bala.setVisible(true);
-				contentPane.add(bala);
-				listaDisparos.addLast(bala);
-				try{
-					bala.setPosEnLista(listaDisparos.last());
-				}catch(EmptyListException e1){e1.printStackTrace();}
+	    	ComponenteGrafico bala = new Disparo(mapaLogica.getJugador().getDireccion(),mapaLogica.getJugador().getPosicionX(),mapaLogica.getJugador().getPosicionY(),listaDisparos);
+			bala.setVisible(true);
+			
+			contentPane.add(bala);
+			contentPane.setComponentZOrder(bala, 1);
+			
 	    }
 	    
-	    public PositionList<Disparo> getBalas()
+	    public PositionList<ComponenteGrafico> getBalas()
 	    {
 	    	return listaDisparos;
 	    }
 	    
-	    public PositionList<Position<Disparo>> getBalasEliminables()
+	    public PositionList<Position<ComponenteGrafico>> getBalasEliminables()
 	    {
 	    	return disparosEliminables;
 	    }
@@ -196,8 +202,8 @@ public class GUI extends JFrame {
 	    
 	    public ComponenteGrafico buscarColision(Rectangle p){	
 			
-			Iterator<Disparo> it = listaDisparos.iterator();
-			Disparo d=null;
+			Iterator<ComponenteGrafico> it = listaDisparos.iterator();
+			ComponenteGrafico d=null;
 			boolean seguir = true;
 			
 				while(it.hasNext() && seguir)
@@ -216,29 +222,21 @@ public class GUI extends JFrame {
 			return null;
 		}
 	    
-	    public void agregarBala(Disparo d)
-		{
-			listaDisparos.addLast(d);
-				try{
-					d.setPosEnLista(listaDisparos.last());
-				}catch(EmptyListException e1){e1.printStackTrace();}
-		}
-		
 		public void eliminarBalas()
 		{
-			Iterator<Position<Disparo>> it = disparosEliminables.iterator();
+			Iterator<Position<ComponenteGrafico>> it = disparosEliminables.iterator();
 			try 
 			{
 				while( it.hasNext() ) 
 				{
-					Position<Disparo> bala = it.next();
+					Position<ComponenteGrafico> bala = it.next();
 					listaDisparos.remove(bala);
 				
 				}
 				
 			}catch (InvalidPositionException e) {e.printStackTrace();}
 
-			disparosEliminables = new Lista<Position<Disparo>>();
+			disparosEliminables = new Lista<Position<ComponenteGrafico>>();
 			
 		}
 			

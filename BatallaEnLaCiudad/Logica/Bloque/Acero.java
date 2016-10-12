@@ -40,4 +40,10 @@ public class Acero extends Celda{
 		
 	}
 
+	@Override
+	public void mover() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

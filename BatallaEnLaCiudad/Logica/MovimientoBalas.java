@@ -16,7 +16,7 @@ public class MovimientoBalas extends Movimiento{
 	
 	public void run()
 	{
-		PositionList<Disparo> balas = grafica.getBalas();
+		PositionList<ComponenteGrafico> balas = grafica.getBalas();
 		
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		
@@ -26,9 +26,9 @@ public class MovimientoBalas extends Movimiento{
 				while(!grafica.finDelJuego())
 				{
 							
-							this.sleep(10);
+							this.sleep(1000);
 							
-							for(Disparo bala: balas)
+							for(ComponenteGrafico bala: balas)
 							{
 								/*
 								ComponenteGrafico c = grafica.buscarColision(bala.getBounds());
@@ -46,7 +46,8 @@ public class MovimientoBalas extends Movimiento{
 									}
 									*/
 								bala.mover();
-								System.out.println("<"+bala.getX()+" , "+bala.getY()+">");
+								grafica.repaint();
+								System.out.println("<"+bala.getPosicionX()+" , "+bala.getPosicionY()+">");
 								
 							}
 							

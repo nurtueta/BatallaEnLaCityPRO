@@ -25,4 +25,6 @@ public abstract class Movimiento extends Thread{
 	
 	public abstract void inicio();
 	
+	
+	
 }
