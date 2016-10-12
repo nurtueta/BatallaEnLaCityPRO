@@ -20,7 +20,7 @@ public class MovimientoBalas extends Movimiento{
 		
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		
-			int posY;
+			boolean movio;
 			try
 			{
 				while(!grafica.finDelJuego())
@@ -45,7 +45,9 @@ public class MovimientoBalas extends Movimiento{
 										bala.setLocation(bala.getX(), posY);
 									}
 									*/
-								bala.mover();
+								movio=bala.mover();
+								if(!movio)
+									grafica.eliminarBala(bala);
 								grafica.repaint();
 								System.out.println("<"+bala.getPosicionX()+" , "+bala.getPosicionY()+">");
 								

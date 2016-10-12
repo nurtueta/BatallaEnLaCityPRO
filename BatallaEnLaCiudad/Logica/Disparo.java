@@ -20,20 +20,22 @@ public class Disparo extends Celda{
 	private static final long serialVersionUID = 1L;
 	protected int direccion;
 	protected Position<ComponenteGrafico> posEnLista;
+	protected Logica manejo;
 	
-	public Disparo(int d, int x, int y,PositionList<ComponenteGrafico> miLista)
+	public Disparo(int x,int y,PositionList<ComponenteGrafico> miLista,Logica l)
 	{	
 		
 		super(x,y);
 		miLista.addLast(this);
+		manejo=l;
 		
 		try {
 			posEnLista = miLista.last();
 		} catch (EmptyListException e) {e.printStackTrace();}
 		
-		direccion = d;
+		direccion = manejo.getJugador().getDireccion();
 		ImageIcon fot = new ImageIcon();
-		switch (d){
+		switch (direccion){
 			case 1:
 				fot =new ImageIcon(getClass().getResource("/Imagenes/balaDerecha.png"));
 				this.setPosicionX(x+1);
@@ -63,6 +65,9 @@ public class Disparo extends Celda{
 		return posEnLista;
 	}
 	
+	public Disparo getDisparo(){
+		return this;
+	}
 	@Override
 	public boolean movimientoPosible() {
 		// TODO Auto-generated method stub
@@ -85,61 +90,35 @@ public class Disparo extends Celda{
 		// TODO Auto-generated method stub		
 	}
 	
-	public void mover()
-	{
+	public boolean mover()
+	{	boolean seMovio=true;
 		switch (direccion) {
-			case 1: /*
-					if(x<(mapa[0].length-1)){
-						if(mapa[Y][X+1].movimientoPosible()){
-							mapa[Y][X+1]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							X++;
-						}	
-					*/
-						this.setPosicionX(getPosicionX()+1);
-					
-						break;
-			case 2: /*
-					if(X>0){
-						if(mapa[Y][X-1].movimientoPosible()){
-							mapa[Y][X-1]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							X--;
-						}
-					}
-					*/
+			case 1: 
+				if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosible())     
+					this.setPosicionX(getPosicionX()+1);
+				else
+					seMovio=false;
+				break;
+			case 2: 
+				if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosible())
 					this.setPosicionX(getPosicionX()-1);
-					break;
-			case 3: /*
-					if(Y>0){
-						if(mapa[Y-1][X].movimientoPosible()){
-							mapa[Y-1][X]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							Y--;
-						}
-					}
-					*/
+				else
+					seMovio=false;
+				break;
+			case 3: 
+				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()-1).movimientoPosible())	
 					this.setPosicionY(getPosicionY()-1);
-					break;
+				else
+					seMovio=false;
+				break;
 			case 4: 
-					/*
-					if(Y<(mapa.length-1)){
-					
-						if(mapa[Y+1][X].movimientoPosible()){
-							mapa[Y+1][X]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							Y++;
-						}
-					}
-					 */
+				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).movimientoPosible())
 					this.setPosicionY(getPosicionY()+1);
+				else
+					seMovio=false;
 					break;
 			}
-
-		//j.setPosicionX(x);
-		//j.setPosicionY(y);
-
+		return seMovio;
 	}
-	
 	
 }

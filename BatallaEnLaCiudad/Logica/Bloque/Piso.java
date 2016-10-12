@@ -39,9 +39,9 @@ public class Piso extends Celda{
 	}
 
 	@Override
-	public void mover() {
+	public boolean mover() {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }

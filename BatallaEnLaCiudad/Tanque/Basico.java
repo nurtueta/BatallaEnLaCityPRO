@@ -107,7 +107,7 @@ public class Basico extends Enemigo{
 	}
 
 	@Override
-	public void mover()
+	public boolean mover()
 	{
 		this.setPosicionY(getPosicionY()+1);
 		/*switch (direccion) {
@@ -126,6 +126,8 @@ public class Basico extends Enemigo{
 					break;
 			}
 		 	*/
+		
+		return false;
 
 	}
 	

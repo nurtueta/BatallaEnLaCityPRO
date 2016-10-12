@@ -134,11 +134,7 @@ public class GUI extends JFrame {
 	 					
 	 						break;
 	 					case KeyEvent.VK_W :
-	 						contentPane.remove(mapaLogica.getComponente(5,1));
-	 						//mapaLogica.eliminar(mapaLogica.getComponente(5, 1));
-	 						mapaLogica.crearEnemigo(1);	//Crear enemigo en posicion
-	 						contentPane.add(M[1][5]);
-	 					
+	 						crearEnemigo();
 	 						break;
 	 					case KeyEvent.VK_E :
 	 						
@@ -148,9 +144,6 @@ public class GUI extends JFrame {
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						crearDisparo();
-	 						break;
-	 					case KeyEvent.VK_G:
-	 						crearEnemigo();
 	 						break;
 					 }
 					 
@@ -189,7 +182,7 @@ public class GUI extends JFrame {
 	    
 	    public void crearDisparo()
 	    {
-	    	ComponenteGrafico bala = new Disparo(mapaLogica.getJugador().getDireccion(),mapaLogica.getJugador().getPosicionX(),mapaLogica.getJugador().getPosicionY(),listaDisparos);
+	    	ComponenteGrafico bala = new Disparo(mapaLogica.getJugador().getPosicionX(),mapaLogica.getJugador().getPosicionY(),listaDisparos,mapaLogica);
 			bala.setVisible(true);
 			
 			contentPane.add(bala);
@@ -265,6 +258,11 @@ public class GUI extends JFrame {
 
 			disparosEliminables = new Lista<Position<ComponenteGrafico>>();
 			
+		}
+		
+		public void eliminarBala(ComponenteGrafico x){
+			
+			//listaDisparos.remove(mapaLogica.getComponente(x.getPosicionX(), x.getPosicionY()).getPos)
 		}
 			
 }

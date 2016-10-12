@@ -77,9 +77,9 @@ public class Poder extends Enemigo{
 
 
 	@Override
-	public void mover() {
+	public boolean mover() {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }
