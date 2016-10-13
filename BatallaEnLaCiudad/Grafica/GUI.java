@@ -267,8 +267,8 @@ public class GUI extends JFrame {
 			try {
 				listaDisparos.remove(x);
 				System.out.println("elimino");
-			} catch (InvalidPositionException e) {e.printStackTrace();}
 			contentPane.remove(x.element());
-			
+			} catch (InvalidPositionException| NullPointerException e) {e.printStackTrace();}
+
 		}
 }
