@@ -15,17 +15,11 @@ public class Basico extends Enemigo{
 
 	/*Constructor*/
 	private static final long serialVersionUID = 1L;
-	protected Position<ComponenteGrafico> posEnLista;
 	protected Logica manejo;
 	
-	public Basico(int x,int y,PositionList<ComponenteGrafico> miLista,Logica l){
+	public Basico(int x,int y,Logica l){
 		super(x,y);
 		manejo=l;
-		miLista.addLast(this);
-		try {
-			posEnLista = miLista.last();
-		} catch (EmptyListException e) {e.printStackTrace();}
-		
 		
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));

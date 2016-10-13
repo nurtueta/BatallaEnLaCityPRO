@@ -22,18 +22,11 @@ public class Disparo extends Celda{
 	
 	protected Logica manejo;
 	
-	public Disparo(int x,int y,PositionList<ComponenteGrafico> miLista,Logica l)
+	public Disparo(int x,int y,int d,Logica l)
 	{	
-		
 		super(x,y);
-		miLista.addLast(this);
 		manejo=l;
-		
-		try {
-			posEnLista = miLista.last();
-		} catch (EmptyListException e) {e.printStackTrace();}
-		
-		direccion = manejo.getJugador().getDireccion();
+		direccion = d;
 		ImageIcon fot = new ImageIcon();
 		switch (direccion){
 			case 1:
@@ -54,72 +47,60 @@ public class Disparo extends Celda{
 				break;
 		}
 		
-		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/ladrillo.png")));
-		//this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondo.png")));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
 
-	public Position<ComponenteGrafico> getPosEnLista ()
-	{
-		return posEnLista;
-	}
-	
-	public Disparo getDisparo(){
-		return this;
-	}
-	@Override
 	public boolean movimientoPosible() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void recibirDisparo() {
 		
 	}
 
-	@Override
 	public void eliminar() {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void posicionImagen(int i) {
-		// TODO Auto-generated method stub		
+		
 	}
 	
 	public boolean mover()
 	{	boolean seMovio=true;
-		switch (direccion) {
-			case 1: 
-				if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosible())     
-					this.setPosicionX(getPosicionX()+1);
-				else
-					seMovio=false;
-				break;
-			case 2: 
-				if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosible())
-					this.setPosicionX(getPosicionX()-1);
-				else
-					seMovio=false;
-				break;
-			case 3: 
-				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()-1).movimientoPosible())	
-					this.setPosicionY(getPosicionY()-1);
-				else
-					seMovio=false;
-				break;
-			case 4: 
-				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).movimientoPosible())
-					this.setPosicionY(getPosicionY()+1);
-				else
-					seMovio=false;
-					//le saco vida
-					//manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).setVida(getVida()-10);
-				break;
-			}
+		if(this.getPosicionX()==0 || this.getPosicionY()==0)
+			seMovio=false;
+		else
+			switch (direccion) {
+				case 1: 
+					if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosible())     
+						this.setPosicionX(getPosicionX()+1);
+					else
+						seMovio=false;
+					break;
+				case 2: 
+					if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosible())
+						this.setPosicionX(getPosicionX()-1);
+					else
+						seMovio=false;
+					break;
+				case 3: 
+					if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()-1).movimientoPosible())	
+						this.setPosicionY(getPosicionY()-1);
+					else
+						seMovio=false;
+					break;
+				case 4: 
+					if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).movimientoPosible())
+						this.setPosicionY(getPosicionY()+1);
+					else
+						seMovio=false;
+						//le saco vida
+						//manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).setVida(getVida()-10);
+					break;
+				}
 		return seMovio;
 	}
 	

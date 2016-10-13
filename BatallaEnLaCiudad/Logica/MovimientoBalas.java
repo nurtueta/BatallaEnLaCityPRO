@@ -1,5 +1,7 @@
 package Logica;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import Grafica.ComponenteGrafico;
@@ -9,69 +11,46 @@ import Tanque.*;
 
 public class MovimientoBalas extends Movimiento{
 		
-	public MovimientoBalas(GUI miGUI)
-	{
-		super(miGUI);
+	public MovimientoBalas(Logica l){
+		super(l);
 	}
 	
 	public void run()
 	{
-		PositionList<ComponenteGrafico> balas = grafica.getBalas();
-		
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		
 			boolean movio;
 			try
 			{
-				while(!grafica.finDelJuego())
+				while(!miLogica.finDelJuego())
 				{
 							
-							this.sleep(700);
-							
+							this.sleep(500);
+							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 							for(ComponenteGrafico bala: balas)
 							{
-								/*
-								ComponenteGrafico c = grafica.buscarColision(bala.getBounds());
-									if (c!=null) 
-										{ //colision con escenario + enemigo (ahora implemento solo escenario)
-											//boolean murio=c.damage(bala);
-											bala.setVisible(false);
-											grafica.getBalasEliminables().addLast(bala.getPosEnLista());
-										}
-										
-									else
-									{
-										posY = bala.getY()-8;
-										bala.setLocation(bala.getX(), posY);
-									}
-									*/
 								movio=bala.mover();
-								System.out.println(movio);
 								if(!movio)
-									grafica.eliminarBala(bala.getPosEnLista());
-								grafica.repaint();
-								//System.out.println("<"+bala.getPosicionX()+" , "+bala.getPosicionY()+">");
-								
+									eliminar.add(bala);
 							}
 							
-							//grafica.eliminarBalas();
-							//grafica.eliminarEnemigos();
+							for(ComponenteGrafico bala: eliminar){
+								balas.remove(bala);
+								miLogica.eliminarBala(bala);
+							}
+								
+							miLogica.actualizarPanel();
 						
 				}
 						
 			}catch(InterruptedException e){ e.printStackTrace();}
 	}
-	
-	
-	public void posicionar() 
-	{
-			
-	}
 
-	
-	public void inicio() 
-	{
-		this.start();
+	public void addBala(Disparo x) {
+		balas.add(x);
 	}
+	
+	public void addEnemigo(Enemigo x){}
+
 
 }

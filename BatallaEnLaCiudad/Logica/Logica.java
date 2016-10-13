@@ -1,12 +1,18 @@
 package Logica;
 
 import java.io.*;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Grafica.*;
 import Logica.Bloque.*;
+import TDALista.EmptyListException;
+import TDALista.InvalidPositionException;
+import TDALista.Lista;
+import TDALista.Position;
+import TDALista.PositionList;
 import Tanque.Basico;
 import Tanque.Blindado;
 import Tanque.Enemigo;
@@ -15,39 +21,44 @@ import Tanque.Rapido;
 import Tanque.Tanque;
 
 
-
 public class Logica {
 	
 	/*Variables*/
 	
 	protected ComponenteGrafico[][] mapa;
 	protected ComponenteGrafico miJugador;
-	protected ComponenteGrafico [] misEnemigos;
+	
+	private Movimiento hiloBalas;
+	private Movimiento hiloEnemigos;
+	
+	protected int direccion;
+	
+	protected GUI grafica;
 	
 	/*Constructor*/
 	
-	public Logica(){
+	public Logica(GUI laGUI){
+		
+		hiloBalas = new MovimientoBalas(this);
+		hiloEnemigos = new MovimientoEnemigos(this);
+		hiloBalas.start();
+		hiloEnemigos.start();
+		
+		grafica=laGUI;
+		
 		mapa=new ComponenteGrafico[20][20];
 		
 		generacionDeMapaLogico();
-		//Creacion del jugador 
+		
 		miJugador = new Jugador(1,1);
+		direccion=1;
 		ingresarJugador(1,1);
-		
-		
-		misEnemigos=new Enemigo[5];
 	}
 	
-	 
 	/*
-	 * 
-	 * 
 	 * Comandos
-	 * 
-	 * 
 	 * */
 	
-
 	/**
 	 * Permite ver el mapa logico
 	 * @return Una matriz que represanta al mapa logico
@@ -72,33 +83,31 @@ public class Logica {
 	      while((cadena = b.readLine())!=null) {
 	    	  
 	      	 for(int i=0;i<cadena.length();i++){
-	      		 
 	      		char s = cadena.charAt(i);
-	      		
 	      		if(s=='A'){
 	      			mapa[j][i]= new Agua(i,j);
 	      		}else
-	      		if(s=='L'){
-	      			mapa[j][i]= new Ladrillo(i,j);
-	      		}else
-	      		if(s=='I'){
-	      			mapa[j][i]= new Acero(i,j);
-	      		}else
-	      		if(s=='B'){
-	      			mapa[j][i]= new Arbol(i,j);
-	      		}/*else
-	      		if(s=='E'){
-	      			mapa[i][j]= 26; Aguila == Eagle
-	      		}else
-	      		if(s=='P'){
-	      			mapa[i][j]= 28; Portal enemigo
-	      		}else
-	      		if(s=='R'){
-	      			mapa[i][j]= 27; Respown
-	      		}*/
-	      		else{
-	      			mapa[j][i]= new Piso(i,j);
-	      		}
+		      		if(s=='L'){
+		      			mapa[j][i]= new Ladrillo(i,j);
+		      		}else
+			      		if(s=='I'){
+			      			mapa[j][i]= new Acero(i,j);
+			      		}else
+				      		if(s=='B'){
+				      			mapa[j][i]= new Arbol(i,j);
+				      		}/*else
+					      		if(s=='E'){
+					      			mapa[i][j]= 26; Aguila == Eagle
+					      		}else
+						      		if(s=='P'){
+						      			mapa[i][j]= 28; Portal enemigo
+						      		}else
+							      		if(s=='R'){
+							      			mapa[i][j]= 27; Respown
+							      		}*/
+							      		else{
+							      			mapa[j][i]= new Piso(i,j);
+							      		}
 	      		}
 	      	j++;
 	      	}  
@@ -121,7 +130,7 @@ public class Logica {
 	 */
 	private void mover(ComponenteGrafico j,int direccion)
 	{
-		
+		this.direccion=direccion;
 		int Y= j.getPosicionY();
 		int X = j.getPosicionX();
 		switch (direccion) {
@@ -132,7 +141,7 @@ public class Logica {
 							X++;
 						}	
 					}
-						break;
+					break;
 			case 2: if(X>0){
 						if(mapa[Y][X-1].movimientoPosible()){
 							mapa[Y][X-1]=j;
@@ -164,29 +173,11 @@ public class Logica {
 		j.posicionImagen(direccion);
 	}
 	
-	//disparo del jugador
-	public void disparar(Jugador j)
-	{
-		
-	}
 	
 	/**
 	 * Elimina un ComponenteGrafico del mapa y deja solo el suelo.
 	 * @param c ComponenteGrafico a eliminar.
 	 */
-	public void eliminar(ComponenteGrafico c){
-		boolean esEnemigo=false;
-		for(int i=0;i<5;i++)
-			if(misEnemigos[i]==c){
-				misEnemigos[i]=null;
-				mapa[c.getPosicionY()][c.getPosicionX()]=new Piso(c.getPosicionX(),c.getPosicionY());
-				esEnemigo=true;
-			}
-		if(!esEnemigo){
-			mapa[c.getPosicionY()][c.getPosicionX()]= new Piso(c.getPosicionX(),c.getPosicionY());
-		}
-	}
-	
 	
 	//ingreso jugador
 	public void ingresarJugador(int x, int y)
@@ -195,36 +186,6 @@ public class Logica {
 		miJugador.setPosicionX(x);
 		mapa[y][x]=miJugador;
 	}
-	
-	//creo enemigo indicando la posicion en el arreglo y el tipo de enemigo
-	public	boolean	crearEnemigo(int e){
-		boolean hayEspacio=false;
-		int i=0;
-		while(!hayEspacio &&i<=5){
-			if(misEnemigos[i]==null){
-				switch(e){
-					case 1:misEnemigos[i]=new Basico(5,1,null,null);
-						mapa[1][5]=misEnemigos[i];
-							break;
-				}
-				hayEspacio=true;
-				System.out.println(this);
-			}
-			System.out.println(i);
-			i++;
-		}
-		return hayEspacio;
-	}
-	
-	//cambio de nivel al jugador
-	public void nivel(int i){
-		switch (i){
-			case 1:
-				eliminar(miJugador);
-				ingresarJugador(miJugador.getPosicionX(), miJugador.getPosicionY());
-				break;
-		}
-	}
 
 	/*Consultas*/
 	
@@ -232,24 +193,10 @@ public class Logica {
 	public ComponenteGrafico getComponente(int x,int y){
 		return mapa[y][x];
 	}
-	
-	//devuelvo tanque en la posicion p
-	/*public ComponenteGrafico getEnemigo(int p){
-		return misEnemigos[p];
-	}*/
-	
+
 	//devuelvo jugador
 	public ComponenteGrafico getJugador(){
 		return miJugador;
-	}
-	
-	//mostrar mapa para Tester
-	public void mostrarMapa(){
-		for(int i=0; i<mapa.length;i++){
-			for(int j=0;j<mapa[0].length;j++)
-				System.out.print(mapa[i][j]+"  \n ");
-			System.out.println();
-		}
 	}
 	
 	public boolean finDelJuego()
@@ -259,5 +206,36 @@ public class Logica {
 		return fin;
 	}
 	
+	public void actualizarPanel(){
+		grafica.repaint();
+	}
+	
+	public void eliminarBala(ComponenteGrafico x){
+			hiloBalas.getBalas().remove(x);
+			grafica.eliminarDisparo(x);
+	}
+    
+	public ComponenteGrafico crearDisparo(){
+		Disparo bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),direccion,this);
+		bala.setVisible(true);
+		hiloBalas.addBala(bala);
+		return bala;
+	}
+	
+	public ComponenteGrafico crearEnemigo(){
+		Enemigo enemigo = new Basico(4, 4,this);
+		enemigo.setVisible(true);
+		hiloEnemigos.addEnemigo(enemigo);
+		return enemigo;
+	
+	}
+	
+	public Movimiento getHilosBalas(){
+		return hiloBalas;
+	}
+	
+	public Movimiento getHilosEnemigos(){
+		return hiloEnemigos;
+	}
 	
 }

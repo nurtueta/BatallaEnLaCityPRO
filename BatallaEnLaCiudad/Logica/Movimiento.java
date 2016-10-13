@@ -1,5 +1,7 @@
 package Logica;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import Grafica.*;
@@ -8,23 +10,37 @@ import Tanque.*;
 
 public abstract class Movimiento extends Thread{
 	
-	protected GUI grafica;
+	protected Logica miLogica;
+	protected ArrayList<ComponenteGrafico> balas;
+	protected ArrayList<ComponenteGrafico> enemigos;
 	
-	public Movimiento(GUI miGUI)
+	public Movimiento(Logica logic)
 	{
-		grafica = miGUI;
+		miLogica = logic;
+		balas=new ArrayList<ComponenteGrafico>();
+		enemigos=new ArrayList<ComponenteGrafico>();
 	}
 	
 	
-	public void setGrafica(GUI g)
+	public void setLogica(Logica l)
 	{
-		grafica = g;
+		miLogica = l;
 	}
 	
-	public abstract void posicionar();
+	public void inicio() {
+		this.start();
+	}
 	
-	public abstract void inicio();
+	public abstract void addBala(Disparo x);
 	
+	public abstract void addEnemigo(Enemigo x);
 	
+	public  ArrayList<ComponenteGrafico> getBalas(){
+		return balas;
+	}
+	
+	public  ArrayList<ComponenteGrafico> getEnemigos(){
+		return enemigos;
+	}
 	
 }
