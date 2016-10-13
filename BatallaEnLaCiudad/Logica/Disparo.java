@@ -19,7 +19,7 @@ public class Disparo extends Celda{
 	 */
 	private static final long serialVersionUID = 1L;
 	protected int direccion;
-	protected Position<ComponenteGrafico> posEnLista;
+	
 	protected Logica manejo;
 	
 	public Disparo(int x,int y,PositionList<ComponenteGrafico> miLista,Logica l)
@@ -116,7 +116,9 @@ public class Disparo extends Celda{
 					this.setPosicionY(getPosicionY()+1);
 				else
 					seMovio=false;
-					break;
+					//le saco vida
+					//manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).setVida(getVida()-10);
+				break;
 			}
 		return seMovio;
 	}

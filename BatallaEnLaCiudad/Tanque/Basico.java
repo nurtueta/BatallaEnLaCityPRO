@@ -6,6 +6,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import Grafica.ComponenteGrafico;
+import Logica.Logica;
 import TDALista.EmptyListException;
 import TDALista.Position;
 import TDALista.PositionList;
@@ -15,9 +16,11 @@ public class Basico extends Enemigo{
 	/*Constructor*/
 	private static final long serialVersionUID = 1L;
 	protected Position<ComponenteGrafico> posEnLista;
+	protected Logica manejo;
 	
-	public Basico(int x,int y,PositionList<ComponenteGrafico> miLista){
+	public Basico(int x,int y,PositionList<ComponenteGrafico> miLista,Logica l){
 		super(x,y);
+		manejo=l;
 		miLista.addLast(this);
 		try {
 			posEnLista = miLista.last();
@@ -34,20 +37,24 @@ public class Basico extends Enemigo{
 	
 	//pongo la imagen en la direccion del tanque
 	public void posicionImagen(int i){
+		direccion = i;
+		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png")));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
 				break;
 			case 2:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png")));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png"));
 				break;
 			case 3:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png")));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png"));
 				break;
 			case 4:
-				this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png")));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png"));
 				break;
 		}
+		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		this.setIcon(icono);
 	}
 	
 	//seteo la vida del tanque
@@ -108,26 +115,39 @@ public class Basico extends Enemigo{
 
 	@Override
 	public boolean mover()
-	{
-		this.setPosicionY(getPosicionY()+1);
-		/*switch (direccion) {
+	{	
+		boolean movio=true;
+		direccion = (int) (Math.random()*4+1);
+		//this.setPosicionY(getPosicionY()+1);
+		switch (direccion) {
 			case 1: 
+				if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosible())
 					this.setPosicionX(getPosicionX()+1);
-					
-					break;
+				else
+					movio= false;
+				break;
 			case 2: 
+				if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosible())
 					this.setPosicionX(getPosicionX()-1);
-					break;
+				else
+					movio=false;
+				break;
 			case 3: 
+				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()-1).movimientoPosible())
 					this.setPosicionY(getPosicionY()-1);
+				else
+					movio=false;
 					break;
 			case 4: 
+				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).movimientoPosible())
 					this.setPosicionY(getPosicionY()+1);
+				else
+					movio=false;
 					break;
 			}
-		 	*/
+		 	posicionImagen(direccion);
 		
-		return false;
+		return true;
 
 	}
 	

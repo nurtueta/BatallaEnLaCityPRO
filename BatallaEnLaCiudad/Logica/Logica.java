@@ -203,7 +203,7 @@ public class Logica {
 		while(!hayEspacio &&i<=5){
 			if(misEnemigos[i]==null){
 				switch(e){
-					case 1:misEnemigos[i]=new Basico(5,1,null);
+					case 1:misEnemigos[i]=new Basico(5,1,null,null);
 						mapa[1][5]=misEnemigos[i];
 							break;
 				}

@@ -26,7 +26,7 @@ public class MovimientoBalas extends Movimiento{
 				while(!grafica.finDelJuego())
 				{
 							
-							this.sleep(500);
+							this.sleep(700);
 							
 							for(ComponenteGrafico bala: balas)
 							{
@@ -46,14 +46,15 @@ public class MovimientoBalas extends Movimiento{
 									}
 									*/
 								movio=bala.mover();
+								System.out.println(movio);
 								if(!movio)
-									grafica.eliminarBala(bala);
+									grafica.eliminarBala(bala.getPosEnLista());
 								grafica.repaint();
-								System.out.println("<"+bala.getPosicionX()+" , "+bala.getPosicionY()+">");
+								//System.out.println("<"+bala.getPosicionX()+" , "+bala.getPosicionY()+">");
 								
 							}
 							
-							grafica.eliminarBalas();
+							//grafica.eliminarBalas();
 							//grafica.eliminarEnemigos();
 						
 				}

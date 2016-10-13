@@ -2,6 +2,8 @@ package Grafica;
 
 import javax.swing.JLabel;
 
+import TDALista.Position;
+
 public abstract class ComponenteGrafico extends JLabel {
 	
 	/*Variables*/
@@ -11,6 +13,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int velocidad;
 	protected int miX,miY;
 	protected int direccion;
+	protected Position<ComponenteGrafico> posEnLista;
 	
 	/*Constructores*/
 	
@@ -118,6 +121,14 @@ public abstract class ComponenteGrafico extends JLabel {
 	public int getY()
 	{
 		return miY*alto;
+	}
+	
+	public Position<ComponenteGrafico> getPosEnLista(){
+		return posEnLista;
+	}
+	
+	public void setPosEnLista(Position<ComponenteGrafico> x){
+		posEnLista=x;
 	}
 	/**
 	 * Destruye al componente que recibe el mensaje.

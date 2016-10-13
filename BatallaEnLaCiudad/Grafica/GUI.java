@@ -176,22 +176,24 @@ public class GUI extends JFrame {
 			this.repaint();
 	    }
 	    
-	    private void refrescarPanel(){
-	    	this.repaint();
-	    }
-	    
 	    public void crearDisparo()
 	    {
 	    	ComponenteGrafico bala = new Disparo(mapaLogica.getJugador().getPosicionX(),mapaLogica.getJugador().getPosicionY(),listaDisparos,mapaLogica);
 			bala.setVisible(true);
-			
+			listaDisparos.addLast(bala);
+			try {
+				disparosEliminables.addLast(listaDisparos.last());
+			} catch (EmptyListException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			contentPane.add(bala);
 			contentPane.setComponentZOrder(bala, 1);
 			
 	    }
 	    
 	    private void crearEnemigo() {
-	    	ComponenteGrafico enemigo = new Basico(5,5,listaEnemigos);
+	    	ComponenteGrafico enemigo = new Basico(5,5,listaEnemigos,mapaLogica);
 			enemigo.setVisible(true);
 			
 			contentPane.add(enemigo);
@@ -260,9 +262,13 @@ public class GUI extends JFrame {
 			
 		}
 		
-		public void eliminarBala(ComponenteGrafico x){
+		public void eliminarBala(Position<ComponenteGrafico> x){
+			Position<ComponenteGrafico> aux;
+			try {
+				listaDisparos.remove(x);
+				System.out.println("elimino");
+			} catch (InvalidPositionException e) {e.printStackTrace();}
+			contentPane.remove(x.element());
 			
-			//listaDisparos.remove(mapaLogica.getComponente(x.getPosicionX(), x.getPosicionY()).getPos)
 		}
-			
 }
