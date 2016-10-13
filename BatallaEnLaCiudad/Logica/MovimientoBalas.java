@@ -26,7 +26,7 @@ public class MovimientoBalas extends Movimiento{
 				while(!grafica.finDelJuego())
 				{
 							
-							this.sleep(700);
+							this.sleep(50);
 							
 							for(ComponenteGrafico bala: balas)
 							{

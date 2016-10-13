@@ -42,14 +42,17 @@ public class Disparo extends Celda{
 				break;
 			case 2:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/balaIzquierda.png"));
-				this.setPosicionX(x-1);
+				if(x!=0)
+					this.setPosicionX(x-1);
 				break;
 			case 3:
 				fot =new ImageIcon(getClass().getResource("/Imagenes/balaArriba.png"));
+				if(y!=0)
 				this.setPosicionY(y-1);
 				break;
 			case 4:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/balaAbajo.png"));
+				
 				this.setPosicionY(y+1);
 				break;
 		}

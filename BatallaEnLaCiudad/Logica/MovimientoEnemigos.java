@@ -45,7 +45,7 @@ public class MovimientoEnemigos extends Movimiento{
 				while(!grafica.finDelJuego())
 				{
 							
-							this.sleep(500);
+							this.sleep(300);
 							
 							for(ComponenteGrafico enemigo: enemigos)
 							{

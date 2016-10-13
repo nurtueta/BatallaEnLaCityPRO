@@ -183,13 +183,16 @@ public class GUI extends JFrame {
 			listaDisparos.addLast(bala);
 			try {
 				disparosEliminables.addLast(listaDisparos.last());
+			
+			contentPane.add(bala);
+			contentPane.setComponentZOrder(bala, 1);
+			ComponenteGrafico ObjetoEnPosicionBala = M[bala.getPosicionY()][bala.getPosicionX()];
+			if (!ObjetoEnPosicionBala.movimientoPosible())
+				this.eliminarBala(listaDisparos.last());
 			} catch (EmptyListException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			contentPane.add(bala);
-			contentPane.setComponentZOrder(bala, 1);
-			
 	    }
 	    
 	    private void crearEnemigo() {
@@ -264,11 +267,14 @@ public class GUI extends JFrame {
 		
 		public void eliminarBala(Position<ComponenteGrafico> x){
 			Position<ComponenteGrafico> aux;
+			contentPane.remove(x.element());
+
 			try {
+
 				listaDisparos.remove(x);
 				System.out.println("elimino");
-			} catch (InvalidPositionException e) {e.printStackTrace();}
-			contentPane.remove(x.element());
+			} catch (InvalidPositionException | NullPointerException e) {e.printStackTrace();}
+
 			
 		}
 }
