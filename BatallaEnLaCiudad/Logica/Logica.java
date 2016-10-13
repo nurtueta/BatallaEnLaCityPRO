@@ -230,10 +230,6 @@ public class Logica {
 	
 	//devuelvo el componente grafico en la posicion (x,y)
 	public ComponenteGrafico getComponente(int x,int y){
-		if(y<0 )
-			y=0;
-		if(x<0)
-			x=0;
 		return mapa[y][x];
 	}
 	
