@@ -266,7 +266,6 @@ public class GUI extends JFrame {
 		}
 		
 		public void eliminarBala(Position<ComponenteGrafico> x){
-			Position<ComponenteGrafico> aux;
 			contentPane.remove(x.element());
 
 			try {

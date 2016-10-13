@@ -54,7 +54,7 @@ public class MovimientoBalas extends Movimiento{
 								
 							}
 							
-							//grafica.eliminarBalas();
+							grafica.eliminarBalas();
 							//grafica.eliminarEnemigos();
 						
 				}
