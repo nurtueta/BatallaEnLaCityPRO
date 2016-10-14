@@ -23,7 +23,7 @@ public class Ladrillo extends Celda{
 	}
 
 	public void recibirDisparo() {
-		
+		setVisible(false);
 	}
 
 	public boolean mover() {

@@ -1,25 +1,10 @@
 package Logica;
 
 import java.io.*;
-import java.util.Iterator;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Grafica.*;
 import Logica.Bloque.*;
-import TDALista.EmptyListException;
-import TDALista.InvalidPositionException;
-import TDALista.Lista;
-import TDALista.Position;
-import TDALista.PositionList;
-import Tanque.Basico;
-import Tanque.Blindado;
-import Tanque.Enemigo;
-import Tanque.Jugador;
-import Tanque.Rapido;
-import Tanque.Tanque;
-
+import Tanque.*;
 
 public class Logica {
 	

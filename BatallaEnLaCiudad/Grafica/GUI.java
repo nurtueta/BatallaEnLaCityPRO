@@ -3,22 +3,14 @@ package Grafica;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import Logica.*;
-import TDALista.EmptyListException;
-import TDALista.InvalidPositionException;
-import TDALista.Lista;
-import TDALista.Position;
-import TDALista.PositionList;
-import Tanque.Basico;
-import Tanque.Enemigo;
 
 public class GUI extends JFrame {
 	
-     private JPanel contentPane;
+	private JPanel contentPane;
 	 private Logica mapaLogica;
 	 
 	    /**

@@ -2,11 +2,7 @@ package Logica;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import Grafica.ComponenteGrafico;
-import Grafica.GUI;
-import TDALista.*;
 import Tanque.*;
 
 public class MovimientoBalas extends Movimiento{
@@ -25,7 +21,7 @@ public class MovimientoBalas extends Movimiento{
 				while(!miLogica.finDelJuego())
 				{
 							
-							this.sleep(20);
+							this.sleep(30);
 							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 							for(ComponenteGrafico bala: balas)
 							{

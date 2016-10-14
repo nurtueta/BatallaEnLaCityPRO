@@ -2,8 +2,6 @@ package Grafica;
 
 import javax.swing.JLabel;
 
-import TDALista.Position;
-
 public abstract class ComponenteGrafico extends JLabel {
 	
 	/*Variables*/

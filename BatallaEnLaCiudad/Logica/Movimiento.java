@@ -2,8 +2,6 @@ package Logica;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import Grafica.*;
 import Tanque.*;
 

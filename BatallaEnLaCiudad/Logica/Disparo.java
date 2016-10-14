@@ -4,20 +4,12 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-import Grafica.ComponenteGrafico;
 import Logica.Bloque.Celda;
-import Logica.Bloque.Piso;
-import TDALista.EmptyListException;
-import TDALista.Position;
-import TDALista.PositionList;
 
 public class Disparo extends Celda{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	protected int direccion;
 	
 	protected Logica manejo;
@@ -81,6 +73,7 @@ public class Disparo extends Celda{
 						this.setPosicionX(getPosicionX()+1);
 					else
 						seMovio=false;
+					
 					break;
 				case 2: 
 					if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosibleDisparo())

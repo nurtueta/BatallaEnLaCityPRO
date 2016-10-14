@@ -5,12 +5,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
-import TDALista.EmptyListException;
-import TDALista.Position;
-import TDALista.PositionList;
-
 public class Basico extends Enemigo{
 
 	/*Constructor*/
@@ -101,7 +96,7 @@ public class Basico extends Enemigo{
 			}
 		 	posicionImagen(direccion);
 		
-		return true;
+		return movio;
 	}
 	
 	public boolean movimientoPosibleDisparo() {

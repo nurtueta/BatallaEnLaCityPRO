@@ -2,11 +2,7 @@ package Logica;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import Grafica.ComponenteGrafico;
-import Grafica.GUI;
-import TDALista.PositionList;
 import Tanque.Enemigo;
 
 public class MovimientoEnemigos extends Movimiento{
