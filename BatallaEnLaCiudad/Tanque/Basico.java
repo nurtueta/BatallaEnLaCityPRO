@@ -17,14 +17,11 @@ public class Basico extends Enemigo{
 	private static final long serialVersionUID = 1L;
 	protected Logica manejo;
 	
-	public Basico(int x,int y,Logica l){
+	public Basico(int x,int y,Logica l,int d){
 		super(x,y);
 		manejo=l;
-		
-		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		this.setIcon(icono);
-		//posicionImagen(1);
+		posicionImagen(d);
+		vida=100;
 	}
 	
 	/*Comandos*/
@@ -53,23 +50,7 @@ public class Basico extends Enemigo{
 	
 	//seteo la vida del tanque
 	public void setVida(int v) {
-		// TODO Auto-generated method stub
 		vida=v;
-	}
-
-	//seteo la posicion en Y
-	public void setFila(int f) {
-		//setPosicionY(f);
-	}
-
-	//seteo la posicion en X
-	public void setColumna(int c) {
-		//setPosicionX(c);
-	}
-
-	//seteo la direccion del tanque
-	public void setDireccion(int d) {
-		//posicionImagen(d);
 	}
 	
 	/*Consultas*/
@@ -79,40 +60,19 @@ public class Basico extends Enemigo{
 		return false;
 	}
 	
-	//devuelvo la posicion en X
-	public int getColumna() {
-		return 0;
-		//return getPosicionX();
-	}
-	
-	//devuelvo la posicion en Y
-	public int getFila() {
-		return 0;
-		//return getPosicionY();
-	}//¿¿
-	
 	//devuelvo la vida del tanque
 	public int getVida() {
 		return vida;
 	}
 
-	@Override
-	public void eliminar() {
-		
-	}
-
-	@Override
 	public void recibirDisparo() {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public boolean mover()
 	{	
 		boolean movio=true;
 		direccion = (int) (Math.random()*4+1);
-		//this.setPosicionY(getPosicionY()+1);
 		switch (direccion) {
 			case 1: 
 				if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosible())
@@ -142,7 +102,10 @@ public class Basico extends Enemigo{
 		 	posicionImagen(direccion);
 		
 		return true;
-
+	}
+	
+	public boolean movimientoPosibleDisparo() {
+		return false;
 	}
 	
 }

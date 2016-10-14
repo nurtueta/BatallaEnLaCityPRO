@@ -7,23 +7,21 @@ public class PowerUp extends ComponenteGrafico{
 	public boolean movimientoPosible() {
 		return false;
 	}
-
-	@Override
-	public void eliminar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
+	
 	public void posicionImagen(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public boolean mover() {
-		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public void recibirDisparo() {
+		
+	}
+	
+	public boolean movimientoPosibleDisparo() {
+		return true;
 	}
 
 }

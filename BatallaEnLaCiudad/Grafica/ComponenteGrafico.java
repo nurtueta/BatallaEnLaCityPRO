@@ -14,6 +14,9 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int miX,miY;
 	protected int direccion;
 	
+	protected int vida;
+	protected int powerUpDeTanque;
+	
 	/*Constructores*/
 	
 	public	ComponenteGrafico(){}
@@ -32,19 +35,6 @@ public abstract class ComponenteGrafico extends JLabel {
 		
 	}
 	
-	public ComponenteGrafico(int vel, int x, int y)
-	{	
-		super();
-		velocidad = vel;
-		miX = x;
-		miY = y;
-		direccion = -1;
-		
-		//seteo el componente grafico en el lugar correspondiente
-		setBounds(miX*ancho , miY*alto, ancho, alto);
-		setVisible(true);
-	}
-	
 	/*Comandos*/
 	
 	//seteo la velocidad del componente grafico
@@ -61,10 +51,6 @@ public abstract class ComponenteGrafico extends JLabel {
 		miY=y;
 	}
 	/*Consultas*/
-
-	//pregunnto si es posible mover a esta posicion
-	public abstract boolean movimientoPosible();
-	
 	
 	//devuelvo la direccion para la que apunta el componente grafico
 	public int getDireccion()
@@ -96,11 +82,13 @@ public abstract class ComponenteGrafico extends JLabel {
 	{
 		return miY*alto;
 	}
-
-	/**
-	 * Destruye al componente que recibe el mensaje.
-	 */
-	public	abstract void	eliminar();
+	
+	//pregunnto si es posible mover a esta posicion
+	public abstract boolean movimientoPosible();
+	
+	public abstract boolean movimientoPosibleDisparo();
+	
+	public abstract void recibirDisparo();
 	
 	public abstract void posicionImagen(int i);
 

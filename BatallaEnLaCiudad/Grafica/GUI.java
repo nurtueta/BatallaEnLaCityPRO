@@ -61,6 +61,7 @@ public class GUI extends JFrame {
 	        this.setLayout(null);
 	       
 	        generarPanel();
+	        crearJugador();
 	        
 	        setVisible(true);
 	        
@@ -107,7 +108,7 @@ public class GUI extends JFrame {
 	 						break;
 					 }
 					 contentPane.repaint();
-				} 
+				}
 
 				public void keyReleased(KeyEvent arg0){
 					
@@ -131,9 +132,11 @@ public class GUI extends JFrame {
 	    
 	    public void crearDisparo(){
 	    	ComponenteGrafico bala=mapaLogica.crearDisparo();
-			contentPane.add(bala);
-			contentPane.setComponentZOrder(bala, 1);
-			this.repaint();
+	    	if(bala!=null){
+				contentPane.add(bala);
+				contentPane.setComponentZOrder(bala, 1);
+				this.repaint();
+	    	}
 	    }
 	    
 	    private void crearEnemigo() {
@@ -150,6 +153,13 @@ public class GUI extends JFrame {
 	    public void eliminarDisparo(ComponenteGrafico x){
 	    	contentPane.remove(x);
 	    	refrescarPanel();
+	    }
+	    
+	    public void crearJugador(){
+	    	mapaLogica.ingresarJugador();
+	        contentPane.add(mapaLogica.getJugador());
+	        contentPane.setComponentZOrder(mapaLogica.getJugador(), 1);
+	        this.repaint();
 	    }
 	    
 }

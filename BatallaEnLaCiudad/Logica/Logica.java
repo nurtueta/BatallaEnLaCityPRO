@@ -49,10 +49,6 @@ public class Logica {
 		mapa=new ComponenteGrafico[20][20];
 		
 		generacionDeMapaLogico();
-		
-		miJugador = new Jugador(1,1);
-		direccion=1;
-		ingresarJugador(1,1);
 	}
 	
 	/*
@@ -180,11 +176,13 @@ public class Logica {
 	 */
 	
 	//ingreso jugador
-	public void ingresarJugador(int x, int y)
+	public void ingresarJugador()
 	{
-		miJugador.setPosicionY(y);
-		miJugador.setPosicionX(x);
-		mapa[y][x]=miJugador;
+		miJugador = new Jugador(1,1);
+		direccion=1;
+		miJugador.setPosicionY(1);
+		miJugador.setPosicionX(1);
+		mapa[1][1]=miJugador;
 	}
 
 	/*Consultas*/
@@ -216,14 +214,33 @@ public class Logica {
 	}
     
 	public ComponenteGrafico crearDisparo(){
+		
 		Disparo bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),direccion,this);
-		bala.setVisible(true);
+		
 		hiloBalas.addBala(bala);
+		switch(direccion){
+			case 1:
+				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()+1].movimientoPosibleDisparo())
+					bala=null;
+				break;
+			case 2:
+				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()-1].movimientoPosibleDisparo())
+					bala=null;
+				break;
+			case 3:
+				if(!mapa[miJugador.getPosicionY()-1][miJugador.getPosicionX()].movimientoPosibleDisparo())
+					bala=null;
+				break;
+			case 4:
+				if(!mapa[miJugador.getPosicionY()+1][miJugador.getPosicionX()].movimientoPosibleDisparo())
+					bala=null;
+				break;
+		}
 		return bala;
 	}
 	
 	public ComponenteGrafico crearEnemigo(){
-		Enemigo enemigo = new Basico(4, 4,this);
+		Enemigo enemigo = new Basico(4, 4,this,1);
 		enemigo.setVisible(true);
 		hiloEnemigos.addEnemigo(enemigo);
 		return enemigo;

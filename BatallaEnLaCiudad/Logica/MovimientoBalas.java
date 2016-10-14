@@ -25,7 +25,7 @@ public class MovimientoBalas extends Movimiento{
 				while(!miLogica.finDelJuego())
 				{
 							
-							this.sleep(500);
+							this.sleep(20);
 							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 							for(ComponenteGrafico bala: balas)
 							{
