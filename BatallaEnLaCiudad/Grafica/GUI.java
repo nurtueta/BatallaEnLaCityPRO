@@ -3,29 +3,15 @@ package Grafica;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import Logica.*;
-import TDALista.EmptyListException;
-import TDALista.InvalidPositionException;
-import TDALista.Lista;
-import TDALista.Position;
-import TDALista.PositionList;
-import Tanque.Basico;
-import Tanque.Enemigo;
 
 public class GUI extends JFrame {
 	
-     private JPanel contentPane;
+	private JPanel contentPane;
 	 private Logica mapaLogica;
-	 private ComponenteGrafico[][] M;
-	 private Movimiento hiloBalas;
-	 private Movimiento hiloEnemigos;
-	 protected PositionList<ComponenteGrafico> listaDisparos;
-	 protected PositionList<Position<ComponenteGrafico>> disparosEliminables;
-	 protected PositionList<ComponenteGrafico> listaEnemigos;
 	 
 	    /**
 	     * Launch the application.
@@ -49,11 +35,7 @@ public class GUI extends JFrame {
 	     */
 	    public GUI() {
 	    	
-	    	mapaLogica = new Logica();
-	    	
-	    	
-	    	M=mapaLogica.getMapaLogico();
-			
+	    	mapaLogica = new Logica(this);
 	    	
 	        //seteo inicial
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,112 +52,77 @@ public class GUI extends JFrame {
 	        setContentPane(contentPane);
 	        this.setLayout(null);
 	       
-	        
 	        generarPanel();
+	        crearJugador();
 	        
-	        
-			
-			
-	        
-
-			listaDisparos = new Lista<ComponenteGrafico>();
-			disparosEliminables = new Lista<Position<ComponenteGrafico>>();
-			listaEnemigos = new Lista<ComponenteGrafico> ();
-			
-			hiloBalas = new MovimientoBalas(this);
-			hiloEnemigos = new MovimientoEnemigos(this);
-			hiloBalas.start();
-			hiloEnemigos.start();
 	        setVisible(true);
-	        
-	        
 	        
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 				
-
 				public void keyReleased1(KeyEvent arg0) {
-					// TODO Auto-generated method stub
 					
 				}
 
 				public void keyTyped1(KeyEvent arg0) {
-					// TODO Auto-generated method stub
 					
 				}
 
 				public void keyPressed(KeyEvent e) {
-					// TODO Auto-generated method stub
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP : 
-					 		mapaLogica.mover(3);
-					 		contentPane.repaint();
-					 		//generarPanel();			//Mover el Jugador hacia Arriba
+					 		mapaLogica.mover(3);		//Mover el Jugador hacia Arriba
+					 		contentPane.repaint();	
 					 		break;
 						case KeyEvent.VK_DOWN :
-							mapaLogica.mover(4);
-							contentPane.repaint();
-							//generarPanel();			//Mover el Jugador hacia Abajo
+							mapaLogica.mover(4);		//Mover el Jugador hacia Abajo
+							contentPane.repaint();	
 							break;
 	        			case KeyEvent.VK_RIGHT :
-	        				mapaLogica.mover(1);
-	        				contentPane.repaint();
-	        				//generarPanel();			//Mover el Jugador hacia la Derecha
+	        				mapaLogica.mover(1);		//Mover el Jugador hacia la Derecha
+	        				contentPane.repaint();		
 	        				break;
 	 					case KeyEvent.VK_LEFT :
-	 						mapaLogica.mover(2);
-	 						contentPane.repaint();
-	 						//generarPanel();			//Mover el Jugador hacia la Izquierda
+	 						mapaLogica.mover(2);		//Mover el Jugador hacia la Izquierda
+	 						contentPane.repaint();	
 	 						break;
 	 					case KeyEvent.VK_Q :
-	 						contentPane.remove(mapaLogica.getComponente(5,1));
-	 						mapaLogica.eliminar(mapaLogica.getComponente(5, 1));
-	 						contentPane.add(M[1][5]);	//Eliminar bloque en posicion
-	 					
+	 						
 	 						break;
 	 					case KeyEvent.VK_W :
 	 						crearEnemigo();
 	 						break;
 	 					case KeyEvent.VK_E :
 	 						
-	 						contentPane.remove(mapaLogica.getComponente(0,0));
-	 						mapaLogica.eliminar(mapaLogica.getComponente(0, 0));
-	 						contentPane.add(M[0][0]);
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						crearDisparo();
 	 						break;
 					 }
-					 
-					 // M=mapaLogica.getMapaLogico();
 					 contentPane.repaint();
-					 
 				}
 
-				public void keyReleased(KeyEvent arg0) {
-					// TODO Auto-generated method stub
+				public void keyReleased(KeyEvent arg0){
 					
 				}
 
-				public void keyTyped(KeyEvent arg0) {
-					// TODO Auto-generated method stub	
+				public void keyTyped(KeyEvent arg0){
 				}
 	        });	       	        
 	    }
-	    	
 	    
-	
+	    public void refrescarPanel(){
+	    	this.repaint();
+	    }
+	    	
 		public void generarPanel(){
-	    	//M=mapaLogica.getMapaLogico();
-	    	//contentPane.removeAll();
 			for(int i=0;i<20;i++)
-			 	for(int j=0;j<20;j++){
+			 	for(int j=0;j<20;j++)
 			 		contentPane.add(mapaLogica.getComponente(i, j));
-			 		//contentPane.setComponentZOrder(mapaLogica.getComponente(i, j), 0);
-			 	}
 			this.repaint();
 	    }
 	    
+<<<<<<< HEAD
 	    public void crearDisparo()
 	    {
 	    	ComponenteGrafico bala = new Disparo(mapaLogica.getJugador().getPosicionX(),mapaLogica.getJugador().getPosicionY(),listaDisparos,mapaLogica);
@@ -193,33 +140,41 @@ public class GUI extends JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+=======
+	    public void crearDisparo(){
+	    	ComponenteGrafico bala=mapaLogica.crearDisparo();
+	    	if(bala!=null){
+				contentPane.add(bala);
+				contentPane.setComponentZOrder(bala, 1);
+				this.repaint();
+	    	}
+>>>>>>> origin/master
 	    }
 	    
 	    private void crearEnemigo() {
-	    	ComponenteGrafico enemigo = new Basico(5,5,listaEnemigos,mapaLogica);
-			enemigo.setVisible(true);
-			
+			ComponenteGrafico enemigo=mapaLogica.crearEnemigo();
 			contentPane.add(enemigo);
 			contentPane.setComponentZOrder(enemigo, 1);
-				
+			this.repaint();
 		}
 
-	    
-	    public PositionList<ComponenteGrafico> getBalas()
-	    {
-	    	return listaDisparos;
+	    public boolean finDelJuego(){
+	    	return mapaLogica.finDelJuego();
 	    }
 	    
-	    public PositionList<ComponenteGrafico> getEnemigos()
-	    {
-	    	return listaEnemigos;
+	    public void eliminarDisparo(ComponenteGrafico x){
+	    	contentPane.remove(x);
+	    	refrescarPanel();
 	    }
 	    
-	    public PositionList<Position<ComponenteGrafico>> getBalasEliminables()
-	    {
-	    	return disparosEliminables;
+	    public void crearJugador(){
+	    	mapaLogica.ingresarJugador();
+	        contentPane.add(mapaLogica.getJugador());
+	        contentPane.setComponentZOrder(mapaLogica.getJugador(), 1);
+	        this.repaint();
 	    }
 	    
+<<<<<<< HEAD
 	    public boolean finDelJuego()
 	    {
 	    	return mapaLogica.finDelJuego();
@@ -276,4 +231,6 @@ public class GUI extends JFrame {
 
 			
 		}
+=======
+>>>>>>> origin/master
 }

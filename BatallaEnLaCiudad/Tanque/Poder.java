@@ -1,85 +1,46 @@
 package Tanque;
 
+import Logica.Logica;
+
 public class Poder extends Enemigo{
 
-	public Poder(int x, int y) {
-		super(x, y);
-		// TODO Auto-generated constructor stub
+	private static final long serialVersionUID = 1L;
+	protected Logica manejo;
+	
+	public Poder(int x,int y,Logica l,int d){
+		super(x,y);
+		manejo=l;
+		posicionImagen(d);
+		vida=200;
 	}
 
-	
 	public int getVida() {
-		// TODO Auto-generated method stub
-		return 0;
+		return vida;
 	}
 
 	
 	public void setVida(int v) {
-		// TODO Auto-generated method stub
-		
+		vida=v;
 	}
-
-	
-	public int getFila() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-	public void setFila(int f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	public int getColumna() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-	public void setColumna(int c) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 	public boolean movimientoPosible() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
 	public void posicionImagen(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	
-	public void setDireccion(int d) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void eliminar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
 	public void recibirDisparo() {
-		// TODO Auto-generated method stub
 		
 	}
 
-
-	@Override
 	public boolean mover() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
+	public boolean movimientoPosibleDisparo() {
+		return false;
+	}
 }

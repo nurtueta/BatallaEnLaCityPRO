@@ -2,8 +2,6 @@ package Grafica;
 
 import javax.swing.JLabel;
 
-import TDALista.Position;
-
 public abstract class ComponenteGrafico extends JLabel {
 	
 	/*Variables*/
@@ -13,7 +11,9 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int velocidad;
 	protected int miX,miY;
 	protected int direccion;
-	protected Position<ComponenteGrafico> posEnLista;
+	
+	protected int vida;
+	protected int powerUpDeTanque;
 	
 	/*Constructores*/
 	
@@ -33,19 +33,6 @@ public abstract class ComponenteGrafico extends JLabel {
 		
 	}
 	
-	public ComponenteGrafico(int vel, int x, int y)
-	{	
-		super();
-		velocidad = vel;
-		miX = x;
-		miY = y;
-		direccion = -1;
-		
-		//seteo el componente grafico en el lugar correspondiente
-		setBounds(miX*ancho , miY*alto, ancho, alto);
-		setVisible(true);
-	}
-	
 	/*Comandos*/
 	
 	//seteo la velocidad del componente grafico
@@ -54,42 +41,14 @@ public abstract class ComponenteGrafico extends JLabel {
 		velocidad = v;
 	}
 	
-	//seteo la posicion en X
-	public void setX(int x)
-	{
-		miX=x*ancho;
-	}
-	
-	//seteo la posicion en Y
-	public void setY(int y)
-	{
-		miY=y*alto;
-		
-	}
-	
 	public void setPosicionX(int x){
-		miX=x;
-		
+		miX=x;	
 	}
 
 	public void setPosicionY(int y){
 		miY=y;
 	}
 	/*Consultas*/
-
-	//pregunnto si es posible mover a esta posicion
-	public abstract boolean movimientoPosible();
-	
-	//devuelvo alto de la imagen
-	public int getAlto()
-	{
-		return alto;
-	}
-	
-	//devuelvo ancho de la imagen
-	public int getAncho(){
-		return ancho;
-	}
 	
 	//devuelvo la direccion para la que apunta el componente grafico
 	public int getDireccion()
@@ -117,23 +76,17 @@ public abstract class ComponenteGrafico extends JLabel {
 		return miY;
 	}
 	
-	
 	public int getY()
 	{
 		return miY*alto;
 	}
 	
-	public Position<ComponenteGrafico> getPosEnLista(){
-		return posEnLista;
-	}
+	//pregunnto si es posible mover a esta posicion
+	public abstract boolean movimientoPosible();
 	
-	public void setPosEnLista(Position<ComponenteGrafico> x){
-		posEnLista=x;
-	}
-	/**
-	 * Destruye al componente que recibe el mensaje.
-	 */
-	public	abstract void	eliminar();
+	public abstract boolean movimientoPosibleDisparo();
+	
+	public abstract void recibirDisparo();
 	
 	public abstract void posicionImagen(int i);
 
