@@ -122,25 +122,7 @@ public class GUI extends JFrame {
 			this.repaint();
 	    }
 	    
-<<<<<<< HEAD
-	    public void crearDisparo()
-	    {
-	    	ComponenteGrafico bala = new Disparo(mapaLogica.getJugador().getPosicionX(),mapaLogica.getJugador().getPosicionY(),listaDisparos,mapaLogica);
-			bala.setVisible(true);
-			listaDisparos.addLast(bala);
-			try {
-				disparosEliminables.addLast(listaDisparos.last());
-			
-			contentPane.add(bala);
-			contentPane.setComponentZOrder(bala, 1);
-			ComponenteGrafico ObjetoEnPosicionBala = M[bala.getPosicionY()][bala.getPosicionX()];
-			if (!ObjetoEnPosicionBala.movimientoPosible())
-				this.eliminarBala(listaDisparos.last());
-			} catch (EmptyListException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-=======
+
 	    public void crearDisparo(){
 	    	ComponenteGrafico bala=mapaLogica.crearDisparo();
 	    	if(bala!=null){
@@ -148,7 +130,6 @@ public class GUI extends JFrame {
 				contentPane.setComponentZOrder(bala, 1);
 				this.repaint();
 	    	}
->>>>>>> origin/master
 	    }
 	    
 	    private void crearEnemigo() {
@@ -174,63 +155,4 @@ public class GUI extends JFrame {
 	        this.repaint();
 	    }
 	    
-<<<<<<< HEAD
-	    public boolean finDelJuego()
-	    {
-	    	return mapaLogica.finDelJuego();
-	    }
-	    
-	    public ComponenteGrafico buscarColision(Rectangle p){	
-			
-			Iterator<ComponenteGrafico> it = listaDisparos.iterator();
-			ComponenteGrafico d=null;
-			boolean seguir = true;
-			
-				while(it.hasNext() && seguir)
-				{
-					d=it.next();			
-					if(p.intersects(d.getBounds())){
-						seguir=false;
-					}
-				}
-				
-				if (!seguir){
-					return d;
-				}
-				
-				
-			return null;
-		}
-	    
-		public void eliminarBalas()
-		{
-			Iterator<Position<ComponenteGrafico>> it = disparosEliminables.iterator();
-			try 
-			{
-				while( it.hasNext() ) 
-				{
-					Position<ComponenteGrafico> bala = it.next();
-					listaDisparos.remove(bala);
-				
-				}
-				
-			}catch (InvalidPositionException e) {e.printStackTrace();}
-
-			disparosEliminables = new Lista<Position<ComponenteGrafico>>();
-			
-		}
-		
-		public void eliminarBala(Position<ComponenteGrafico> x){
-			contentPane.remove(x.element());
-
-			try {
-
-				listaDisparos.remove(x);
-				System.out.println("elimino");
-			} catch (InvalidPositionException | NullPointerException e) {e.printStackTrace();}
-
-			
-		}
-=======
->>>>>>> origin/master
 }
