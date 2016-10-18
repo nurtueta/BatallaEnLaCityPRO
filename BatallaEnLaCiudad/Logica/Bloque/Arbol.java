@@ -34,4 +34,10 @@ public class Arbol extends Celda{
 		return true;
 	}
 
+	@Override
+	public void colicion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -7,6 +7,7 @@ import Tanque.Enemigo;
 
 public class MovimientoEnemigos extends Movimiento{
 
+	int direccion;
 
 	public MovimientoEnemigos(Logica l)
 	{
@@ -17,31 +18,29 @@ public class MovimientoEnemigos extends Movimiento{
 	{
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		
-			boolean movio;
+		
 			try
 			{
 				while(!miLogica.finDelJuego())
 				{
-<<<<<<< HEAD
 							
 							this.sleep(300);
-=======
-							this.sleep(500);
->>>>>>> origin/master
+							
+							
 							
 							for(ComponenteGrafico enemigo: enemigos)
 							{
-								movio=enemigo.mover();
+								enemigo.mover();
+								//disparo random del enemigo
+								direccion = (int) (Math.random()*1+1);
+								if(direccion==1)
+									miLogica.crearDisparoEnemigo(enemigo);
 								
-								miLogica.actualizarPanel();	
 							}
 							
-<<<<<<< HEAD
-							//grafica.eliminarBalas();
-							//grafica.eliminarEnemigos();
-						
-=======
->>>>>>> origin/master
+							
+
+							miLogica.actualizarPanel();	
 				}
 						
 			}catch(InterruptedException e){ e.printStackTrace();}

@@ -91,6 +91,8 @@ public abstract class ComponenteGrafico extends JLabel {
 	public abstract void posicionImagen(int i);
 
 	public abstract boolean mover();
+	
+	public abstract void colicion();
 
 	
 }

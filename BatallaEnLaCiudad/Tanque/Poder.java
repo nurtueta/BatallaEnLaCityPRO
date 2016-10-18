@@ -43,4 +43,10 @@ public class Poder extends Enemigo{
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
+
+	@Override
+	public void colicion() {
+		// TODO Auto-generated method stub
+		
+	}
 }

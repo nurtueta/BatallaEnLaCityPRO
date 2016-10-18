@@ -34,4 +34,10 @@ public class Acero extends Celda{
 		return false;
 	}
 
+	@Override
+	public void colicion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

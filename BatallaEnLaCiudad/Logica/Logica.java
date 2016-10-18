@@ -244,4 +244,38 @@ public class Logica {
 		return hiloEnemigos;
 	}
 	
+	public void crearDisparoEnemigo(ComponenteGrafico e){
+		
+		
+	}
+	
+	public void eliminarColicion(ComponenteGrafico b){
+		int sigX=0;
+		int sigY=0;
+		switch (b.getDireccion()) {
+		case 1:
+			sigX=b.getPosicionX()+1;
+			sigY=b.getPosicionY();			
+			break;
+		case 2:
+			sigX=b.getPosicionX()-1;
+			sigY=b.getPosicionY();
+			break;
+		case 3:
+			sigX=b.getPosicionX();
+			sigY=b.getPosicionY()-1;
+			break;
+		case 4:
+			sigX=b.getPosicionX();
+			sigY=b.getPosicionX()+1;
+			break;
+		default:
+			break;
+		}
+		
+		getComponente(sigX, sigY).colicion();
+		System.out.println(sigX+" "+sigY);
+		
+	}
+	
 }

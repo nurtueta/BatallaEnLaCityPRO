@@ -33,4 +33,10 @@ public class Piso extends Celda{
 	public boolean movimientoPosibleDisparo() {
 		return true;
 	}
+
+	@Override
+	public void colicion() {
+		// TODO Auto-generated method stub
+		
+	}
 }

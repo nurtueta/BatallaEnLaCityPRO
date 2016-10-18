@@ -21,31 +21,24 @@ public class MovimientoBalas extends Movimiento{
 				while(!miLogica.finDelJuego())
 				{
 							
-<<<<<<< HEAD
-							this.sleep(50);
-							
-=======
 							this.sleep(30);
 							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
->>>>>>> origin/master
+
 							for(ComponenteGrafico bala: balas)
 							{
 								movio=bala.mover();
 								if(!movio)
 									eliminar.add(bala);
 							}
-							
-<<<<<<< HEAD
-							grafica.eliminarBalas();
-							//grafica.eliminarEnemigos();
-=======
 							for(ComponenteGrafico bala: eliminar){
+								
+								miLogica.eliminarColicion(bala);
+								System.out.println("ss");
 								balas.remove(bala);
 								miLogica.eliminarBala(bala);
 							}
 								
 							miLogica.actualizarPanel();
->>>>>>> origin/master
 						
 				}
 						
