@@ -30,13 +30,13 @@ public class MovimientoEnemigos extends Movimiento{
 							
 							for(ComponenteGrafico enemigo: enemigos)
 							{
-								enemigo.mover();
-								miLogica.getMapaLogico()[enemigo.getPosicionY()][enemigo.getPosicionX()]=enemigo;
-								//disparo random del enemigo
 								direccion = (int) (Math.random()*1+1);
 								if(direccion==1)
 									miLogica.crearDisparoEnemigo(enemigo);
 								
+								miLogica.moverEnemigo(enemigo,direccion);
+								//disparo random del enemigo
+									
 							}
 							
 							

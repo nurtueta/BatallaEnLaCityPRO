@@ -110,7 +110,52 @@ public class Logica {
 	 * @param j Jugador o Enemigo
 	 * @param direccion Direccion de movimiento
 	 */
-	public void mover(ComponenteGrafico j,int direccion)
+	private void mover(ComponenteGrafico j,int direccion)
+	{
+		this.direccion=direccion;
+		int Y= j.getPosicionY();
+		int X = j.getPosicionX();
+		switch (direccion) {
+			case 1: if(X<(mapa[0].length-1)){
+						if(mapa[Y][X+1].movimientoPosible()){
+							mapa[Y][X+1]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							X++;
+						}	
+					}
+					break;
+			case 2: if(X>0){
+						if(mapa[Y][X-1].movimientoPosible()){
+							mapa[Y][X-1]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							X--;
+						}
+					}
+					break;
+			case 3: if(Y>0){
+						if(mapa[Y-1][X].movimientoPosible()){
+							mapa[Y-1][X]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							Y--;
+						}
+					}	
+					break;
+			case 4: if(Y<(mapa.length-1)){
+						if(mapa[Y+1][X].movimientoPosible()){
+							mapa[Y+1][X]=j;
+							mapa[Y][X]= new Piso(X,Y);
+							Y++;
+						}
+					}
+					break;
+			}
+
+		j.setPosicionX(X);
+		j.setPosicionY(Y);
+		j.posicionImagen(direccion);
+	}
+	
+	private void moverEnemigo(ComponenteGrafico j,int direccion)
 	{
 		this.direccion=direccion;
 		int Y= j.getPosicionY();
