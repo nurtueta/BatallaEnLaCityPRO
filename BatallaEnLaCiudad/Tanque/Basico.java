@@ -16,6 +16,7 @@ public class Basico extends Enemigo{
 		super(x,y);
 		manejo=l;
 		posicionImagen(d);
+		direccion=d;
 		vida=100;
 	}
 	

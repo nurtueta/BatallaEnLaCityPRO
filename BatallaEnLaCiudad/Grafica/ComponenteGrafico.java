@@ -80,12 +80,8 @@ public abstract class ComponenteGrafico extends JLabel {
 	{
 		return miY*alto;
 	}
-	
-	public	int obtenerDireccion(){
-		return direccion;
-	}
-	public	void	setDireccion(int direccion){
-		this.direccion=direccion;
+	public void setDireccion(int d){
+		direccion=d;
 	}
 	
 	//pregunnto si es posible mover a esta posicion
