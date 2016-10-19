@@ -67,14 +67,6 @@ public class Jugador extends Tanque{
 	public int getPowerUpDeTanque(){
 		return powerUpDeTanque;
 	}
-	
-	/**
-	 * Devuelve un valor entero representando la vida del Jugador.
-	 * @return vida actual del Jugador
-	 */
-	public int getVida(){
-		return vida;
-	}
 
 	public void recibirDisparo() {
 		

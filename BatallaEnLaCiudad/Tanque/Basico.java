@@ -54,11 +54,6 @@ public class Basico extends Enemigo{
 	public boolean movimientoPosible() {
 		return false;
 	}
-	
-	//devuelvo la vida del tanque
-	public int getVida() {
-		return vida;
-	}
 
 	public void recibirDisparo() {
 		

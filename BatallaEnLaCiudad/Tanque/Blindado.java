@@ -14,10 +14,6 @@ public class Blindado extends Enemigo{
 		vida=500;
 	}
 
-	public int getVida() {
-		return vida;
-	}
-
 	
 	public void setVida(int v) {
 		vida=v;

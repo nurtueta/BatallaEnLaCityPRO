@@ -206,8 +206,8 @@ public class Logica {
     
 	public ComponenteGrafico crearDisparo(){
 		
-		Disparo bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),miJugador.obtenerDireccion(),this);
-		
+		ComponenteGrafico bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),miJugador.obtenerDireccion(),this);
+		bala.setDireccion(miJugador.obtenerDireccion());
 		hiloBalas.addBala(bala);
 		switch(miJugador.obtenerDireccion()){
 			case 1:
@@ -278,6 +278,11 @@ public class Logica {
 		
 		getComponente(sigX, sigY).colicion();
 		System.out.println(sigX+" "+sigY);
+		if(getComponente(sigX, sigY).getVida()==0){
+			grafica.eliminarDisparo(getComponente(sigX, sigY));
+			mapa[sigY][sigX]=new Piso(sigX,sigY);
+		}
+		actualizarPanel();
 		
 	}
 	public	int obtenerPuntaje(){

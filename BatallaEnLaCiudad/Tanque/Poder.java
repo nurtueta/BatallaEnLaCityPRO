@@ -13,11 +13,6 @@ public class Poder extends Enemigo{
 		posicionImagen(d);
 		vida=200;
 	}
-
-	public int getVida() {
-		return vida;
-	}
-
 	
 	public void setVida(int v) {
 		vida=v;

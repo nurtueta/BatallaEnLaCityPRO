@@ -50,11 +50,11 @@ public class MovimientoEnemigos extends Movimiento{
 	}
 
 
-	public void addBala(Disparo x) {
+	public void addBala(ComponenteGrafico x) {
 		
 	}
 	
-	public void addEnemigo(Enemigo x) {
+	public void addEnemigo(ComponenteGrafico x) {
 		enemigos.add(x);
 	}
 

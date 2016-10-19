@@ -25,7 +25,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		velocidad = 0;
 		miX = x;
 		miY = y;
-		direccion = -1;
+		//direccion = -1;
 		
 		//seteo el componente grafico en el lugar correspondiente
 		setBounds(miX*ancho , miY*alto, ancho, alto);
@@ -100,6 +100,10 @@ public abstract class ComponenteGrafico extends JLabel {
 	public abstract boolean mover();
 	
 	public abstract void colicion();
+	
+	public final int getVida(){
+		return vida;
+	}
 
 	
 }

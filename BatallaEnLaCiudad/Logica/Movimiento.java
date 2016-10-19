@@ -29,9 +29,9 @@ public abstract class Movimiento extends Thread{
 		this.start();
 	}
 	
-	public abstract void addBala(Disparo x);
+	public abstract void addBala(ComponenteGrafico x);
 	
-	public abstract void addEnemigo(Enemigo x);
+	public abstract void addEnemigo(ComponenteGrafico x);
 	
 	public  ArrayList<ComponenteGrafico> getBalas(){
 		return balas;

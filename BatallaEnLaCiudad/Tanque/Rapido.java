@@ -14,11 +14,6 @@ public class Rapido extends Enemigo{
 		vida=100;
 		velocidad=3;
 	}
-	
-	public int getVida() {
-		return vida;
-	}
-	
 	public void setVida(int v) {
 		vida=v;		
 	}

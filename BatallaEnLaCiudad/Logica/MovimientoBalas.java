@@ -33,7 +33,6 @@ public class MovimientoBalas extends Movimiento{
 							for(ComponenteGrafico bala: eliminar){
 								
 								miLogica.eliminarColicion(bala);
-								System.out.println("ss");
 								balas.remove(bala);
 								miLogica.eliminarBala(bala);
 							}
@@ -45,11 +44,11 @@ public class MovimientoBalas extends Movimiento{
 			}catch(InterruptedException e){ e.printStackTrace();}
 	}
 
-	public void addBala(Disparo x) {
+	public void addBala(ComponenteGrafico x) {
 		balas.add(x);
 	}
 	
-	public void addEnemigo(Enemigo x){}
+	public void addEnemigo(ComponenteGrafico x){}
 
 
 }
