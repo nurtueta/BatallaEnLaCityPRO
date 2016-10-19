@@ -152,7 +152,6 @@ public class Logica {
 		j.setPosicionX(X);
 		j.setPosicionY(Y);
 		j.posicionImagen(direccion);
-		System.out.println(X+" "+Y);
 	}
 	
 	
@@ -206,42 +205,6 @@ public class Logica {
 	}
     
 	public ComponenteGrafico crearDisparo(){
-		
-		/*ComponenteGrafico bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),miJugador.obtenerDireccion(),this);
-		bala.setDireccion(miJugador.obtenerDireccion());
-		boolean puedeCrear=true;
-		switch(miJugador.obtenerDireccion()){
-			case 1:
-				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()+1].movimientoPosibleDisparo()){
-					puedeCrear=false;
-					bala.setPosicionX(bala.getPosicionX()+1);
-				}
-				break;
-			case 2:
-				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()-1].movimientoPosibleDisparo()){
-					puedeCrear=false;
-					bala.setPosicionX(bala.getPosicionX()-1);
-				}
-				break;
-			case 3:
-				if(!mapa[miJugador.getPosicionY()-1][miJugador.getPosicionX()].movimientoPosibleDisparo()){
-					puedeCrear=false;
-					bala.setPosicionY(bala.getPosicionY()-1);
-				}
-				break;
-			case 4:
-				if(!mapa[miJugador.getPosicionY()+1][miJugador.getPosicionX()].movimientoPosibleDisparo()){
-					puedeCrear=false;
-					bala.setPosicionY(bala.getPosicionY()+1);
-				}
-				break;
-		}
-		if(puedeCrear)
-			hiloBalas.addBala(bala);
-		else{
-			eliminarColicion(bala);
-			bala=null;
-		}*/
 		ComponenteGrafico bala = new Disparo(0,0,miJugador.getDireccion(),this);
 		boolean puedeCrear=true;
 		switch(miJugador.getDireccion()){
@@ -307,26 +270,7 @@ public class Logica {
 	public void eliminarColicion(int x,int y){
 		int sigX=x;
 		int sigY=y;
-		/*System.out.print("s"+d);
-		switch (d) {
-		case 1:
-			sigX++;			
-			break;
-		case 2:
-			sigX--;
-			break;
-		case 3:
-			sigY--;
-			break;
-		case 4:
-			sigY++;
-			break;
-		default:
-			break;
-		}*/
-		
 		getComponente(sigX, sigY).colicion();
-		System.out.println(sigX+" "+sigY);
 		if(getComponente(sigX, sigY).getVida()==0){
 			grafica.eliminarGrafico(getComponente(sigX, sigY));
 			mapa[sigY][sigX]=new Piso(sigX,sigY);

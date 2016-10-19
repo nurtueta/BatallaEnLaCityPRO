@@ -83,6 +83,8 @@ public class Jugador extends Tanque{
 	}
 
 	public void colicion() {
+		vida-=50;
+		System.out.println("te queda "+vida+" de vida");
 		
 	}
 }

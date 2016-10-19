@@ -100,7 +100,8 @@ public class Basico extends Enemigo{
 	}
 
 	public void colicion() {
-		vida=0;
+		vida-=25;
+		System.out.println("vida del enemigo impactado : "+vida);
 	}
 	
 }
