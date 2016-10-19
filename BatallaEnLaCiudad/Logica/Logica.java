@@ -15,6 +15,7 @@ public class Logica {
 	
 	private Movimiento hiloBalas;
 	private Movimiento hiloEnemigos;
+	private int puntaje;
 	
 	protected int direccion;
 	
@@ -28,7 +29,7 @@ public class Logica {
 		hiloEnemigos = new MovimientoEnemigos(this);
 		hiloBalas.start();
 		hiloEnemigos.start();
-		
+		puntaje=0;
 		grafica=laGUI;
 		
 		mapa=new ComponenteGrafico[20][20];
@@ -109,7 +110,7 @@ public class Logica {
 	 * @param j Jugador o Enemigo
 	 * @param direccion Direccion de movimiento
 	 */
-	private void mover(ComponenteGrafico j,int direccion)
+	public void mover(ComponenteGrafico j,int direccion)
 	{
 		this.direccion=direccion;
 		int Y= j.getPosicionY();
@@ -230,6 +231,7 @@ public class Logica {
 	
 	public ComponenteGrafico crearEnemigo(){
 		Enemigo enemigo = new Basico(4, 4,this,1);
+		mapa[4][4]=enemigo;
 		enemigo.setVisible(true);
 		hiloEnemigos.addEnemigo(enemigo);
 		return enemigo;
@@ -276,6 +278,9 @@ public class Logica {
 		getComponente(sigX, sigY).colicion();
 		System.out.println(sigX+" "+sigY);
 		
+	}
+	public	int obtenerPuntaje(){
+		return puntaje;
 	}
 	
 }
