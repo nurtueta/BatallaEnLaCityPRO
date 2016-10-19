@@ -128,9 +128,11 @@ public class GUI extends JFrame {
 	    
 	    private void crearEnemigo() {
 			ComponenteGrafico enemigo=mapaLogica.crearEnemigo();
-			contentPane.add(enemigo);
-			contentPane.setComponentZOrder(enemigo, 1);
-			this.repaint();
+			if(enemigo!=null){
+				contentPane.add(enemigo);
+				contentPane.setComponentZOrder(enemigo, 1);
+				this.repaint();
+			}
 		}
 
 	    public boolean finDelJuego(){

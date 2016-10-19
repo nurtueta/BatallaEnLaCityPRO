@@ -281,9 +281,12 @@ public class Logica {
 	
 	public ComponenteGrafico crearEnemigo(){
 		Enemigo enemigo = new Basico(4, 4,this,1);
-		mapa[4][4]=enemigo;
-		enemigo.setVisible(true);
-		hiloEnemigos.addEnemigo(enemigo);
+		if(mapa[4][4].movimientoPosible()){
+			mapa[4][4]=enemigo;
+			enemigo.setVisible(true);
+			hiloEnemigos.addEnemigo(enemigo);
+		}else
+			enemigo=null;
 		return enemigo;
 	
 	}

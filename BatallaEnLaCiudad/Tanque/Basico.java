@@ -100,7 +100,7 @@ public class Basico extends Enemigo{
 	}
 
 	public void colicion() {
-		
+		vida=0;
 	}
 	
 }
