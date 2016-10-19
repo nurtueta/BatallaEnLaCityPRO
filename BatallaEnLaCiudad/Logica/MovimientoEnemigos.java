@@ -1,6 +1,7 @@
 package Logica;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import Grafica.ComponenteGrafico;
 import Tanque.Enemigo;
@@ -30,11 +31,12 @@ public class MovimientoEnemigos extends Movimiento{
 							
 							for(ComponenteGrafico enemigo: enemigos)
 							{
-								direccion = (int) (Math.random()*1+1);
-								if(direccion==1)
+								Random rnd= new Random(); 
+								direccion = (int) (rnd.nextInt(4)+1);
+								if(direccion==5)
 									miLogica.crearDisparoEnemigo(enemigo);
 								
-								miLogica.moverEnemigo(enemigo,direccion);
+								miLogica.mover(enemigo,direccion);
 								//disparo random del enemigo
 									
 							}

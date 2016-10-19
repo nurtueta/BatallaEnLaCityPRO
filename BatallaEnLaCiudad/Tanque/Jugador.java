@@ -84,6 +84,7 @@ public class Jugador extends Tanque{
 		return false;
 	}
 	
+	
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}

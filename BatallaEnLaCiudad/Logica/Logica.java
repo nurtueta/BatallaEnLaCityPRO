@@ -17,7 +17,6 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private int puntaje;
 	
-	protected int direccion;
 	
 	protected GUI grafica;
 	
@@ -110,9 +109,9 @@ public class Logica {
 	 * @param j Jugador o Enemigo
 	 * @param direccion Direccion de movimiento
 	 */
-	private void mover(ComponenteGrafico j,int direccion)
+	public void mover(ComponenteGrafico j,int direccion)
 	{
-		this.direccion=direccion;
+		j.setDireccion(direccion);
 		int Y= j.getPosicionY();
 		int X = j.getPosicionX();
 		switch (direccion) {
@@ -155,50 +154,7 @@ public class Logica {
 		j.posicionImagen(direccion);
 	}
 	
-	private void moverEnemigo(ComponenteGrafico j,int direccion)
-	{
-		this.direccion=direccion;
-		int Y= j.getPosicionY();
-		int X = j.getPosicionX();
-		switch (direccion) {
-			case 1: if(X<(mapa[0].length-1)){
-						if(mapa[Y][X+1].movimientoPosible()){
-							mapa[Y][X+1]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							X++;
-						}	
-					}
-					break;
-			case 2: if(X>0){
-						if(mapa[Y][X-1].movimientoPosible()){
-							mapa[Y][X-1]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							X--;
-						}
-					}
-					break;
-			case 3: if(Y>0){
-						if(mapa[Y-1][X].movimientoPosible()){
-							mapa[Y-1][X]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							Y--;
-						}
-					}	
-					break;
-			case 4: if(Y<(mapa.length-1)){
-						if(mapa[Y+1][X].movimientoPosible()){
-							mapa[Y+1][X]=j;
-							mapa[Y][X]= new Piso(X,Y);
-							Y++;
-						}
-					}
-					break;
-			}
-
-		j.setPosicionX(X);
-		j.setPosicionY(Y);
-		j.posicionImagen(direccion);
-	}
+	
 	
 	
 	/**
@@ -210,7 +166,7 @@ public class Logica {
 	public void ingresarJugador()
 	{
 		miJugador = new Jugador(1,1);
-		direccion=1;
+		miJugador.setDireccion(1);
 		miJugador.setPosicionY(1);
 		miJugador.setPosicionX(1);
 		mapa[1][1]=miJugador;
@@ -250,10 +206,10 @@ public class Logica {
     
 	public ComponenteGrafico crearDisparo(){
 		
-		Disparo bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),direccion,this);
+		Disparo bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),miJugador.obtenerDireccion(),this);
 		
 		hiloBalas.addBala(bala);
-		switch(direccion){
+		switch(miJugador.obtenerDireccion()){
 			case 1:
 				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()+1].movimientoPosibleDisparo())
 					bala=null;
