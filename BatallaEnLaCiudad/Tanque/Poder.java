@@ -39,9 +39,7 @@ public class Poder extends Enemigo{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
 		
 	}
 }

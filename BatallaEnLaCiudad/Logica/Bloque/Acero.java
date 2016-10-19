@@ -12,6 +12,7 @@ public class Acero extends Celda{
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/acero.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
+		vida=1;
 	}
 	
 	public boolean movimientoPosible() {
@@ -34,9 +35,7 @@ public class Acero extends Celda{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
 		
 	}
 

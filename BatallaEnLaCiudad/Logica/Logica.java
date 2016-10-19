@@ -201,7 +201,7 @@ public class Logica {
 	
 	public void eliminarBala(ComponenteGrafico x){
 			hiloBalas.getBalas().remove(x);
-			grafica.eliminarDisparo(x);
+			grafica.eliminarGrafico(x);
 	}
     
 	public ComponenteGrafico crearDisparo(){
@@ -279,8 +279,9 @@ public class Logica {
 		getComponente(sigX, sigY).colicion();
 		System.out.println(sigX+" "+sigY);
 		if(getComponente(sigX, sigY).getVida()==0){
-			grafica.eliminarDisparo(getComponente(sigX, sigY));
+			grafica.eliminarGrafico(getComponente(sigX, sigY));
 			mapa[sigY][sigX]=new Piso(sigX,sigY);
+			grafica.agregarGrafico(getComponente(sigX, sigY));
 		}
 		actualizarPanel();
 		

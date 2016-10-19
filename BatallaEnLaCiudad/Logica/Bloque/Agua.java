@@ -12,6 +12,7 @@ public class Agua extends Celda {
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/agua.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
+		vida=1;
 	}
 	
 	public boolean movimientoPosible() {
@@ -34,9 +35,7 @@ public class Agua extends Celda {
 		return true;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
 		
 	}
 }

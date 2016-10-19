@@ -35,7 +35,6 @@ public class Ladrillo extends Celda{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
 		vida=0;
 		

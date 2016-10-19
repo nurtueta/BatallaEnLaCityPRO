@@ -86,14 +86,8 @@ public class GUI extends JFrame {
 	 						mapaLogica.mover(2);		//Mover el Jugador hacia la Izquierda
 	 						contentPane.repaint();	
 	 						break;
-	 					case KeyEvent.VK_Q :
-	 						
-	 						break;
 	 					case KeyEvent.VK_W :
 	 						crearEnemigo();
-	 						break;
-	 					case KeyEvent.VK_E :
-	 						
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						crearDisparo();
@@ -143,7 +137,7 @@ public class GUI extends JFrame {
 	    	return mapaLogica.finDelJuego();
 	    }
 	    
-	    public void eliminarDisparo(ComponenteGrafico x){
+	    public void eliminarGrafico(ComponenteGrafico x){
 	    	contentPane.remove(x);
 	    	refrescarPanel();
 	    }
@@ -154,5 +148,10 @@ public class GUI extends JFrame {
 	        contentPane.setComponentZOrder(mapaLogica.getJugador(), 1);
 	        this.repaint();
 	    }
+	    
+	    public void agregarGrafico(ComponenteGrafico x){
+	    	contentPane.add(x);
+	    	refrescarPanel();
+		}	
 	    
 }

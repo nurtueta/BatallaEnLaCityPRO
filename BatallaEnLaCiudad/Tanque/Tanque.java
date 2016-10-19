@@ -8,8 +8,5 @@ public abstract class Tanque extends Celda {
 	public	Tanque(int x,int y){
 		super(x,y);		
 	}
-	public	boolean movimientoPosible(){
-		return false;
-	}
 	
 }
