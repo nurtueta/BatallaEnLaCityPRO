@@ -71,32 +71,25 @@ public class Disparo extends Celda{
 			seMovio=false;
 		else
 			switch (direccion) {
-				case 1: 
-					if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosibleDisparo())     
-						this.setPosicionX(getPosicionX()+1);
-					else
+				case 1: this.setPosicionX(getPosicionX()+1);
+					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())     
 						seMovio=false;
 					
 					break;
 				case 2: 
-					if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosibleDisparo())
-						this.setPosicionX(getPosicionX()-1);
-					else
+					this.setPosicionX(getPosicionX()-1);
+					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
 						seMovio=false;
 					break;
 				case 3: 
-					if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()-1).movimientoPosibleDisparo())	
-						this.setPosicionY(getPosicionY()-1);
-					else
+					this.setPosicionY(getPosicionY()-1);
+					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())	
 						seMovio=false;
 					break;
 				case 4: 
-					if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).movimientoPosibleDisparo())
-						this.setPosicionY(getPosicionY()+1);
-					else
+					this.setPosicionY(getPosicionY()+1);
+					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
 						seMovio=false;
-						//le saco vida
-						//manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).setVida(getVida()-10);
 					break;
 				}
 		return seMovio;

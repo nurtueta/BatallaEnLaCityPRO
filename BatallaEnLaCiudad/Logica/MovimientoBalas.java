@@ -27,15 +27,16 @@ public class MovimientoBalas extends Movimiento{
 							for(ComponenteGrafico bala: balas)
 							{
 								movio=bala.mover();
-								if(!movio)
+								if(!movio){
 									eliminar.add(bala);
+								}
 							}
 							for(ComponenteGrafico bala: eliminar){
 								
-								miLogica.eliminarColicion(bala);
-								System.out.println("ss");
-								balas.remove(bala);
+								miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY());
 								miLogica.eliminarBala(bala);
+								balas.remove(bala);
+								
 							}
 								
 							miLogica.actualizarPanel();
@@ -45,11 +46,11 @@ public class MovimientoBalas extends Movimiento{
 			}catch(InterruptedException e){ e.printStackTrace();}
 	}
 
-	public void addBala(Disparo x) {
+	public void addBala(ComponenteGrafico x) {
 		balas.add(x);
 	}
 	
-	public void addEnemigo(Enemigo x){}
+	public void addEnemigo(ComponenteGrafico x){}
 
 
 }

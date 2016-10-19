@@ -27,7 +27,7 @@ public class MovimientoEnemigos extends Movimiento{
 							
 							this.sleep(1000);
 							
-							
+							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 							
 							for(ComponenteGrafico enemigo: enemigos)
 							{
@@ -35,10 +35,16 @@ public class MovimientoEnemigos extends Movimiento{
 								direccion = (int) (rnd.nextInt(4)+1);
 								if(direccion==5)
 									miLogica.crearDisparoEnemigo(enemigo);
-								
-								miLogica.mover(enemigo,direccion);
+								if(enemigo.getVida()==0)
+									eliminar.add(enemigo);
+								else
+									miLogica.mover(enemigo,direccion);
 								//disparo random del enemigo
-									
+							}
+							
+							for(ComponenteGrafico enemigo: eliminar)
+							{
+								enemigos.remove(enemigo);
 							}
 							
 							
@@ -50,11 +56,11 @@ public class MovimientoEnemigos extends Movimiento{
 	}
 
 
-	public void addBala(Disparo x) {
+	public void addBala(ComponenteGrafico x) {
 		
 	}
 	
-	public void addEnemigo(Enemigo x) {
+	public void addEnemigo(ComponenteGrafico x) {
 		enemigos.add(x);
 	}
 

@@ -13,11 +13,6 @@ public class Poder extends Enemigo{
 		posicionImagen(d);
 		vida=200;
 	}
-
-	public int getVida() {
-		return vida;
-	}
-
 	
 	public void setVida(int v) {
 		vida=v;
@@ -44,9 +39,7 @@ public class Poder extends Enemigo{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
 		
 	}
 }

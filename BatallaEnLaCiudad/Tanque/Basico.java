@@ -16,6 +16,7 @@ public class Basico extends Enemigo{
 		super(x,y);
 		manejo=l;
 		posicionImagen(d);
+		direccion=d;
 		vida=100;
 	}
 	
@@ -53,11 +54,6 @@ public class Basico extends Enemigo{
 	//devuelvo si puedo mover a esta posicion
 	public boolean movimientoPosible() {
 		return false;
-	}
-	
-	//devuelvo la vida del tanque
-	public int getVida() {
-		return vida;
 	}
 
 	public void recibirDisparo() {
@@ -103,10 +99,9 @@ public class Basico extends Enemigo{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
-		
+		vida-=25;
+		System.out.println("vida del enemigo impactado : "+vida);
 	}
 	
 }

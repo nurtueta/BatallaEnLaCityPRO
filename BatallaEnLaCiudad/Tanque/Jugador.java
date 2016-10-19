@@ -12,6 +12,7 @@ public class Jugador extends Tanque{
 	public Jugador(int x,int y){
 		super(x,y);
 		posicionImagen(1);
+		vida=100;
 	}
 	
 	/*Comandos*/
@@ -67,14 +68,6 @@ public class Jugador extends Tanque{
 	public int getPowerUpDeTanque(){
 		return powerUpDeTanque;
 	}
-	
-	/**
-	 * Devuelve un valor entero representando la vida del Jugador.
-	 * @return vida actual del Jugador
-	 */
-	public int getVida(){
-		return vida;
-	}
 
 	public void recibirDisparo() {
 		
@@ -89,9 +82,9 @@ public class Jugador extends Tanque{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
+		vida-=50;
+		System.out.println("te queda "+vida+" de vida");
 		
 	}
 }

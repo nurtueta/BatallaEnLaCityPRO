@@ -14,11 +14,6 @@ public class Rapido extends Enemigo{
 		vida=100;
 		velocidad=3;
 	}
-	
-	public int getVida() {
-		return vida;
-	}
-	
 	public void setVida(int v) {
 		vida=v;		
 	}
@@ -43,9 +38,7 @@ public class Rapido extends Enemigo{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
 		
 	}
 }

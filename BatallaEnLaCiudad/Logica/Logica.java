@@ -201,40 +201,55 @@ public class Logica {
 	
 	public void eliminarBala(ComponenteGrafico x){
 			hiloBalas.getBalas().remove(x);
-			grafica.eliminarDisparo(x);
+			grafica.eliminarGrafico(x);
 	}
     
 	public ComponenteGrafico crearDisparo(){
-		
-		Disparo bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),miJugador.obtenerDireccion(),this);
-		
-		hiloBalas.addBala(bala);
-		switch(miJugador.obtenerDireccion()){
+		ComponenteGrafico bala = new Disparo(0,0,miJugador.getDireccion(),this);
+		boolean puedeCrear=true;
+		switch(miJugador.getDireccion()){
 			case 1:
+				bala.setPosicionX(miJugador.getPosicionX()+1);
+				bala.setPosicionY(miJugador.getPosicionY());
 				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()+1].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
 			case 2:
+				bala.setPosicionX(miJugador.getPosicionX()-1);
+				bala.setPosicionY(miJugador.getPosicionY());
 				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()-1].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
 			case 3:
+				bala.setPosicionX(miJugador.getPosicionX());
+				bala.setPosicionY(miJugador.getPosicionY()-1);
 				if(!mapa[miJugador.getPosicionY()-1][miJugador.getPosicionX()].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
 			case 4:
+				bala.setPosicionX(miJugador.getPosicionX());
+				bala.setPosicionY(miJugador.getPosicionY()+1);
 				if(!mapa[miJugador.getPosicionY()+1][miJugador.getPosicionX()].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
+		}
+		if(!puedeCrear){
+			eliminarColicion(bala.getPosicionX(),bala.getPosicionY());
+			bala=null;
+		}else{
+			hiloBalas.addBala(bala);
 		}
 		return bala;
 	}
 	
 	public ComponenteGrafico crearEnemigo(){
 		Enemigo enemigo = new Basico(4, 4,this,1);
-		mapa[4][4]=enemigo;
-		enemigo.setVisible(true);
-		hiloEnemigos.addEnemigo(enemigo);
+		if(mapa[4][4].movimientoPosible()){
+			mapa[4][4]=enemigo;
+			enemigo.setVisible(true);
+			hiloEnemigos.addEnemigo(enemigo);
+		}else
+			enemigo=null;
 		return enemigo;
 	
 	}
@@ -252,32 +267,16 @@ public class Logica {
 		
 	}
 	
-	public void eliminarColicion(ComponenteGrafico b){
-		int sigX=0;
-		int sigY=0;
-		switch (b.getDireccion()) {
-		case 1:
-			sigX=b.getPosicionX()+1;
-			sigY=b.getPosicionY();			
-			break;
-		case 2:
-			sigX=b.getPosicionX()-1;
-			sigY=b.getPosicionY();
-			break;
-		case 3:
-			sigX=b.getPosicionX();
-			sigY=b.getPosicionY()-1;
-			break;
-		case 4:
-			sigX=b.getPosicionX();
-			sigY=b.getPosicionX()+1;
-			break;
-		default:
-			break;
-		}
-		
+	public void eliminarColicion(int x,int y){
+		int sigX=x;
+		int sigY=y;
 		getComponente(sigX, sigY).colicion();
-		System.out.println(sigX+" "+sigY);
+		if(getComponente(sigX, sigY).getVida()==0){
+			grafica.eliminarGrafico(getComponente(sigX, sigY));
+			mapa[sigY][sigX]=new Piso(sigX,sigY);
+			grafica.agregarGrafico(getComponente(sigX, sigY));
+		}
+		actualizarPanel();
 		
 	}
 	public	int obtenerPuntaje(){
