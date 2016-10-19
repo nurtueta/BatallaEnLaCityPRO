@@ -29,7 +29,7 @@ public class GUI extends JFrame {
 	            }
 	        });
 	    }
-	 
+
 	    /**
 	     * Create the frame.
 	     */
@@ -50,8 +50,19 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
+	        
+	       // JTextField panelPuntaje = new JTextField("Puntaje: "+mapaLogica.obtenerPuntaje());
+	        JLabel panelPuntaje = new JLabel("Puntaje:"+mapaLogica.obtenerPuntaje());
+
+	        panelPuntaje.setFont(new Font("Verdana",1,500));
+	        panelPuntaje.setForeground(Color.RED);
+	        contentPane.add(panelPuntaje);
+	        
+	        //contentPane.add(panelPuntaje);
+	        // contentPane.setComponentZOrder(panelPuntaje, 0);
+	        //panelPuntaje.setBounds(contentPane.getWidth()-100, 50, 100, 50);
 	        this.setLayout(null);
-	       
+	        
 	        generarPanel();
 	        crearJugador();
 	        
@@ -99,6 +110,8 @@ public class GUI extends JFrame {
 	 						crearDisparo();
 	 						break;
 					 }
+				   //     contentPane.setComponentZOrder(panelPuntaje, 0);
+
 					 contentPane.repaint();
 				}
 
