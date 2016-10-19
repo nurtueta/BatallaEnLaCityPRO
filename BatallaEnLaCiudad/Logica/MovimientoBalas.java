@@ -27,14 +27,17 @@ public class MovimientoBalas extends Movimiento{
 							for(ComponenteGrafico bala: balas)
 							{
 								movio=bala.mover();
-								if(!movio)
+								if(!movio){
+									miLogica.eliminarColicion(bala);
 									eliminar.add(bala);
+								}
 							}
 							for(ComponenteGrafico bala: eliminar){
 								
 								miLogica.eliminarColicion(bala);
-								balas.remove(bala);
 								miLogica.eliminarBala(bala);
+								balas.remove(bala);
+								
 							}
 								
 							miLogica.actualizarPanel();

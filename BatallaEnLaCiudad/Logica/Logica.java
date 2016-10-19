@@ -152,6 +152,7 @@ public class Logica {
 		j.setPosicionX(X);
 		j.setPosicionY(Y);
 		j.posicionImagen(direccion);
+		System.out.println(X+" "+Y);
 	}
 	
 	
@@ -208,24 +209,30 @@ public class Logica {
 		
 		ComponenteGrafico bala = new Disparo(miJugador.getPosicionX(),miJugador.getPosicionY(),miJugador.obtenerDireccion(),this);
 		bala.setDireccion(miJugador.obtenerDireccion());
-		hiloBalas.addBala(bala);
+		boolean puedeCrear=true;
 		switch(miJugador.obtenerDireccion()){
 			case 1:
 				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()+1].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
 			case 2:
 				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()-1].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
 			case 3:
 				if(!mapa[miJugador.getPosicionY()-1][miJugador.getPosicionX()].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
 			case 4:
 				if(!mapa[miJugador.getPosicionY()+1][miJugador.getPosicionX()].movimientoPosibleDisparo())
-					bala=null;
+					puedeCrear=false;
 				break;
+		}
+		if(puedeCrear)
+			hiloBalas.addBala(bala);
+		else{
+			eliminarColicion(bala);
+			bala=null;
 		}
 		return bala;
 	}
