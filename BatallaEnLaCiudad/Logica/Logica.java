@@ -111,6 +111,7 @@ public class Logica {
 	 */
 	public void mover(ComponenteGrafico j,int direccion)
 	{
+		if(direccion!=5)
 		j.setDireccion(direccion);
 		int Y= j.getPosicionY();
 		int X = j.getPosicionX();
@@ -148,10 +149,14 @@ public class Logica {
 					}
 					break;
 			}
-
+		if(direccion!=5){
 		j.setPosicionX(X);
 		j.setPosicionY(Y);
 		j.posicionImagen(direccion);
+		}
+		else{
+			crearDisparo(j);
+		}
 	}
 	
 	
@@ -204,7 +209,7 @@ public class Logica {
 			grafica.eliminarGrafico(x);
 	}
     
-	public ComponenteGrafico crearDisparo(){
+	public ComponenteGrafico crearDisparo(ComponenteGrafico miJugador){
 		ComponenteGrafico bala = new Disparo(0,0,miJugador.getDireccion(),this);
 		boolean puedeCrear=true;
 		switch(miJugador.getDireccion()){

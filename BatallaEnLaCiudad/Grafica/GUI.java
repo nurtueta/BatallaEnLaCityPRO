@@ -131,7 +131,7 @@ public class GUI extends JFrame {
 	    
 
 	    public void crearDisparo(){
-	    	ComponenteGrafico bala=mapaLogica.crearDisparo();
+	    	ComponenteGrafico bala=mapaLogica.crearDisparo(mapaLogica.getJugador());
 	    	if(bala!=null){
 				contentPane.add(bala);
 				contentPane.setComponentZOrder(bala, 1);

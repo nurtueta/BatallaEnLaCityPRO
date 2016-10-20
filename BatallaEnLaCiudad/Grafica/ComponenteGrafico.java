@@ -48,6 +48,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	public void setPosicionY(int y){
 		miY=y;
 	}
+	
 	/*Consultas*/
 	
 	//devuelvo la direccion para la que apunta el componente grafico

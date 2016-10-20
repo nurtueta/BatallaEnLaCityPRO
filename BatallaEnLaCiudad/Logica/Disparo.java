@@ -10,7 +10,6 @@ public class Disparo extends Celda{
 	/**
 	 * 
 	 */
-	protected int direccion;
 	
 	protected Logica manejo;
 	
