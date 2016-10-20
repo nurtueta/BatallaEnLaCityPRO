@@ -25,7 +25,8 @@ public class MovimientoBalas extends Movimiento{
 							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 
 							for(ComponenteGrafico bala: balas)
-							{
+							{	
+								
 								movio=bala.mover();
 								if(!movio){
 									eliminar.add(bala);

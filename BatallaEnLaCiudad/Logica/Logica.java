@@ -209,7 +209,7 @@ public class Logica {
 			grafica.eliminarGrafico(x);
 	}
     
-	public ComponenteGrafico crearDisparo(ComponenteGrafico miJugador){
+	private ComponenteGrafico crearDisparo(ComponenteGrafico miJugador){
 		ComponenteGrafico bala = new Disparo(0,0,miJugador.getDireccion(),this);
 		boolean puedeCrear=true;
 		switch(miJugador.getDireccion()){
@@ -247,10 +247,10 @@ public class Logica {
 		return bala;
 	}
 	
-	public ComponenteGrafico crearEnemigo(){
-		Enemigo enemigo = new Basico(4, 4,this,1);
-		if(mapa[4][4].movimientoPosible()){
-			mapa[4][4]=enemigo;
+	private ComponenteGrafico crearEnemigo(int x,int y){
+		Enemigo enemigo = new Basico(x, y,this,1);
+		if(mapa[y][x].movimientoPosible()){
+			mapa[y][x]=enemigo;
 			enemigo.setVisible(true);
 			hiloEnemigos.addEnemigo(enemigo);
 		}else
@@ -288,4 +288,33 @@ public class Logica {
 		return puntaje;
 	}
 	
+	public void crearDisparo(){
+    	ComponenteGrafico bala=crearDisparo(getJugador());
+    	if(bala!=null){
+    		grafica.agregarGrafico(bala);
+    		grafica.agregarZOrder(bala,1);
+    	}
+    }
+	
+	public void crearJugador(){
+    	ingresarJugador();
+        grafica.agregarGrafico(getJugador());
+        grafica.agregarZOrder(getJugador(), 1);
+    }
+	
+	public void crearEnemigo() {
+		ComponenteGrafico enemigo=crearEnemigo(4,4);
+		if(enemigo!=null){
+			grafica.agregarGrafico(enemigo);
+			grafica.agregarZOrder(enemigo, 1);
+		}
+	}
+	
+	public void generarPanel(){
+		for(int i=0;i<20;i++)
+		 	for(int j=0;j<20;j++){
+		 		ComponenteGrafico comp = getComponente(i,j);
+		 		grafica.agregarGrafico(comp);
+		 	}
+    }
 }

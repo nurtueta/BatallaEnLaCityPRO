@@ -101,6 +101,10 @@ public abstract class ComponenteGrafico extends JLabel {
 	public final int getVida(){
 		return vida;
 	}
+	
+	public boolean esArbol(){
+		return false;
+	}
 
 	
 }

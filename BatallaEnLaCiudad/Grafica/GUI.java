@@ -12,7 +12,8 @@ public class GUI extends JFrame {
 	
 	private JPanel contentPane;
 	 private Logica mapaLogica;
-	 
+	 private boolean disparo;
+	 private boolean movio;
 	    /**
 	     * Launch the application.
 	     */
@@ -34,7 +35,8 @@ public class GUI extends JFrame {
 	     * Create the frame.
 	     */
 	    public GUI() {
-	    	
+	    	disparo=false;
+	    	movio=false;
 	    	mapaLogica = new Logica(this);
 	    	
 	        //seteo inicial
@@ -63,8 +65,8 @@ public class GUI extends JFrame {
 	        //panelPuntaje.setBounds(contentPane.getWidth()-100, 50, 100, 50);
 	        this.setLayout(null);
 	        
-	        generarPanel();
-	        crearJugador();
+	        mapaLogica.generarPanel();
+	        mapaLogica.crearJugador();
 	        
 	        setVisible(true);
 	        
@@ -81,27 +83,42 @@ public class GUI extends JFrame {
 
 				public void keyPressed(KeyEvent e) {
 					 switch(e.getKeyCode()){
-					 	case KeyEvent.VK_UP : 
-					 		mapaLogica.mover(3);		//Mover el Jugador hacia Arriba
-					 		contentPane.repaint();	
+					 	case KeyEvent.VK_UP :
+					 		if(!movio){
+						 		mapaLogica.mover(3);		//Mover el Jugador hacia Arriba
+						 		refrescarPanel();
+						 		movio=true;
+						 	}
 					 		break;
 						case KeyEvent.VK_DOWN :
-							mapaLogica.mover(4);		//Mover el Jugador hacia Abajo
-							contentPane.repaint();	
+							if(!movio){
+						 		mapaLogica.mover(4);		//Mover el Jugador hacia Arriba
+						 		refrescarPanel();
+						 		movio=true;
+						 	}
 							break;
 	        			case KeyEvent.VK_RIGHT :
-	        				mapaLogica.mover(1);		//Mover el Jugador hacia la Derecha
-	        				contentPane.repaint();		
+	        				if(!movio){
+						 		mapaLogica.mover(1);		//Mover el Jugador hacia Arriba
+						 		refrescarPanel();
+						 		movio=true;
+						 	}
 	        				break;
 	 					case KeyEvent.VK_LEFT :
-	 						mapaLogica.mover(2);		//Mover el Jugador hacia la Izquierda
-	 						contentPane.repaint();	
+	 						if(!movio){
+						 		mapaLogica.mover(2);		//Mover el Jugador hacia Arriba
+						 		refrescarPanel();
+						 		movio=true;
+						 	}	
 	 						break;
 	 					case KeyEvent.VK_W :
-	 						crearEnemigo();
+	 						mapaLogica.crearEnemigo();
 	 						break;
 	 					case KeyEvent.VK_SPACE:
-	 						crearDisparo();
+	 						if(!disparo){
+	 							mapaLogica.crearDisparo();
+	 							disparo=true;
+	 						}
 	 						break;
 					 }
 				   //     contentPane.setComponentZOrder(panelPuntaje, 0);
@@ -109,8 +126,24 @@ public class GUI extends JFrame {
 					 contentPane.repaint();
 				}
 
-				public void keyReleased(KeyEvent arg0){
-					
+				public void keyReleased(KeyEvent e){
+					switch(e.getKeyCode()){	
+						case KeyEvent.VK_SPACE:
+							disparo=false;
+							break;
+						case KeyEvent.VK_UP : 
+					 		movio=false;
+							break;
+						case KeyEvent.VK_DOWN :
+							movio=false;
+							break;
+	        			case KeyEvent.VK_RIGHT :
+	        				movio=false;
+	        				break;
+	 					case KeyEvent.VK_LEFT :
+	 						movio=false;
+	 						break;
+					}
 				}
 
 				public void keyTyped(KeyEvent arg0){
@@ -121,32 +154,6 @@ public class GUI extends JFrame {
 	    public void refrescarPanel(){
 	    	this.repaint();
 	    }
-	    	
-		public void generarPanel(){
-			for(int i=0;i<20;i++)
-			 	for(int j=0;j<20;j++)
-			 		contentPane.add(mapaLogica.getComponente(i, j));
-			this.repaint();
-	    }
-	    
-
-	    public void crearDisparo(){
-	    	ComponenteGrafico bala=mapaLogica.crearDisparo(mapaLogica.getJugador());
-	    	if(bala!=null){
-				contentPane.add(bala);
-				contentPane.setComponentZOrder(bala, 1);
-				this.repaint();
-	    	}
-	    }
-	    
-	    private void crearEnemigo() {
-			ComponenteGrafico enemigo=mapaLogica.crearEnemigo();
-			if(enemigo!=null){
-				contentPane.add(enemigo);
-				contentPane.setComponentZOrder(enemigo, 1);
-				this.repaint();
-			}
-		}
 
 	    public boolean finDelJuego(){
 	    	return mapaLogica.finDelJuego();
@@ -157,16 +164,14 @@ public class GUI extends JFrame {
 	    	refrescarPanel();
 	    }
 	    
-	    public void crearJugador(){
-	    	mapaLogica.ingresarJugador();
-	        contentPane.add(mapaLogica.getJugador());
-	        contentPane.setComponentZOrder(mapaLogica.getJugador(), 1);
-	        this.repaint();
-	    }
-	    
 	    public void agregarGrafico(ComponenteGrafico x){
 	    	contentPane.add(x);
 	    	refrescarPanel();
 		}	
+	    
+	    public void agregarZOrder(ComponenteGrafico x,int a){
+	    	contentPane.setComponentZOrder(x, a);
+	    	refrescarPanel();
+	    }
 	    
 }

@@ -32,7 +32,7 @@ public class MovimientoEnemigos extends Movimiento{
 							for(ComponenteGrafico enemigo: enemigos)
 							{
 								Random rnd= new Random(); 
-								direccion = (int) (rnd.nextInt(5)+1);
+								direccion = (int) (rnd.nextInt(4)+1);
 								if(direccion==5)
 									miLogica.crearDisparoEnemigo(enemigo);
 								if(enemigo.getVida()==0)

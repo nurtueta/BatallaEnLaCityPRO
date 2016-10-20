@@ -19,6 +19,10 @@ public class Arbol extends Celda{
 		return true;
 	}
 
+	public boolean esArbol(){
+		return true;
+	}
+	
 	public void posicionImagen(int i) {
 		
 	}
