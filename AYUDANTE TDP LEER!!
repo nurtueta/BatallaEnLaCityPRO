@@ -1,0 +1,8 @@
+con la tecla W se crean enemigos nuevos que disparan pero sus balas no se pueden ver. Aun resta corregir ese error gràfico.
+
+con la tecla SPACE se efectuan los disparos.
+
+con las teclas ↑ ↓ → ← se mueve el tanque del jugador.
+
+Tanto el Jugador como los tanques enemigos pueden ser destruidos luego de 4 disparos. Pero el Jugador aun no puede perder el juego. sigue vivo de manera
+invisible
