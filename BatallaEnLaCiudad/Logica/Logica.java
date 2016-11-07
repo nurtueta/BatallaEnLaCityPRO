@@ -78,6 +78,8 @@ public class Logica {
 			      		}else
 				      		if(s=='B'){
 				      			mapa[j][i]= new Arbol(i,j);
+				      			//grafica.agregarGrafico(mapa[j][i]);
+				      		//	grafica.setComponentZOrder(mapa[j][i], 1);
 				      		}/*else
 					      		if(s=='E'){
 					      			mapa[i][j]= 26; Aguila == Eagle
@@ -203,6 +205,7 @@ public class Logica {
 	}
 	
 	public void actualizarPanel(){
+		grafica.getPanelPuntaje().setText(""+puntaje);
 		grafica.repaint();
 	}
 	
@@ -289,7 +292,7 @@ public class Logica {
     	ComponenteGrafico bala=crearDisparo(getJugador());
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
-    		grafica.agregarZOrder(bala,1);
+    		grafica.agregarZOrder(bala,2);
     	}
     }
 	
@@ -297,7 +300,7 @@ public class Logica {
 		ComponenteGrafico bala=crearDisparo(enemigo);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
-    		grafica.agregarZOrder(bala,1);
+    		grafica.agregarZOrder(bala,2);
     	}
 		
 	}
@@ -305,14 +308,14 @@ public class Logica {
 	public void crearJugador(){
     	ingresarJugador();
         grafica.agregarGrafico(getJugador());
-        grafica.agregarZOrder(getJugador(), 1);
+        grafica.agregarZOrder(getJugador(), 2);
     }
 	
 	public void crearEnemigo() {
 		ComponenteGrafico enemigo=crearEnemigo(4,4);
 		if(enemigo!=null){
 			grafica.agregarGrafico(enemigo);
-			grafica.agregarZOrder(enemigo, 1);
+			grafica.agregarZOrder(enemigo, 2);
 		}
 	}
 	
@@ -321,9 +324,10 @@ public class Logica {
 		 	for(int j=0;j<20;j++){
 		 		ComponenteGrafico comp = getComponente(i,j);
 		 		grafica.agregarGrafico(comp);
+		 	//	grafica.getContentPane().setComponentZOrder(comp, comp.getComponentZOrder());
+		 		//grafica.getContentPane().setComponentZOrder(grafica.getComponent(grafica.getComponentCount()-1),comp.getComponentZOrder());
 		 	}
-    }
-	
+	}	
 	public void iniciarMovimientoJugador(int d){
 		hilosFluidos[0]=new MovimientoFluido(this, miJugador.getPosicionX(), miJugador.getPosicionY(), d);
 		hilosFluidos[0].start();
@@ -333,6 +337,9 @@ public class Logica {
 		hilosFluidos[enemigo]=new MovimientoFluido(this, e.getPosicionX(), e.getPosicionY(), d);
 		hilosFluidos[enemigo].start();
 	}
-	
+	public	void	addPuntaje(){
+		puntaje+=100;
+		System.out.println(puntaje);
+	}
 	
 }

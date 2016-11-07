@@ -14,6 +14,7 @@ public class GUI extends JFrame {
 	 private Logica mapaLogica;
 	 private boolean disparo;
 	 private boolean movio;
+	 protected	JLabel	panelPuntaje;
 	    /**
 	     * Launch the application.
 	     */
@@ -52,18 +53,20 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
-	        
+	        contentPane.setLayout(null);
+	        this.setLayout(null);
 	       // JTextField panelPuntaje = new JTextField("Puntaje: "+mapaLogica.obtenerPuntaje());
-	        JLabel panelPuntaje = new JLabel("Puntaje:"+mapaLogica.obtenerPuntaje());
+	        panelPuntaje = new JLabel("Puntaje:"+mapaLogica.obtenerPuntaje());
 
-	        panelPuntaje.setFont(new Font("Verdana",1,500));
+	       // panelPuntaje.setFont(new Font("Verdana",1,500));
+	        
+	       
 	        panelPuntaje.setForeground(Color.RED);
 	        contentPane.add(panelPuntaje);
+	        contentPane.getComponent(contentPane.getComponentCount()-1).setBounds(50, 50, 300, 300);
+	        panelPuntaje.setVisible(true);
+	      //  contentPane.Componen
 	        
-	        //contentPane.add(panelPuntaje);
-	        // contentPane.setComponentZOrder(panelPuntaje, 0);
-	        //panelPuntaje.setBounds(contentPane.getWidth()-100, 50, 100, 50);
-	        this.setLayout(null);
 	        
 	        mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
@@ -154,10 +157,17 @@ public class GUI extends JFrame {
 	    
 	    public void agregarGrafico(ComponenteGrafico x){
 	    	contentPane.add(x);
+
 		}	
+	    public	JLabel	getPanelPuntaje(){
+	    	return panelPuntaje;
+	    }
 	    
 	    public void agregarZOrder(ComponenteGrafico x,int a){
 	    	contentPane.setComponentZOrder(x, a);
+	    }
+	    public	JPanel	getContentPane(){
+	    	return contentPane;
 	    }
 	    
 }
