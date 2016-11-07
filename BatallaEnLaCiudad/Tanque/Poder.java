@@ -39,7 +39,7 @@ public class Poder extends Enemigo{
 		return false;
 	}
 
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		
 	}
 }

@@ -160,4 +160,8 @@ public class GUI extends JFrame {
 	    	contentPane.setComponentZOrder(x, a);
 	    }
 	    
+	    public void terminarJuego(){
+	    	System.exit(0);
+	    }
+	    
 }

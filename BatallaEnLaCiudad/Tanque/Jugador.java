@@ -82,9 +82,12 @@ public class Jugador extends Tanque{
 		return false;
 	}
 
-	public void colicion() {
-		vida-=50;
-		System.out.println("te queda "+vida+" de vida");
+	public void colicion(int deQuienEs) {
+		//pruebo de quien es el disparo que recive	
+		if(deQuienEs==0){
+			vida-=50;
+			System.out.println("te queda "+vida+" de vida");
+		}
 		
 	}
 }

@@ -38,7 +38,7 @@ public class Rapido extends Enemigo{
 		return false;
 	}
 
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		
 	}
 }

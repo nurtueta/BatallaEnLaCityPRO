@@ -6,6 +6,7 @@ import Grafica.ComponenteGrafico;
 import Tanque.*;
 
 public class MovimientoBalas extends Movimiento{
+	
 		
 	public MovimientoBalas(Logica l){
 		super(l);
@@ -25,7 +26,6 @@ public class MovimientoBalas extends Movimiento{
 
 				for(ComponenteGrafico bala: balas)
 				{	
-					
 					movio=bala.mover();
 					if(!movio){
 						eliminar.add(bala);
@@ -33,20 +33,24 @@ public class MovimientoBalas extends Movimiento{
 				}
 				for(ComponenteGrafico bala: eliminar){
 					
-					miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY());
+					miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.deQuienEs());
 					miLogica.eliminarBala(bala);
 					balas.remove(bala);
 					
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
+		for(ComponenteGrafico bala: balas){
+			miLogica.eliminarBala(bala);
+		}
+		this.stop();
 	}
 
 	public void addBala(ComponenteGrafico x) {
 		balas.add(x);
 	}
 	
-	public void addEnemigo(ComponenteGrafico x,int i){}
+	public void addEnemigo(ComponenteGrafico x){}
 
 
 }

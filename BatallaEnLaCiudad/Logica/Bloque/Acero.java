@@ -35,7 +35,7 @@ public class Acero extends Celda{
 		return false;
 	}
 
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		
 	}
 

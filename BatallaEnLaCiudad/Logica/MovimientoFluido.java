@@ -82,7 +82,7 @@ public class MovimientoFluido extends Movimiento {
 	public void addBala(ComponenteGrafico x) {
 	}
 	
-	public void addEnemigo(ComponenteGrafico x,int i){}
+	public void addEnemigo(ComponenteGrafico x){}
 
 
 	
