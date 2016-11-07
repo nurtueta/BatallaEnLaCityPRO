@@ -13,7 +13,6 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int direccion;
 	protected int pixelX;
 	protected int pixelY;
-	
 	protected int vida;
 	protected int powerUpDeTanque;
 	
@@ -111,6 +110,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	public abstract boolean mover();
 	
 	public abstract void colicion();
+	
 	
 	public final int getVida(){
 		return vida;

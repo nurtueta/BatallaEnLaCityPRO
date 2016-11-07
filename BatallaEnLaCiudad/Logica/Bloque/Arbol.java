@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 public class Arbol extends Celda{
 
+	
 	public Arbol(int x,int y) {
 		super(x,y);
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/arboles.png"));
@@ -30,7 +31,7 @@ public class Arbol extends Celda{
 	public void recibirDisparo() {
 		
 	}
-
+	
 	public boolean mover() {
 		return false;
 	}
