@@ -170,4 +170,8 @@ public class GUI extends JFrame {
 	    	return contentPane;
 	    }
 	    
+	    public void terminarJuego(){
+	    	System.exit(0);
+	    }
+	    
 }

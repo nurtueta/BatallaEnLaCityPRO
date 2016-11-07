@@ -40,7 +40,7 @@ public class Arbol extends Celda{
 		return true;
 	}
 
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		
 	}
 

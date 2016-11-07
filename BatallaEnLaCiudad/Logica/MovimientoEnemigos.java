@@ -9,22 +9,21 @@ import Tanque.Enemigo;
 public class MovimientoEnemigos extends Movimiento{
 
 	int direccion;
-	int enemigo;
 
 	public MovimientoEnemigos(Logica l)
 	{
 		super(l);
-		enemigo=0;
 	}
 	
 	public void run()
 	{
+		ArrayList<ComponenteGrafico> eliminar;
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		try{
 			while(!miLogica.finDelJuego())
 			{
-				this.sleep(200);
-				ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
+				this.sleep(1000);
+				eliminar=new ArrayList<ComponenteGrafico>();
 				
 				for(ComponenteGrafico enemigo: enemigos)
 				{
@@ -43,19 +42,29 @@ public class MovimientoEnemigos extends Movimiento{
 				{
 					enemigos.remove(enemigo);
 					miLogica.addPuntaje();
+					balas.remove(enemigo);
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
-		miLogica.actualizarPanel();
+		eliminar=new ArrayList<ComponenteGrafico>();
+		for(ComponenteGrafico enemigo: enemigos){
+			eliminar.add(enemigo);
+		}
 		
+		for(ComponenteGrafico enemigo: eliminar)
+		{
+			miLogica.eliminarEnemigo(enemigo);
+			enemigos.remove(enemigo);
+		}
+		
+		this.stop();
 	}
 
 	public void addBala(ComponenteGrafico x) {
 		
 	}
 	
-	public void addEnemigo(ComponenteGrafico x,int i) {
+	public void addEnemigo(ComponenteGrafico x) {
 		enemigos.add(x);
-		enemigo=i;
 	}
 }

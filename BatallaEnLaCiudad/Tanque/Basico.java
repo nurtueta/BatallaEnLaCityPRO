@@ -99,9 +99,11 @@ public class Basico extends Enemigo{
 		return false;
 	}
 
-	public void colicion() {
-		vida-=25;
-		System.out.println("vida del enemigo impactado : "+vida);
+	public void colicion(int deQuienEs) {
+		if(deQuienEs==1){
+			vida-=25;
+			System.out.println("vida del enemigo impactado : "+vida);
+		}
 	}
 	
 }

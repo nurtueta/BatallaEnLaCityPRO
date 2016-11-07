@@ -36,7 +36,7 @@ public class Ladrillo extends Celda{
 		return false;
 	}
 
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		vida=0;
 		
 	}

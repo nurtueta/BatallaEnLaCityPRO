@@ -1,7 +1,7 @@
 package Logica;
 
 import java.io.*;
-
+import java.util.ArrayList;
 import Grafica.*;
 import Logica.Bloque.*;
 import Tanque.*;
@@ -18,6 +18,8 @@ public class Logica {
 	private MovimientoFluido [] hilosFluidos;
 	private int puntaje;
 	
+	private boolean termina;
+	
 	
 	protected GUI grafica;
 	
@@ -32,6 +34,8 @@ public class Logica {
 		hiloEnemigos.start();
 		puntaje=0;
 		grafica=laGUI;
+		
+		termina=false;
 		
 		mapa=new ComponenteGrafico[20][20];
 		
@@ -115,7 +119,6 @@ public class Logica {
 	 */
 	public void mover(ComponenteGrafico j,int direccion)
 	{
-		if(direccion!=5)
 		j.setDireccion(direccion);
 		int Y= j.getPosicionY();
 		int X = j.getPosicionX();
@@ -153,18 +156,10 @@ public class Logica {
 					}
 					break;
 			}
-		if(direccion!=5){
 		j.setPosicionX(X);
 		j.setPosicionY(Y);
 		j.posicionImagen(direccion);
-		}
-		else{
-			crearDisparo(j);
-		}
 	}
-	
-	
-	
 	
 	/**
 	 * Elimina un ComponenteGrafico del mapa y deja solo el suelo.
@@ -199,9 +194,7 @@ public class Logica {
 	
 	public boolean finDelJuego()
 	{
-		boolean fin = false;
-		
-		return fin;
+		return termina;
 	}
 	
 	public void actualizarPanel(){
@@ -210,12 +203,15 @@ public class Logica {
 	}
 	
 	public void eliminarBala(ComponenteGrafico x){
-			hiloBalas.getBalas().remove(x);
 			grafica.eliminarGrafico(x);
 	}
+	
+	public void eliminarEnemigo(ComponenteGrafico x){
+		grafica.eliminarGrafico(x);
+	}
     
-	private ComponenteGrafico crearDisparo(ComponenteGrafico componente){
-		ComponenteGrafico bala = new Disparo(0,0,componente.getDireccion(),this);
+	private ComponenteGrafico crearDisparo(ComponenteGrafico componente,int x){
+		ComponenteGrafico bala = new Disparo(0,0,componente.getDireccion(),this,x);
 		boolean puedeCrear=true;
 		switch(componente.getDireccion()){
 			case 1:
@@ -244,7 +240,7 @@ public class Logica {
 				break;
 		}
 		if(!puedeCrear){
-			eliminarColicion(bala.getPosicionX(),bala.getPosicionY());
+			eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),x);
 			bala=null;
 		}else{
 			hiloBalas.addBala(bala);
@@ -257,7 +253,7 @@ public class Logica {
 		if(mapa[y][x].movimientoPosible()){
 			mapa[y][x]=enemigo;
 			enemigo.setVisible(true);
-			hiloEnemigos.addEnemigo(enemigo,1);
+			hiloEnemigos.addEnemigo(enemigo);
 		}else
 			enemigo=null;
 		return enemigo;
@@ -272,24 +268,38 @@ public class Logica {
 		return hiloEnemigos;
 	}
 	
-	public void eliminarColicion(int x,int y){
+	private void finalizarJuego(){
+		terminar();
+		grafica.eliminarGrafico(miJugador);
+		grafica.terminarJuego();
+	}
+	
+	private void terminar(){
+		termina=true;
+	}
+	
+	public void eliminarColicion(int x,int y,int deQuienEs){
 		int sigX=x;
 		int sigY=y;
-		getComponente(sigX, sigY).colicion();
+		getComponente(sigX, sigY).colicion(deQuienEs);
 		if(getComponente(sigX, sigY).getVida()==0){
-			grafica.eliminarGrafico(getComponente(sigX, sigY));
-			mapa[sigY][sigX]=new Piso(sigX,sigY);
-			grafica.agregarGrafico(getComponente(sigX, sigY));
+			if(getComponente(sigX, sigY)==miJugador){
+				finalizarJuego();
+			}else{
+				grafica.eliminarGrafico(getComponente(sigX, sigY));
+				mapa[sigY][sigX]=new Piso(sigX,sigY);
+				grafica.agregarGrafico(getComponente(sigX, sigY));
+			}
 		}
 		actualizarPanel();
-		
 	}
+	
 	public	int obtenerPuntaje(){
 		return puntaje;
 	}
 	
 	public void crearDisparo(){
-    	ComponenteGrafico bala=crearDisparo(getJugador());
+    	ComponenteGrafico bala=crearDisparo(getJugador(),1);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
     		grafica.agregarZOrder(bala,2);
@@ -297,7 +307,7 @@ public class Logica {
     }
 	
 	public void crearDisparoEnemigo(ComponenteGrafico enemigo){
-		ComponenteGrafico bala=crearDisparo(enemigo);
+		ComponenteGrafico bala=crearDisparo(enemigo,0);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
     		grafica.agregarZOrder(bala,2);

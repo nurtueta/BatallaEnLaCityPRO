@@ -25,7 +25,7 @@ public class PowerUp extends ComponenteGrafico{
 	}
 
 	@Override
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		// TODO Auto-generated method stub
 		
 	}

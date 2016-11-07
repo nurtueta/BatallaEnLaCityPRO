@@ -13,9 +13,10 @@ public class Disparo extends Celda{
 	
 	protected Logica manejo;
 	
-	public Disparo(int x,int y,int d,Logica l)
+	public Disparo(int x,int y,int d,Logica l,int deQuienEs)
 	{	
 		super(x,y);
+		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;
 		ImageIcon fot = new ImageIcon();
@@ -46,7 +47,6 @@ public class Disparo extends Celda{
 	}
 
 	public boolean movimientoPosible() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -99,8 +99,7 @@ public class Disparo extends Celda{
 		return false;
 	}
 
-	public void colicion() {
+	public void colicion(int deQuienEs) {
 		
 	}
-	
 }
