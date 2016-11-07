@@ -3,6 +3,7 @@ package Grafica;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -57,6 +58,8 @@ public class Inicio {
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(null,"Nahuel se la come");
 			}
 		});
 		btnHelp.setBounds(196, 118, 121, 64);
@@ -65,6 +68,9 @@ public class Inicio {
 		JButton btnAbout = new JButton("About");
 		btnAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(null,"Y Larra se la da");
+
 			}
 		});
 		btnAbout.setBounds(196, 193, 121, 57);
