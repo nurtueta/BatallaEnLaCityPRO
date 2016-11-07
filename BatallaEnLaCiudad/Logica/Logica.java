@@ -62,7 +62,7 @@ public class Logica {
 	{
 	  	FileReader fi;
 		try {
-			fi = new FileReader("archivo/Hello1.txt");
+			fi = new FileReader("archivo/Hello2.txt");
 	        BufferedReader b = new BufferedReader(fi);
 	        String cadena;
 		int j=0;
@@ -84,10 +84,10 @@ public class Logica {
 				      			mapa[j][i]= new Arbol(i,j);
 				      			//grafica.agregarGrafico(mapa[j][i]);
 				      		//	grafica.setComponentZOrder(mapa[j][i], 1);
-				      		}/*else
+				      		}else
 					      		if(s=='E'){
-					      			mapa[i][j]= 26; Aguila == Eagle
-					      		}else
+					      			mapa[j][i]= new Aguila(i,j);
+					      		}/*else
 						      		if(s=='P'){
 						      			mapa[i][j]= 28; Portal enemigo
 						      		}else
