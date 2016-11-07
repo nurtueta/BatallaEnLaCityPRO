@@ -15,43 +15,38 @@ public class MovimientoBalas extends Movimiento{
 	{
 		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		
-			boolean movio;
-			try
+		boolean movio;
+		try{
+			while(!miLogica.finDelJuego())
 			{
-				while(!miLogica.finDelJuego())
-				{
-							
-							this.sleep(30);
-							ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
+						
+				this.sleep(50);
+				ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 
-							for(ComponenteGrafico bala: balas)
-							{	
-								
-								movio=bala.mover();
-								if(!movio){
-									eliminar.add(bala);
-								}
-							}
-							for(ComponenteGrafico bala: eliminar){
-								
-								miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY());
-								miLogica.eliminarBala(bala);
-								balas.remove(bala);
-								
-							}
-								
-							miLogica.actualizarPanel();
-						
+				for(ComponenteGrafico bala: balas)
+				{	
+					
+					movio=bala.mover();
+					if(!movio){
+						eliminar.add(bala);
+					}
 				}
-						
-			}catch(InterruptedException e){ e.printStackTrace();}
+				for(ComponenteGrafico bala: eliminar){
+					
+					miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY());
+					miLogica.eliminarBala(bala);
+					balas.remove(bala);
+					
+				}
+			}
+		}catch(InterruptedException e){ e.printStackTrace();}
 	}
 
 	public void addBala(ComponenteGrafico x) {
 		balas.add(x);
 	}
 	
-	public void addEnemigo(ComponenteGrafico x){}
+	public void addEnemigo(ComponenteGrafico x,int i){}
 
 
 }

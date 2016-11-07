@@ -15,6 +15,7 @@ public class Logica {
 	
 	private Movimiento hiloBalas;
 	private Movimiento hiloEnemigos;
+	private MovimientoFluido [] hilosFluidos;
 	private int puntaje;
 	
 	
@@ -26,6 +27,7 @@ public class Logica {
 		
 		hiloBalas = new MovimientoBalas(this);
 		hiloEnemigos = new MovimientoEnemigos(this);
+		hilosFluidos=new MovimientoFluido[5];
 		hiloBalas.start();
 		hiloEnemigos.start();
 		puntaje=0;
@@ -209,32 +211,32 @@ public class Logica {
 			grafica.eliminarGrafico(x);
 	}
     
-	private ComponenteGrafico crearDisparo(ComponenteGrafico miJugador){
-		ComponenteGrafico bala = new Disparo(0,0,miJugador.getDireccion(),this);
+	private ComponenteGrafico crearDisparo(ComponenteGrafico componente){
+		ComponenteGrafico bala = new Disparo(0,0,componente.getDireccion(),this);
 		boolean puedeCrear=true;
-		switch(miJugador.getDireccion()){
+		switch(componente.getDireccion()){
 			case 1:
-				bala.setPosicionX(miJugador.getPosicionX()+1);
-				bala.setPosicionY(miJugador.getPosicionY());
-				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()+1].movimientoPosibleDisparo())
+				bala.setPosicionX(componente.getPosicionX()+1);
+				bala.setPosicionY(componente.getPosicionY());
+				if(!mapa[componente.getPosicionY()][componente.getPosicionX()+1].movimientoPosibleDisparo())
 					puedeCrear=false;
 				break;
 			case 2:
-				bala.setPosicionX(miJugador.getPosicionX()-1);
-				bala.setPosicionY(miJugador.getPosicionY());
-				if(!mapa[miJugador.getPosicionY()][miJugador.getPosicionX()-1].movimientoPosibleDisparo())
+				bala.setPosicionX(componente.getPosicionX()-1);
+				bala.setPosicionY(componente.getPosicionY());
+				if(!mapa[componente.getPosicionY()][componente.getPosicionX()-1].movimientoPosibleDisparo())
 					puedeCrear=false;
 				break;
 			case 3:
-				bala.setPosicionX(miJugador.getPosicionX());
-				bala.setPosicionY(miJugador.getPosicionY()-1);
-				if(!mapa[miJugador.getPosicionY()-1][miJugador.getPosicionX()].movimientoPosibleDisparo())
+				bala.setPosicionX(componente.getPosicionX());
+				bala.setPosicionY(componente.getPosicionY()-1);
+				if(!mapa[componente.getPosicionY()-1][componente.getPosicionX()].movimientoPosibleDisparo())
 					puedeCrear=false;
 				break;
 			case 4:
-				bala.setPosicionX(miJugador.getPosicionX());
-				bala.setPosicionY(miJugador.getPosicionY()+1);
-				if(!mapa[miJugador.getPosicionY()+1][miJugador.getPosicionX()].movimientoPosibleDisparo())
+				bala.setPosicionX(componente.getPosicionX());
+				bala.setPosicionY(componente.getPosicionY()+1);
+				if(!mapa[componente.getPosicionY()+1][componente.getPosicionX()].movimientoPosibleDisparo())
 					puedeCrear=false;
 				break;
 		}
@@ -252,7 +254,7 @@ public class Logica {
 		if(mapa[y][x].movimientoPosible()){
 			mapa[y][x]=enemigo;
 			enemigo.setVisible(true);
-			hiloEnemigos.addEnemigo(enemigo);
+			hiloEnemigos.addEnemigo(enemigo,1);
 		}else
 			enemigo=null;
 		return enemigo;
@@ -265,11 +267,6 @@ public class Logica {
 	
 	public Movimiento getHilosEnemigos(){
 		return hiloEnemigos;
-	}
-	
-	public void crearDisparoEnemigo(ComponenteGrafico e){
-		
-		
 	}
 	
 	public void eliminarColicion(int x,int y){
@@ -296,6 +293,15 @@ public class Logica {
     	}
     }
 	
+	public void crearDisparoEnemigo(ComponenteGrafico enemigo){
+		ComponenteGrafico bala=crearDisparo(enemigo);
+    	if(bala!=null){
+    		grafica.agregarGrafico(bala);
+    		grafica.agregarZOrder(bala,1);
+    	}
+		
+	}
+	
 	public void crearJugador(){
     	ingresarJugador();
         grafica.agregarGrafico(getJugador());
@@ -317,4 +323,16 @@ public class Logica {
 		 		grafica.agregarGrafico(comp);
 		 	}
     }
+	
+	public void iniciarMovimientoJugador(int d){
+		hilosFluidos[0]=new MovimientoFluido(this, miJugador.getPosicionX(), miJugador.getPosicionY(), d);
+		hilosFluidos[0].start();
+	}
+	
+	public void iniciarMovimientoEnemigo(int enemigo,ComponenteGrafico e,int d){
+		hilosFluidos[enemigo]=new MovimientoFluido(this, e.getPosicionX(), e.getPosicionY(), d);
+		hilosFluidos[enemigo].start();
+	}
+	
+	
 }

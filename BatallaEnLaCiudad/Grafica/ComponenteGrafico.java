@@ -11,6 +11,8 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int velocidad;
 	protected int miX,miY;
 	protected int direccion;
+	protected int pixelX;
+	protected int pixelY;
 	
 	protected int vida;
 	protected int powerUpDeTanque;
@@ -28,7 +30,9 @@ public abstract class ComponenteGrafico extends JLabel {
 		//direccion = -1;
 		
 		//seteo el componente grafico en el lugar correspondiente
-		setBounds(miX*ancho , miY*alto, ancho, alto);
+		pixelX=miX*ancho;
+		pixelY=miY*alto;
+		setBounds(pixelX ,pixelY , ancho, alto);
 		setVisible(true);
 		
 	}
@@ -43,10 +47,20 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public void setPosicionX(int x){
 		miX=x;	
+		pixelX=miX*ancho;
 	}
 
 	public void setPosicionY(int y){
 		miY=y;
+		pixelY=miY*alto;
+	}
+	
+	public void setX(int x){
+		pixelX=x;
+	}
+	
+	public void setY(int y){
+		pixelY=y;
 	}
 	
 	/*Consultas*/
@@ -66,7 +80,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	//devuelvo la posicion en X
 	public int getX()
 	{
-		return miX*ancho;
+		return pixelX;
 	}
 	
 	public int getPosicionX(){
@@ -79,7 +93,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public int getY()
 	{
-		return miY*alto;
+		return pixelY;
 	}
 	public void setDireccion(int d){
 		direccion=d;

@@ -91,6 +91,7 @@ public class Disparo extends Celda{
 						seMovio=false;
 					break;
 				}
+		manejo.actualizarPanel();
 		return seMovio;
 	}
 	
@@ -98,9 +99,7 @@ public class Disparo extends Celda{
 		return false;
 	}
 
-	@Override
 	public void colicion() {
-		// TODO Auto-generated method stub
 		
 	}
 	

@@ -85,29 +85,25 @@ public class GUI extends JFrame {
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP :
 					 		if(!movio){
-						 		mapaLogica.mover(3);		//Mover el Jugador hacia Arriba
-						 		refrescarPanel();
+					 			mapaLogica.iniciarMovimientoJugador(3);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}
 					 		break;
 						case KeyEvent.VK_DOWN :
 							if(!movio){
-						 		mapaLogica.mover(4);		//Mover el Jugador hacia Arriba
-						 		refrescarPanel();
+								mapaLogica.iniciarMovimientoJugador(4);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				if(!movio){
-						 		mapaLogica.mover(1);		//Mover el Jugador hacia Arriba
-						 		refrescarPanel();
+						 		mapaLogica.iniciarMovimientoJugador(1);
 						 		movio=true;
 						 	}
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						if(!movio){
-						 		mapaLogica.mover(2);		//Mover el Jugador hacia Arriba
-						 		refrescarPanel();
+	 							mapaLogica.iniciarMovimientoJugador(2);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}	
 	 						break;
@@ -121,9 +117,6 @@ public class GUI extends JFrame {
 	 						}
 	 						break;
 					 }
-				   //     contentPane.setComponentZOrder(panelPuntaje, 0);
-
-					 contentPane.repaint();
 				}
 
 				public void keyReleased(KeyEvent e){
@@ -150,10 +143,6 @@ public class GUI extends JFrame {
 				}
 	        });	       	        
 	    }
-	    
-	    public void refrescarPanel(){
-	    	this.repaint();
-	    }
 
 	    public boolean finDelJuego(){
 	    	return mapaLogica.finDelJuego();
@@ -161,17 +150,14 @@ public class GUI extends JFrame {
 	    
 	    public void eliminarGrafico(ComponenteGrafico x){
 	    	contentPane.remove(x);
-	    	refrescarPanel();
 	    }
 	    
 	    public void agregarGrafico(ComponenteGrafico x){
 	    	contentPane.add(x);
-	    	refrescarPanel();
 		}	
 	    
 	    public void agregarZOrder(ComponenteGrafico x,int a){
 	    	contentPane.setComponentZOrder(x, a);
-	    	refrescarPanel();
 	    }
 	    
 }
