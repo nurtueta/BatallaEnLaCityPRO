@@ -50,6 +50,8 @@ public class Aguila extends Celda {
 	@Override
 	public void colicion(int deQuienEs) {
 		// TODO Auto-generated method stub
+		vida=0;
+		System.exit(0);
 		
 	}
 

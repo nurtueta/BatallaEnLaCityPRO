@@ -283,7 +283,7 @@ public class Logica {
 		int sigY=y;
 		getComponente(sigX, sigY).colicion(deQuienEs);
 		if(getComponente(sigX, sigY).getVida()==0){
-			if(getComponente(sigX, sigY)==miJugador){
+			if(getComponente(sigX, sigY)==miJugador ){
 				finalizarJuego();
 			}else{
 				grafica.eliminarGrafico(getComponente(sigX, sigY));
