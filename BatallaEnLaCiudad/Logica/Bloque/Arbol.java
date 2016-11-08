@@ -14,6 +14,8 @@ public class Arbol extends Celda{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=1;
+		profundidad=4;
+		
 	}
 	
 	public boolean movimientoPosible() {
