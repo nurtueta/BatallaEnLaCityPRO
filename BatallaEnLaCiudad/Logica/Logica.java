@@ -453,6 +453,7 @@ public class Logica {
 		puntaje+=100;
 		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
 		System.out.println(puntaje);
+		
 		grafica.repaint();
 	}
 	
