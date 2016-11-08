@@ -158,7 +158,8 @@ public class Logica {
 	}
 	
 	public void actualizarPanel(){
-		grafica.getPanelPuntaje().setText(""+puntaje);
+		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
+		
 		grafica.repaint();
 	}
 	
