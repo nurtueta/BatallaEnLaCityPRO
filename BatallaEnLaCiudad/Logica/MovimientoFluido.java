@@ -18,8 +18,8 @@ public class MovimientoFluido extends Movimiento {
 		this.x=x;
 		this.y=y;
 		this.d=d;
-		velocidad=10;
-		pixel=5;
+		velocidad=5;
+		pixel=1;
 		puedeMover=false;
 	}
 	
@@ -48,7 +48,7 @@ public class MovimientoFluido extends Movimiento {
 			}
 				
 			if(puedeMover){
-				for(int i=0;i<5;i++){
+				for(int i=0;i<30;i++){
 					switch (d) {
 						case 1:
 							miLogica.getComponente(x, y).setX(miLogica.getComponente(x, y).getX()+pixel);
