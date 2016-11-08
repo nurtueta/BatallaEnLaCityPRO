@@ -8,6 +8,9 @@ import java.applet.AudioClip;
 //
 //-------------------------------------------------------------------
 import java.awt.*;
+import java.net.*;
+import java.io.*;
+import java.util.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
@@ -48,23 +51,9 @@ public class StarWarsIntro extends Frame
 
     
     
-       AudioInputStream audioInputStream;
-       Clip clip;
-	try {
-		audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("archivo/StarWarsMusic.mp3"));
-	
-      
-	
-		clip = AudioSystem.getClip();
-	
-      
-		clip.open(audioInputStream);
-	
-      clip.start( );
-	} catch (UnsupportedAudioFileException | LineUnavailableException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
+    java.net.URL url = StarWarsIntro.class.getResource("/archivo/Star_Wars_Music_Theme.wav");
+    clip = Applet.newAudioClip(url);
+    clip.play();
     
     
     
@@ -90,7 +79,7 @@ public class StarWarsIntro extends Frame
     {
 
       try
-      { Thread.sleep(20);}
+      { Thread.sleep(10);}
       catch (InterruptedException e){}
 
       canvas.repaint();
@@ -220,7 +209,7 @@ class CvStory extends Canvas
 
     g.drawImage (bufferImg, 0, 0, this);
     rotateY(59);
-    transPic (0, 0, -2);
+    transPic (0, 0, -0.1);
 
   }
 
