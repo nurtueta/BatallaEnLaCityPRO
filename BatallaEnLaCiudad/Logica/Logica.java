@@ -451,7 +451,9 @@ public class Logica {
 	
 	public void addPuntaje(){
 		puntaje+=100;
+		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
 		System.out.println(puntaje);
+		grafica.repaint();
 	}
 	
 	public void enemigoMurio(){

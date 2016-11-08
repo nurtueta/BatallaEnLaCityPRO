@@ -55,7 +55,7 @@ public class GUI extends JFrame {
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
 	        contentPane.setLayout(null);
-	        this.setLayout(null);
+	        getContentPane().setLayout(null);
 	        // JTextField panelPuntaje = new JTextField("Puntaje: "+mapaLogica.obtenerPuntaje());
 	        panelPuntaje = new JLabel("Puntaje:"+mapaLogica.obtenerPuntaje());
 
@@ -64,9 +64,17 @@ public class GUI extends JFrame {
 	        
 	        panelPuntaje.setForeground(Color.RED);
 	        contentPane.add(panelPuntaje);
-	        contentPane.getComponent(contentPane.getComponentCount()-1).setBounds(50, 50, 300, 300);
+	        
+	        JLabel panelPuntaje = new JLabel("Puntaje: ");
+	        panelPuntaje.setForeground(Color.RED);
+	        panelPuntaje.setFont(new Font("Tahoma", Font.PLAIN, 26));
+	        panelPuntaje.setBounds(433, 29, 201, 45);
+	        contentPane.add(panelPuntaje, new Integer(5));
+	        panelPuntaje.setOpaque(false);
+	        
+	        //contentPane.getComponent(contentPane.getComponentCount()-1).setBounds(0, contentPane.getHeight()-50, 300, 300);
 	        panelPuntaje.setVisible(true);
-	        //  contentPane.Componen
+	       
 	        
 	        
 	        mapaLogica.generarPanel();
@@ -178,5 +186,4 @@ public class GUI extends JFrame {
 	 public void terminarJuego(){
 	  	System.exit(0);
 	 }
-	    
 }
