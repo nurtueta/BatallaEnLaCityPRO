@@ -11,6 +11,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+ import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.print.attribute.standard.Media;
+
 import java.io.*;
 import java.util.Random;
 
@@ -37,10 +44,37 @@ public class StarWarsIntro extends Frame
   public StarWarsIntro () throws IOException
   {
     super ("StarWasIntro");
+
+
     
+    
+       AudioInputStream audioInputStream;
+       Clip clip;
+	try {
+		audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("archivo/StarWarsMusic.mp3"));
+	
+      
+	
+		clip = AudioSystem.getClip();
+	
+      
+		clip.open(audioInputStream);
+	
+      clip.start( );
+	} catch (UnsupportedAudioFileException | LineUnavailableException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    
+    
+    
+    
+    
+    
+    /*
     java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
     clip = Applet.newAudioClip(url);
-    clip.loop();
+    clip.loop();*/
     
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});
@@ -79,7 +113,7 @@ class CvStory extends Canvas
   CvStory () throws IOException
   {
 	
-	ReadFile f = new ReadFile ("/archivo/IntroStory.txt");
+	ReadFile f = new ReadFile ("archivo/IntroStory.txt");
 
     storyTxt = f.getStory ();
     storySize = f.getSize ();
