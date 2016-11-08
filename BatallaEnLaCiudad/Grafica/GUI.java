@@ -158,6 +158,8 @@ public class GUI extends JFrame {
 	   
 	 public void agregarGrafico(ComponenteGrafico x){
 	  	//contentPane.add(x);
+		 if(x==null)
+			 System.out.println("estoy pasando algo nulo");
 	  	contentPane.add(x,new Integer(x.getDepth()));
 	 }	
 	    

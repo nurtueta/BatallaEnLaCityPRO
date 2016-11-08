@@ -1,5 +1,7 @@
 package Logica;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -78,10 +80,48 @@ public class Logica {
 		
 	      while((cadena = b.readLine())!=null) {
 	    	  
-	      	 for(int i=0;i<cadena.length();i++){
+	      	/* for(int i=0;i<cadena.length();i++){
 	      		char s = cadena.charAt(i);
-	      		
 	      		switch (s){
+	      */		
+	      		
+	      		 	    	  
+	      		 	      	 for(int i=0;i<cadena.length();i++){
+	      		 	      		char s = cadena.charAt(i);
+	      			      		if(s=='A'){
+	      			      			mapa[j][i]= new Agua(i,j);
+	      			      		}else
+	      				      		if(s=='L'){
+	      				      			mapa[j][i]= new Ladrillo(i,j);
+	      				      		}else
+	      					      		if(s=='I'){
+	      					      			mapa[j][i]= new Acero(i,j);
+	      					      		}else
+	      						      		if(s=='B'){
+	      						      			mapa[j][i]= new Arbol(i,j);
+	      						      			//grafica.agregarGrafico(mapa[j][i]);
+	      						      		//	grafica.setComponentZOrder(mapa[j][i], 1);
+	      						      		}else
+	      							      		if(s=='E'){
+	      							      			mapa[j][i]= new Aguila(i,j);
+	      							      		}/*else
+	      								      		if(s=='P'){
+	      								      			mapa[i][j]= 28; Portal enemigo
+	      								      		}else
+	      									      		if(s=='R'){
+	      									      			mapa[i][j]= 27; Respown
+	      									      		}*/
+	      									      		else{
+	      									      			mapa[j][i]= new Piso(i,j);
+	      									      		}
+	      		
+	      		
+	      		
+	      		
+	      		
+	      		
+	      		/*
+	      		}
 	      		case 1: if(s=='A')
 		      			mapa[j][i]= new Agua(i,j);
 		      			break;
@@ -109,9 +149,8 @@ public class Logica {
 	      		case 7: if(s=='C')
 	      				mapa[j][i]= new Piso(i,j);
 	      				break;
-					      		
-					      		
-	      		}
+	      		}*/
+		      	
 	      	 }
 	      	j++;
 	      	}  
@@ -230,6 +269,9 @@ public class Logica {
 	}
 	
 	private ComponenteGrafico crearDisparo(ComponenteGrafico componente,int x){
+		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
+	    AudioClip clip = Applet.newAudioClip(url);
+	    clip.play();
 		ComponenteGrafico bala = new Disparo(0,0,componente.getDireccion(),this,x);
 		boolean puedeCrear=true;
 		switch(componente.getDireccion()){
