@@ -13,7 +13,7 @@ public class Ladrillo extends Celda{
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/ladrillo.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
-		vida=100;
+		vida=4;
 	}
 	
 	public boolean movimientoPosible() {
@@ -28,7 +28,7 @@ public class Ladrillo extends Celda{
 		setVisible(false);
 	}
 
-	public boolean mover() {
+	public boolean mover(int direcion) {
 		return false;
 	}
 	
@@ -37,7 +37,7 @@ public class Ladrillo extends Celda{
 	}
 
 	public void colicion(int deQuienEs) {
-		vida=0;
+		vida--;
 		
 	}
 

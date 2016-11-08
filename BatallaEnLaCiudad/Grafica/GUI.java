@@ -97,25 +97,25 @@ public class GUI extends JFrame {
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP :
 					 		if(!movio){
-					 			mapaLogica.iniciarMovimientoJugador(3);		//Mover el Jugador hacia Arriba
+					 			mapaLogica.mover(3);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}
 					 		break;
 						case KeyEvent.VK_DOWN :
 							if(!movio){
-								mapaLogica.iniciarMovimientoJugador(4);		//Mover el Jugador hacia Arriba
+								mapaLogica.mover(4);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				if(!movio){
-						 		mapaLogica.iniciarMovimientoJugador(1);
+						 		mapaLogica.mover(1);
 						 		movio=true;
 						 	}
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						if(!movio){
-	 							mapaLogica.iniciarMovimientoJugador(2);		//Mover el Jugador hacia Arriba
+	 							mapaLogica.mover(2);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}	
 	 						break;

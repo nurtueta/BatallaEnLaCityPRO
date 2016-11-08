@@ -8,16 +8,15 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	protected final int alto  = 30;
 	protected final int ancho = 30;
-	protected int velocidad;
 	protected int miX,miY;
-	protected int direccion;
+
 	protected int pixelX;
 	protected int pixelY;
-
-	protected int deQuienEs;
-	protected	int profundidad = 1;
+	
+	protected int direccion;
+	
 	protected int vida;
-	protected int powerUpDeTanque;
+	
 	
 	/*Constructores*/
 	
@@ -26,26 +25,17 @@ public abstract class ComponenteGrafico extends JLabel {
 	public ComponenteGrafico(int x, int y)
 	{	
 		super();
-		velocidad = 0;
 		miX = x;
 		miY = y;
-		//direccion = -1;
 		
 		//seteo el componente grafico en el lugar correspondiente
 		pixelX=miX*ancho;
 		pixelY=miY*alto;
 		setBounds(pixelX ,pixelY , ancho, alto);
 		setVisible(true);
-		
 	}
 	
 	/*Comandos*/
-	
-	//seteo la velocidad del componente grafico
-	public void setVelocidad(int v)
-	{
-		velocidad = v;
-	}
 	
 	public void setPosicionX(int x){
 		miX=x;	
@@ -67,16 +57,8 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	/*Consultas*/
 	
-	//devuelvo la direccion para la que apunta el componente grafico
-	public int getDireccion()
-	{
+	public int getDireccion(){
 		return direccion;
-	}
-	
-	//devuelvo la velocidad del objeto
-	public int getVelocidad()
-	{
-		return velocidad;
 	}
 	
 	//devuelvo la posicion en X
@@ -97,35 +79,46 @@ public abstract class ComponenteGrafico extends JLabel {
 	{
 		return pixelY;
 	}
-	public void setDireccion(int d){
-		direccion=d;
+	
+	public void posicionImagen(int i){
+		
 	}
+
+	public boolean mover(int direccion){
+		return false;
+	}
+	
+	public int getPuntos(){
+		return 0;
+	}
+	
+	public final int getVida(){
+		return vida;
+	}
+	
+	public abstract void colicion(int deQuienEs);
 	
 	//pregunnto si es posible mover a esta posicion
 	public abstract boolean movimientoPosible();
 	
 	public abstract boolean movimientoPosibleDisparo();
 	
-	public abstract void recibirDisparo();
+	public void setPowerUpDeTanque(int pu){
+		
+	}
 	
-	public abstract void posicionImagen(int i);
+	public int getDeQuienEs(){
+		return -1;		
+	}
+	
+	public void setDireccion(int d){
+		
+	}
+	
+	public int getVelMovimiento(){
+		return 0;
+	}
+	
+	public void crearDisparo(){}
 
-	public abstract boolean mover();
-	
-	public abstract void colicion(int deQuienEs);
-	
-	public	int getDepth(){
-		return profundidad;
-	}
-	public final int getVida(){
-		return vida;
-	}
-	
-	public final int deQuienEs(){
-		return deQuienEs;
-	}
-	
-	public boolean esArbol(){
-		return false;
-	}
 }

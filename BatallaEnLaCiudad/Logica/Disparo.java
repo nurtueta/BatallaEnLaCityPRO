@@ -10,6 +10,7 @@ public class Disparo extends Celda{
 	/**
 	 * 
 	 */
+	protected int deQuienEs;
 	
 	protected Logica manejo;
 	
@@ -19,7 +20,6 @@ public class Disparo extends Celda{
 		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;
-		profundidad=2;
 		ImageIcon fot = new ImageIcon();
 		switch (direccion){
 			case 1:
@@ -63,7 +63,7 @@ public class Disparo extends Celda{
 		
 	}
 	
-	public boolean mover()
+	public boolean mover(int direcion)
 	{	boolean seMovio=true;
 		if(this.getPosicionX()==0 || this.getPosicionY()==0 || 
 				this.getPosicionX()==(manejo.getMapaLogico().length-1) ||

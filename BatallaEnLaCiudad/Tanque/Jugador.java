@@ -5,21 +5,26 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class Jugador extends Tanque{
+import Logica.MovimientoBalas;
+import Logica.MovimientoFluido;
+
+public abstract class Jugador extends Tanque{
+	
+	/*Variables*/
+	
+	protected int casco;
 	
 	/*Constructor*/
 	
 	public Jugador(int x,int y){
 		super(x,y);
 		posicionImagen(1);
-		vida=50;
+		casco=0;
+		hiloDisparo=new MovimientoBalas(logica);
 	}
 	
 	/*Comandos*/
-	/**
-	 * Genera la imagen en la que el tanque mira.
-	 * @param i direccion en la que mira el tanque (actua como setter de 'direccion')
-	 */
+
 	public void posicionImagen(int i){
 		direccion = i;
 		ImageIcon fot=new ImageIcon();
@@ -41,21 +46,8 @@ public class Jugador extends Tanque{
 		this.setIcon(icono);
 	}
 	
-	
-	/**
-	 * Establece la vida del Jugador.
-	 * @param v cantidad de vida a establecer.
-	 */
-	public void setVida(int v){
-		vida=v;
-	}
-	
-	/**
-	 * Agrega un powerUp al tanque
-	 * @param pu powerUp que se le transferira al tanque
-	 */
 	public void setPowerUpDeTanque(int pu){
-		powerUpDeTanque=pu;
+		casco=pu;
 	}
 	
 	/*Consultas*/
@@ -64,40 +56,19 @@ public class Jugador extends Tanque{
 		return false;
 	}
 	
-	//devuelvo el powerUp del tanque
-	public int getPowerUpDeTanque(){
-		return powerUpDeTanque;
-	}
-
-	public void recibirDisparo() {
-		
-	}
-
-	public boolean mover() {
-		return false;
-	}
-	
-	
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
 	
-	public int disparosSimultaneos(){
-		//esto debe ser un metodo abstracto cuando Jugador se convierta en clase abstracta s/State
-		return 0;
-	}
-
-	public int velocidadDisparo(){
-		//esto debe ser un metodo abstracto cuando Jugador se convierta en clase abstracta s/State
-		return 0;
+	public void colicion(int deQuienEs) {
+		if(deQuienEs==0){
+			if(casco==0)
+				vida--;
+		}
 	}
 	
-	public void colicion(int deQuienEs) {
-		//pruebo de quien es el disparo que recive	
-		if(deQuienEs==0){
-			vida-=50;
-			System.out.println("te queda "+vida+" de vida");
-		}
-		
+	public void setDireccion(int d){
+		direccion=d;
 	}
+	
 }

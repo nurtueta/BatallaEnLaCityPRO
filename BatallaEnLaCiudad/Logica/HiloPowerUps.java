@@ -44,7 +44,7 @@ public class HiloPowerUps extends Thread{
 			
 			}
 
-			miLogica.eliminarPowerUp(miPowerUp);
+			miLogica.eliminarGrafico(miPowerUp);
 			
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
