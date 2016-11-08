@@ -32,7 +32,7 @@ public class Arbol extends Celda{
 		
 	}
 	
-	public boolean mover() {
+	public boolean mover(int direcion) {
 		return false;
 	}
 	

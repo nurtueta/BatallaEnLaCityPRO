@@ -1,17 +1,16 @@
 package Tanque;
 
+import Logica.Logica;
+
 public class JugadorNivel4 extends Jugador{
 
-	public JugadorNivel4 (int x, int y){
+	public JugadorNivel4 (int x, int y,Logica l){
 		super(x,y);
-	}
-	
-	public int disparosSimultaneos(){
-		return 3;
-	}
-	
-	public int velocidadDisparo(){
-		return 3;
+		logica=l;
+		velMovimiento=2;
+		velDisparo=3;
+		disparosSimultaneos=3;
+		vida=4;
 	}
 	
 }

@@ -54,7 +54,6 @@ public class Inicio {
 		});
 		btnStart.setBounds(196, 44, 121, 64);
 		frame.getContentPane().add(btnStart);
-		
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

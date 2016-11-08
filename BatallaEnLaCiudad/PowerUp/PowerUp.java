@@ -16,7 +16,7 @@ public class PowerUp extends ComponenteGrafico{
 		
 	}
 
-	public boolean mover() {
+	public boolean mover(int direcion) {
 		return false;
 	}
 	

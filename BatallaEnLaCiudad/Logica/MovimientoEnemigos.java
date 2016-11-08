@@ -35,7 +35,7 @@ public class MovimientoEnemigos extends Movimiento{
 						if(enemigo.getVida()==0)
 							eliminar.add(enemigo);
 						else
-							miLogica.iniciarMovimientoEnemigo(1,enemigo, direccion);
+							enemigo.mover(direccion);
 				}
 				
 				for(ComponenteGrafico enemigo: eliminar)
@@ -53,7 +53,7 @@ public class MovimientoEnemigos extends Movimiento{
 		
 		for(ComponenteGrafico enemigo: eliminar)
 		{
-			miLogica.eliminarEnemigo(enemigo);
+			miLogica.eliminarGrafico(enemigo);
 			enemigos.remove(enemigo);
 		}
 		

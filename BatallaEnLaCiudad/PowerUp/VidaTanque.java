@@ -9,9 +9,9 @@ public class VidaTanque extends PowerUp{
 
 	public VidaTanque(int x, int y){
 		super(x,y);
-		this.deQuienEs=9; //9 indica que es un powerup
+//		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
-		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpVidaTanque.png"));
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpTanque.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);

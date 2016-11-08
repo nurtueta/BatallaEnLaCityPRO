@@ -1,14 +1,16 @@
 package Tanque;
 
+import Logica.Logica;
+
 public class JugadorNivel2 extends Jugador{
 
-	public JugadorNivel2 (int x, int y){
+	public JugadorNivel2 (int x, int y,Logica l){
 		super(x,y);
-		
-		//velocidad = velocidad * 1.5
+		logica=l;
+		velMovimiento=3;
+		velDisparo=2;
+		disparosSimultaneos=1;
+		vida=1;
 	}
 	
-	public int velocidadDisparo(){
-		return 2;
-	}
 }

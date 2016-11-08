@@ -26,22 +26,22 @@ public class MovimientoBalas extends Movimiento{
 
 				for(ComponenteGrafico bala: balas)
 				{	
-					movio=bala.mover();
+					movio=bala.mover(0);
 					if(!movio){
 						eliminar.add(bala);
 					}
 				}
 				for(ComponenteGrafico bala: eliminar){
 					
-					miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.deQuienEs());
-					miLogica.eliminarBala(bala);
+					miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.getDeQuienEs());
+					miLogica.eliminarGrafico(bala);
 					balas.remove(bala);
 					
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
 		for(ComponenteGrafico bala: balas){
-			miLogica.eliminarBala(bala);
+			miLogica.eliminarGrafico(bala);
 		}
 		this.stop();
 	}

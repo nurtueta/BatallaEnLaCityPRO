@@ -9,7 +9,7 @@ public class Casco extends PowerUp{
 	
 	public Casco(int x, int y){
 		super(x,y);
-		this.deQuienEs=9; //9 indica que es un powerup
+//		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpCasco.png"));
 

@@ -6,18 +6,19 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import Logica.Logica;
+
 public class Basico extends Enemigo{
 
 	/*Constructor*/
 	private static final long serialVersionUID = 1L;
-	protected Logica manejo;
 	
-	public Basico(int x,int y,Logica l,int d){
+	public Basico(int x,int y,int d,Logica l){
 		super(x,y);
-		manejo=l;
 		posicionImagen(d);
-		direccion=d;
-		vida=100;
+		logica=l;
+		vida=1;
+		velMovimiento=1;
+		velDisparo=1;
 	}
 	
 	/*Comandos*/
@@ -44,67 +45,17 @@ public class Basico extends Enemigo{
 		this.setIcon(icono);
 	}
 	
-	//seteo la vida del tanque
-	public void setVida(int v) {
-		vida=v;
-	}
-	
 	/*Consultas*/
 	
-	//devuelvo si puedo mover a esta posicion
-	public boolean movimientoPosible() {
-		return false;
-	}
-
-	public void recibirDisparo() {
-		
-	}
-
-	public boolean mover()
-	{	
-		boolean movio=true;
-		direccion = (int) (Math.random()*4+1);
-		switch (direccion) {
-			case 1: 
-				if(manejo.getComponente(this.getPosicionX()+1, this.getPosicionY()).movimientoPosible())
-					this.setPosicionX(getPosicionX()+1);
-				else
-					movio= false;
-				break;
-			case 2: 
-				if(manejo.getComponente(this.getPosicionX()-1, this.getPosicionY()).movimientoPosible())
-					this.setPosicionX(getPosicionX()-1);
-				else
-					movio=false;
-				break;
-			case 3: 
-				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()-1).movimientoPosible())
-					this.setPosicionY(getPosicionY()-1);
-				else
-					movio=false;
-					break;
-			case 4: 
-				if(manejo.getComponente(this.getPosicionX(), this.getPosicionY()+1).movimientoPosible())
-					this.setPosicionY(getPosicionY()+1);
-				else
-					movio=false;
-					break;
-			}
-		 	posicionImagen(direccion);
-		
-		return movio;
-	}
-	
-	public boolean movimientoPosibleDisparo() {
-		return false;
-	}
-
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==1){
-			vida-=100;
-			System.out.println("vida del enemigo impactado : "+vida);
-			manejo.enemigoMurio();
+			vida=0;
+			logica.enemigoMurio(); 
 		}
+	}
+
+	public int getPuntos() {
+		return 100;
 	}
 	
 }

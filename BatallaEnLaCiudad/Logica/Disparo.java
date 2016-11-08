@@ -10,6 +10,7 @@ public class Disparo extends Celda{
 	/**
 	 * 
 	 */
+	protected int deQuienEs;
 	
 	protected Logica manejo;
 	
@@ -62,7 +63,7 @@ public class Disparo extends Celda{
 		
 	}
 	
-	public boolean mover()
+	public boolean mover(int direcion)
 	{	boolean seMovio=true;
 		if(this.getPosicionX()==0 || this.getPosicionY()==0 || 
 				this.getPosicionX()==(manejo.getMapaLogico().length-1) ||
