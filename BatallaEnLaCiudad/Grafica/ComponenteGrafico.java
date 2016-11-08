@@ -15,7 +15,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int pixelY;
 
 	protected int deQuienEs;
-	
+	protected	int profundidad = 1;
 	protected int vida;
 	protected int powerUpDeTanque;
 	
@@ -114,6 +114,9 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public abstract void colicion(int deQuienEs);
 	
+	public	int getDepth(){
+		return profundidad;
+	}
 	public final int getVida(){
 		return vida;
 	}

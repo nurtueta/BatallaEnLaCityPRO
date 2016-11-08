@@ -80,33 +80,39 @@ public class Logica {
 	    	  
 	      	 for(int i=0;i<cadena.length();i++){
 	      		char s = cadena.charAt(i);
-	      		if(s=='A'){
-	      			mapa[j][i]= new Agua(i,j);
-	      		}else
-		      		if(s=='L'){
-		      			mapa[j][i]= new Ladrillo(i,j);
-		      		}else
-			      		if(s=='I'){
-			      			mapa[j][i]= new Acero(i,j);
-			      		}else
-				      		if(s=='B'){
-				      			mapa[j][i]= new Arbol(i,j);
-				      			//grafica.agregarGrafico(mapa[j][i]);
-				      		//	grafica.setComponentZOrder(mapa[j][i], 1);
-				      		}else
-					      		if(s=='E'){
-					      			mapa[j][i]= new Aguila(i,j);
-					      		}/*else
-						      		if(s=='P'){
-						      			mapa[i][j]= 28; Portal enemigo
-						      		}else
-							      		if(s=='R'){
-							      			mapa[i][j]= 27; Respown
-							      		}*/
-							      		else{
-							      			mapa[j][i]= new Piso(i,j);
-							      		}
+	      		
+	      		switch (s){
+	      		case 1: if(s=='A')
+		      			mapa[j][i]= new Agua(i,j);
+		      			break;
+	      		
+	      		case 2: if(s=='L')
+	      				mapa[j][i]= new Ladrillo(i,j);
+	      				break;
+	      		
+	      		case 3: if(s=='I')
+		      			mapa[j][i]= new Acero(i,j);
+		      			break;
+	      		
+	      		case 4:if(s=='B')
+	      				mapa[j][i]= new Arbol(i,j);
+	      				break;
+	      			
+	      		case 5: if(s=='A')
+	      				mapa[j][i]= new Agua(i,j);
+	      				break;
+	      		
+	      		case 6: if(s=='E')
+	      				mapa[j][i]= new Aguila(i,j);
+	      				break;
+	      		
+	      		case 7: if(s=='C')
+	      				mapa[j][i]= new Piso(i,j);
+	      				break;
+					      		
+					      		
 	      		}
+	      	 }
 	      	j++;
 	      	}  
 	    
@@ -361,7 +367,6 @@ public class Logica {
     	ComponenteGrafico bala=crearDisparo(getJugador(),1);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
-    		grafica.agregarZOrder(bala,2);
     	}
     }
 	
@@ -369,7 +374,6 @@ public class Logica {
 		ComponenteGrafico bala=crearDisparo(enemigo,0);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
-    		grafica.agregarZOrder(bala,2);
     	}
 		
 	}
@@ -377,14 +381,12 @@ public class Logica {
 	public void crearJugador(){
     	ingresarJugador();
         grafica.agregarGrafico(getJugador());
-        grafica.agregarZOrder(getJugador(), 2);
     }
 	
 	public void crearEnemigo() {
 		ComponenteGrafico enemigo=crearEnemigo(4,4);
 		if(enemigo!=null){
 			grafica.agregarGrafico(enemigo);
-			grafica.agregarZOrder(enemigo, 2);
 		}
 	}
 	
@@ -417,7 +419,6 @@ public class Logica {
 			if(enemigosMatados == 4){
 				PowerUp p = crearPowerUp();
 				grafica.agregarGrafico(p);
-				grafica.agregarZOrder(p, 1);
 				enemigosMatados = 0;
 			}
 			else

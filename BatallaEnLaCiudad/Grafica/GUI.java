@@ -10,7 +10,7 @@ import Logica.*;
 
 public class GUI extends JFrame {
 	
-	 private JPanel contentPane;
+	 private JLayeredPane contentPane;
 	 private Logica mapaLogica;
 	 private boolean disparo;
 	 private boolean movio;
@@ -49,7 +49,7 @@ public class GUI extends JFrame {
 	        //setteo del panel contenedor
 	        
 	        setBounds(0,0,650,650);
-	        contentPane = new JPanel();
+	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
@@ -157,18 +157,19 @@ public class GUI extends JFrame {
 	 }
 	   
 	 public void agregarGrafico(ComponenteGrafico x){
-	  	contentPane.add(x);
+	  	//contentPane.add(x);
+	  	contentPane.add(x,new Integer(x.getDepth()));
 	 }	
 	    
 	 public	JLabel	getPanelPuntaje(){
 	   	return panelPuntaje;
 	 }
 	    
-	 public void agregarZOrder(ComponenteGrafico x,int a){
+	 /*public void agregarZOrder(ComponenteGrafico x,int a){
 	  	contentPane.setComponentZOrder(x, a);
-	 }
+	 }*/
 	    
-	 public	JPanel	getContentPane(){
+	 public	JLayeredPane	getContentPane(){
 	  	return contentPane;
 	 }
 	    

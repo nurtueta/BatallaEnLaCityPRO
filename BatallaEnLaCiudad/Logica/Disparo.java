@@ -19,6 +19,7 @@ public class Disparo extends Celda{
 		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;
+		profundidad=2;
 		ImageIcon fot = new ImageIcon();
 		switch (direccion){
 			case 1:
