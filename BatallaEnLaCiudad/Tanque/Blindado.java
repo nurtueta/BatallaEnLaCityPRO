@@ -11,7 +11,7 @@ public class Blindado extends Enemigo{
 		super(x,y);
 		manejo=l;
 		posicionImagen(d);
-		vida=500;
+		vida=400;
 	}
 
 	
@@ -42,6 +42,12 @@ public class Blindado extends Enemigo{
 	}
 
 	public void colicion(int deQuienEs) {
-		
+		if(deQuienEs==1){
+			vida-=100;
+			System.out.println("vida del enemigo impactado : "+vida);
+			
+			if (vida == 0)
+				manejo.enemigoMurio();
+		}
 	}
 }

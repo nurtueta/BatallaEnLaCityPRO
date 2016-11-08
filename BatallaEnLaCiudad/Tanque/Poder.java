@@ -40,6 +40,10 @@ public class Poder extends Enemigo{
 	}
 
 	public void colicion(int deQuienEs) {
-		
+		if(deQuienEs==1){
+			vida-=100;
+			System.out.println("vida del enemigo impactado : "+vida);
+			manejo.enemigoMurio();
+		}
 	}
 }

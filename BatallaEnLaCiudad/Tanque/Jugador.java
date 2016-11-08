@@ -12,7 +12,7 @@ public class Jugador extends Tanque{
 	public Jugador(int x,int y){
 		super(x,y);
 		posicionImagen(1);
-		vida=100;
+		vida=50;
 	}
 	
 	/*Comandos*/
@@ -81,7 +81,17 @@ public class Jugador extends Tanque{
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
+	
+	public int disparosSimultaneos(){
+		//esto debe ser un metodo abstracto cuando Jugador se convierta en clase abstracta s/State
+		return 0;
+	}
 
+	public int velocidadDisparo(){
+		//esto debe ser un metodo abstracto cuando Jugador se convierta en clase abstracta s/State
+		return 0;
+	}
+	
 	public void colicion(int deQuienEs) {
 		//pruebo de quien es el disparo que recive	
 		if(deQuienEs==0){

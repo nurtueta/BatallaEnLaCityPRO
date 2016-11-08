@@ -2,8 +2,11 @@ package Logica;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
+
 import Grafica.*;
 import Logica.Bloque.*;
+import PowerUp.*;
 import Tanque.*;
 
 public class Logica {
@@ -17,6 +20,9 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private MovimientoFluido [] hilosFluidos;
 	private int puntaje;
+	private int enemigosMatados;
+	private int muertesAcumuladas;
+	private int enemigosEnTablero;
 	
 	private boolean termina;
 	
@@ -32,7 +38,10 @@ public class Logica {
 		hilosFluidos=new MovimientoFluido[5];
 		hiloBalas.start();
 		hiloEnemigos.start();
-		puntaje=0;
+		puntaje=0;			 //cuando llega a 20000, sumar una vida
+		enemigosMatados=0;   //cuando llega a 4 creo un powerUp y lo reseteo
+		enemigosEnTablero=0; //deberia iniciar en 4 y no bajar de 2
+		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
 		grafica=laGUI;
 		
 		termina=false;
@@ -209,7 +218,11 @@ public class Logica {
 	public void eliminarEnemigo(ComponenteGrafico x){
 		grafica.eliminarGrafico(x);
 	}
-    
+   
+	public void eliminarPowerUp(ComponenteGrafico x){
+		grafica.eliminarGrafico(x);
+	}
+	
 	private ComponenteGrafico crearDisparo(ComponenteGrafico componente,int x){
 		ComponenteGrafico bala = new Disparo(0,0,componente.getDireccion(),this,x);
 		boolean puedeCrear=true;
@@ -258,6 +271,52 @@ public class Logica {
 			enemigo=null;
 		return enemigo;
 	
+	}
+	
+	private PowerUp crearPowerUp(){
+		//Busco entre 1 y 6 un tipo de powerup aleatorio siendo: 1)Casco; 2) Estrella; 3)Granada
+		//4) Pala; 5) Timer; 6) VidaTanque.
+		int tipo = (int) new Random().nextInt(6)+1;
+		
+		//Elijo variables de posicion en el mapa al azar.
+		int localizarX = (int) new Random().nextInt(20);
+		int localizarY = (int) new Random().nextInt(20);
+		
+		PowerUp miPowerUp;
+		
+			switch (tipo){
+			case 1: {
+						miPowerUp = new Casco(localizarX,localizarY);
+						break;
+					}
+			case 2: {
+						miPowerUp = new Estrella(localizarX,localizarY);
+						break;
+					}
+			case 3: {
+						miPowerUp = new Granada(localizarX,localizarY);
+						break;
+					}
+			case 4: {
+						miPowerUp = new Pala(localizarX,localizarY);
+						break;
+					}
+			case 5: {
+						miPowerUp = new Timer(localizarX,localizarY);
+						break;
+					}
+			case 6: {
+						miPowerUp = new VidaTanque(localizarX,localizarY);
+						break;
+					}
+			default:  { 
+						miPowerUp = new Casco(localizarX,localizarY);
+						break;
+					  }
+			}
+			
+		
+		return miPowerUp;
 	}
 	
 	public Movimiento getHilosBalas(){
@@ -350,6 +409,22 @@ public class Logica {
 	public	void	addPuntaje(){
 		puntaje+=100;
 		System.out.println(puntaje);
+	}
+	
+	public void enemigoMurio(){
+		enemigosMatados++;
+		muertesAcumuladas++;
+		
+			if(enemigosMatados == 4){
+				PowerUp p = crearPowerUp();
+				grafica.agregarGrafico(p);
+				grafica.agregarZOrder(p, 1);
+				enemigosMatados = 0;
+			}
+			else
+				if(muertesAcumuladas == 16)
+					finalizarJuego();
+		
 	}
 	
 }

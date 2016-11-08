@@ -59,7 +59,7 @@ public class Inicio {
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(null,"Nahuel se la come");
+				JOptionPane.showMessageDialog(null,"Ayuda");
 			}
 		});
 		btnHelp.setBounds(196, 118, 121, 64);
@@ -69,7 +69,7 @@ public class Inicio {
 		btnAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(null,"Y Larra se la da");
+				JOptionPane.showMessageDialog(null,"Acerca De BatallaEnLaCiudad");
 
 			}
 		});

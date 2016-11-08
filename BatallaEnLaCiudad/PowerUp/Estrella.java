@@ -5,21 +5,20 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class Pala extends PowerUp{
+public class Estrella extends PowerUp{
 
-	public Pala(int x, int y){
+	public Estrella (int x, int y){
 		super(x,y);
 		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
-		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpPala.png"));
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpEstrella.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
 	
 	public void colision(int quienEs){
-		//Hace todas las paredes de la base(aguila) irrompibles
-		//Repara todo el daño a las paredes de la base
+		//Aumenta el nivel del tanque del jugador. Al ser destruido, el jugador vuelve al nivel 1.
 	}
 	
 }

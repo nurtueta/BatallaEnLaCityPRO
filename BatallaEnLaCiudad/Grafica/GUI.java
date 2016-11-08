@@ -10,7 +10,7 @@ import Logica.*;
 
 public class GUI extends JFrame {
 	
-	private JPanel contentPane;
+	 private JPanel contentPane;
 	 private Logica mapaLogica;
 	 private boolean disparo;
 	 private boolean movio;
@@ -18,7 +18,7 @@ public class GUI extends JFrame {
 	    /**
 	     * Launch the application.
 	     */
-	   
+	  
 	  /*  public static void main(String[] args) {
 	        EventQueue.invokeLater(new Runnable() {
 	            public void run() {
@@ -35,7 +35,8 @@ public class GUI extends JFrame {
 	    /**
 	     * Create the frame.
 	     */
-	    public GUI() {
+	    
+	 public GUI() {
 	    	disparo=false;
 	    	movio=false;
 	    	mapaLogica = new Logica(this);
@@ -55,17 +56,17 @@ public class GUI extends JFrame {
 	        setContentPane(contentPane);
 	        contentPane.setLayout(null);
 	        this.setLayout(null);
-	       // JTextField panelPuntaje = new JTextField("Puntaje: "+mapaLogica.obtenerPuntaje());
+	        // JTextField panelPuntaje = new JTextField("Puntaje: "+mapaLogica.obtenerPuntaje());
 	        panelPuntaje = new JLabel("Puntaje:"+mapaLogica.obtenerPuntaje());
 
-	       // panelPuntaje.setFont(new Font("Verdana",1,500));
+	        // panelPuntaje.setFont(new Font("Verdana",1,500));
 	        
-	       
+	        
 	        panelPuntaje.setForeground(Color.RED);
 	        contentPane.add(panelPuntaje);
 	        contentPane.getComponent(contentPane.getComponentCount()-1).setBounds(50, 50, 300, 300);
 	        panelPuntaje.setVisible(true);
-	      //  contentPane.Componen
+	        //  contentPane.Componen
 	        
 	        
 	        mapaLogica.generarPanel();
@@ -145,33 +146,34 @@ public class GUI extends JFrame {
 				public void keyTyped(KeyEvent arg0){
 				}
 	        });	       	        
-	    }
+	    	}
 
-	    public boolean finDelJuego(){
-	    	return mapaLogica.finDelJuego();
-	    }
+	 public boolean finDelJuego(){
+	   	return mapaLogica.finDelJuego();
+	 }
 	    
-	    public void eliminarGrafico(ComponenteGrafico x){
-	    	contentPane.remove(x);
-	    }
+	 public void eliminarGrafico(ComponenteGrafico x){
+	  	contentPane.remove(x);
+	 }
+	   
+	 public void agregarGrafico(ComponenteGrafico x){
+	  	contentPane.add(x);
+	 }	
 	    
-	    public void agregarGrafico(ComponenteGrafico x){
-	    	contentPane.add(x);
-
-		}	
-	    public	JLabel	getPanelPuntaje(){
-	    	return panelPuntaje;
-	    }
+	 public	JLabel	getPanelPuntaje(){
+	   	return panelPuntaje;
+	 }
 	    
-	    public void agregarZOrder(ComponenteGrafico x,int a){
-	    	contentPane.setComponentZOrder(x, a);
-	    }
-	    public	JPanel	getContentPane(){
-	    	return contentPane;
-	    }
+	 public void agregarZOrder(ComponenteGrafico x,int a){
+	  	contentPane.setComponentZOrder(x, a);
+	 }
 	    
-	    public void terminarJuego(){
-	    	System.exit(0);
-	    }
+	 public	JPanel	getContentPane(){
+	  	return contentPane;
+	 }
+	    
+	 public void terminarJuego(){
+	  	System.exit(0);
+	 }
 	    
 }
