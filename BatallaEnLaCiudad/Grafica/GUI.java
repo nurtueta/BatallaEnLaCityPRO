@@ -175,9 +175,7 @@ public class GUI extends JFrame {
 	   	return panelPuntaje;
 	 }
 	    
-	 /*public void agregarZOrder(ComponenteGrafico x,int a){
-	  	contentPane.setComponentZOrder(x, a);
-	 }*/
+	 
 	    
 	 public	JLayeredPane	getContentPane(){
 	  	return contentPane;

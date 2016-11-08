@@ -17,6 +17,7 @@ public class Disparo extends Celda{
 	public Disparo(int x,int y,int d,Logica l,int deQuienEs)
 	{	
 		super(x,y);
+		profundidad=3;
 		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;

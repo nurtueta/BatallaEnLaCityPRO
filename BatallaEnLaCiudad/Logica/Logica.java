@@ -301,7 +301,6 @@ public class Logica {
     	ComponenteGrafico bala=crearDisparo(getJugador(),1);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
-    		grafica.agregarZOrder(bala,2);
     		grafica.repaint();
     		hiloBalas.addBala(bala);
     	}
@@ -311,7 +310,6 @@ public class Logica {
 		ComponenteGrafico bala=crearDisparo(enemigo,0);
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
-    		grafica.agregarZOrder(bala,2);
     	}
 		
 	}
@@ -319,14 +317,12 @@ public class Logica {
 	public void crearJugador(){
     	ingresarJugador();
         grafica.agregarGrafico(getJugador());
-        grafica.agregarZOrder(getJugador(), 2);
     }
 	
 	public void crearEnemigo() {
 		ComponenteGrafico enemigo=crearEnemigo(4,4);
 		if(enemigo!=null){
 			grafica.agregarGrafico(enemigo);
-			grafica.agregarZOrder(enemigo, 2);
 		}
 	}
 	
@@ -352,7 +348,6 @@ public class Logica {
 			if(enemigosMatados == 4){
 				PowerUp p = crearPowerUp();
 				grafica.agregarGrafico(p);
-				grafica.agregarZOrder(p, 1);
 				enemigosMatados = 0;
 			}
 			else

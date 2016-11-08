@@ -23,6 +23,7 @@ public abstract class Tanque extends Celda {
 	
 	public	Tanque(int x,int y){
 		super(x,y);		
+		profundidad=3;
 	}
 	
 	public boolean mover(int direccion) {

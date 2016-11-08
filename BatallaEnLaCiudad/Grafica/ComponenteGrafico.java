@@ -12,7 +12,7 @@ public abstract class ComponenteGrafico extends JLabel {
 
 	protected int pixelX;
 	protected int pixelY;
-	
+	protected int profundidad=2;
 	protected int direccion;
 	
 	protected int vida;
@@ -114,7 +114,9 @@ public abstract class ComponenteGrafico extends JLabel {
 	public void setDireccion(int d){
 		
 	}
-	
+	public	int getDepth(){
+		return profundidad;
+	}
 	public int getVelMovimiento(){
 		return 0;
 	}
