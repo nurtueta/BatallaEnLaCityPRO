@@ -283,7 +283,7 @@ public class Logica {
 		int sigY=y;
 		getComponente(sigX, sigY).colicion(deQuienEs);
 		if(getComponente(sigX, sigY).getVida()==0){
-			if(getComponente(sigX, sigY)==miJugador ){
+			if(getComponente(sigX, sigY)==miJugador || ((sigX==9 ||sigX==10)&&(sigY==17||sigY==18))){
 				finalizarJuego();
 			}else{
 				grafica.eliminarGrafico(getComponente(sigX, sigY));
@@ -333,11 +333,9 @@ public class Logica {
 		for(int i=0;i<20;i++)
 		 	for(int j=0;j<20;j++){
 		 		ComponenteGrafico comp = getComponente(i,j);
-		 		grafica.agregarGrafico(comp);
-		 	//	grafica.getContentPane().setComponentZOrder(comp, comp.getComponentZOrder());
-		 		//grafica.getContentPane().setComponentZOrder(grafica.getComponent(grafica.getComponentCount()-1),comp.getComponentZOrder());
-		 	}
+		 		grafica.agregarGrafico(comp);		 	}
 	}	
+	
 	public void iniciarMovimientoJugador(int d){
 		hilosFluidos[0]=new MovimientoFluido(this, miJugador.getPosicionX(), miJugador.getPosicionY(), d);
 		hilosFluidos[0].start();
@@ -347,7 +345,8 @@ public class Logica {
 		hilosFluidos[enemigo]=new MovimientoFluido(this, e.getPosicionX(), e.getPosicionY(), d);
 		hilosFluidos[enemigo].start();
 	}
-	public	void	addPuntaje(){
+	
+	public void addPuntaje(){
 		puntaje+=100;
 		System.out.println(puntaje);
 	}

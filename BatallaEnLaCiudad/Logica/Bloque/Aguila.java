@@ -16,43 +16,29 @@ public class Aguila extends Celda {
 		vida=25;
 	}
 
-	@Override
 	public boolean movimientoPosible() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean movimientoPosibleDisparo() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void recibirDisparo() {
-		vida=0;
-		System.exit(0);
 		
 	}
 
-	@Override
 	public void posicionImagen(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public boolean mover() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void colicion(int deQuienEs) {
-		// TODO Auto-generated method stub
 		vida=0;
-		System.exit(0);
-		
 	}
 
 }
