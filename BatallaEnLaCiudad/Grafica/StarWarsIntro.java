@@ -8,20 +8,11 @@ import java.applet.AudioClip;
 //
 //-------------------------------------------------------------------
 import java.awt.*;
-import java.net.*;
 import java.io.*;
-import java.util.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
- import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.print.attribute.standard.Media;
 
-import java.io.*;
 import java.util.Random;
 
 public class StarWarsIntro extends Frame

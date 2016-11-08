@@ -1,9 +1,14 @@
 package Logica;
 
+import java.applet.Applet;
 import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+import Grafica.StarWarsIntro;
 import Logica.Bloque.Celda;
 
 public class Disparo extends Celda{
@@ -18,6 +23,12 @@ public class Disparo extends Celda{
 	{	
 		super(x,y);
 		profundidad=3;
+		
+		
+		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
+	    AudioClip clip = Applet.newAudioClip(url);
+	    clip.play();
+		
 		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;
