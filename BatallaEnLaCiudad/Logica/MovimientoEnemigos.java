@@ -22,7 +22,7 @@ public class MovimientoEnemigos extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego())
 			{
-				this.sleep(500);
+				this.sleep(200);
 				eliminar=new ArrayList<ComponenteGrafico>();
 				
 				for(ComponenteGrafico enemigo: enemigos)
@@ -39,7 +39,7 @@ public class MovimientoEnemigos extends Movimiento{
 					miLogica.eliminarGrafico(enemigo);
 					enemigos.remove(enemigo);
 				}
-				this.sleep(500);
+				this.sleep(200);
 				for(ComponenteGrafico enemigo: enemigos)
 				{
 					miLogica.crearDisparo(enemigo);
