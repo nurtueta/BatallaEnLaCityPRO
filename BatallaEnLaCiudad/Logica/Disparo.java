@@ -28,6 +28,7 @@ public class Disparo extends Celda{
 		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
 	    AudioClip clip = Applet.newAudioClip(url);
 	    clip.play();
+	    clip.stop();
 		
 		this.deQuienEs=deQuienEs;
 		manejo=l;

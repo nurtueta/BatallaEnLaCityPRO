@@ -58,7 +58,8 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        
 	        JLabel panelPuntaje = new JLabel();
-	        panelPuntaje.setBounds(475, 11, 159, 45);
+	        panelPuntaje.setFont(new Font("Harrington", Font.ITALIC, 36));
+	        panelPuntaje.setBounds(433, 11, 201, 45);
 	        panelPuntaje.setForeground(Color.RED);
 	        contentPane.setLayer(panelPuntaje, 5);
 	        panelPuntaje.setText("puntaje: ");
