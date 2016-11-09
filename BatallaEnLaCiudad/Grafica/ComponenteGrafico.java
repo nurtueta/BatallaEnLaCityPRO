@@ -14,7 +14,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int pixelY;
 	protected int profundidad=2;
 	protected int direccion;
-	
+	protected int puntaje=0;
 	protected int vida;
 	
 	
@@ -89,7 +89,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	}
 	
 	public int getPuntos(){
-		return 0;
+		return puntaje;
 	}
 	
 	public final int getVida(){

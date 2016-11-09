@@ -14,7 +14,7 @@ public class GUI extends JFrame {
 	 private Logica mapaLogica;
 	 private boolean disparo;
 	 private boolean movio;
-	 protected	JLabel	panelPuntaje;
+	 private JLabel panelPuntaje;
 	    /**
 	     * Launch the application.
 	     */
@@ -51,29 +51,20 @@ public class GUI extends JFrame {
 	        setBounds(0,0,650,650);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	        contentPane.setLayout(null);
 	        contentPane.setVisible(true);
 	        setContentPane(contentPane);
 	        contentPane.setLayout(null);
 	        getContentPane().setLayout(null);
-	        // JTextField panelPuntaje = new JTextField("Puntaje: "+mapaLogica.obtenerPuntaje());
-	        panelPuntaje = new JLabel("Puntaje:"+mapaLogica.obtenerPuntaje());
-
-	        // panelPuntaje.setFont(new Font("Verdana",1,500));
+	        contentPane.setLayout(null);
 	        
-	        
+	        JLabel panelPuntaje = new JLabel();
+	        panelPuntaje.setBounds(475, 11, 159, 45);
 	        panelPuntaje.setForeground(Color.RED);
+	        contentPane.setLayer(panelPuntaje, 5);
+	        panelPuntaje.setText("puntaje: ");
+	        this.panelPuntaje=panelPuntaje;
+	        
 	        contentPane.add(panelPuntaje);
-	        
-	        JLabel panelPuntaje = new JLabel("Puntaje: ");
-	        panelPuntaje.setForeground(Color.RED);
-	        panelPuntaje.setFont(new Font("Tahoma", Font.PLAIN, 26));
-	        panelPuntaje.setBounds(433, 29, 201, 45);
-	        contentPane.add(panelPuntaje, new Integer(5));
-	        panelPuntaje.setOpaque(false);
-	        
-	        //contentPane.getComponent(contentPane.getComponentCount()-1).setBounds(0, contentPane.getHeight()-50, 300, 300);
-	        panelPuntaje.setVisible(true);
 	       
 	        
 	        

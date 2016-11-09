@@ -19,6 +19,7 @@ public class Basico extends Enemigo{
 		vida=1;
 		velMovimiento=1;
 		velDisparo=1;
+		puntaje=500;
 	}
 	
 	/*Comandos*/

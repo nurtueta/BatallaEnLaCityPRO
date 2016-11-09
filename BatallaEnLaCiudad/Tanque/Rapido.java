@@ -18,6 +18,7 @@ public class Rapido extends Enemigo{
 		vida=1;
 		velMovimiento=3;
 		velDisparo=2;
+		puntaje=800;
 	}
 
 	public void posicionImagen(int i){

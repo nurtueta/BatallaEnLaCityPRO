@@ -13,6 +13,7 @@ public abstract class Enemigo extends Tanque{
 		super(x,y);
 		disparosSimultaneos=1;
 		deQuienEs=0;
+		puntaje=500;
 	}
 	
 	public boolean movimientoPosible() {

@@ -26,6 +26,7 @@ public abstract class Movimiento extends Thread{
 	}
 	
 	public void inicio() {
+		miLogica.actualizarPanel();
 		this.start();
 	}
 	

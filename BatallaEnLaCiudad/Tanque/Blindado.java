@@ -18,6 +18,7 @@ public class Blindado extends Enemigo{
 		vida=4;
 		velMovimiento=1;
 		velDisparo=2;
+		puntaje=800;
 	}
 	
 	public void posicionImagen(int i){

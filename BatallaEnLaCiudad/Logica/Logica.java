@@ -19,7 +19,7 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	
-	private int puntaje;
+	private int puntaje=0;
 	private int enemigosMatados;
 	private int muertesAcumuladas;
 	private int enemigosEnTablero;
@@ -157,7 +157,7 @@ public class Logica {
 	
 	public void actualizarPanel(){
 		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
-		
+		grafica.getPanelPuntaje().updateUI();
 		grafica.repaint();
 	}
 	
