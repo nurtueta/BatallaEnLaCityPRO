@@ -14,7 +14,6 @@ public class Ladrillo extends Celda{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=4;
-		puntaje=50;
 	}
 	
 	public boolean movimientoPosible() {

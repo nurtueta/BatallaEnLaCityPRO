@@ -67,6 +67,7 @@ public class StarWarsIntro extends Frame
     
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});
+    //this.setExtendedState(MAXIMIZED_BOTH);
     setSize (600, 500);
     canvas = new CvStory();
     

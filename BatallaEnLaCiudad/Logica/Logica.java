@@ -350,7 +350,6 @@ public class Logica {
 
 			if(enemigosMatados == 4){
 				PowerUp p = crearPowerUp();
-				p.setComponentZOrder(p, 1);
 				grafica.agregarGrafico(p);
 				enemigosMatados = 0;
 			}
