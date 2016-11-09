@@ -13,6 +13,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Rectangle;
+import java.awt.Color;
+import javax.swing.border.CompoundBorder;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Inicio {
 
@@ -46,55 +52,64 @@ public class Inicio {
 	 */
 	private void initialize() {
 		frame = new JFrame(); 
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		/*
-		 * Insercion de la imagen de FONDO. 
-		 * 
-		 */
-		JLayeredPane fondo= new JLayeredPane();
-		JLabel fotito = new JLabel();
-		fondo.setBounds(frame.getBounds());
-		fotito.setBounds(fondo.getBounds());
-		fondo.add(fotito, new Integer(0));
-		
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Main.jpg"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(frame.getWidth(), frame.getHeight(), Image.SCALE_DEFAULT));
-		fotito.setIcon(icono);
-		frame.setIconImage(fot.getImage());
 		
-		JButton btnStart = new JButton("Start!");
-		btnStart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
+		
+		
+		JLabel btnStart = new JLabel("Start!");
+		btnStart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.setVisible(false);
 				GUI juego = new GUI();
 				juego.setVisible(true);
 			}
 		});
+		btnStart.setForeground(Color.RED);
+		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		
 		btnStart.setBounds(196, 44, 121, 64);
 		frame.getContentPane().add(btnStart);
-		JButton btnHelp = new JButton("Help");
-		btnHelp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		frame.getContentPane().setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		
+		JLabel btnHelp = new JLabel("Ayuda");
+		btnHelp.setForeground(Color.RED);
+		btnHelp.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		
+		btnHelp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				
-				JOptionPane.showMessageDialog(null,"Ayuda");
+				JOptionPane.showMessageDialog(frame, "Ayuda!");
+				
 			}
 		});
-		btnHelp.setBounds(196, 118, 121, 64);
+		btnHelp.setBounds(196, 119, 121, 63);
 		frame.getContentPane().add(btnHelp);
 		
-		JButton btnAbout = new JButton("About");
-		btnAbout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JLabel btnAbout = new JLabel("About");
+		btnAbout.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				
-				JOptionPane.showMessageDialog(null,"Acerca De BatallaEnLaCiudad");
+				JOptionPane.showMessageDialog(frame, "De los creadores de: vamo que zafamo. \n viene... ZAFAMOS2 !");
 
 			}
 		});
-		btnAbout.setBounds(196, 193, 121, 57);
+		btnAbout.setForeground(Color.RED);
+		btnAbout.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		btnAbout.setBounds(196, 187, 121, 63);
 		frame.getContentPane().add(btnAbout);
+		JLabel fotito = new JLabel();
+		fotito.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		frame.getContentPane().add(fotito);
+		fotito.setIcon(icono);
+		
 	}
 }
 
