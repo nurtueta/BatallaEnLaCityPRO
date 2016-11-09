@@ -8,6 +8,7 @@ public abstract class PowerUp extends ComponenteGrafico{
 	
 	public PowerUp(int x, int y,int codigo){
 		super(x,y);
+		profundidad=5;
 	}
 
 	public boolean movimientoPosible() {
