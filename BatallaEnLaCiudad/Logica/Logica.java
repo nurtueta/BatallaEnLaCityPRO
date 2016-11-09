@@ -347,7 +347,6 @@ public class Logica {
 	public void enemigoMurio(){
 		enemigosMatados++;
 		muertesAcumuladas++;
-
 			if(enemigosMatados == 4){
 				PowerUp p = crearPowerUp();
 				grafica.agregarGrafico(p);

@@ -153,10 +153,8 @@ public class GUI extends JFrame {
 	 }
 	   
 	 public void agregarGrafico(ComponenteGrafico x){
-		 if(x==null)
-			 System.out.println("estoy pasando algo nulo");
 	  	contentPane.add(x,new Integer(x.getDepth()));
-	 }	
+	 }
 	    
 	 public	JLabel getPanelPuntaje(){
 	   	return panelPuntaje;

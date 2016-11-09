@@ -12,7 +12,7 @@ public abstract class ComponenteGrafico extends JLabel {
 
 	protected int pixelX;
 	protected int pixelY;
-	protected int profundidad=2;
+	protected int profundidad;
 	protected int direccion;
 	protected int puntaje=0;
 	protected int vida;
