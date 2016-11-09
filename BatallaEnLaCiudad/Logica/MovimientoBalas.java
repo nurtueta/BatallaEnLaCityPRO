@@ -13,7 +13,7 @@ public class MovimientoBalas extends Movimiento{
 	public MovimientoBalas(Logica l){
 		super(l);
 		balasIngresar=new ArrayList<ComponenteGrafico>();
-		agregarBala=true;
+		agregarBala=true;//lo uso para saber si puede agregar una bala a la lista
 	}
 	
 	public void run()
@@ -24,7 +24,7 @@ public class MovimientoBalas extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego())
 			{
-				this.sleep(100);
+				this.sleep(50);
 				ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 				agregarBala=false;
 				for(ComponenteGrafico bala: balas){	
