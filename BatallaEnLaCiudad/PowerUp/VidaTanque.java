@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class VidaTanque extends PowerUp{
 
 	public VidaTanque(int x, int y){
-		super(x,y);
+		super(x,y,5);
 //		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpTanque.png"));
@@ -17,7 +17,9 @@ public class VidaTanque extends PowerUp{
 		this.setIcon(icono);
 	}
 	
-	public void colision(int quienEs){
+	@Override
+	public void colicion(int deQuienEs) {
+		// TODO Auto-generated method stub
 		//Agrega una vida al tanque del jugador (+50 de vida)
 	}
 	

@@ -2,9 +2,11 @@ package PowerUp;
 
 import Grafica.ComponenteGrafico;
 
-public class PowerUp extends ComponenteGrafico{
+public abstract class PowerUp extends ComponenteGrafico{
 	
-	public PowerUp(int x, int y){
+	protected int codigo;
+	
+	public PowerUp(int x, int y,int codigo){
 		super(x,y);
 	}
 
@@ -27,11 +29,9 @@ public class PowerUp extends ComponenteGrafico{
 	public boolean movimientoPosibleDisparo() {
 		return movimientoPosibleDisparo;
 	}
-
-	@Override
-	public void colicion(int deQuienEs) {
-		// TODO Auto-generated method stub
-		
+	
+	public int getCodigo(){
+		return codigo;
 	}
 
 }

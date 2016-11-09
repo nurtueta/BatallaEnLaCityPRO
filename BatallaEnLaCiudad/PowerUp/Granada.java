@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class Granada extends PowerUp {
 
 	public Granada(int x, int y){
-		super(x,y);
+		super(x,y,1);
 //		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpGranada.png"));
@@ -16,9 +16,10 @@ public class Granada extends PowerUp {
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
-	
-	public void colision(int quienEs){
+
+	@Override
+	public void colicion(int deQuienEs) {
 		//Destruye todos los enemigos en pantalla
 	}
-	
+		
 }
