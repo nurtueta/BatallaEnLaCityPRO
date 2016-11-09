@@ -17,6 +17,30 @@ public class Arbol extends Celda{
 		profundidad=4;
 		
 	}
+	
+	public boolean movimientoPosible() {
+		return true;
+	}
+
+	public boolean esArbol(){
+		return true;
+	}
+	
+	public void posicionImagen(int i) {
+		
+	}
+
+	public void recibirDisparo() {
+		
+	}
+	
+	public boolean mover(int direcion) {
+		return false;
+	}
+	
+	public boolean movimientoPosibleDisparo() {
+		return true;
+	}
 
 	public void colicion(int deQuienEs) {
 		

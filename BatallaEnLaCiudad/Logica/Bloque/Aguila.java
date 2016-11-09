@@ -16,6 +16,27 @@ public class Aguila extends Celda {
 		vida=25;
 	}
 
+	public boolean movimientoPosible() {
+		return false;
+	}
+
+	@Override
+	public boolean movimientoPosibleDisparo() {
+		return false;
+	}
+
+	public void recibirDisparo() {
+		
+	}
+
+	public void posicionImagen(int i) {
+		
+	}
+
+	public boolean mover(int direcion) {
+		return false;
+	}
+
 	public void colicion(int deQuienEs) {
 		vida=0;
 	}

@@ -17,6 +17,26 @@ public class Acero extends Celda{
 		
 
 	}
+	
+	public boolean movimientoPosible() {
+		return false;
+	}
+
+	public void posicionImagen(int i) {
+		
+	}
+
+	public void recibirDisparo() {
+		
+	}
+
+	public boolean mover(int direcion) {
+		return false;
+	}
+
+	public boolean movimientoPosibleDisparo() {
+		return false;
+	}
 
 	public void colicion(int deQuienEs) {
 		

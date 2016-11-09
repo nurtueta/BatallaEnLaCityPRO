@@ -12,11 +12,25 @@ public class PowerUp extends ComponenteGrafico{
 		return false;
 	}
 	
+	public void posicionImagen(int i) {
+		
+	}
+
+	public boolean mover(int direcion) {
+		return false;
+	}
+	
+	public void recibirDisparo() {
+		
+	}
+	
 	public boolean movimientoPosibleDisparo() {
 		return true;
 	}
 
+	@Override
 	public void colicion(int deQuienEs) {
+		// TODO Auto-generated method stub
 		
 	}
 
