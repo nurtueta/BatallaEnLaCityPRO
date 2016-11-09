@@ -252,7 +252,7 @@ public void transPic (double sx, double sy, double sz)
 
 for (int i = 0; i < numPixels; i++)
 {
-pixels[i][0] = pixels[i][0] + sx;
+pixels[i][0] = pixels[i][0] + 0;
    pixels[i][1] = pixels[i][1] + sy;
    pixels[i][2] = pixels[i][2] + sz;
 }
