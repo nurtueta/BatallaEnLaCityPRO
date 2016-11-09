@@ -30,11 +30,7 @@ public class MovimientoBalas extends Movimiento{
 					}
 				if(!eliminar.isEmpty())
 					for(ComponenteGrafico bala: eliminar){
-						
-						miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.getDeQuienEs());
-						miLogica.eliminarGrafico(bala);
 						balas.remove(bala);
-						
 					}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}

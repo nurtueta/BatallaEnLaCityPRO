@@ -25,7 +25,7 @@ public class MovimientoEnemigos extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego())
 			{
-				this.sleep(200);
+				this.sleep(300);
 				eliminar=new ArrayList<ComponenteGrafico>();
 				
 				for(ComponenteGrafico enemigo: enemigos)
@@ -37,7 +37,7 @@ public class MovimientoEnemigos extends Movimiento{
 					else
 						enemigo.mover(direccion);
 				}
-				this.sleep(200);
+				this.sleep(300);
 
 				for(ComponenteGrafico enemigo: eliminar)
 				{
