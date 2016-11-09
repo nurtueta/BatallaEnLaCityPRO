@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class Pala extends PowerUp{
 
 	public Pala(int x, int y){
-		super(x,y);
+		super(x,y,3);
 //		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpPala.png"));
@@ -16,8 +16,10 @@ public class Pala extends PowerUp{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
-	
-	public void colision(int quienEs){
+
+	@Override
+	public void colicion(int deQuienEs) {
+		// TODO Auto-generated method stub
 		//Hace todas las paredes de la base(aguila) irrompibles
 		//Repara todo el daño a las paredes de la base
 	}

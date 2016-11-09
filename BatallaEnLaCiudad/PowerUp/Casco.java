@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class Casco extends PowerUp{
 	
 	public Casco(int x, int y){
-		super(x,y);
+		super(x,y,2);
 //		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpCasco.png"));
@@ -16,9 +16,12 @@ public class Casco extends PowerUp{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
-	
-	public void colision(int quienEs){
+
+	@Override
+	public void colicion(int deQuienEs) {
+		// TODO Auto-generated method stub
 		//Temporalmente, el tanque es invulnerable a los disparos de los enemigos
 	}
+	
 	
 }
