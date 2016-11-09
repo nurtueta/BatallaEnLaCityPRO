@@ -32,16 +32,16 @@ public abstract class Jugador extends Tanque{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueDer.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingDerecha.png"));
 				break;
 			case 2:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueIzq.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingIzquierda.png"));
 				break;
 			case 3:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/tanqueArriba.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingArriba.png"));
 				break;
 			case 4:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/tanqueAbajo.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingAbajo.png"));
 				break;
 		}
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));

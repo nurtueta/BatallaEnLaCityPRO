@@ -30,16 +30,16 @@ public class Basico extends Enemigo{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/BasicoDerecha.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/starFighterDerecha.png"));
 				break;
 			case 2:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/BasicoIzquierda.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/starFighterIzquierda.png"));
 				break;
 			case 3:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/BasicoArriba.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/starFighterArriba.png"));
 				break;
 			case 4:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/BasicoAbajo.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/starFighterAbajo.png"));
 				break;
 		}
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
