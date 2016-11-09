@@ -60,6 +60,21 @@ public class StarWarsIntro extends Frame
        {public void windowClosing (WindowEvent e){System.exit(0);}});
     setSize (600, 500);
     canvas = new CvStory();
+    canvas.addKeyListener(new KeyAdapter() {
+    	@Override
+    	public void keyPressed(KeyEvent arg0) {
+    		
+    		if (KeyEvent.VK_UP == arg0.getKeyCode())
+				try {
+					clip.stop();
+					this.finalize();
+					new GUI();
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    	}
+    });
     add (canvas);
   }
 
