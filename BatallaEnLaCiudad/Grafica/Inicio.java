@@ -19,6 +19,10 @@ import javax.swing.border.CompoundBorder;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
+
+
 
 public class Inicio {
 
@@ -51,7 +55,7 @@ public class Inicio {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame(); 
+		frame = new JFrame("Battle Wars!"); 
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -65,7 +69,10 @@ public class Inicio {
 		btnStart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				frame.setVisible(false);
+				
+				
+			    frame.disable();
+			    frame.setVisible(false);
 				GUI juego = new GUI();
 				juego.setVisible(true);
 			}
