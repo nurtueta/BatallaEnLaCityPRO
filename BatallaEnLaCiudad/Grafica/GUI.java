@@ -124,7 +124,7 @@ public class GUI extends JFrame {
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						if(!disparo){
-	 							mapaLogica.crearDisparo();
+	 							mapaLogica.crearDisparoJugador();
 	 							disparo=true;
 	 						}
 	 						break;
@@ -165,7 +165,6 @@ public class GUI extends JFrame {
 	 }
 	   
 	 public void agregarGrafico(ComponenteGrafico x){
-	  	//contentPane.add(x);
 		 if(x==null)
 			 System.out.println("estoy pasando algo nulo");
 	  	contentPane.add(x,new Integer(x.getDepth()));
@@ -174,8 +173,6 @@ public class GUI extends JFrame {
 	 public	JLabel	getPanelPuntaje(){
 	   	return panelPuntaje;
 	 }
-	    
-	 
 	    
 	 public	JLayeredPane	getContentPane(){
 	  	return contentPane;

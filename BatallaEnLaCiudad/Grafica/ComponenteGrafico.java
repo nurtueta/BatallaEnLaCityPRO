@@ -121,6 +121,11 @@ public abstract class ComponenteGrafico extends JLabel {
 		return 0;
 	}
 	
-	public void crearDisparo(){}
-
+	public ComponenteGrafico crearDisparo(){
+		return null;
+	}
+	
+	public int getDisparosSimultaneos(){
+		return 0;
+	}
 }

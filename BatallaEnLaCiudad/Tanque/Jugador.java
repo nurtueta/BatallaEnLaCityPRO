@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+import Logica.Disparo;
 import Logica.MovimientoBalas;
 import Logica.MovimientoFluido;
 
@@ -20,7 +22,7 @@ public abstract class Jugador extends Tanque{
 		super(x,y);
 		posicionImagen(1);
 		casco=0;
-		hiloDisparo=new MovimientoBalas(logica);
+		deQuienEs=1;
 	}
 	
 	/*Comandos*/
@@ -69,6 +71,42 @@ public abstract class Jugador extends Tanque{
 	
 	public void setDireccion(int d){
 		direccion=d;
+	}
+	
+	public ComponenteGrafico crearDisparo(){
+		ComponenteGrafico bala= new Disparo(0,0,direccion,logica,deQuienEs);
+			boolean puedeCrear=true;
+			switch(direccion){
+				case 1:
+					if(!logica.getComponente(miX+1, miY).movimientoPosibleDisparo())
+						puedeCrear=false;
+					bala.setPosicionX(miX+1);
+					bala.setPosicionY(miY);
+					break;
+				case 2:
+					if(!logica.getComponente(miX-1, miY).movimientoPosibleDisparo())
+						puedeCrear=false;
+					bala.setPosicionX(miX-1);
+					bala.setPosicionY(miY);
+					break;
+				case 3:
+					if(!logica.getComponente(miX, miY-1).movimientoPosibleDisparo())
+						puedeCrear=false;
+					bala.setPosicionX(miX);
+					bala.setPosicionY(miY-1);
+					break;
+				case 4:
+					if(!logica.getComponente(miX, miY+1).movimientoPosibleDisparo())
+						puedeCrear=false;
+					bala.setPosicionX(miX);
+					bala.setPosicionY(miY+1);
+					break;
+			}
+			if(!puedeCrear){
+				logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),deQuienEs);
+				bala=null;
+			}
+		return bala;
 	}
 	
 }

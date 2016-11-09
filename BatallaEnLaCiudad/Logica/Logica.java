@@ -16,9 +16,8 @@ public class Logica {
 	protected ComponenteGrafico[][] mapa;
 	protected ComponenteGrafico miJugador;
 	
-	private Movimiento hiloBalas;
 	private Movimiento hiloEnemigos;
-	private MovimientoFluido [] hilosFluidos;
+	private Movimiento hiloDisparoJugador;
 	
 	private int puntaje;
 	private int enemigosMatados;
@@ -33,11 +32,10 @@ public class Logica {
 	/*Constructor*/
 	
 	public Logica(GUI laGUI){
-		
-		hiloBalas = new MovimientoBalas(this);
+		termina=false;
+		hiloDisparoJugador=new MovimientoBalas(this);
+		hiloDisparoJugador.start();
 		hiloEnemigos = new MovimientoEnemigos(this);
-		hilosFluidos=new MovimientoFluido[5];
-		hiloBalas.start();
 		hiloEnemigos.start();
 		puntaje=0;			 //cuando llega a 20000, sumar una vida
 		enemigosMatados=0;   //cuando llega a 4 creo un powerUp y lo reseteo
@@ -45,7 +43,7 @@ public class Logica {
 		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
 		grafica=laGUI;
 		
-		termina=false;
+		
 		
 		mapa=new ComponenteGrafico[20][20];
 		
@@ -123,9 +121,9 @@ public class Logica {
 	}
 	
 	//ingreso jugador
-	public void ingresarJugador()
+	private void ingresarJugador()
 	{
-		miJugador = new JugadorNivel1(1,1,this);
+		miJugador = new JugadorNivel4(1,1,this);
 		miJugador.setDireccion(1);
 		miJugador.setPosicionY(1);
 		miJugador.setPosicionX(1);
@@ -167,46 +165,10 @@ public class Logica {
 		grafica.eliminarGrafico(x);
 	}
 	
-	private ComponenteGrafico crearDisparo(ComponenteGrafico componente,int x){
-		ComponenteGrafico bala = new Disparo(0,0,componente.getDireccion(),this,x);
-		boolean puedeCrear=true;
-		switch(componente.getDireccion()){
-			case 1:
-				if(!mapa[componente.getPosicionY()][componente.getPosicionX()+1].movimientoPosibleDisparo())
-					puedeCrear=false;
-				bala.setPosicionX(componente.getPosicionX()+1);
-				bala.setPosicionY(componente.getPosicionY());
-				break;
-			case 2:
-				if(!mapa[componente.getPosicionY()][componente.getPosicionX()-1].movimientoPosibleDisparo())
-					puedeCrear=false;
-				bala.setPosicionX(componente.getPosicionX()-1);
-				bala.setPosicionY(componente.getPosicionY());
-				break;
-			case 3:
-				if(!mapa[componente.getPosicionY()-1][componente.getPosicionX()].movimientoPosibleDisparo())
-					puedeCrear=false;
-				bala.setPosicionX(componente.getPosicionX());
-				bala.setPosicionY(componente.getPosicionY()-1);
-				break;
-			case 4:
-				if(!mapa[componente.getPosicionY()+1][componente.getPosicionX()].movimientoPosibleDisparo())
-					puedeCrear=false;
-				bala.setPosicionX(componente.getPosicionX());
-				bala.setPosicionY(componente.getPosicionY()+1);
-				break;
-		}
-		if(!puedeCrear){
-			eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),x);
-			bala=null;
-		}
-		return bala;
-	}
-	
 	private ComponenteGrafico crearEnemigo(int x,int y){
 		Enemigo enemigo = new Basico(x, y,1,this);
-		if(mapa[y][x].movimientoPosible()){
-			mapa[y][x]=enemigo;
+		if(getComponente(x, y).movimientoPosible()){
+			setComponente(x, y, enemigo);
 			enemigo.setVisible(true);
 			hiloEnemigos.addEnemigo(enemigo);
 		}else
@@ -255,13 +217,7 @@ public class Logica {
 						break;
 					  }
 			}
-			
-		
 		return miPowerUp;
-	}
-	
-	public Movimiento getHilosBalas(){
-		return hiloBalas;
 	}
 	
 	public Movimiento getHilosEnemigos(){
@@ -270,6 +226,7 @@ public class Logica {
 	
 	private void finalizarJuego(){
 		terminar();
+		hiloEnemigos.stop();
 		grafica.eliminarGrafico(miJugador);
 		grafica.terminarJuego();
 	}
@@ -279,41 +236,42 @@ public class Logica {
 	}
 	
 	public void eliminarColicion(int x,int y,int deQuienEs){
-		int sigX=x;
-		int sigY=y;
-		getComponente(sigX, sigY).colicion(deQuienEs);
-		if(getComponente(sigX, sigY).getVida()==0){
-			if(getComponente(sigX, sigY)==miJugador || ((sigX==9)&&(sigY==19))){
+		getComponente(x, y).colicion(deQuienEs);
+		if(getComponente(x, y).getVida()==0){
+			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19))){
 				finalizarJuego();
 			}else{
-				grafica.eliminarGrafico(getComponente(sigX, sigY));
-				mapa[sigY][sigX]=new Piso(sigX,sigY);
-				grafica.agregarGrafico(getComponente(sigX, sigY));
+				addPuntaje(getComponente(x, y).getPuntos());
+				grafica.eliminarGrafico(getComponente(x, y));
+				mapa[y][x]=new Piso(x,y);
+				grafica.agregarGrafico(getComponente(x, y));
 			}
 		}
-		actualizarPanel();
+//		actualizarPanel();
 	}
 	
 	public	int obtenerPuntaje(){
 		return puntaje;
 	}
 	
-	public void crearDisparo(){
-    	ComponenteGrafico bala=crearDisparo(getJugador(),1);
+	public void crearDisparoJugador(){
+		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
+			ComponenteGrafico bala=miJugador.crearDisparo();
+			if(bala!=null){
+	    		grafica.agregarGrafico(bala);
+	    		grafica.repaint();
+	    		hiloDisparoJugador.addBala(bala);
+	    	}
+		}
+	}
+	
+	public void crearDisparo(ComponenteGrafico x){
+    	ComponenteGrafico bala=x.crearDisparo();
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
     		grafica.repaint();
-    		hiloBalas.addBala(bala);
     	}
     }
-	
-	public void crearDisparoEnemigo(ComponenteGrafico enemigo){
-		ComponenteGrafico bala=crearDisparo(enemigo,0);
-    	if(bala!=null){
-    		grafica.agregarGrafico(bala);
-    	}
-		
-	}
 	
 	public void crearJugador(){
     	ingresarJugador();
@@ -321,7 +279,7 @@ public class Logica {
     }
 	
 	public void crearEnemigo() {
-		ComponenteGrafico enemigo=crearEnemigo(4,4);
+		ComponenteGrafico enemigo=crearEnemigo(3,3);
 		if(enemigo!=null){
 			grafica.agregarGrafico(enemigo);
 		}
@@ -331,11 +289,12 @@ public class Logica {
 		for(int i=0;i<20;i++)
 		 	for(int j=0;j<20;j++){
 		 		ComponenteGrafico comp = getComponente(i,j);
-		 		grafica.agregarGrafico(comp);		 	}
+		 		grafica.agregarGrafico(comp);		 	
+		 	}
 	}	
 	
-	public void addPuntaje(){
-		puntaje+=100;
+	public void addPuntaje(int puntos){
+		puntaje+=puntos;
 		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
 		System.out.println(puntaje);
 		

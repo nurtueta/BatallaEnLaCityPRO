@@ -30,7 +30,7 @@ public class MovimientoEnemigos extends Movimiento{
 					Random rnd= new Random(); 
 					direccion = (int) (rnd.nextInt(8)+1);
 					if(direccion>=5)
-						miLogica.crearDisparoEnemigo(enemigo);
+						miLogica.crearDisparo(enemigo);
 					else
 						if(enemigo.getVida()==0)
 							eliminar.add(enemigo);
@@ -41,8 +41,6 @@ public class MovimientoEnemigos extends Movimiento{
 				for(ComponenteGrafico enemigo: eliminar)
 				{
 					enemigos.remove(enemigo);
-					miLogica.addPuntaje();
-					balas.remove(enemigo);
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}

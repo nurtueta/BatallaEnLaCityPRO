@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+/.classpath
+/.project
+/.settings/
 /Grafica/
-=======
->>>>>>> origin/master
-=======
+/Imagenes/
 /Logica/
->>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
-/Grafica/
-<<<<<<< HEAD
 /PowerUp/
 /Tanque/
->>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
+/UML/
 /archivo/
-/Imagenes/
-=======
-/archivo/
->>>>>>> origin/master
 /wbp-meta/
