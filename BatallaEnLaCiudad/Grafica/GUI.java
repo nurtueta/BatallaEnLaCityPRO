@@ -48,7 +48,7 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        setBounds(0,0,650,650);
+	        setBounds(100,100,650,650);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setVisible(true);
