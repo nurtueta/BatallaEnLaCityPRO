@@ -129,7 +129,7 @@ public class Logica {
 	{
 		miJugador = new JugadorNivel4(5,17,this);
 		miJugador.setDireccion(1);
-		mapa[1][1]=miJugador;
+		mapa[17][5]=miJugador;
 	}
 
 	/*Consultas*/
