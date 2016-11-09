@@ -90,6 +90,8 @@ public class Inicio {
 			}
 		});
 		btnHelp.setBounds(196, 119, 121, 63);
+		
+		btnHelp.setBounds(196, 118, 121, 64);
 		frame.getContentPane().add(btnHelp);
 		
 		JLabel btnAbout = new JLabel("About");
