@@ -22,25 +22,27 @@ public class MovimientoEnemigos extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego())
 			{
-				this.sleep(1000);
+				this.sleep(500);
 				eliminar=new ArrayList<ComponenteGrafico>();
 				
 				for(ComponenteGrafico enemigo: enemigos)
 				{
 					Random rnd= new Random(); 
-					direccion = (int) (rnd.nextInt(8)+1);
-					if(direccion>=5)
-						miLogica.crearDisparo(enemigo);
+					direccion = (int) (rnd.nextInt(4)+1);
+					if(enemigo.getVida()==0)
+						eliminar.add(enemigo);
 					else
-						if(enemigo.getVida()==0)
-							eliminar.add(enemigo);
-						else
-							enemigo.mover(direccion);
+						enemigo.mover(direccion);
 				}
-				
 				for(ComponenteGrafico enemigo: eliminar)
 				{
+					miLogica.eliminarGrafico(enemigo);
 					enemigos.remove(enemigo);
+				}
+				this.sleep(500);
+				for(ComponenteGrafico enemigo: enemigos)
+				{
+					miLogica.crearDisparo(enemigo);
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}

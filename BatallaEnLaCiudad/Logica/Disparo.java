@@ -24,11 +24,11 @@ public class Disparo extends Celda{
 		super(x,y);
 		profundidad=3;
 		
-		
+		/*
 		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
 	    AudioClip clip = Applet.newAudioClip(url);
 	    clip.play();
-		
+		*/
 		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;

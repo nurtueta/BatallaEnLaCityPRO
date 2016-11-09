@@ -7,7 +7,6 @@ import Tanque.*;
 
 public class MovimientoBalas extends Movimiento{
 	
-		
 	public MovimientoBalas(Logica l){
 		super(l);
 	}
@@ -20,8 +19,7 @@ public class MovimientoBalas extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego())
 			{
-						
-				this.sleep(50);
+				this.sleep(100);
 				ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 				if(!balas.isEmpty())
 					for(ComponenteGrafico bala: balas)

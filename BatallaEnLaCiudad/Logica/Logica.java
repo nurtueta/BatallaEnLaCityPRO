@@ -18,6 +18,7 @@ public class Logica {
 	
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
+	private Movimiento hiloDisparoEnemigo;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -33,17 +34,20 @@ public class Logica {
 	
 	public Logica(GUI laGUI){
 		termina=false;
+		
 		hiloDisparoJugador=new MovimientoBalas(this);
 		hiloDisparoJugador.start();
+		hiloDisparoEnemigo=new MovimientoBalas(this);
+		hiloDisparoEnemigo.start();
 		hiloEnemigos = new MovimientoEnemigos(this);
 		hiloEnemigos.start();
+		
+		
 		puntaje=0;			 //cuando llega a 20000, sumar una vida
 		enemigosMatados=0;   //cuando llega a 4 creo un powerUp y lo reseteo
 		enemigosEnTablero=0; //deberia iniciar en 4 y no bajar de 2
 		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
 		grafica=laGUI;
-		
-		
 		
 		mapa=new ComponenteGrafico[20][20];
 		
@@ -270,6 +274,7 @@ public class Logica {
     	if(bala!=null){
     		grafica.agregarGrafico(bala);
     		grafica.repaint();
+    		hiloDisparoEnemigo.addBala(bala);
     	}
     }
 	
