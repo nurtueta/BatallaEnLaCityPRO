@@ -13,6 +13,8 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
 
+import javax.swing.JOptionPane;
+
 import java.util.Random;
 
 public class StarWarsIntro extends Frame
@@ -20,6 +22,7 @@ public class StarWarsIntro extends Frame
 
   CvStory canvas;
   private	AudioClip clip;
+  private	boolean termino =false;
 
   public static void main (String[] args) throws IOException
   {
@@ -32,7 +35,13 @@ public class StarWarsIntro extends Frame
     
     Pic.show();
     Pic.movePic ();
+    Pic.disable();
+    Pic.setVisible(false);
+    Inicio juego = new Inicio();
+    juego.setVisible();
 
+	//juego.frame.setVisible(true);
+    //Inicio.main(null);
   }
 
   public StarWarsIntro () throws IOException
@@ -60,13 +69,14 @@ public class StarWarsIntro extends Frame
        {public void windowClosing (WindowEvent e){System.exit(0);}});
     setSize (600, 500);
     canvas = new CvStory();
+    
     add (canvas);
   }
 
   public void movePic ()
   {
     //for (int a = 0; a < 3600; a++)
-    while (true)
+    while (!termino)
     {
 
       try
@@ -74,8 +84,19 @@ public class StarWarsIntro extends Frame
       catch (InterruptedException e){}
 
       canvas.repaint();
-
+      
+      canvas.addMouseListener(new MouseAdapter() {
+  		@Override
+  		public void mouseClicked(MouseEvent e) {
+  			termino=true;
+  			
+  		}
+  	});
+      
+      
     }
+    clip.stop();
+    
   }
 
 }

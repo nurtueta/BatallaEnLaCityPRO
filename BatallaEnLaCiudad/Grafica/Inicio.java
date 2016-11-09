@@ -31,7 +31,7 @@ public class Inicio {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,13 +42,16 @@ public class Inicio {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
 	 */
 	public Inicio() {
 		initialize();
+	}
+	public	void setVisible(){
+		frame.setVisible(true);
 	}
 
 	/**
@@ -69,6 +72,7 @@ public class Inicio {
 		btnStart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
 				
 				
 			    frame.disable();
