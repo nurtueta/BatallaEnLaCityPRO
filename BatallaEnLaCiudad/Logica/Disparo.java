@@ -77,33 +77,40 @@ public class Disparo extends Celda{
 	
 	public boolean mover(int direcion)
 	{	boolean seMovio=true;
-		if(this.getPosicionX()==0 || this.getPosicionY()==0 || 
-				this.getPosicionX()==(manejo.getMapaLogico().length-1) ||
-				this.getPosicionY()==(manejo.getMapaLogico().length-1))
-			seMovio=false;
-		else
-			switch (direccion) {
-				case 1: this.setPosicionX(getPosicionX()+1);
+		switch (direccion) {
+			case 1: 
+				if(getPosicionX()!=19){
+					this.setPosicionX(getPosicionX()+1);
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())     
 						seMovio=false;
-					
-					break;
-				case 2: 
+				}else
+					seMovio=false;
+				break;
+			case 2: 
+				if(getPosicionX()!=0){
 					this.setPosicionX(getPosicionX()-1);
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
 						seMovio=false;
-					break;
-				case 3: 
+				}else
+					seMovio=false;
+				break;
+			case 3: 
+				if(getPosicionY()!=0){
 					this.setPosicionY(getPosicionY()-1);
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())	
 						seMovio=false;
-					break;
-				case 4: 
+				}else
+					seMovio=false;
+				break;
+			case 4: 
+				if(getPosicionY()!=19){
 					this.setPosicionY(getPosicionY()+1);
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
 						seMovio=false;
-					break;
-				}
+				}else
+					seMovio=false;
+				break;
+		}
 		manejo.actualizarPanel();
 		return seMovio;
 	}

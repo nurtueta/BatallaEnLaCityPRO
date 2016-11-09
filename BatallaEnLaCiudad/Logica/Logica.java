@@ -127,10 +127,8 @@ public class Logica {
 	//ingreso jugador
 	private void ingresarJugador()
 	{
-		miJugador = new JugadorNivel4(1,1,this);
+		miJugador = new JugadorNivel4(5,17,this);
 		miJugador.setDireccion(1);
-		miJugador.setPosicionY(1);
-		miJugador.setPosicionX(1);
 		mapa[1][1]=miJugador;
 	}
 

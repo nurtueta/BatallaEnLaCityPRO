@@ -67,8 +67,6 @@ public class GUI extends JFrame {
 	        
 	        contentPane.add(panelPuntaje);
 	       
-	        
-	        
 	        mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
 	        
@@ -162,11 +160,11 @@ public class GUI extends JFrame {
 	  	contentPane.add(x,new Integer(x.getDepth()));
 	 }	
 	    
-	 public	JLabel	getPanelPuntaje(){
+	 public	JLabel getPanelPuntaje(){
 	   	return panelPuntaje;
 	 }
 	    
-	 public	JLayeredPane	getContentPane(){
+	 public	JLayeredPane getContentPane(){
 	  	return contentPane;
 	 }
 	    
