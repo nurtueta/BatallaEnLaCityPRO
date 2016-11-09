@@ -17,18 +17,23 @@ public abstract class Tanque extends Celda {
 	protected int velDisparo;
 	protected int deQuienEs;
 	protected Logica logica;
+	boolean puedeMover;
 	
 	protected Movimiento hiloFluido;
 	
 	public	Tanque(int x,int y){
 		super(x,y);		
 		profundidad=3;
+		puedeMover=true;;
 		
 	}
 	
 	public boolean mover(int direccion) {
-		hiloFluido=new MovimientoFluido(this, direccion,logica);
-		hiloFluido.start();
+		if(puedeMover){
+			hiloFluido=new MovimientoFluido(this, direccion,logica);
+			puedeMover=false;
+			hiloFluido.start();
+		}
 		return false;
 	}	
 	
@@ -40,5 +45,8 @@ public abstract class Tanque extends Celda {
 		return disparosSimultaneos;
 	}
 
+	public void setPuedeMover(){
+		puedeMover=true;
+	}
 	
 }

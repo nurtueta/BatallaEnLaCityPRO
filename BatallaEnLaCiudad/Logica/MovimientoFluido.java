@@ -11,7 +11,7 @@ public class MovimientoFluido extends Movimiento {
 	int velocidad;
 	int pixel;
 	
-	boolean puedeMover;
+	
 	protected ComponenteGrafico componente;
 
 	public MovimientoFluido(ComponenteGrafico x,int d,Logica l){
@@ -21,7 +21,6 @@ public class MovimientoFluido extends Movimiento {
 		this.d=d;
 		velocidad=30/x.getVelMovimiento();
 		pixel=5;
-		puedeMover=false;
 		miLogica=l;
 		componente=x;
 	}
@@ -99,9 +98,7 @@ public class MovimientoFluido extends Movimiento {
 				componente.setPosicionX(x);
 				componente.setPosicionY(y);
 			}
-					
-					
-					
+			componente.setPuedeMover();
 			this.stop();
 		}catch(InterruptedException e){ e.printStackTrace();}
 		

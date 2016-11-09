@@ -128,4 +128,6 @@ public abstract class ComponenteGrafico extends JLabel {
 	public int getDisparosSimultaneos(){
 		return 0;
 	}
+	
+	public void setPuedeMover(){}
 }

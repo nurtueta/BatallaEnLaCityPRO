@@ -283,6 +283,10 @@ public class Logica {
 		if(enemigo!=null){
 			grafica.agregarGrafico(enemigo);
 		}
+		enemigo=crearEnemigo(17,3);
+		if(enemigo!=null){
+			grafica.agregarGrafico(enemigo);
+		}
 	}
 	
 	public void generarPanel(){
@@ -297,7 +301,6 @@ public class Logica {
 		puntaje+=puntos;
 		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
 		System.out.println(puntaje);
-		
 		grafica.repaint();
 	}
 	
