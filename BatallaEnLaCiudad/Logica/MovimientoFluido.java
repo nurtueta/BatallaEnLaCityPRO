@@ -51,7 +51,6 @@ public class MovimientoFluido extends Movimiento {
 			}
 			componente.posicionImagen(d);
 			if(movio){
-				
 				for(int i=0;i<5;i++){
 					switch (d) {
 						case 1:

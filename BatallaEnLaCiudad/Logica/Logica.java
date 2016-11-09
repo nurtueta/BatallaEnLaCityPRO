@@ -138,11 +138,12 @@ public class Logica {
 	
 	//devuelvo el componente grafico en la posicion (x,y)
 	public ComponenteGrafico getComponente(int x,int y){
-		if (x<0)
-			x=0;
-		if(y<0)
-			y=0;
-		return mapa[y][x];
+		ComponenteGrafico aux;
+		if (x<0 || x>19 || y<0 || y>19)
+			aux=null;
+		else
+			aux=mapa[y][x];
+		return aux;
 	}
 	
 	public void setComponente(int x,int y,ComponenteGrafico p){
@@ -231,6 +232,8 @@ public class Logica {
 	private void finalizarJuego(){
 		terminar();
 		hiloEnemigos.stop();
+		hiloDisparoEnemigo.stop();
+		hiloDisparoJugador.stop();
 		grafica.eliminarGrafico(miJugador);
 		grafica.terminarJuego();
 	}
@@ -251,7 +254,6 @@ public class Logica {
 				grafica.agregarGrafico(getComponente(x, y));
 			}
 		}
-//		actualizarPanel();
 	}
 	
 	public	int obtenerPuntaje(){

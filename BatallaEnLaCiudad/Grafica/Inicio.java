@@ -60,6 +60,7 @@ public class Inicio {
 				JOptionPane.showMessageDialog(null,"Ayuda");
 			}
 		});
+		
 		btnHelp.setBounds(196, 118, 121, 64);
 		frame.getContentPane().add(btnHelp);
 		
