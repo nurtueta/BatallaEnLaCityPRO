@@ -15,26 +15,6 @@ public class Agua extends Celda {
 		this.setIcon(icono);
 		vida=1;
 	}
-	
-	public boolean movimientoPosible() {
-		return false;
-	}
-	
-	public void posicionImagen(int i) {
-		
-	}
-
-	public void recibirDisparo() {
-		
-	}
-
-	public boolean mover(int direcion) {
-		return false;
-	}
-
-	public boolean movimientoPosibleDisparo() {
-		return true;
-	}
 
 	public void colicion(int deQuienEs) {
 		

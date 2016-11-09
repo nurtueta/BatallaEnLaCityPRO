@@ -1,7 +1,6 @@
 package Logica;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 import Grafica.*;
@@ -42,17 +41,11 @@ public class Logica {
 		enemigosEnTablero=0; //deberia iniciar en 4 y no bajar de 2
 		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
 		grafica=laGUI;
-		
-		
-		
 		mapa=new ComponenteGrafico[20][20];
-		
 		generacionDeMapaLogico();
 	}
 	
-	/*
-	 * Comandos
-	 * */
+	/*Comandos*/
 	
 	/**
 	 * Permite ver el mapa logico
@@ -62,7 +55,6 @@ public class Logica {
 		return mapa;
 	}
 
-	
 	/**
 	 * Genera una matriz interna en Logica producto
 	 *  de la traduccion de un archivo .txt
@@ -118,16 +110,6 @@ public class Logica {
 	// al jugador
 	public void mover(int direccion){
 		miJugador.mover(direccion);
-	}
-	
-	//ingreso jugador
-	private void ingresarJugador()
-	{
-		miJugador = new JugadorNivel4(1,1,this);
-		miJugador.setDireccion(1);
-		miJugador.setPosicionY(1);
-		miJugador.setPosicionX(1);
-		mapa[1][1]=miJugador;
 	}
 
 	/*Consultas*/
@@ -227,6 +209,7 @@ public class Logica {
 	private void finalizarJuego(){
 		terminar();
 		hiloEnemigos.stop();
+		hiloDisparoJugador.stop();
 		grafica.eliminarGrafico(miJugador);
 		grafica.terminarJuego();
 	}
@@ -247,7 +230,6 @@ public class Logica {
 				grafica.agregarGrafico(getComponente(x, y));
 			}
 		}
-//		actualizarPanel();
 	}
 	
 	public	int obtenerPuntaje(){
@@ -272,6 +254,16 @@ public class Logica {
     		grafica.repaint();
     	}
     }
+	
+	//ingreso jugador
+	private void ingresarJugador()
+	{
+		miJugador = new JugadorNivel4(1,1,this);
+		miJugador.setDireccion(1);
+		miJugador.setPosicionY(1);
+		miJugador.setPosicionX(1);
+		mapa[1][1]=miJugador;
+	}
 	
 	public void crearJugador(){
     	ingresarJugador();
@@ -307,7 +299,6 @@ public class Logica {
 	public void enemigoMurio(){
 		enemigosMatados++;
 		muertesAcumuladas++;
-		
 			if(enemigosMatados == 4){
 				PowerUp p = crearPowerUp();
 				grafica.agregarGrafico(p);
@@ -316,7 +307,6 @@ public class Logica {
 			else
 				if(muertesAcumuladas == 16)
 					finalizarJuego();
-		
 	}
 	
 }

@@ -15,26 +15,6 @@ public class Ladrillo extends Celda{
 		this.setIcon(icono);
 		vida=4;
 	}
-	
-	public boolean movimientoPosible() {
-		return false;
-	}
-
-	public void posicionImagen(int i) {
-		
-	}
-
-	public void recibirDisparo() {
-		setVisible(false);
-	}
-
-	public boolean mover(int direcion) {
-		return false;
-	}
-	
-	public boolean movimientoPosibleDisparo() {
-		return false;
-	}
 
 	public void colicion(int deQuienEs) {
 		vida--;

@@ -16,26 +16,6 @@ public class Piso extends Celda{
 		vida=1;
 	}
 	
-	public boolean movimientoPosible() {
-		return true;
-	}
-	
-	public void posicionImagen(int i) {
-		
-	}
-
-	public void recibirDisparo() {
-		
-	}
-
-	public boolean mover(int direcion) {
-		return false;
-	}
-	
-	public boolean movimientoPosibleDisparo() {
-		return true;
-	}
-
 	public void colicion(int deQuienEs) {
 		
 	}
