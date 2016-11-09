@@ -76,3 +76,5 @@ public class Inicio {
 		frame.getContentPane().add(btnAbout);
 	}
 }
+
+
