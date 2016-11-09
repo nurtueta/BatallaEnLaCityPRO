@@ -54,14 +54,6 @@ public abstract class Jugador extends Tanque{
 	
 	/*Consultas*/
 	
-	public boolean movimientoPosible() {
-		return false;
-	}
-	
-	public boolean movimientoPosibleDisparo() {
-		return false;
-	}
-	
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==0){
 			if(casco==0)

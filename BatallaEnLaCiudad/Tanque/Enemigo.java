@@ -16,12 +16,4 @@ public abstract class Enemigo extends Tanque{
 		puntaje=500;
 	}
 	
-	public boolean movimientoPosible() {
-		return false;
-	}
-	
-	public boolean movimientoPosibleDisparo() {
-		return false;
-	}
-	
 }

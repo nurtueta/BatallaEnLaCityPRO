@@ -22,8 +22,7 @@ public class MovimientoBalas extends Movimiento{
 				this.sleep(100);
 				ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 				if(!balas.isEmpty())
-					for(ComponenteGrafico bala: balas)
-					{	
+					for(ComponenteGrafico bala: balas){	
 						movio=bala.mover(bala.getDireccion());
 						if(!movio){
 							eliminar.add(bala);

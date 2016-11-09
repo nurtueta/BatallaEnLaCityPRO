@@ -25,7 +25,7 @@ public class PowerUp extends ComponenteGrafico{
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return true;
+		return movimientoPosibleDisparo;
 	}
 
 	@Override

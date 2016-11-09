@@ -14,10 +14,11 @@ public class Piso extends Celda{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=1;
+	
 	}
 	
 	public boolean movimientoPosible() {
-		return true;
+		return movimientoPosible;
 	}
 	
 	public void posicionImagen(int i) {
@@ -33,7 +34,7 @@ public class Piso extends Celda{
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return true;
+		return movimientoPosibleDisparo;
 	}
 
 	public void colicion(int deQuienEs) {

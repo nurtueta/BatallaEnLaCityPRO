@@ -17,6 +17,9 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int puntaje=0;
 	protected int vida;
 	
+	protected boolean movimientoPosible;
+	protected boolean movimientoPosibleDisparo;
+	
 	
 	/*Constructores*/
 	
@@ -27,6 +30,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		super();
 		miX = x;
 		miY = y;
+		movimientoPosible=true;
+		movimientoPosibleDisparo=true;
 		
 		//seteo el componente grafico en el lugar correspondiente
 		pixelX=miX*ancho;
@@ -130,4 +135,9 @@ public abstract class ComponenteGrafico extends JLabel {
 	}
 	
 	public void setPuedeMover(){}
+	
+	public void setMovimientoPosible(){
+		movimientoPosible=false;
+		movimientoPosibleDisparo=false;
+	}
 }
