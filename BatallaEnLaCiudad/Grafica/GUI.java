@@ -69,6 +69,7 @@ public class GUI extends JFrame {
 	       
 	        mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
+	        mapaLogica.crearEnemigo();
 	        
 	        setVisible(true);
 	        
@@ -108,9 +109,6 @@ public class GUI extends JFrame {
 	 							mapaLogica.mover(2);		//Mover el Jugador hacia Arriba
 						 		movio=true;
 						 	}	
-	 						break;
-	 					case KeyEvent.VK_W :
-	 						mapaLogica.crearEnemigo();
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						if(!disparo){

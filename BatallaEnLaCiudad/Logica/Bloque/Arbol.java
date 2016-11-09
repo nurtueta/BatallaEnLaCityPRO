@@ -16,14 +16,15 @@ public class Arbol extends Celda{
 		vida=1;
 		profundidad=4;
 		
+		
 	}
 	
 	public boolean movimientoPosible() {
-		return true;
+		return movimientoPosible;
 	}
 
 	public boolean esArbol(){
-		return true;
+		return movimientoPosibleDisparo;
 	}
 	
 	public void posicionImagen(int i) {

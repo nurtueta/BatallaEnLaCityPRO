@@ -109,6 +109,10 @@ public class Disparo extends Celda{
 					seMovio=false;
 				break;
 		}
+		if(!seMovio){
+			manejo.eliminarColicion(getPosicionX(),getPosicionY(),deQuienEs);
+			manejo.eliminarGrafico(this);
+		}
 		manejo.actualizarPanel();
 		return seMovio;
 	}

@@ -169,7 +169,35 @@ public class Logica {
 	}
 	
 	private ComponenteGrafico crearEnemigo(int x,int y){
-		Enemigo enemigo = new Basico(x, y,1,this);
+		//Creo un valor aleatorio representativo del enemigo que deseo eliminar
+				int tipoACrear = (int) new Random().nextInt(4)+1;
+				System.out.println("Random enemigo creado "+tipoACrear);
+				
+				Enemigo enemigo = new Basico(x,y,1,this);
+				
+					switch(tipoACrear){
+					
+						case 1: {
+									enemigo = new Basico(x,y,1,this);
+								 	break;
+								}	
+						case 2: {
+									enemigo = new Blindado(x,y,1,this);
+									break;
+								}
+						case 3: {
+									enemigo = new Poder(x,y,1,this);
+									break;
+								}
+						case 4: {
+									enemigo = new Rapido(x,y,1,this);
+									break;
+								}
+					
+					}
+				
+				//Enemigo enemigo = new Basico(x, y,1,this);
+					
 		if(getComponente(x, y).movimientoPosible()){
 			setComponente(x, y, enemigo);
 			enemigo.setVisible(true);
@@ -289,6 +317,14 @@ public class Logica {
 			grafica.agregarGrafico(enemigo);
 		}
 		enemigo=crearEnemigo(17,3);
+		if(enemigo!=null){
+			grafica.agregarGrafico(enemigo);
+		}
+		enemigo=crearEnemigo(8,7);
+		if(enemigo!=null){
+			grafica.agregarGrafico(enemigo);
+		}
+		enemigo=crearEnemigo(15,10);
 		if(enemigo!=null){
 			grafica.agregarGrafico(enemigo);
 		}

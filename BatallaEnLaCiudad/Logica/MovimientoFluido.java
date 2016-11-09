@@ -33,20 +33,28 @@ public class MovimientoFluido extends Movimiento {
 			miLogica.getComponente(x, y).setDireccion(d);
 			switch (d){
 				case 1: if(x<(20-1))
-							if(miLogica.getComponente(x+1, y).movimientoPosible())
+							if(miLogica.getComponente(x+1, y).movimientoPosible()){
 								movio=true;
+								miLogica.getComponente(x+1, y).setMovimientoPosible();
+							}
 						break;
 				case 2: if(x>0)
-							if(miLogica.getComponente(x-1, y).movimientoPosible())
+							if(miLogica.getComponente(x-1, y).movimientoPosible()){
 								movio=true;
+								miLogica.getComponente(x-1, y).setMovimientoPosible();
+							}
 						break;
 				case 3: if(y>0)
-							if(miLogica.getComponente(x, y-1).movimientoPosible())
+							if(miLogica.getComponente(x, y-1).movimientoPosible()){
 								movio=true;
+								miLogica.getComponente(x, y-1).setMovimientoPosible();
+							}
 						break;
 				case 4: if(y<(20-1))
-							if(miLogica.getComponente(x, y+1).movimientoPosible())
+							if(miLogica.getComponente(x, y+1).movimientoPosible()){
 								movio=true;
+								miLogica.getComponente(x, y+1).setMovimientoPosible();
+							}
 						break;
 			}
 			componente.posicionImagen(d);

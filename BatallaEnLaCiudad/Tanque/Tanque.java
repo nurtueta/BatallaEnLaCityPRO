@@ -105,5 +105,15 @@ public abstract class Tanque extends Celda {
 		return bala;
 	}
 	
+
+	
+	public boolean movimientoPosible() {
+		return false;
+	}
+	
+	public boolean movimientoPosibleDisparo() {
+		return false;
+	}
+	
 	
 }

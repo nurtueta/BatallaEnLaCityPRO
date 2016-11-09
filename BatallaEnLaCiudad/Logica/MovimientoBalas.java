@@ -22,8 +22,7 @@ public class MovimientoBalas extends Movimiento{
 				this.sleep(100);
 				ArrayList<ComponenteGrafico> eliminar=new ArrayList<ComponenteGrafico>();
 				if(!balas.isEmpty())
-					for(ComponenteGrafico bala: balas)
-					{	
+					for(ComponenteGrafico bala: balas){	
 						movio=bala.mover(bala.getDireccion());
 						if(!movio){
 							eliminar.add(bala);
@@ -31,11 +30,7 @@ public class MovimientoBalas extends Movimiento{
 					}
 				if(!eliminar.isEmpty())
 					for(ComponenteGrafico bala: eliminar){
-						
-						miLogica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.getDeQuienEs());
-						miLogica.eliminarGrafico(bala);
 						balas.remove(bala);
-						
 					}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
