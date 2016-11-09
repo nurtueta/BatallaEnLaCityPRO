@@ -16,7 +16,8 @@ public class Disparo extends Celda{
 	 * 
 	 */
 	protected int deQuienEs;
-	
+	protected	static java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
+	protected static AudioClip clip = Applet.newAudioClip(url);
 	protected Logica manejo;
 	
 	public Disparo(int x,int y,int d,Logica l,int deQuienEs)
@@ -24,11 +25,8 @@ public class Disparo extends Celda{
 		super(x,y);
 		profundidad=3;
 		
-		/*
-		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
-	    AudioClip clip = Applet.newAudioClip(url);
-	    clip.play();
-		*/
+		clip.play();
+		
 		this.deQuienEs=deQuienEs;
 		manejo=l;
 		direccion = d;

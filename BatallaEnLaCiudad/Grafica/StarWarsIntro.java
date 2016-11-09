@@ -37,6 +37,7 @@ public class StarWarsIntro extends Frame
 
   public StarWarsIntro () throws IOException
   {
+  	
     super ("StarWasIntro");
 
 
@@ -55,7 +56,14 @@ public class StarWarsIntro extends Frame
     java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
     clip = Applet.newAudioClip(url);
     clip.loop();*/
-    
+    addKeyListener(new KeyAdapter() {
+  		@Override
+  		public void keyTyped(java.awt.event.KeyEvent arg0) {
+  			if(arg0.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+  				System.exit(0);
+  			}
+  		}
+  	});
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});
     setSize (600, 500);
