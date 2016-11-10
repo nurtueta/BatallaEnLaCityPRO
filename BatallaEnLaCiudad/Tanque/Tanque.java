@@ -9,7 +9,7 @@ import Logica.MovimientoFluido;
 import Logica.MovimientoBalas;
 import Logica.Bloque.Celda;
 
-public abstract class Tanque extends Celda {
+public abstract class Tanque extends ComponenteGrafico {
 	/*Constructor*/
 	
 	protected int disparosSimultaneos;

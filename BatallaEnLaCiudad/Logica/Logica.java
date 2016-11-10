@@ -129,7 +129,7 @@ public class Logica {
 	{
 		miJugador = new JugadorNivel4(5,17,this);
 		miJugador.setDireccion(1);
-		mapa[17][5]=miJugador;
+		mapa[miJugador.getPosicionY()][miJugador.getPosicionX()]=miJugador;
 	}
 
 	/*Consultas*/
@@ -255,6 +255,7 @@ public class Logica {
 	}
 	
 	private void finalizarJuego(){
+		System.out.println("termino");
 		terminar();
 		hiloEnemigos.stop();
 		hiloDisparoEnemigo.stop();
@@ -271,6 +272,10 @@ public class Logica {
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19))){
+				if(getComponente(x, y)==miJugador)
+					System.out.println("termino eliminarColicion miJugador");
+				else
+					System.out.println("termino eliminarColicion "+x+" "+y);
 				finalizarJuego();
 			}else{
 				addPuntaje(getComponente(x, y).getPuntos());
@@ -353,8 +358,10 @@ public class Logica {
 				enemigosMatados = 0;
 			}
 			else
-				if(muertesAcumuladas == 16)
+				if(muertesAcumuladas == 16){
+					System.out.println("termino enemigoMurio");
 					finalizarJuego();
+				}
 		
 	}
 	

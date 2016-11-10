@@ -13,7 +13,7 @@ public class Acero extends Celda{
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/acero.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
-		vida=1;
+		vida=4;
 
 	}
 	
@@ -38,7 +38,8 @@ public class Acero extends Celda{
 	}
 
 	public void colicion(int deQuienEs) {
-		
+		if(deQuienEs==4)
+			vida--;
 	}
 
 }

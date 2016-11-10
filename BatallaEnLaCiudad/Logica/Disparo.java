@@ -8,10 +8,12 @@ import javax.swing.ImageIcon;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
+
+import Grafica.ComponenteGrafico;
 import Grafica.StarWarsIntro;
 import Logica.Bloque.Celda;
 
-public class Disparo extends Celda{
+public class Disparo extends ComponenteGrafico{
 	/**
 	 * 
 	 */
