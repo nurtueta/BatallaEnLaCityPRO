@@ -85,7 +85,20 @@ public class Inicio {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				JOptionPane.showMessageDialog(frame, "Ayuda!");
+				
+
+				
+				JFrame ayuda = new JFrame("Help!");
+				JLabel help = new JLabel();
+				ayuda.getContentPane().add(help);
+				ayuda.setBounds(100, 100, frame.getWidth(), frame.getHeight());
+				ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Ayuda.png"));
+				Icon icono = new ImageIcon(fot.getImage().getScaledInstance(frame.getWidth(), frame.getHeight(), Image.SCALE_DEFAULT));
+				ayuda.setVisible(true);
+				help.setBounds(ayuda.getBounds());
+				help.setIcon(icono);
+				
+				//JOptionPane.showMessageDialog(frame, "Ayuda!");
 				
 			}
 		});

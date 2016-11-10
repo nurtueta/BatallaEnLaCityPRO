@@ -36,7 +36,7 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        setBounds(100,100,600,650);
+	        setBounds(100,100,800,650);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setVisible(true);
@@ -44,6 +44,8 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        getContentPane().setLayout(null);
 	        contentPane.setLayout(null);
+	        
+	        
 	        
 	        JLabel panelPuntaje = new JLabel();
 	        panelPuntaje.setFont(new Font("Harrington", Font.ITALIC, 36));
@@ -104,7 +106,7 @@ public class GUI extends JFrame {
 	 							mapaLogica.crearDisparoJugador();
 	 							disparo=true;
 	 						}
-	 						break;
+	 						break; 
 					 }}
 				}
 
@@ -174,7 +176,7 @@ public class GUI extends JFrame {
 		contentPane.repaint();
 		mapaLogica=null;
 		
-		java.net.URL url = main.class.getResource("/archivo/StarWarsImperialMarch.wav");
+		java.net.URL url = GUI.class.getResource("/archivo/StarWarsMusic.wav");
 	    AudioClip clip = Applet.newAudioClip(url);
 	    clip.play();
 	 }

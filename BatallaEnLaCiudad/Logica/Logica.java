@@ -274,8 +274,10 @@ public class Logica {
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19))){
-						if(getComponente(x, y)==miJugador)
+						if(getComponente(x, y)==miJugador){
 							System.out.println("termino eliminarColicion miJugador");
+							this.finalizarJuego();
+							}
 						else
 							System.out.println("termino eliminarColicion "+x+" "+y);
 						finalizarJuego();
