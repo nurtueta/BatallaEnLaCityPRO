@@ -21,8 +21,13 @@ public abstract class Jugador extends Tanque{
 	public Jugador(int x,int y){
 		super(x,y);
 		posicionImagen(1);
+<<<<<<< HEAD
 		casco=false;
 		
+=======
+		casco=0;
+		deQuienEs=1;
+>>>>>>> origin/master
 	}
 	
 	/*Comandos*/

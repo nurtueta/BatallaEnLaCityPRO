@@ -13,7 +13,7 @@ public class Aguila extends Celda {
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/emblemarepublica.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
-		vida=25;
+		vida=1;
 	}
 
 	public boolean movimientoPosible() {

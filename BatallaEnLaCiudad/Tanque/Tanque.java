@@ -25,7 +25,6 @@ public abstract class Tanque extends ComponenteGrafico {
 		super(x,y);		
 		profundidad=3;
 		puedeMover=true;;
-		
 	}
 	
 	public boolean mover(int direccion) {
@@ -54,7 +53,7 @@ public abstract class Tanque extends ComponenteGrafico {
 		ComponenteGrafico bala= new Disparo(0,0,direccion,logica,deQuienEs);
 			switch(direccion){
 				case 1:
-					if(logica.getComponente(miX+1, miY)!=null){
+					if(getPosicionX()!=19){
 						if(!logica.getComponente(miX+1, miY).movimientoPosibleDisparo()){
 							bala=null;
 							logica.eliminarColicion(miX+1,miY,deQuienEs);
@@ -66,7 +65,7 @@ public abstract class Tanque extends ComponenteGrafico {
 						bala=null;
 					break;
 				case 2:
-					if(logica.getComponente(miX-1, miY)!=null){
+					if(getPosicionX()!=0){
 						if(!logica.getComponente(miX-1, miY).movimientoPosibleDisparo()){
 							bala=null;
 							logica.eliminarColicion(miX-1,miY,deQuienEs);
@@ -78,7 +77,7 @@ public abstract class Tanque extends ComponenteGrafico {
 						bala=null;
 					break;
 				case 3:
-					if(logica.getComponente(miX, miY-1)!=null){
+					if(getPosicionY()!=0){
 						if(!logica.getComponente(miX, miY-1).movimientoPosibleDisparo()){
 							bala=null;
 							logica.eliminarColicion(miX,miY-1,deQuienEs);
@@ -90,7 +89,7 @@ public abstract class Tanque extends ComponenteGrafico {
 						bala=null;
 					break;
 				case 4:
-					if(logica.getComponente(miX, miY+1)!=null){
+					if(getPosicionY()!=19){
 						if(!logica.getComponente(miX, miY+1).movimientoPosibleDisparo()){
 							bala=null;
 							logica.eliminarColicion(miX,miY+1,deQuienEs);
@@ -105,8 +104,6 @@ public abstract class Tanque extends ComponenteGrafico {
 		return bala;
 	}
 	
-
-	
 	public boolean movimientoPosible() {
 		return false;
 	}
@@ -114,6 +111,4 @@ public abstract class Tanque extends ComponenteGrafico {
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
-	
-	
 }

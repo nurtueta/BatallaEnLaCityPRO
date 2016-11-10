@@ -31,7 +31,7 @@ public abstract class PowerUp extends ComponenteGrafico{
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return movimientoPosibleDisparo;
+		return true;
 	}
 	
 	public int getCodigo(){

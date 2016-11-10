@@ -11,7 +11,6 @@ public class JugadorNivel3 extends Jugador{
 		velDisparo=2;
 		disparosSimultaneos=2;
 		vida=2;
-		deQuienEs=3;
 	}
 	
 }
