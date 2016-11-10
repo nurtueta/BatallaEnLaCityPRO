@@ -15,23 +15,8 @@ public class GUI extends JFrame {
 	 private boolean disparo;
 	 private boolean movio;
 	 private JLabel panelPuntaje;
-	    /**
-	     * Launch the application.
-	     */
-	  
-	  /*  public static void main(String[] args) {
-	        EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                try {
-	                    GUI frame = new GUI();
-	                    frame.setVisible(true);
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        });
-	    }*/
-
+	   
+	 
 	    /**
 	     * Create the frame.
 	     */
@@ -48,7 +33,7 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        setBounds(100,100,650,650);
+	        setBounds(100,100,600,650);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setVisible(true);
@@ -59,7 +44,7 @@ public class GUI extends JFrame {
 	        
 	        JLabel panelPuntaje = new JLabel();
 	        panelPuntaje.setFont(new Font("Harrington", Font.ITALIC, 36));
-	        panelPuntaje.setBounds(433, 11, 201, 45);
+	        panelPuntaje.setBounds(352, 11, 282, 45);
 	        panelPuntaje.setForeground(Color.RED);
 	        contentPane.setLayer(panelPuntaje, 5);
 	        panelPuntaje.setText("puntaje: ");
@@ -165,6 +150,17 @@ public class GUI extends JFrame {
 	 }
 	    
 	 public void terminarJuego(){
-	  	System.exit(0);
+		
+		contentPane.removeAll();
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory2.jpg"));
+		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
+		JLabel algo = new JLabel();
+		this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
+
+		algo.setBounds(0, 0, this.getWidth(), this.getHeight());
+		algo.setPreferredSize(contentPane.getPreferredSize());
+		algo.setIcon(icono);
+		contentPane.add(algo);
+		contentPane.repaint();
 	 }
 }

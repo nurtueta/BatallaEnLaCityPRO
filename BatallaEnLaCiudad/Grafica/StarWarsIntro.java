@@ -1,9 +1,14 @@
 package Grafica;
 import java.applet.Applet;
 import java.applet.AudioClip;
+
+/**
+ * @Author Ryan Castillo - Edited for adaptation by Guillermo Vazquez
+ * 
+ */
 //-------------------------------------------------------------------
 //
-//  Ryan Castillo
+//@Ryan Castillo
 //  Sorry for the lack of comments, ran into some time constraints.
 //
 //-------------------------------------------------------------------
@@ -39,9 +44,6 @@ public class StarWarsIntro extends Frame
     Pic.setVisible(false);
     Inicio juego = new Inicio();
     juego.setVisible();
-
-	//juego.frame.setVisible(true);
-    //Inicio.main(null);
   }
 
   public StarWarsIntro () throws IOException
