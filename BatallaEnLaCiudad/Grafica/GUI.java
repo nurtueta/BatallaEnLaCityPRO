@@ -36,7 +36,7 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        setBounds(100,100,800,650);
+	        setBounds(100,100,800,630);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setVisible(true);
@@ -56,7 +56,14 @@ public class GUI extends JFrame {
 	        this.panelPuntaje=panelPuntaje;
 	        
 	        contentPane.add(panelPuntaje);
-	       
+	        ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/fondo.jpg"));
+			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
+			JLabel fondo = new JLabel();
+			fondo.setVisible(true);
+			fondo.setIcon(icono);
+			fondo.setBounds(0,0,600,600);
+			contentPane.add(fondo);
+			contentPane.setLayer(fondo, 1);
 	        mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
 	        mapaLogica.crearEnemigo();

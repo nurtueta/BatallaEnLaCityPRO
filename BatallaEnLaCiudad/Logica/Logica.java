@@ -1,5 +1,7 @@
 package Logica;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,7 +17,8 @@ public class Logica {
 	
 	protected ComponenteGrafico[][] mapa;
 	protected ComponenteGrafico miJugador;
-	
+	protected	static java.net.URL url = Disparo.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
+	protected static AudioClip clip = Applet.newAudioClip(url);
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	private Movimiento hiloDisparoEnemigo;
@@ -297,6 +300,8 @@ public class Logica {
 	public void crearDisparoJugador(){
 		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
 			ComponenteGrafico bala=miJugador.crearDisparo();
+			clip.play();
+
 			if(bala!=null){
 	    		grafica.agregarGrafico(bala);
 	    		grafica.repaint();
