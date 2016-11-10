@@ -17,6 +17,7 @@ public class GUI extends JFrame {
 	 private boolean disparo;
 	 private boolean movio;
 	 private JLabel panelPuntaje;
+	 private	boolean teclado=true;
 	   
 	 
 	    /**
@@ -72,6 +73,7 @@ public class GUI extends JFrame {
 				}
 
 				public void keyPressed(KeyEvent e) {
+					if (teclado){
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP :
 					 		if(!movio){
@@ -103,7 +105,7 @@ public class GUI extends JFrame {
 	 							disparo=true;
 	 						}
 	 						break;
-					 }
+					 }}
 				}
 
 				public void keyReleased(KeyEvent e){
@@ -126,9 +128,15 @@ public class GUI extends JFrame {
 					}
 				}
 
-				public void keyTyped(KeyEvent arg0){
+				@Override
+				public void keyTyped(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
 				}
-	        });	       	        
+				
+				
+	        }
+				);	       	        
 	    	}
 
 	 public boolean finDelJuego(){
@@ -158,7 +166,7 @@ public class GUI extends JFrame {
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
 		JLabel algo = new JLabel();
 		this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
-
+		teclado =false;
 		algo.setBounds(0, 0, this.getWidth(), this.getHeight());
 		algo.setPreferredSize(contentPane.getPreferredSize());
 		algo.setIcon(icono);
@@ -166,7 +174,7 @@ public class GUI extends JFrame {
 		contentPane.repaint();
 		mapaLogica=null;
 		
-		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsImperialMarch.wav");
+		java.net.URL url = main.class.getResource("/archivo/StarWarsImperialMarch.wav");
 	    AudioClip clip = Applet.newAudioClip(url);
 	    clip.play();
 	 }

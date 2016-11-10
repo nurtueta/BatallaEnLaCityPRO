@@ -32,7 +32,7 @@ public class main extends Frame
   public static void main (String[] args) throws IOException
   {
 
-    StarWarsIntro Pic = new StarWarsIntro ();
+    main Pic = new main ();
 
       //try
       //{ Thread.sleep(500);}
@@ -60,12 +60,6 @@ public class main extends Frame
     
     
     
-    
-    
-    /*
-    java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
-    clip = Applet.newAudioClip(url);
-    clip.loop();*/
     
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});

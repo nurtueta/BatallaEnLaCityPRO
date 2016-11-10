@@ -10,7 +10,6 @@ import java.applet.Applet;
 import java.applet.AudioClip;
 
 import Grafica.ComponenteGrafico;
-import Grafica.StarWarsIntro;
 import Logica.Bloque.Celda;
 
 public class Disparo extends ComponenteGrafico{
@@ -18,7 +17,7 @@ public class Disparo extends ComponenteGrafico{
 	 * 
 	 */
 	protected int deQuienEs;
-	protected	static java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
+	protected	static java.net.URL url = Disparo.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
 	protected static AudioClip clip = Applet.newAudioClip(url);
 	protected Logica manejo;
 	
