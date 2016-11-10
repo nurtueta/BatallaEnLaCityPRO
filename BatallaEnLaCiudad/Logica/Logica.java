@@ -372,11 +372,11 @@ public class Logica {
 	//POWERUPS
 	
 		public void ponerCasco(){
-			Jugador j = (Jugador)this.getJugador();
+			/*Jugador j = (Jugador)this.getJugador();
 			j.conCasco(true);
 			HiloTimer h = new HiloTimer();
 			h.start();
-			j.conCasco(false);
+			j.conCasco(false);*/
 		}
 		
 		//EfectoPowerUpEstrella
@@ -424,10 +424,11 @@ public class Logica {
 			//Controlar Bloques alrededor del 'Aguila'
 		}
 		
+		
 		public void detenerEnemigos(){
 			// Movimiento posible de todos = false
-			HiloTimer h = new HiloTimer();
-			h.start();
+			//HiloTimer h = new HiloTimer();
+			//h.start();
 			// Movimiento posible de todos = true;
 		}
 		

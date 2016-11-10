@@ -24,7 +24,7 @@ public abstract class Jugador extends Tanque{
 
 		casco=false;
 
-		deQuienEs=1;
+		
 
 	}
 	
