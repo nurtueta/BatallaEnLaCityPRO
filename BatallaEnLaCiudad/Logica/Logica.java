@@ -19,6 +19,7 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	private Movimiento hiloDisparoEnemigo;
+	private HiloPowerUps hiloPowerup;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -219,31 +220,31 @@ public class Logica {
 		
 			switch (tipo){
 			case 1: {
-						miPowerUp = new Casco(localizarX,localizarY);
+						miPowerUp = new Casco(localizarX,localizarY,this);
 						break;
 					}
 			case 2: {
-						miPowerUp = new Estrella(localizarX,localizarY);
+						miPowerUp = new Estrella(localizarX,localizarY,this);
 						break;
 					}
 			case 3: {
-						miPowerUp = new Granada(localizarX,localizarY);
+						miPowerUp = new Granada(localizarX,localizarY,this);
 						break;
 					}
 			case 4: {
-						miPowerUp = new Pala(localizarX,localizarY);
+						miPowerUp = new Pala(localizarX,localizarY,this);
 						break;
 					}
 			case 5: {
-						miPowerUp = new Timer(localizarX,localizarY);
+						miPowerUp = new Timer(localizarX,localizarY,this);
 						break;
 					}
 			case 6: {
-						miPowerUp = new VidaTanque(localizarX,localizarY);
+						miPowerUp = new VidaTanque(localizarX,localizarY,this);
 						break;
 					}
 			default:  { 
-						miPowerUp = new Casco(localizarX,localizarY);
+						miPowerUp = new Casco(localizarX,localizarY,this);
 						break;
 					  }
 			}
@@ -260,6 +261,7 @@ public class Logica {
 		hiloEnemigos.stop();
 		hiloDisparoEnemigo.stop();
 		hiloDisparoJugador.stop();
+		
 		grafica.eliminarGrafico(miJugador);
 		grafica.terminarJuego();
 	}
@@ -355,6 +357,8 @@ public class Logica {
 			if(enemigosMatados == 4){
 				PowerUp p = crearPowerUp();
 				grafica.agregarGrafico(p);
+				hiloPowerup = new HiloPowerUps(this,p);
+				hiloPowerup.run();
 				enemigosMatados = 0;
 			}
 			else
@@ -364,5 +368,72 @@ public class Logica {
 				}
 		
 	}
+	
+	//POWERUPS
+	
+		public void ponerCasco(){
+			Jugador j = (Jugador)this.getJugador();
+			j.conCasco(true);
+			HiloTimer h = new HiloTimer();
+			h.start();
+			j.conCasco(false);
+		}
+		
+		//EfectoPowerUpEstrella
+		public void subirNivel(){
+			int nivelJugador = miJugador.getDeQuienEs();
+			
+			//Siempre que se pueda subir de nivel
+			if(nivelJugador < 4){
+				switch (nivelJugador){
+					case 1: {
+								grafica.eliminarGrafico(miJugador);
+								miJugador = new JugadorNivel2(miJugador.getPosicionX(),miJugador.getPosicionY(),this);
+								grafica.agregarGrafico(miJugador);
+							}
+					case 2: {
+								grafica.eliminarGrafico(miJugador);
+								miJugador = new JugadorNivel3(miJugador.getPosicionX(),miJugador.getPosicionY(),this);
+								grafica.agregarGrafico(miJugador);
+							}
+					case 3: {
+								grafica.eliminarGrafico(miJugador);
+								miJugador = new JugadorNivel4(miJugador.getPosicionX(),miJugador.getPosicionY(),this);
+								grafica.agregarGrafico(miJugador);
+							}
+				}
+				nivelJugador++;
+			}
+		}
+		
+		public void bajarNivel(){
+			grafica.eliminarGrafico(miJugador);
+			miJugador = new JugadorNivel1(miJugador.getPosicionX(),miJugador.getPosicionY(),this);
+			grafica.agregarGrafico(miJugador);
+		}
+		
+		public void subirVida(){
+			Jugador j = (Jugador)this.getJugador();
+			j.aumentarVida();
+		}
+		
+		public void destruirTodosLosEnemigos(){
+		}
+		
+		public void powerUpPala(){
+			//Controlar Bloques alrededor del 'Aguila'
+		}
+		
+		public void detenerEnemigos(){
+			// Movimiento posible de todos = false
+			HiloTimer h = new HiloTimer();
+			h.start();
+			// Movimiento posible de todos = true;
+		}
+		
+		public void eliminarPowerUps(){
+			hiloPowerup.stop();
+		}
+		
 	
 }

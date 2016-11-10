@@ -5,10 +5,12 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Logica.Logica;
+
 public class Granada extends PowerUp {
 
-	public Granada(int x, int y){
-		super(x,y,1);
+	public Granada(int x, int y,Logica l){
+		super(x,y,1,l);
 //		this.deQuienEs=9; //9 indica que es un powerup
 		//manejo=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpGranada.png"));
@@ -19,7 +21,8 @@ public class Granada extends PowerUp {
 
 	@Override
 	public void colicion(int deQuienEs) {
-		//Destruye todos los enemigos en pantalla
+		if(deQuienEs == 1)
+			miLogica.destruirTodosLosEnemigos();
 	}
 		
 }

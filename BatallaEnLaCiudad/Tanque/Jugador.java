@@ -14,14 +14,14 @@ public abstract class Jugador extends Tanque{
 	
 	/*Variables*/
 	
-	protected int casco;
+	protected boolean casco;
 	
 	/*Constructor*/
 	
 	public Jugador(int x,int y){
 		super(x,y);
 		posicionImagen(1);
-		casco=0;
+		casco=false;
 		
 	}
 	
@@ -48,15 +48,19 @@ public abstract class Jugador extends Tanque{
 		this.setIcon(icono);
 	}
 	
-	public void setPowerUpDeTanque(int pu){
-		casco=pu;
+	public void conCasco(boolean c){
+		casco=c;
+	}
+	
+	public void aumentarVida(){
+		vida++;
 	}
 	
 	/*Consultas*/
 	
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==0){
-			if(casco==0)
+			if(!casco)
 				vida--;
 		}
 	}
