@@ -25,7 +25,6 @@ public abstract class Tanque extends ComponenteGrafico {
 		super(x,y);		
 		profundidad=3;
 		puedeMover=true;;
-		
 	}
 	
 	public boolean mover(int direccion) {

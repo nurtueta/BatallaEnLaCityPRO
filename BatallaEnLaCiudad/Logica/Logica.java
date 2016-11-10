@@ -257,9 +257,6 @@ public class Logica {
 	private void finalizarJuego(){
 		System.out.println("termino");
 		terminar();
-		hiloEnemigos.stop();
-		hiloDisparoEnemigo.stop();
-		hiloDisparoJugador.stop();
 		grafica.eliminarGrafico(miJugador);
 		grafica.terminarJuego();
 	}
