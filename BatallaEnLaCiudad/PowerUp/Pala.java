@@ -10,8 +10,14 @@ import Logica.Logica;
 public class Pala extends PowerUp{
 
 	public Pala(int x, int y,Logica l){
+<<<<<<< HEAD
 		super(x,y,3);
 		logica=l;
+=======
+		super(x,y,3,l);
+//		this.deQuienEs=9; //9 indica que es un powerup
+		//manejo=l;
+>>>>>>> origin/master
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpPala.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -20,9 +26,8 @@ public class Pala extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		// TODO Auto-generated method stub
-		//Hace todas las paredes de la base(aguila) irrompibles
-		//Repara todo el daño a las paredes de la base
+		if(deQuienEs == 1)
+			miLogica.powerUpPala();
 	}
 	
 }

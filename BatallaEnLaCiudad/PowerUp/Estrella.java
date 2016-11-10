@@ -10,8 +10,14 @@ import Logica.Logica;
 public class Estrella extends PowerUp{
 
 	public Estrella (int x, int y,Logica l){
+<<<<<<< HEAD
 		super(x,y,4);
 		logica=l;
+=======
+		super(x,y,4,l);
+//		this.deQuienEs=9; //9 indica que es un powerup
+		//manejo=l;
+>>>>>>> origin/master
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpEstrella.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -20,8 +26,8 @@ public class Estrella extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		// TODO Auto-generated method stub
-		//Aumenta el nivel del tanque del jugador. Al ser destruido, el jugador vuelve al nivel 1.
+		if(deQuienEs == 1)
+			miLogica.subirNivel();
 	}
 	
 	

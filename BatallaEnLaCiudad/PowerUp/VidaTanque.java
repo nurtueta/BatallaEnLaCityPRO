@@ -10,8 +10,14 @@ import Logica.Logica;
 public class VidaTanque extends PowerUp{
 
 	public VidaTanque(int x, int y,Logica l){
+<<<<<<< HEAD
 		super(x,y,5);
 		logica=l;
+=======
+		super(x,y,5,l);
+//		this.deQuienEs=9; //9 indica que es un powerup
+		//manejo=l;
+>>>>>>> origin/master
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpTanque.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -20,8 +26,8 @@ public class VidaTanque extends PowerUp{
 	
 	@Override
 	public void colicion(int deQuienEs) {
-		// TODO Auto-generated method stub
-		//Agrega una vida al tanque del jugador (+50 de vida)
+		if(deQuienEs == 1)
+			miLogica.subirVida();
 	}
 	
 }

@@ -10,8 +10,14 @@ import Logica.Logica;
 public class Timer extends PowerUp{
 
 	public Timer(int x, int y,Logica l){
+<<<<<<< HEAD
 		super(x,y,6);
 		logica=l;
+=======
+		super(x,y,6,l);
+//		this.deQuienEs=9; //9 indica que es un powerup
+		//manejo=l;
+>>>>>>> origin/master
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpTimer.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -20,8 +26,8 @@ public class Timer extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		// TODO Auto-generated method stub
-		//Detiene temporalmente a todos los tanques enemigos.
+		if(deQuienEs == 1)
+			miLogica.detenerEnemigos();
 	}
 	
 }

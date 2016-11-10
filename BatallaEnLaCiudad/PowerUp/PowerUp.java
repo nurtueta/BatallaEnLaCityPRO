@@ -6,10 +6,15 @@ import Logica.Logica;
 public abstract class PowerUp extends ComponenteGrafico{
 	
 	protected int codigo;
+<<<<<<< HEAD
 	protected Logica logica;
+=======
+	protected Logica miLogica;
+>>>>>>> origin/master
 	
-	public PowerUp(int x, int y,int codigo){
+	public PowerUp(int x, int y,int codigo,Logica l){
 		super(x,y);
+		miLogica = l;
 		profundidad=5;
 	}
 
