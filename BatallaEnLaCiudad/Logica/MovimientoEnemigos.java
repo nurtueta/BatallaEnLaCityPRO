@@ -42,8 +42,10 @@ public class MovimientoEnemigos extends Movimiento{
 						miLogica.eliminarGrafico(enemigo);
 						enemigos.remove(enemigo);
 					}
-					for(ComponenteGrafico enemigo: enemigos)
+					for(ComponenteGrafico enemigo: enemigos){
+						this.sleep(10);
 						miLogica.crearDisparo(enemigo);
+					}
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}

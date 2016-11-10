@@ -21,9 +21,10 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	protected Movimiento hiloFluido;
 	
+	
 	public	Tanque(int x,int y){
 		super(x,y);		
-		profundidad=3;
+		profundidad=4;
 		puedeMover=true;;
 	}
 	
@@ -48,59 +49,54 @@ public abstract class Tanque extends ComponenteGrafico {
 		puedeMover=true;
 	}
 	
-	
 	public ComponenteGrafico crearDisparo(){
+		boolean seMovio=true;
+		boolean seCreo=true;
 		ComponenteGrafico bala= new Disparo(0,0,direccion,logica,deQuienEs);
-			switch(direccion){
-				case 1:
-					if(getPosicionX()!=19){
-						if(!logica.getComponente(miX+1, miY).movimientoPosibleDisparo()){
-							bala=null;
-							logica.eliminarColicion(miX+1,miY,deQuienEs);
-						}else{
-							bala.setPosicionX(miX+1);
-							bala.setPosicionY(miY);
-						}
-					}else
-						bala=null;
-					break;
-				case 2:
-					if(getPosicionX()!=0){
-						if(!logica.getComponente(miX-1, miY).movimientoPosibleDisparo()){
-							bala=null;
-							logica.eliminarColicion(miX-1,miY,deQuienEs);
-						}else{
-							bala.setPosicionX(miX-1);
-							bala.setPosicionY(miY);
-						}
-					}else
-						bala=null;
-					break;
-				case 3:
-					if(getPosicionY()!=0){
-						if(!logica.getComponente(miX, miY-1).movimientoPosibleDisparo()){
-							bala=null;
-							logica.eliminarColicion(miX,miY-1,deQuienEs);
-						}else{
-							bala.setPosicionX(miX);
-							bala.setPosicionY(miY-1);
-						}
-					}else
-						bala=null;
-					break;
-				case 4:
-					if(getPosicionY()!=19){
-						if(!logica.getComponente(miX, miY+1).movimientoPosibleDisparo()){
-							bala=null;
-							logica.eliminarColicion(miX,miY+1,deQuienEs);
-						}else{
-							bala.setPosicionX(miX);
-							bala.setPosicionY(miY+1);
-						}
-					}else
-						bala=null;
-					break;
-			}
+		switch (direccion) {
+			case 1: 
+				if(miX!=19){
+					bala.setPosicionX(miX+1);
+					bala.setPosicionY(miY);
+					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())     
+						seMovio=false;
+				}else
+					seCreo=false;
+				break;
+			case 2: 
+				if(miX!=0){
+					bala.setPosicionX(miX-1);
+					bala.setPosicionY(miY);
+					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())
+						seMovio=false;
+				}else
+					seCreo=false;
+				break;
+			case 3: 
+				if(miY!=0){
+					bala.setPosicionY(miY-1);
+					bala.setPosicionX(miX);
+					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())	
+						seMovio=false;
+				}else
+					seCreo=false;
+				break;
+			case 4: 
+				if(miY!=19){
+					bala.setPosicionY(miY+1);
+					bala.setPosicionX(miX);
+					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())
+						seMovio=false;
+				}else
+					seCreo=false;
+				break;
+		}
+		if(!seMovio && seCreo){
+			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),deQuienEs);
+			bala=null;
+		}
+		if(!seCreo)
+			bala=null;
 		return bala;
 	}
 	

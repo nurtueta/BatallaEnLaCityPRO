@@ -95,8 +95,6 @@ public class Logica {
 			      		}else
 				      		if(s=='B'){
 				      			mapa[j][i]= new Arbol(i,j);
-				      			//grafica.agregarGrafico(mapa[j][i]);
-				      		//	grafica.setComponentZOrder(mapa[j][i], 1);
 				      		}else
 					      		if(s=='E'){
 					      			mapa[j][i]= new Aguila(i,j);
@@ -219,31 +217,31 @@ public class Logica {
 		
 			switch (tipo){
 			case 1: {
-						miPowerUp = new Casco(localizarX,localizarY);
+						miPowerUp = new Casco(localizarX,localizarY,this);
 						break;
 					}
 			case 2: {
-						miPowerUp = new Estrella(localizarX,localizarY);
+						miPowerUp = new Estrella(localizarX,localizarY,this);
 						break;
 					}
 			case 3: {
-						miPowerUp = new Granada(localizarX,localizarY);
+						miPowerUp = new Granada(localizarX,localizarY,this);
 						break;
 					}
 			case 4: {
-						miPowerUp = new Pala(localizarX,localizarY);
+						miPowerUp = new Pala(localizarX,localizarY,this);
 						break;
 					}
 			case 5: {
-						miPowerUp = new Timer(localizarX,localizarY);
+						miPowerUp = new Timer(localizarX,localizarY,this);
 						break;
 					}
 			case 6: {
-						miPowerUp = new VidaTanque(localizarX,localizarY);
+						miPowerUp = new VidaTanque(localizarX,localizarY,this);
 						break;
 					}
 			default:  { 
-						miPowerUp = new Casco(localizarX,localizarY);
+						miPowerUp = new Casco(localizarX,localizarY,this);
 						break;
 					  }
 			}
@@ -269,11 +267,11 @@ public class Logica {
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19))){
-				if(getComponente(x, y)==miJugador)
-					System.out.println("termino eliminarColicion miJugador");
-				else
-					System.out.println("termino eliminarColicion "+x+" "+y);
-				finalizarJuego();
+						if(getComponente(x, y)==miJugador)
+							System.out.println("termino eliminarColicion miJugador");
+						else
+							System.out.println("termino eliminarColicion "+x+" "+y);
+						finalizarJuego();
 			}else{
 				addPuntaje(getComponente(x, y).getPuntos());
 				grafica.eliminarGrafico(getComponente(x, y));

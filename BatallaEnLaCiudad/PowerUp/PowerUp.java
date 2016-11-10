@@ -1,10 +1,12 @@
 package PowerUp;
 
 import Grafica.ComponenteGrafico;
+import Logica.Logica;
 
 public abstract class PowerUp extends ComponenteGrafico{
 	
 	protected int codigo;
+	protected Logica logica;
 	
 	public PowerUp(int x, int y,int codigo){
 		super(x,y);

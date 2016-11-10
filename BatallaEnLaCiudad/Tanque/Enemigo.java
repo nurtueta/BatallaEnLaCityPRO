@@ -14,6 +14,5 @@ public abstract class Enemigo extends Tanque{
 		disparosSimultaneos=1;
 		deQuienEs=0;
 		puntaje=500;
-	}
-	
+	}	
 }

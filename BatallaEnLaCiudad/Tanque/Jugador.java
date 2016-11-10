@@ -65,4 +65,5 @@ public abstract class Jugador extends Tanque{
 		direccion=d;
 	}
 
+
 }
