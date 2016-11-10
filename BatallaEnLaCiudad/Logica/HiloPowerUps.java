@@ -10,16 +10,15 @@ import Tanque.*;
 public class HiloPowerUps extends Thread{
 	
 	protected Logica miLogica;
-	protected ArrayList<PowerUp> misPowerUp;
+	protected PowerUp miPowerUp;
 	protected ArrayList<PowerUp> eliminar;
 	protected int tiempo;
 	
 	public HiloPowerUps(Logica l,PowerUp p)
 	{
 		miLogica = l;
-		misPowerUp = new ArrayList<PowerUp> ();
+		miPowerUp = p;
 		eliminar = new ArrayList<PowerUp> ();
-		misPowerUp.add(p);
 		tiempo = 5;
 	}
 	
@@ -29,7 +28,7 @@ public class HiloPowerUps extends Thread{
 	}
 	
 	public void addPowerUp(PowerUp p){
-		misPowerUp.add(p);
+		miPowerUp.add(p);
 	}
 	
 	public void inicio() {
@@ -41,34 +40,22 @@ public class HiloPowerUps extends Thread{
 			
 			while (tiempo > 0){
 	
-				this.sleep(1000);
+			this.sleep(5000);
 				
 				tiempo--;
 				
 				ComponenteGrafico j = miLogica.getJugador();
 				int jugadorX = j.getPosicionX();
 				int jugadorY = j.getPosicionY();
+				int powerX = miPowerUp.getPosicionX();
+				int powerY = miPowerUp.getPosicionY();
 				
-				for(PowerUp p : misPowerUp){
-					int powerX = p.getPosicionX();
-					int powerY = p.getPosicionY();
-					
-					if(jugadorX == powerX && jugadorY == powerY){
-						p.colicion(j.getDeQuienEs());
-						miLogica.eliminarColicion(powerX, powerY, p.getDeQuienEs());
+				if(jugadorX == powerX && jugadorY == powerY){
+						miPowerUp.colicion(j.getDeQuienEs());
+						miLogica.eliminarColicion(powerX, powerY, miPowerUp.getDeQuienEs());
 					}
 				}		
-			
-			}
-
-			for(PowerUp p : misPowerUp){
-				miLogica.eliminarGrafico(p);
-				eliminar.add(p);
-			}
-			
-			for(PowerUp p: eliminar)
-				misPowerUp.remove(p);
-			
+						
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
 		miLogica.eliminarPowerUps();
