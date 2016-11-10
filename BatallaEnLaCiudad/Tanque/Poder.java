@@ -42,7 +42,7 @@ public class Poder extends Enemigo{
 	}
 
 	public void colicion(int deQuienEs) {
-		if(deQuienEs==1){
+		if(deQuienEs>=1&&deQuienEs<=4){
 			vida=0;
 			logica.enemigoMurio(); 
 		}

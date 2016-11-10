@@ -14,7 +14,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	protected int pixelY;
 	protected int profundidad;
 	protected int direccion;
-	protected int puntaje=0;
+	protected int puntaje;
 	protected int vida;
 	
 	protected boolean movimientoPosible;
@@ -134,10 +134,14 @@ public abstract class ComponenteGrafico extends JLabel {
 		return 0;
 	}
 	
-	public void setPuedeMover(){}
+	public void setPuedeMover(){
+		movimientoPosible=true;
+		movimientoPosibleDisparo=true;
+	}
 	
 	public void setMovimientoPosible(){
 		movimientoPosible=false;
 		movimientoPosibleDisparo=false;
 	}
+	
 }

@@ -19,7 +19,6 @@ public abstract class Movimiento extends Thread{
 		enemigos=new ArrayList<ComponenteGrafico>();
 	}
 	
-	
 	public void setLogica(Logica l)
 	{
 		miLogica = l;

@@ -76,7 +76,9 @@ public class Disparo extends ComponenteGrafico{
 	}
 	
 	public boolean mover(int direcion)
-	{	boolean seMovio=true;
+	{	
+		boolean seMovio=true;
+		boolean seCreo=true;
 		switch (direccion) {
 			case 1: 
 				if(getPosicionX()!=19){
@@ -84,7 +86,7 @@ public class Disparo extends ComponenteGrafico{
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())     
 						seMovio=false;
 				}else
-					seMovio=false;
+					seCreo=false;
 				break;
 			case 2: 
 				if(getPosicionX()!=0){
@@ -92,7 +94,7 @@ public class Disparo extends ComponenteGrafico{
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
 						seMovio=false;
 				}else
-					seMovio=false;
+					seCreo=false;
 				break;
 			case 3: 
 				if(getPosicionY()!=0){
@@ -100,7 +102,7 @@ public class Disparo extends ComponenteGrafico{
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())	
 						seMovio=false;
 				}else
-					seMovio=false;
+					seCreo=false;
 				break;
 			case 4: 
 				if(getPosicionY()!=19){
@@ -108,12 +110,16 @@ public class Disparo extends ComponenteGrafico{
 					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
 						seMovio=false;
 				}else
-					seMovio=false;
+					seCreo=false;
 				break;
 		}
-		if(!seMovio){
+		if(!seMovio && seCreo){
 			manejo.eliminarColicion(getPosicionX(),getPosicionY(),deQuienEs);
 			manejo.eliminarGrafico(this);
+		}
+		if(!seCreo){
+			manejo.eliminarGrafico(this);
+			seMovio=false;
 		}
 		manejo.actualizarPanel();
 		return seMovio;
