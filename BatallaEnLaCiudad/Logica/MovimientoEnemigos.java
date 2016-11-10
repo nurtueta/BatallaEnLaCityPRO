@@ -8,14 +8,18 @@ import Tanque.Enemigo;
 
 public class MovimientoEnemigos extends Movimiento{
 
+	protected ArrayList<ComponenteGrafico> enemigosIngresar;
 	int direccion;
 	Random rnd;
+	boolean agregarEnemigo;
 	ArrayList<ComponenteGrafico> eliminar;
 
 	public MovimientoEnemigos(Logica l)
 	{
 		super(l);
 		rnd= new Random(); 
+		enemigosIngresar=new ArrayList<ComponenteGrafico>();
+		agregarEnemigo=true;//lo uso para saber si puede agregar un enemigo a la lista
 	}
 	
 	public void run()
@@ -28,6 +32,7 @@ public class MovimientoEnemigos extends Movimiento{
 				this.sleep(200);
 				if(!miLogica.finDelJuego()){
 					eliminar=new ArrayList<ComponenteGrafico>();
+					agregarEnemigo=false;
 					for(ComponenteGrafico enemigo: enemigos){
 						direccion = (int) (rnd.nextInt(4)+1);
 						if(enemigo.getVida()==0)
@@ -35,17 +40,25 @@ public class MovimientoEnemigos extends Movimiento{
 						else
 							enemigo.mover(direccion);
 					}
-				}
-				this.sleep(200);
-				if(!miLogica.finDelJuego()){
+					agregarEnemigo=true;
 					for(ComponenteGrafico enemigo: eliminar){
 						miLogica.eliminarGrafico(enemigo);
 						enemigos.remove(enemigo);
 					}
+					
+					for(ComponenteGrafico bala: enemigosIngresar)
+						enemigos.add(bala);
+				}
+				this.sleep(200);
+				if(!miLogica.finDelJuego()){
+					agregarEnemigo=false;
 					for(ComponenteGrafico enemigo: enemigos){
-						this.sleep(10);
+						this.sleep(20);
 						miLogica.crearDisparo(enemigo);
 					}
+					agregarEnemigo=true;
+					for(ComponenteGrafico bala: enemigosIngresar)
+						enemigos.add(bala);
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
@@ -66,6 +79,9 @@ public class MovimientoEnemigos extends Movimiento{
 	}
 	
 	public void addEnemigo(ComponenteGrafico x) {
-		enemigos.add(x);
+		if(agregarEnemigo)
+			enemigos.add(x);
+		else
+			enemigosIngresar.add(x);
 	}
 }

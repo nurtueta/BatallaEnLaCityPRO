@@ -11,6 +11,7 @@ public abstract class Enemigo extends Tanque{
 	/*Constructor*/
 	public	Enemigo(int x,int y){
 		super(x,y);
+		profundidad=4;
 		disparosSimultaneos=1;
 		deQuienEs=0;
 		puntaje=500;

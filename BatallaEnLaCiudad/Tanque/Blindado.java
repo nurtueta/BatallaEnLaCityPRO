@@ -13,6 +13,7 @@ public class Blindado extends Enemigo{
 	
 	public Blindado(int x,int y,int d,Logica l){
 		super(x,y);
+		profundidad=4;
 		posicionImagen(d);
 		logica=l;
 		vida=4;

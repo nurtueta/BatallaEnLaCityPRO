@@ -13,6 +13,7 @@ public class Poder extends Enemigo{
 	
 	public Poder(int x,int y,int d,Logica l){
 		super(x,y);
+		profundidad=4;
 		logica=l;
 		posicionImagen(d);
 		vida=1;

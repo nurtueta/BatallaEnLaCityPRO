@@ -7,25 +7,31 @@ import javax.swing.ImageIcon;
 
 import Grafica.ComponenteGrafico;
 import Logica.Disparo;
+import Logica.Logica;
 import Logica.MovimientoBalas;
 import Logica.MovimientoFluido;
 
-public abstract class Jugador extends Tanque{
+public class Jugador extends Tanque{
 	
 	/*Variables*/
 	
 	protected boolean casco;
+	protected int state;
 	
 	/*Constructor*/
 	
-	public Jugador(int x,int y){
+	public Jugador(int x,int y,Logica l){
 		super(x,y);
+		profundidad=4;
+		logica=l;
 		posicionImagen(1);
-
 		casco=false;
-
-		
-
+		velMovimiento=2;
+		velDisparo=1;
+		disparosSimultaneos=1;
+		vida=1;
+		deQuienEs=1;
+		state=1;
 	}
 	
 	/*Comandos*/
@@ -51,12 +57,8 @@ public abstract class Jugador extends Tanque{
 		this.setIcon(icono);
 	}
 	
-	public void conCasco(boolean c){
-		casco=c;
-	}
-	
-	public void aumentarVida(){
-		vida++;
+	public void usaCasco(boolean x){
+		casco=x;
 	}
 	
 	/*Consultas*/
@@ -71,6 +73,105 @@ public abstract class Jugador extends Tanque{
 	public void setDireccion(int d){
 		direccion=d;
 	}
+	
+	public void subirNivel(){
+		switch(state){
+		case 1:
+			velMovimiento=3;
+			velDisparo=2;
+			disparosSimultaneos=1;
+			vida=1;
+			deQuienEs=2;
+			state=2;
+			break;
+		case 2:
+			velMovimiento=2;
+			velDisparo=2;
+			disparosSimultaneos=2;
+			vida=2;
+			deQuienEs=3;
+			state=3;
+			break;
+		case 3:
+			velMovimiento=2;
+			velDisparo=3;
+			disparosSimultaneos=3;
+			vida=4;
+			deQuienEs=4;
+			state=4;
+			break;
+		}
+	}
+	
+	public void bajarNivel(){
+		switch(state){
+		case 2:
+			velMovimiento=2;
+			velDisparo=1;
+			disparosSimultaneos=1;
+			vida=1;
+			deQuienEs=1;
+			state=1;
+			break;
+		case 3:
+			velMovimiento=3;
+			velDisparo=2;
+			disparosSimultaneos=1;
+			vida=1;
+			deQuienEs=2;
+			state=2;
+			break;
+		case 4:
+			velMovimiento=2;
+			velDisparo=2;
+			disparosSimultaneos=2;
+			vida=2;
+			deQuienEs=3;
+			state=3;
+			break;
+		}
+	}
 
-
+	public int getState(){
+		return state;
+	}
+	
+	public void setState(int i){
+		switch(i){
+		case 1:
+			velMovimiento=2;
+			velDisparo=1;
+			disparosSimultaneos=1;
+			vida=1;
+			deQuienEs=1;
+			state=1;
+			break;
+		case 2:
+			velMovimiento=3;
+			velDisparo=2;
+			disparosSimultaneos=1;
+			vida=1;
+			deQuienEs=2;
+			state=2;
+			break;
+		case 3:
+			velMovimiento=2;
+			velDisparo=2;
+			disparosSimultaneos=2;
+			vida=2;
+			deQuienEs=3;
+			state=3;
+			break;
+		case 4:
+			velMovimiento=2;
+			velDisparo=3;
+			disparosSimultaneos=3;
+			vida=4;
+			deQuienEs=4;
+			state=4;
+			break;
+		}
+	}
+	
+	
 }

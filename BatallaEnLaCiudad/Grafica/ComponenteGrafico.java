@@ -101,6 +101,10 @@ public abstract class ComponenteGrafico extends JLabel {
 		return vida;
 	}
 	
+	public final void aumentarVida(){
+		vida++;
+	}
+	
 	public abstract void colicion(int deQuienEs);
 	
 	//pregunnto si es posible mover a esta posicion
@@ -144,4 +148,14 @@ public abstract class ComponenteGrafico extends JLabel {
 		movimientoPosibleDisparo=false;
 	}
 	
+	public void subirNivel(){}
+	
+	public void bajarNivel(){}
+	
+	public int getState(){
+		return 0;
+	}
+	public void setState(int i){}
+	
+	public void usaCasco(boolean x){}
 }

@@ -24,7 +24,6 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	public	Tanque(int x,int y){
 		super(x,y);		
-		profundidad=4;
 		puedeMover=true;;
 	}
 	
@@ -92,6 +91,7 @@ public abstract class Tanque extends ComponenteGrafico {
 				break;
 		}
 		if(!seMovio && seCreo){
+			System.out.println(" "+bala.getPosicionX()+" "+bala.getPosicionY()+" "+deQuienEs);
 			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),deQuienEs);
 			bala=null;
 		}
@@ -107,4 +107,5 @@ public abstract class Tanque extends ComponenteGrafico {
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
+	
 }

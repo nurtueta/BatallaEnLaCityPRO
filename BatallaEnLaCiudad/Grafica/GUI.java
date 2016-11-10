@@ -66,7 +66,7 @@ public class GUI extends JFrame {
 			contentPane.setLayer(fondo, 1);
 	        mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
-	        mapaLogica.crearEnemigo();
+	        mapaLogica.crearEnemigoInicio();
 	        
 	        setVisible(true);
 	        
