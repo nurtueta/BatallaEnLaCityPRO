@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 
 import java.util.Random;
 
-public class StarWarsIntro extends Frame
+public class main extends Frame
 {
 
   CvStory canvas;
@@ -46,14 +46,14 @@ public class StarWarsIntro extends Frame
     juego.setVisible();
   }
 
-  public StarWarsIntro () throws IOException
+  public main() throws IOException
   {
     super ("StarWasIntro");
 
 
     
     
-    java.net.URL url = StarWarsIntro.class.getResource("/archivo/Star_Wars_Music_Theme.wav");
+    java.net.URL url = main.class.getResource("/archivo/Star_Wars_Music_Theme.wav");
     clip = Applet.newAudioClip(url);
     clip.play();
     

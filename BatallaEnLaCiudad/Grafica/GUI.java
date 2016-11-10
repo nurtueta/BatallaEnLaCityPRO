@@ -1,5 +1,7 @@
 package Grafica;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -162,5 +164,10 @@ public class GUI extends JFrame {
 		algo.setIcon(icono);
 		contentPane.add(algo);
 		contentPane.repaint();
+		mapaLogica=null;
+		
+		java.net.URL url = StarWarsIntro.class.getResource("/archivo/StarWarsImperialMarch.wav");
+	    AudioClip clip = Applet.newAudioClip(url);
+	    clip.play();
 	 }
 }
