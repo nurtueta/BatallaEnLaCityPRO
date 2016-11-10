@@ -22,7 +22,7 @@ public abstract class Jugador extends Tanque{
 		super(x,y);
 		posicionImagen(1);
 		casco=0;
-		
+		deQuienEs=1;
 	}
 	
 	/*Comandos*/

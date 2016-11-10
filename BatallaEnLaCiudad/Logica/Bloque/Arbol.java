@@ -22,10 +22,6 @@ public class Arbol extends Celda{
 	public boolean movimientoPosible() {
 		return movimientoPosible;
 	}
-
-	public boolean esArbol(){
-		return movimientoPosibleDisparo;
-	}
 	
 	public void posicionImagen(int i) {
 		
@@ -40,7 +36,7 @@ public class Arbol extends Celda{
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return true;
+		return movimientoPosibleDisparo;
 	}
 
 	public void colicion(int deQuienEs) {

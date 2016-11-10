@@ -11,7 +11,6 @@ public class JugadorNivel1 extends Jugador{
 		velDisparo=1;
 		disparosSimultaneos=1;
 		vida=1;
-		deQuienEs=1;
 	}
 
 }
