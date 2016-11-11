@@ -187,35 +187,45 @@ public class Logica {
 		termina=true;
 	}
 	
+	
 	/**
 	 * Indica si termino el juego para frenar los hilos
 	 * @return True si termino el juego, False en caso contrario
 	 */
-	public boolean finDelJuego()
-	{
-		return termina;
-	}
+//	public boolean finDelJuego()
+//	{
+//		return termina;
+//	}
 	
 	/**
 	 * Indica que termino el juego y espera medio segundo para que se eliminen 
 	 * todos los disparos y enemigos para finalizar todo.
 	 * @param x indica si se gano (true) o perdio (false)
-	 */
-	private void finalizarJuego(boolean x){
-		System.out.println("termino");
-		terminar();
-		porQueTermina=x;
-		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
-		tiempoEsperaParaFinalizar.start();
-	}
+//	 */
+//	private void finalizarJuego(boolean x){
+//		System.out.println("termino");
+//		terminar();
+//		porQueTermina=x;
+//		eliminarGrafico(miJugador);
+//		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
+//		tiempoEsperaParaFinalizar.start();
+//	}
 
 	/**
 	 * Con todos los enemigos y disparos eliminados, muestro la pantalla de 
 	 * fin de juego
 	 */
-	public void finalizar(){
-		eliminarGrafico(miJugador);
-		grafica.terminarJuego(porQueTermina);
+//	public void finalizar(){
+//		
+//		grafica.terminarJuego(porQueTermina);
+//	}
+	
+	private void finalizarJuego(boolean x){
+		hiloEnemigos.stop();
+		hiloDisparoEnemigo.stop();
+		hiloDisparoJugador.stop();
+		//eliminarGrafico(miJugador);
+		grafica.terminarJuego(x);
 	}
 	
 	/**

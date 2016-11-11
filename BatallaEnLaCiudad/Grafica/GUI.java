@@ -17,7 +17,7 @@ public class GUI extends JFrame {
 	 private boolean disparo;
 	 private boolean movio;
 	 private JLabel panelPuntaje;
-	 private	boolean teclado=true;
+	 private boolean teclado=true;
 	   
 	 
 	    /**
@@ -147,11 +147,7 @@ public class GUI extends JFrame {
 	        }
 				);	       	        
 	    	}
-
-	 public boolean finDelJuego(){
-	   	return mapaLogica.finDelJuego();
-	 }
-	    
+ 
 	 public void eliminarGrafico(ComponenteGrafico x){
 	  	contentPane.remove(x);
 	 }

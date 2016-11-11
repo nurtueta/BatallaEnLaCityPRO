@@ -19,7 +19,7 @@ public class HiloTiempoEspera extends Movimiento{
 
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
-		miLogica.finalizar();
+		//miLogica.finalizar();
 		this.stop();
 	}
 
