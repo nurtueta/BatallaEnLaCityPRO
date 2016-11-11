@@ -169,22 +169,37 @@ public class GUI extends JFrame {
 	 }
 	    
 	 public void terminarJuego(boolean x){
-		
-		contentPane.removeAll();
-		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory2.jpg"));
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
-		JLabel algo = new JLabel();
-		this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
-		teclado =false;
-		algo.setBounds(0, 0, this.getWidth(), this.getHeight());
-		algo.setPreferredSize(contentPane.getPreferredSize());
-		algo.setIcon(icono);
-		contentPane.add(algo);
-		contentPane.repaint();
+		 
+		 contentPane.removeAll();
+		 teclado= false;
 		mapaLogica=null;
 		
-		java.net.URL url = GUI.class.getResource("/archivo/StarWarsImperialMarch.wav");
-	    AudioClip clip = Applet.newAudioClip(url);
-	    clip.play();
+		if(x){
+			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory.png"));
+			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
+			JLabel algo = new JLabel();
+			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
+			algo.setBounds(0, 0, this.getWidth(), this.getHeight());
+			algo.setPreferredSize(contentPane.getPreferredSize());
+			algo.setIcon(icono);
+			contentPane.add(algo);
+		}
+		else{
+			
+			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory2.jpg"));
+			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
+			JLabel algo = new JLabel();
+			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
+			algo.setBounds(0, 0, this.getWidth(), this.getHeight());
+			algo.setPreferredSize(contentPane.getPreferredSize());
+			algo.setIcon(icono);
+			contentPane.add(algo);
+			
+			java.net.URL url = GUI.class.getResource("/archivo/StarWarsImperialMarch.wav");
+		    AudioClip clip = Applet.newAudioClip(url);
+		    clip.play();
+		}
+		contentPane.repaint();
+
 	 }
 }
