@@ -221,9 +221,15 @@ public class Logica {
 //	}
 	
 	private void finalizarJuego(boolean x){
+		System.out.println("entro en el finalziarjUego");
 		hiloEnemigos.stop();
+		System.out.println("1");
 		hiloDisparoEnemigo.stop();
-		hiloDisparoJugador.stop();
+		System.out.println("2");
+		//hiloDisparoJugador.destroy();
+		hiloDisparoJugador.interrupt();
+		//	hiloDisparoJugador.stop();
+		System.out.println("3");
 		//eliminarGrafico(miJugador);
 		grafica.terminarJuego(x);
 	}
