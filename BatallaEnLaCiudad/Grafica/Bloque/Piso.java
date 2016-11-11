@@ -5,12 +5,16 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+<<<<<<< HEAD
 import Grafica.ComponenteGrafico;
+=======
+import Logica.Logica;
+>>>>>>> origin/master
 
 public class Piso extends Bloque{
 
-	public Piso(int x,int y) {
-		super(x,y);
+	public Piso(int x,int y,Logica l) {
+		super(x,y,l);
 		profundidad=2;
 		
 		vida=1;

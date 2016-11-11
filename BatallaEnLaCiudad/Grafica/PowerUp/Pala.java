@@ -11,7 +11,7 @@ import Logica.Logica;
 public class Pala extends PowerUp{
 
 	public Pala(int x, int y,Logica l){
-		super(x,y,3);
+		super(x,y,3,l);
 		logica=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpPala.png"));
 

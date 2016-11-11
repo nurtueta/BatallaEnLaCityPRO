@@ -5,12 +5,16 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+<<<<<<< HEAD
 import Grafica.ComponenteGrafico;
+=======
+import Logica.Logica;
+>>>>>>> origin/master
 
 public class Agua extends Bloque {
 
-	public Agua(int x,int y) {
-		super(x,y);
+	public Agua(int x,int y,Logica l) {
+		super(x,y,l);
 		profundidad=2;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/agua.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));

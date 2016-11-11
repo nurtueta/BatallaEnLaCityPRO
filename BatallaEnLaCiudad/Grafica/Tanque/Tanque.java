@@ -90,7 +90,6 @@ public abstract class Tanque extends ComponenteGrafico {
 				break;
 		}
 		if(!seMovio && seCreo){
-			System.out.println(" "+bala.getPosicionX()+" "+bala.getPosicionY()+" "+deQuienEs);
 			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),deQuienEs);
 			bala=null;
 		}

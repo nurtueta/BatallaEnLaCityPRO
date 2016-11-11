@@ -84,22 +84,22 @@ public class MovimientoFluido extends Movimiento {
 				switch(d){
 					case 1:
 						miLogica.setComponente(x+1, y, componente);
-						miLogica.setComponente(x, y,new Piso(x,y));
+						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						x++;
 						break;
 					case 2:
 						miLogica.setComponente(x-1, y, componente);
-						miLogica.setComponente(x, y,new Piso(x,y));
+						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						x--;
 						break;
 					case 3:
 						miLogica.setComponente(x, y-1, componente);
-						miLogica.setComponente(x, y,new Piso(x,y));
+						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						y--;
 						break;						
 					case 4:
 						miLogica.setComponente(x, y+1, componente);
-						miLogica.setComponente(x, y,new Piso(x,y));
+						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						y++;
 						break;	
 				}

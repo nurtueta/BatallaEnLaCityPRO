@@ -11,7 +11,7 @@ import Logica.Logica;
 public class Casco extends PowerUp{
 	
 	public Casco(int x, int y,Logica l){
-		super(x,y,2);
+		super(x,y,2,l);
 		logica=l;
 
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpCasco.png"));

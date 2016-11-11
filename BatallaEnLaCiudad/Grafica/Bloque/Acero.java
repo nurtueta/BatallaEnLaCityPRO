@@ -5,12 +5,16 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+<<<<<<< HEAD
 import Grafica.ComponenteGrafico;
+=======
+import Logica.Logica;
+>>>>>>> origin/master
 
 public class Acero extends Bloque{
 
-	public Acero(int x,int y) {
-		super(x,y);
+	public Acero(int x,int y,Logica l) {
+		super(x,y,l);
 		profundidad=2;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/acero.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -40,7 +44,7 @@ public class Acero extends Bloque{
 	}
 
 	public void colicion(int deQuienEs) {
-		if(deQuienEs==4)
+		if(deQuienEs==2)
 			vida--;
 	}
 
