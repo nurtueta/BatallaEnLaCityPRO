@@ -1,0 +1,45 @@
+package Logica.Hilos;
+
+import java.util.ArrayList;
+
+import Grafica.*;
+import Grafica.Tanque.*;
+import Logica.Logica;
+
+
+public abstract class Movimiento extends Thread{
+	
+	protected Logica miLogica;
+	protected ArrayList<ComponenteGrafico> balas;
+	protected ArrayList<ComponenteGrafico> enemigos;
+	
+	public Movimiento(Logica logic)
+	{
+		miLogica = logic;
+		balas=new ArrayList<ComponenteGrafico>();
+		enemigos=new ArrayList<ComponenteGrafico>();
+	}
+	
+	public void setLogica(Logica l)
+	{
+		miLogica = l;
+	}
+	
+	public void inicio() {
+		miLogica.actualizarPanel();
+		this.start();
+	}
+	
+	public abstract void addBala(ComponenteGrafico x);
+	
+	public abstract void addEnemigo(ComponenteGrafico x);
+	
+	public  ArrayList<ComponenteGrafico> getBalas(){
+		return balas;
+	}
+	
+	public  ArrayList<ComponenteGrafico> getEnemigos(){
+		return enemigos;
+	}
+	
+}

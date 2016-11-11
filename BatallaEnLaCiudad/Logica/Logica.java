@@ -7,9 +7,20 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import Grafica.*;
-import Logica.Bloque.*;
-import PowerUp.*;
-import Tanque.*;
+import Grafica.Bloque.*;
+import Grafica.PowerUp.*;
+import Grafica.Tanque.*;
+import Grafica.Tanque.Enemigo.Basico;
+import Grafica.Tanque.Enemigo.Blindado;
+import Grafica.Tanque.Enemigo.Enemigo;
+import Grafica.Tanque.Enemigo.Poder;
+import Grafica.Tanque.Enemigo.Rapido;
+import Grafica.Tanque.Jugador.Jugador;
+import Logica.Hilos.HiloPowerUps;
+import Logica.Hilos.HiloTiempoEspera;
+import Logica.Hilos.Movimiento;
+import Logica.Hilos.MovimientoBalas;
+import Logica.Hilos.MovimientoEnemigos;
 
 public class Logica {
 	
