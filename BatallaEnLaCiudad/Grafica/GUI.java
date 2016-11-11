@@ -183,7 +183,7 @@ public class GUI extends JFrame {
 		contentPane.repaint();
 		mapaLogica=null;
 		
-		java.net.URL url = GUI.class.getResource("/archivo/StarWarsMusic.wav");
+		java.net.URL url = GUI.class.getResource("/archivo/StarWarsImperialMarch.wav");
 	    AudioClip clip = Applet.newAudioClip(url);
 	    clip.play();
 	 }
