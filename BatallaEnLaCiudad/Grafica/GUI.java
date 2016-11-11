@@ -164,14 +164,14 @@ public class GUI extends JFrame {
 	  	return contentPane;
 	 }
 	    
-	 public void terminarJuego(boolean x){
+	 public void terminarJuego(boolean Victoria){
 		 
 		 contentPane.removeAll();
 		 teclado= false;
 		mapaLogica=null;
 		
-		if(x){
-			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory.png"));
+		if(Victoria){
+			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victoria.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
 			JLabel algo = new JLabel();
 			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
