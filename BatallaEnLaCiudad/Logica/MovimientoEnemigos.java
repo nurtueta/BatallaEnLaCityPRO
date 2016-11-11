@@ -48,17 +48,18 @@ public class MovimientoEnemigos extends Movimiento{
 					
 					for(ComponenteGrafico bala: enemigosIngresar)
 						enemigos.add(bala);
+					enemigosIngresar=new ArrayList<ComponenteGrafico>();
 				}
 				this.sleep(200);
 				if(!miLogica.finDelJuego()){
 					agregarEnemigo=false;
 					for(ComponenteGrafico enemigo: enemigos){
-						this.sleep(20);
 						miLogica.crearDisparo(enemigo);
 					}
 					agregarEnemigo=true;
 					for(ComponenteGrafico bala: enemigosIngresar)
 						enemigos.add(bala);
+					enemigosIngresar=new ArrayList<ComponenteGrafico>();
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}

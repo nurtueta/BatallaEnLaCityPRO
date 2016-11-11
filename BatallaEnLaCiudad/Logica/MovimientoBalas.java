@@ -38,6 +38,8 @@ public class MovimientoBalas extends Movimiento{
 					agregarBala=true;
 					for(ComponenteGrafico bala: balasIngresar)
 						balas.add(bala);
+					balasIngresar=new ArrayList<ComponenteGrafico>();
+					
 					
 					for(ComponenteGrafico bala: eliminar)
 						balas.remove(bala);
