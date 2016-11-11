@@ -22,6 +22,7 @@ public class MovimientoEnemigos extends Movimiento{
 		agregarEnemigo=true;//lo uso para saber si puede agregar un enemigo a la lista
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void run()
 	{
 		
@@ -29,7 +30,7 @@ public class MovimientoEnemigos extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego())
 			{
-				this.sleep(200);
+				sleep(400);
 				if(!miLogica.finDelJuego()){
 					eliminar=new ArrayList<ComponenteGrafico>();
 					agregarEnemigo=false;
@@ -50,11 +51,11 @@ public class MovimientoEnemigos extends Movimiento{
 						enemigos.add(bala);
 					enemigosIngresar=new ArrayList<ComponenteGrafico>();
 				}
-				this.sleep(200);
+				sleep(400);
 				if(!miLogica.finDelJuego()){
 					agregarEnemigo=false;
 					for(ComponenteGrafico enemigo: enemigos){
-						miLogica.crearDisparo(enemigo);
+						miLogica.crearDisparoEnemigo(enemigo);
 					}
 					agregarEnemigo=true;
 					for(ComponenteGrafico bala: enemigosIngresar)
@@ -72,7 +73,7 @@ public class MovimientoEnemigos extends Movimiento{
 			enemigos.remove(enemigo);
 		}
 		
-		this.stop();
+		stop();
 	}
 
 	public void addBala(ComponenteGrafico x) {

@@ -21,7 +21,7 @@ public class Timer extends PowerUp{
 	@Override
 	public void colicion(int deQuienEs) {
 		if(deQuienEs == 1)
-			logica.detenerEnemigos();
+			logica.powerUpTimer();
 	}
 	
 }

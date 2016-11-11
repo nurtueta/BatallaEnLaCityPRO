@@ -22,7 +22,7 @@ public class Casco extends PowerUp{
 	@Override
 	public void colicion(int deQuienEs) {
 		if(deQuienEs == 1)
-			logica.ponerCasco();
+			logica.powerUpCasco();
 
 		
 	}

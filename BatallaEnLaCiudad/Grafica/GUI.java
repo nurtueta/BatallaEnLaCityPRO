@@ -168,7 +168,7 @@ public class GUI extends JFrame {
 	  	return contentPane;
 	 }
 	    
-	 public void terminarJuego(){
+	 public void terminarJuego(boolean x){
 		
 		contentPane.removeAll();
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory2.jpg"));

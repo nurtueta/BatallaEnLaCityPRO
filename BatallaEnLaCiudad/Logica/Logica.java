@@ -3,24 +3,15 @@ package Logica;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 import Grafica.*;
 import Grafica.Bloque.*;
 import Grafica.PowerUp.*;
 import Grafica.Tanque.*;
-import Grafica.Tanque.Enemigo.Basico;
-import Grafica.Tanque.Enemigo.Blindado;
-import Grafica.Tanque.Enemigo.Enemigo;
-import Grafica.Tanque.Enemigo.Poder;
-import Grafica.Tanque.Enemigo.Rapido;
-import Grafica.Tanque.Jugador.Jugador;
-import Logica.Hilos.HiloPowerUps;
-import Logica.Hilos.HiloTiempoEspera;
-import Logica.Hilos.Movimiento;
-import Logica.Hilos.MovimientoBalas;
-import Logica.Hilos.MovimientoEnemigos;
+import Grafica.Tanque.Enemigo.*;
+import Grafica.Tanque.Jugador.*;
+import Logica.Hilos.*;
 
 public class Logica {
 	
@@ -39,52 +30,46 @@ public class Logica {
 	private int puntaje=0;
 	private int enemigosMatados;
 	private int muertesAcumuladas;
-	private int enemigosEnTablero;
 	private int []respawn;
 	private boolean termina;
+	private boolean porQueTermina;
 
 	
 	
 	protected GUI grafica;
 	
-	/*Constructor*/
+	/*--------------------------------Constructor---------------------------------*/
 	
 	public Logica(GUI laGUI){
 		termina=false;
 		
-		hiloDisparoJugador=new MovimientoBalas(this);
+		hiloDisparoJugador=new MovimientoBalas(this); //maneja los disparos del jugador
 		hiloDisparoJugador.start();
-		hiloDisparoEnemigo=new MovimientoBalas(this);
-		hiloDisparoEnemigo.start();
-		hiloEnemigos = new MovimientoEnemigos(this);
-		hiloEnemigos.start();
 		
+		hiloDisparoEnemigo=new MovimientoBalas(this); //maneja los disparos de todos los enemigos
+		hiloDisparoEnemigo.start();
+		
+		hiloEnemigos = new MovimientoEnemigos(this); //maneja a los enemigos
+		hiloEnemigos.start();
 		
 		puntaje=0;			 //cuando llega a 20000, sumar una vida
 		enemigosMatados=0;   //cuando llega a 4 creo un powerUp y lo reseteo
-		enemigosEnTablero=0; //deberia iniciar en 4 y no bajar de 2
 		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
+		
 		grafica=laGUI;
 		
 		//creo los respawn
 		respawn=new int[8];
 		respawn[0]=0;respawn[1]=0;respawn[2]=19;respawn[3]=16;respawn[4]=0;
 		respawn[5]=6;respawn[6]=0;respawn[7]=16;
-		
-		puntaje=0;			 //cuando llega a 20000, sumar una vida
-		enemigosMatados=0;   //cuando llega a 4 creo un powerUp y lo reseteo
-		enemigosEnTablero=0; //deberia iniciar en 4 y no bajar de 2
-		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
-
 				
 		mapa=new ComponenteGrafico[20][20];
-		
+		//creo el mapa
 		generacionDeMapaLogico();
 	}
 	
-	/*
-	 * Comandos
-	 * */
+	
+	/* ---------------------------------Mapa----------------------------------*/
 	
 	/**
 	 * Permite ver el mapa logico
@@ -93,14 +78,12 @@ public class Logica {
 	public	ComponenteGrafico[][] getMapaLogico(){
 		return mapa;
 	}
-
 	
 	/**
 	 * Genera una matriz interna en Logica producto
 	 *  de la traduccion de un archivo .txt
 	 */
-	public void generacionDeMapaLogico()
-	{
+	public void generacionDeMapaLogico(){
 	  	FileReader fi;
 		try {
 			fi = new FileReader("archivo/Hello2.txt");
@@ -139,22 +122,12 @@ public class Logica {
 		}
 	}
 	
-	// al jugador
-	public void mover(int direccion){
-		miJugador.mover(direccion);
-	}
-	
-	//ingreso jugador
-	private void ingresarJugador()
-	{
-		miJugador = new Jugador(5,17,this);
-		mapa[miJugador.getPosicionY()][miJugador.getPosicionX()]=miJugador;
-
-	}
-
-	/*Consultas*/
-	
-	//devuelvo el componente grafico en la posicion (x,y)
+	/**
+	 * Obtengo el componente en las coordenadas (x,y)
+	 * @param x coordenada en el eje x
+	 * @param y coordenada en el eje y
+	 * @return Componente en la posicion indicada
+	 */
 	public ComponenteGrafico getComponente(int x,int y){
 		ComponenteGrafico aux;
 		if (x<0 || x>19 || y<0 || y>19)
@@ -163,147 +136,212 @@ public class Logica {
 			aux=mapa[y][x];
 		return aux;
 	}
-	
-	public void setComponente(int x,int y,ComponenteGrafico p){
-		mapa[y][x]=p;
+			
+	/**
+	 * Ingresa un componente en las coordeandas (x,y)
+	 * @param x coordenada en el eje x
+	 * @param y coordenada en el eje y
+	 * @param p componente a ingresar
+	 */
+	public void setComponente(int x,int y,ComponenteGrafico c){
+		mapa[y][x]=c;
 	}
-
-	//devuelvo jugador
-	public ComponenteGrafico getJugador(){
-		return miJugador;
+	
+	/**
+	 * Actualiza el panel del puntaje
+	 */
+	public void actualizarPanel(){
+		System.out.println("asdad asd a");
+		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
+		grafica.getPanelPuntaje().updateUI();
+		repintarPanel();
 	}
 	
+	/**
+	 * Actualizo el panel
+	 */
+	private void repintarPanel(){
+		grafica.repaint();
+	}
+	
+	/**
+	 * Elimina el componente de la grafica
+	 * @param x Componente a eliminar
+	 */
+	public void eliminarGrafico(ComponenteGrafico x){
+		grafica.eliminarGrafico(x);
+	}
+	
+	/**
+	 * Agrega el componente a la grafica
+	 * @param x Componente a agregar
+	 */
+	public void agregarGrafico(ComponenteGrafico x){
+		grafica.agregarGrafico(x);
+	}
+	
+	/**
+	 * Le informa a los hilos que termino el juego
+	 */
+	private void terminar(){
+		termina=true;
+	}
+	
+	/**
+	 * Indica si termino el juego para frenar los hilos
+	 * @return True si termino el juego, False en caso contrario
+	 */
 	public boolean finDelJuego()
 	{
 		return termina;
 	}
 	
-	public void actualizarPanel(){
-		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
-		grafica.getPanelPuntaje().updateUI();
-		grafica.repaint();
-	}
-	
-	public void eliminarGrafico(ComponenteGrafico x){
-		grafica.eliminarGrafico(x);
-	}
-	
-	
-	private PowerUp crearPowerUp(){
-		//Busco entre 1 y 6 un tipo de powerup aleatorio siendo: 1)Casco; 2) Estrella; 3)Granada
-		//4) Pala; 5) Timer; 6) VidaTanque.
-		int tipo = (int) new Random().nextInt(6)+1;
-		
-		//Elijo variables de posicion en el mapa al azar.
-		int localizarX = (int) new Random().nextInt(20);
-		int localizarY = (int) new Random().nextInt(20);
-		
-		PowerUp miPowerUp;
-		
-			switch (tipo){
-			case 1: {
-						miPowerUp = new Casco(localizarX,localizarY,this);
-						break;
-					}
-			case 2: {
-						miPowerUp = new Estrella(localizarX,localizarY,this);
-						break;
-					}
-			case 3: {
-						miPowerUp = new Granada(localizarX,localizarY,this);
-						break;
-					}
-			case 4: {
-						miPowerUp = new Pala(localizarX,localizarY,this);
-						break;
-					}
-			case 5: {
-						miPowerUp = new Timer(localizarX,localizarY,this);
-						break;
-					}
-			case 6: {
-						miPowerUp = new VidaTanque(localizarX,localizarY,this);
-						break;
-					}
-			default:  { 
-						miPowerUp = new Casco(localizarX,localizarY,this);
-						break;
-					  }
-			}
-		return miPowerUp;
-	}
-	
-	public Movimiento getHilosEnemigos(){
-		return hiloEnemigos;
-	}
-	
-	private void finalizarJuego(){
+	/**
+	 * Indica que termino el juego y espera medio segundo para que se eliminen 
+	 * todos los disparos y enemigos para finalizar todo.
+	 * @param x indica si se gano (true) o perdio (false)
+	 */
+	private void finalizarJuego(boolean x){
 		System.out.println("termino");
 		terminar();
+		porQueTermina=x;
 		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
 		tiempoEsperaParaFinalizar.start();
-		
 	}
 
+	/**
+	 * Con todos los enemigos y disparos eliminados, muestro la pantalla de 
+	 * fin de juego
+	 */
 	public void finalizar(){
-		grafica.eliminarGrafico(miJugador);
-		grafica.terminarJuego();
+		eliminarGrafico(miJugador);
+		grafica.terminarJuego(porQueTermina);
 	}
-
 	
-	private void terminar(){
-		termina=true;
-	}
+	/**
+	 * Elimino el componente en las coordenadas (x,y) que fue colicionado, si es el
+	 * jugador o el aguila, el eliminado, finalizo el juego.
+	 * @param x coordenada x
+	 * @param y coordenada y
+	 * @param deQuienEs indica si disparo enemigo (0) o jugador (1)
+	 */
 	public void eliminarColicion(int x,int y,int deQuienEs){
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
-			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19))){
-						if(getComponente(x, y)==miJugador)
-							System.out.println("termino eliminarColicion miJugador");
-						else
-							System.out.println("termino eliminarColicion "+x+" "+y);
-						finalizarJuego();
-			}else{
+			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19)))
+						finalizarJuego(false);
+			else{
 				addPuntaje(getComponente(x, y).getPuntos());
-				grafica.eliminarGrafico(getComponente(x, y));
+				eliminarGrafico(getComponente(x, y));
 				mapa[y][x]=new Piso(x,y);
-				grafica.agregarGrafico(getComponente(x, y));
+				agregarGrafico(getComponente(x, y));
 			}
 		}
 	}
-
 	
+	/**
+	 * Indica el puntaje total en el juego
+	 * @return Puntaje total
+	 */
 	public	int obtenerPuntaje(){
 		return puntaje;
 	}
 	
+	/**
+	 * Ingresa los componentes del mapa en la parte grafica
+	 */
+	public void generarPanel(){
+		for(int i=0;i<20;i++)
+		 	for(int j=0;j<20;j++)
+		 		agregarGrafico(getComponente(i,j));		 	
+	}	
+	
+	/**
+	 * Aumenta el puntaje del jugador
+	 * @param puntos puntos a aumentar
+	 */
+	public void addPuntaje(int puntos){
+		puntaje+=puntos;
+		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
+		repintarPanel();
+	}
+	
+	/*--------------------------------Jugador---------------------------------- */
+	
+	/**
+	 * @return Jugador
+	 */
+	public ComponenteGrafico getJugador(){
+		return miJugador;
+	}
+	
+	/**
+	 * Mueve al jugador en la direccion inducada
+	 * @param direccion a la que se desea mover
+	 */
+	public void mover(int direccion){
+		miJugador.mover(direccion);
+	}
+	
+	/**
+	 * Creo al jugador y lo ingreso al mapa logico
+	 */
+	private void ingresarJugador(){
+		miJugador = new Jugador(5,17,this);
+		mapa[miJugador.getPosicionY()][miJugador.getPosicionX()]=miJugador;
+	}
+	
+	/**
+	 * Creo al jugador al iniciar el juego
+	 */
+	public void crearJugador(){
+    	ingresarJugador();
+        agregarGrafico(getJugador());
+    }
+	
+	/**
+	 * Creo el disparo del jugador
+	 */
 	public void crearDisparoJugador(){
 		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
 			ComponenteGrafico bala=miJugador.crearDisparo();
 			clip.play();
-
 			if(bala!=null){
-	    		grafica.agregarGrafico(bala);
-	    		grafica.repaint();
+	    		agregarGrafico(bala);
+	    		repintarPanel();
 	    		hiloDisparoJugador.addBala(bala);
 	    	}
 		}
 	}
 	
-	public void crearDisparo(ComponenteGrafico x){
+	/* ---------------------------------Enemigo----------------------------------*/
+	
+	/**
+	 * @return Hilo que contiene a los enemigos
+	 */
+	public Movimiento getHilosEnemigos(){
+		return hiloEnemigos;
+	}
+	
+	/**
+	 * Creo el disparo a partir del enemigo que disparo
+	 * @param x enemigo que disparo
+	 */
+	public void crearDisparoEnemigo(ComponenteGrafico x){
     	ComponenteGrafico bala=x.crearDisparo();
     	if(bala!=null){
-    		grafica.agregarGrafico(bala);
-    		grafica.repaint();
+    		agregarGrafico(bala);
+    		repintarPanel();
     		hiloDisparoEnemigo.addBala(bala);
     	}
     }
 	
-	public void crearJugador(){
-    	ingresarJugador();
-        grafica.agregarGrafico(getJugador());
-    }
-	
+	/**
+	 * Creo un enemigo random en las coordenadas (x,y)
+	 * @param x coordenada x
+	 * @param y coordenada y
+	 * @return enemigo creado
+	 */
 	private ComponenteGrafico crearEnemigo(int x,int y){
 		int tipoACrear = (int) new Random().nextInt(4)+1;
 		Enemigo enemigo=null;
@@ -330,111 +368,161 @@ public class Logica {
 		return enemigo;
 	}
 
+	/**
+	 * Crea un enemigo random y lo ingresa en alguno de los respawn
+	 */
 	public void crearEnenmigo(){
 		int tipoACrear;
 		boolean pudoCrear=true;
 		while(pudoCrear){
-			tipoACrear = (int) new Random().nextInt(3);
+			tipoACrear = (int) new Random().nextInt(4);
 			ComponenteGrafico enemigo=crearEnemigo(respawn[tipoACrear],respawn[tipoACrear+4]);
 			if(enemigo!=null){
-				grafica.agregarGrafico(enemigo);
+				agregarGrafico(enemigo);
 				pudoCrear=false;
 			}
 		}
 	}
 
+	/**
+	 * Creo 4 enemigos random apenas inicia el juego, 
+	 * cada uno en su respectivo respawn
+	 */
 	public void crearEnemigoInicio(){
 		ComponenteGrafico enemigo=crearEnemigo(respawn[0],respawn[4]);
 		if(enemigo!=null){
-			grafica.agregarGrafico(enemigo);
+			agregarGrafico(enemigo);
 		}
 		enemigo=crearEnemigo(respawn[1],respawn[1+4]);
 		if(enemigo!=null){
-			grafica.agregarGrafico(enemigo);
+			agregarGrafico(enemigo);
 		}
 		enemigo=crearEnemigo(respawn[2],respawn[2+4]);
 		if(enemigo!=null){
-			grafica.agregarGrafico(enemigo);
+			agregarGrafico(enemigo);
 		}
 		enemigo=crearEnemigo(respawn[3],respawn[3+4]);
 		if(enemigo!=null){
-			grafica.agregarGrafico(enemigo);
+			agregarGrafico(enemigo);
 		}
 	}
-
 	
-	public void generarPanel(){
-		for(int i=0;i<20;i++)
-		 	for(int j=0;j<20;j++){
-		 		ComponenteGrafico comp = getComponente(i,j);
-		 		grafica.agregarGrafico(comp);		 	
-		 	}
-	}	
-	
-	
-	public void addPuntaje(int puntos){
-		puntaje+=puntos;
-		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
-		System.out.println(puntaje);
-		grafica.repaint();
-	}
-	
+	/**
+	 * Si se murio un jugador y es el 4 seguido, entonces creo un PowerUp; 
+	 * si es el numero 16 eliminado, entonces gane el juego.
+	 * Si no termino el juego entonces creo un enemigo para mantener 4 enemigos 
+	 * siempre
+	 */
 	public void enemigoMurio(){
 		enemigosMatados++;
 		muertesAcumuladas++;
-		if(muertesAcumuladas == 16){
-			System.out.println("termino enemigoMurio");
-			finalizarJuego();
-		}else{
+		if(muertesAcumuladas == 16)
+			finalizarJuego(true);
+		else{
 			if(enemigosMatados == 4){
-				PowerUp p = crearPowerUp();
-				grafica.agregarGrafico(p);
+				crearPowerUp();
 				enemigosMatados = 0;
-				subirNivel();
 			}
 			crearEnenmigo();
 		}
 	}
 
+	/* ---------------------------------PowerUp----------------------------------*/
 	
-	//POWERUPS
-	
-			public void ponerCasco(){
-				miJugador.usaCasco(true);
-			}
-			
-			//EfectoPowerUpEstrella
-			public void subirNivel(){
-				miJugador.subirNivel();
-			}
-			
-			public void bajarNivel(){
-				miJugador.bajarNivel();
-			}
-			
-			public void subirVida(){
-				miJugador.aumentarVida();
-			}
-			
-			public void destruirTodosLosEnemigos(){
-			}
-			
-			public void powerUpPala(){
-				//Controlar Bloques alrededor del 'Aguila'
-			}
-			
-			public void detenerEnemigos(){
-				// Movimiento posible de todos = false
-				//HiloTimer h = new HiloTimer();
-				//h.start();
-				// Movimiento posible de todos = true;
-			}
-			
-			public void eliminarPowerUps(){
-				hiloPowerup.stop();
-			}
-			
+	/**
+	 * Creo un PowerUp random
+	 * @return PowerUp creado
+	 */
+	private ComponenteGrafico obtenerPowerUp(){
+		int tipo = (int) new Random().nextInt(6)+1;
+		int localizarX = (int) new Random().nextInt(20);
+		int localizarY = (int) new Random().nextInt(20);
 		
-
+		PowerUp miPowerUp=null;;
+		switch (tipo){
+		case 1: 
+			miPowerUp = new Casco(localizarX,localizarY,this);
+			break;
+		case 2: 
+			miPowerUp = new Estrella(localizarX,localizarY,this);
+			break;
+		case 3: 
+			miPowerUp = new Granada(localizarX,localizarY,this);
+			break;
+		case 4: 
+			miPowerUp = new Pala(localizarX,localizarY,this);
+			break;
+		case 5: 
+			miPowerUp = new Timer(localizarX,localizarY,this);
+			break;
+		case 6: 
+			miPowerUp = new VidaTanque(localizarX,localizarY,this);
+			break;
+		}
+		return miPowerUp;
+	}
+	
+	/**
+	 * Creo un PowerUp y lo agrego al mapa, si no se agarra por 5 segundos desaparece;
+	 * si se agarra entonces se ejecuta
+	 */
+	public void crearPowerUp(){
+		ComponenteGrafico p=obtenerPowerUp();
+		//crear hilo y ingresar a la grafica
+		agregarGrafico(p);
+	}
+	
+	/**
+	 * Elimina a todos los enemigos
+	 */
+	public void powerUpGranada(){
+		
+	}
+	
+	/**
+	 * El jugador se hace invulnerable por 5 segundos
+	 */
+	public void powerUpCasco(){
+		miJugador.usaCasco(true);
+	}
+	
+	/**
+	 * Cambian las paredes de la base por acero por 20 segundos,
+	 * pasados los 20 segundos se vuelven a poner paredes comunes al 100%.
+	 */
+	public void powerUpPala(){
+		//Controlar Bloques alrededor del 'Aguila'
+	}
+	
+	/**
+	 * Aumenta el nivel del Jugador
+	 */
+	public void powerUpEstrella(){
+		miJugador.subirNivel();
+	}
+	
+	/**
+	 * Aumenta una vida al Jugador
+	 */
+	public void powerUpTanque(){
+		miJugador.aumentarVida();
+	}
+	
+	/**
+	 * Detiene a todos los enemigos por 5 segundos
+	 */
+	public void powerUpTimer(){
+		// Movimiento posible de todos = false
+		//HiloTimer h = new HiloTimer();
+		//h.start();
+		// Movimiento posible de todos = true;
+	}
+	
+	/**
+	 * Elimina el PowerUp en caso de no haberse agarrado.
+	 */
+	public void eliminarPowerUps(){
+		hiloPowerup.stop();
+	}
 	
 }
