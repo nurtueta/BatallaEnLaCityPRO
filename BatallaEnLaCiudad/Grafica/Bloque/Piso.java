@@ -5,11 +5,11 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-<<<<<<< HEAD
+
 import Grafica.ComponenteGrafico;
-=======
+
 import Logica.Logica;
->>>>>>> origin/master
+
 
 public class Piso extends Bloque{
 

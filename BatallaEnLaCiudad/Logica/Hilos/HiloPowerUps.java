@@ -56,7 +56,7 @@ public class HiloPowerUps extends Thread{
 						miPowerUp.colicion(j.getDeQuienEs());
 						miLogica.addPuntaje(miPowerUp.getPuntos());
 						miLogica.eliminarGrafico(miPowerUp);
-						miLogica.agregarGrafico(new Piso(powerX,powerY));
+						miLogica.agregarGrafico(new Piso(powerX,powerY,miLogica));
 					}
 				}
 						

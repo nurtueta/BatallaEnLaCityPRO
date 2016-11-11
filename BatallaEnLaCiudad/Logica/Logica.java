@@ -500,7 +500,7 @@ public class Logica {
 			
 			//Vuelvo a rodear el aguila de ladrillos
 			for(ComponenteGrafico c : base){
-				ComponenteGrafico nuevoLadrillo = new Ladrillo(c.getPosicionX(),c.getPosicionY());
+				ComponenteGrafico nuevoLadrillo = new Ladrillo(c.getPosicionX(),c.getPosicionY(),this);
 					//reemplazo graficamente las componentes
 					eliminarGrafico(c);
 					agregarGrafico(nuevoLadrillo);					
