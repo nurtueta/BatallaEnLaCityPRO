@@ -179,50 +179,12 @@ public class Logica {
 	public void agregarGrafico(ComponenteGrafico x){
 		grafica.agregarGrafico(x);
 	}
-	
-	/**
-	 * Le informa a los hilos que termino el juego
-	 */
-	private void terminar(){
-		termina=true;
-	}
-	
-	
-	/**
-	 * Indica si termino el juego para frenar los hilos
-	 * @return True si termino el juego, False en caso contrario
-	 */
-//	public boolean finDelJuego()
-//	{
-//		return termina;
-//	}
-	
-	/**
-	 * Indica que termino el juego y espera medio segundo para que se eliminen 
-	 * todos los disparos y enemigos para finalizar todo.
-	 * @param x indica si se gano (true) o perdio (false)
-//	 */
-//	private void finalizarJuego(boolean x){
-//		System.out.println("termino");
-//		terminar();
-//		porQueTermina=x;
-//		eliminarGrafico(miJugador);
-//		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
-//		tiempoEsperaParaFinalizar.start();
-//	}
 
 	/**
-	 * Con todos los enemigos y disparos eliminados, muestro la pantalla de 
-	 * fin de juego
+	 * Finaliza todo el juego, indicando si gano o perdio
+	 * @param x indica si gano (true) o perdio(false)
 	 */
-//	public void finalizar(){
-//		
-//		grafica.terminarJuego(porQueTermina);
-//	}
-	
 	private void finalizarJuego(boolean x){
-		
-		
 		hiloEnemigos.interrupt();
 		hiloDisparoEnemigo.interrupt();
 		hiloDisparoJugador.interrupt();

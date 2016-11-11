@@ -25,14 +25,11 @@ public class MovimientoEnemigos extends Movimiento{
 	@SuppressWarnings("deprecation")
 	public void run()
 	{
-		
-		//Agregar un booleano que le pida a la logica un 'sigo en el juego' como corte del while
 		try{
-//			while(!miLogica.finDelJuego())
-				while(true)
-			{
-				sleep(400);
-//				if(!miLogica.finDelJuego()){
+				while(true){
+					
+					sleep(400);
+					
 					eliminar=new ArrayList<ComponenteGrafico>();
 					agregarEnemigo=false;
 					for(ComponenteGrafico enemigo: enemigos){
@@ -43,6 +40,7 @@ public class MovimientoEnemigos extends Movimiento{
 							enemigo.mover(direccion);
 					}
 					agregarEnemigo=true;
+					
 					for(ComponenteGrafico enemigo: eliminar){
 						miLogica.eliminarGrafico(enemigo);
 						enemigos.remove(enemigo);
@@ -51,30 +49,20 @@ public class MovimientoEnemigos extends Movimiento{
 					for(ComponenteGrafico bala: enemigosIngresar)
 						enemigos.add(bala);
 					enemigosIngresar=new ArrayList<ComponenteGrafico>();
-//				}
-				sleep(400);
-//				if(!miLogica.finDelJuego()){
+				
+					sleep(400);
+					
 					agregarEnemigo=false;
 					for(ComponenteGrafico enemigo: enemigos){
 						miLogica.crearDisparoEnemigo(enemigo);
 					}
 					agregarEnemigo=true;
+					
 					for(ComponenteGrafico bala: enemigosIngresar)
 						enemigos.add(bala);
 					enemigosIngresar=new ArrayList<ComponenteGrafico>();
-//				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
-		eliminar=new ArrayList<ComponenteGrafico>();
-		for(ComponenteGrafico enemigo: enemigos)
-			eliminar.add(enemigo);
-		
-		for(ComponenteGrafico enemigo: eliminar){
-			miLogica.eliminarGrafico(enemigo);
-			enemigos.remove(enemigo);
-		}
-		
-		stop();
 	}
 
 	public void addBala(ComponenteGrafico x) {
