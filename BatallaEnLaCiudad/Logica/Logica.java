@@ -95,22 +95,22 @@ public class Logica {
 	        		char s = cadena.charAt(i);
 	        		switch(s){
 	        		case 'A':
-	        			mapa[j][i]= new Agua(i,j);
+	        			mapa[j][i]= new Agua(i,j,this);
 	        			break;
 	        		case 'L':
-	        			mapa[j][i]= new Ladrillo(i,j);
+	        			mapa[j][i]= new Ladrillo(i,j,this);
 	        			break;
 	        		case 'I':
-	        			mapa[j][i]= new Acero(i,j);
+	        			mapa[j][i]= new Acero(i,j,this);
 	        			break;
 	        		case 'B':
-		      			mapa[j][i]= new Arbol(i,j);
+		      			mapa[j][i]= new Arbol(i,j,this);
 		      			break;
 	        		case 'E':
-		      			mapa[j][i]= new Aguila(i,j);
+		      			mapa[j][i]= new Aguila(i,j,this);
 		      			break;
 		      		default:
-		      			mapa[j][i]= new Piso(i,j);
+		      			mapa[j][i]= new Piso(i,j,this);
 			      		break;
 	        		}
 	        	}
@@ -193,7 +193,7 @@ public class Logica {
 	 * todos los disparos y enemigos para finalizar todo.
 	 * @param x indica si se gano (true) o perdio (false)
 	 */
-	private void finalizarJuego(boolean x){
+	public void finalizarJuego(boolean x){
 		termina=true;
 		porQueTermina=x;
 		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this,200);
@@ -218,14 +218,10 @@ public class Logica {
 	public void eliminarColicion(int x,int y,int deQuienEs){
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
-			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19)))
-				finalizarJuego(false);
-			else{
-				addPuntaje(getComponente(x, y).getPuntos());
-				eliminarGrafico(getComponente(x, y));
-				mapa[y][x]=new Piso(x,y);
-				agregarGrafico(getComponente(x, y));
-			}
+			addPuntaje(getComponente(x, y).getPuntos());
+			eliminarGrafico(getComponente(x, y));
+			mapa[y][x]=new Piso(x,y,this);
+			agregarGrafico(getComponente(x, y));
 		}
 	}
 	

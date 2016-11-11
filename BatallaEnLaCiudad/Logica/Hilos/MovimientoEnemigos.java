@@ -22,7 +22,6 @@ public class MovimientoEnemigos extends Movimiento{
 		agregarEnemigo=true;//lo uso para saber si puede agregar un enemigo a la lista
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void run()
 	{
 		try{
@@ -33,6 +32,7 @@ public class MovimientoEnemigos extends Movimiento{
 						eliminar=new ArrayList<ComponenteGrafico>();
 						agregarEnemigo=false;
 						for(ComponenteGrafico enemigo: enemigos){
+							sleep(5);
 							direccion = (int) (rnd.nextInt(4)+1);
 							if(enemigo.getVida()==0)
 								eliminar.add(enemigo);
@@ -54,6 +54,7 @@ public class MovimientoEnemigos extends Movimiento{
 					if(!miLogica.finDelJuego()){
 						agregarEnemigo=false;
 						for(ComponenteGrafico enemigo: enemigos){
+							sleep(5);
 							miLogica.crearDisparoEnemigo(enemigo);
 						}
 						agregarEnemigo=true;

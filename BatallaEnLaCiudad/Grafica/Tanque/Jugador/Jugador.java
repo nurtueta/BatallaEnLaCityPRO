@@ -65,8 +65,11 @@ public class Jugador extends Tanque{
 	
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==0){
-			if(!casco)
+			if(!casco){
 				vida--;
+				if(vida==0)
+					logica.finalizarJuego(false);
+			}
 		}
 	}
 	

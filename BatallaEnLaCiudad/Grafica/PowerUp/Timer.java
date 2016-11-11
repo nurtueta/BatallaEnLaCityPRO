@@ -10,7 +10,7 @@ import Logica.Logica;
 public class Timer extends PowerUp{
 
 	public Timer(int x, int y,Logica l){
-		super(x,y,6);
+		super(x,y,6,l);
 		logica=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpTimer.png"));
 

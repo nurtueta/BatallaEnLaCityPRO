@@ -10,7 +10,7 @@ import Logica.Logica;
 public class Estrella extends PowerUp{
 
 	public Estrella (int x, int y,Logica l){
-		super(x,y,4);
+		super(x,y,4,l);
 		logica=l;
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpEstrella.png"));
 

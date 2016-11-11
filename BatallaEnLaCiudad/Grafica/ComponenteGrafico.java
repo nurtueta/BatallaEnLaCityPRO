@@ -2,6 +2,8 @@ package Grafica;
 
 import javax.swing.JLabel;
 
+import Logica.Logica;
+
 public abstract class ComponenteGrafico extends JLabel {
 	
 	/*Variables*/
@@ -19,6 +21,8 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	protected boolean movimientoPosible;
 	protected boolean movimientoPosibleDisparo;
+	
+	protected Logica logica;
 	
 	
 	/*Constructores*/
