@@ -195,10 +195,9 @@ public class Logica {
 	 * @param x indica si se gano (true) o perdio (false)
 	 */
 	private void finalizarJuego(boolean x){
-		System.out.println("termino");
 		termina=true;
 		porQueTermina=x;
-		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
+		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this,200);
 		tiempoEsperaParaFinalizar.start();
 	}
 	
@@ -207,7 +206,6 @@ public class Logica {
 	 * fin de juego
 	 */
 	public void finalizar(){
-		eliminarGrafico(miJugador);
 		grafica.terminarJuego(porQueTermina);
 	}
 	

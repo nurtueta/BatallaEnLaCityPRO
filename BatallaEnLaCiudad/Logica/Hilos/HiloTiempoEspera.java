@@ -6,16 +6,17 @@ import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class HiloTiempoEspera extends Movimiento{
+	protected int tiempo;
 	
-	
-	public HiloTiempoEspera(Logica l){
+	public HiloTiempoEspera(Logica l,int x){
 		super(l);
+		tiempo=x;
 	}
 	
 	public void run()
 	{
 		try{
-			this.sleep(500);
+			this.sleep(tiempo);
 
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
