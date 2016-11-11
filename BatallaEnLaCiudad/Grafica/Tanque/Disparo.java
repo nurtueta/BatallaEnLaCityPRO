@@ -18,16 +18,12 @@ public class Disparo extends ComponenteGrafico{
 	 * 
 	 */
 	protected int deQuienEs;
-	//protected	static java.net.URL url = Disparo.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
-	//protected static AudioClip clip = Applet.newAudioClip(url);
 	protected Logica manejo;
 	
 	public Disparo(int x,int y,int d,Logica l,int deQuienEs)
 	{	
 		super(x,y);
 		profundidad=3;
-		
-		//clip.play();
 		
 		this.deQuienEs=deQuienEs;
 		manejo=l;

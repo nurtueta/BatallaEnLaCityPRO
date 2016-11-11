@@ -26,41 +26,42 @@ public class MovimientoEnemigos extends Movimiento{
 	public void run()
 	{
 		try{
-				while(true){
+			while(!miLogica.finDelJuego()){
 					
 					sleep(400);
-					
-					eliminar=new ArrayList<ComponenteGrafico>();
-					agregarEnemigo=false;
-					for(ComponenteGrafico enemigo: enemigos){
-						direccion = (int) (rnd.nextInt(4)+1);
-						if(enemigo.getVida()==0)
-							eliminar.add(enemigo);
-						else
-							enemigo.mover(direccion);
+					if(!miLogica.finDelJuego()){
+						eliminar=new ArrayList<ComponenteGrafico>();
+						agregarEnemigo=false;
+						for(ComponenteGrafico enemigo: enemigos){
+							direccion = (int) (rnd.nextInt(4)+1);
+							if(enemigo.getVida()==0)
+								eliminar.add(enemigo);
+							else
+								enemigo.mover(direccion);
+						}
+						agregarEnemigo=true;
+						
+						for(ComponenteGrafico enemigo: eliminar){
+							miLogica.eliminarGrafico(enemigo);
+							enemigos.remove(enemigo);
+						}
+						
+						for(ComponenteGrafico bala: enemigosIngresar)
+							enemigos.add(bala);
+						enemigosIngresar=new ArrayList<ComponenteGrafico>();
 					}
-					agregarEnemigo=true;
-					
-					for(ComponenteGrafico enemigo: eliminar){
-						miLogica.eliminarGrafico(enemigo);
-						enemigos.remove(enemigo);
-					}
-					
-					for(ComponenteGrafico bala: enemigosIngresar)
-						enemigos.add(bala);
-					enemigosIngresar=new ArrayList<ComponenteGrafico>();
-				
 					sleep(400);
-					
-					agregarEnemigo=false;
-					for(ComponenteGrafico enemigo: enemigos){
-						miLogica.crearDisparoEnemigo(enemigo);
+					if(!miLogica.finDelJuego()){
+						agregarEnemigo=false;
+						for(ComponenteGrafico enemigo: enemigos){
+							miLogica.crearDisparoEnemigo(enemigo);
+						}
+						agregarEnemigo=true;
+						
+						for(ComponenteGrafico bala: enemigosIngresar)
+							enemigos.add(bala);
+						enemigosIngresar=new ArrayList<ComponenteGrafico>();
 					}
-					agregarEnemigo=true;
-					
-					for(ComponenteGrafico bala: enemigosIngresar)
-						enemigos.add(bala);
-					enemigosIngresar=new ArrayList<ComponenteGrafico>();
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
 	}

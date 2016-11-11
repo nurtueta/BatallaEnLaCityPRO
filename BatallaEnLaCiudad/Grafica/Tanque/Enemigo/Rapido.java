@@ -44,7 +44,7 @@ public class Rapido extends Enemigo{
 	}
 
 	public void colicion(int deQuienEs) {
-		if(deQuienEs>=1&&deQuienEs<=4){
+		if(deQuienEs!=0){
 			vida=0;
 			logica.enemigoMurio(); 
 		}

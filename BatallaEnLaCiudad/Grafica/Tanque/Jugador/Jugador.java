@@ -81,7 +81,7 @@ public class Jugador extends Tanque{
 			velDisparo=2;
 			disparosSimultaneos=1;
 			vida=1;
-			deQuienEs=2;
+			deQuienEs=1;
 			state=2;
 			break;
 		case 2:
@@ -89,7 +89,7 @@ public class Jugador extends Tanque{
 			velDisparo=2;
 			disparosSimultaneos=2;
 			vida=2;
-			deQuienEs=3;
+			deQuienEs=1;
 			state=3;
 			break;
 		case 3:
@@ -97,7 +97,7 @@ public class Jugador extends Tanque{
 			velDisparo=3;
 			disparosSimultaneos=3;
 			vida=4;
-			deQuienEs=4;
+			deQuienEs=2;
 			state=4;
 			break;
 		}
@@ -118,7 +118,7 @@ public class Jugador extends Tanque{
 			velDisparo=2;
 			disparosSimultaneos=1;
 			vida=1;
-			deQuienEs=2;
+			deQuienEs=1;
 			state=2;
 			break;
 		case 4:
@@ -126,7 +126,7 @@ public class Jugador extends Tanque{
 			velDisparo=2;
 			disparosSimultaneos=2;
 			vida=2;
-			deQuienEs=3;
+			deQuienEs=1;
 			state=3;
 			break;
 		}
@@ -151,7 +151,7 @@ public class Jugador extends Tanque{
 			velDisparo=2;
 			disparosSimultaneos=1;
 			vida=1;
-			deQuienEs=2;
+			deQuienEs=1;
 			state=2;
 			break;
 		case 3:
@@ -159,7 +159,7 @@ public class Jugador extends Tanque{
 			velDisparo=2;
 			disparosSimultaneos=2;
 			vida=2;
-			deQuienEs=3;
+			deQuienEs=1;
 			state=3;
 			break;
 		case 4:
@@ -167,7 +167,7 @@ public class Jugador extends Tanque{
 			velDisparo=3;
 			disparosSimultaneos=3;
 			vida=4;
-			deQuienEs=4;
+			deQuienEs=2;
 			state=4;
 			break;
 		}

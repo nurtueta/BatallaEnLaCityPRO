@@ -181,14 +181,34 @@ public class Logica {
 	}
 
 	/**
-	 * Finaliza todo el juego, indicando si gano o perdio
-	 * @param x indica si gano (true) o perdio(false)
+	 * Indica si termino el juego para frenar los hilos
+	 * @return True si termino el juego, False en caso contrario
+	 */
+	public boolean finDelJuego()
+	{
+		return termina;
+	}
+	
+	/**
+	 * Indica que termino el juego y espera medio segundo para que se eliminen 
+	 * todos los disparos y enemigos para finalizar todo.
+	 * @param x indica si se gano (true) o perdio (false)
 	 */
 	private void finalizarJuego(boolean x){
-		hiloEnemigos.interrupt();
-		hiloDisparoEnemigo.interrupt();
-		hiloDisparoJugador.interrupt();
-		grafica.terminarJuego(x);
+		System.out.println("termino");
+		termina=true;
+		porQueTermina=x;
+		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
+		tiempoEsperaParaFinalizar.start();
+	}
+	
+	/**
+	 * Con todos los enemigos y disparos eliminados, muestro la pantalla de 
+	 * fin de juego
+	 */
+	public void finalizar(){
+		eliminarGrafico(miJugador);
+		grafica.terminarJuego(porQueTermina);
 	}
 	
 	/**
@@ -202,7 +222,7 @@ public class Logica {
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			if(getComponente(x, y)==miJugador || ((x==9)&&(y==19)))
-						finalizarJuego(false);
+				finalizarJuego(false);
 			else{
 				addPuntaje(getComponente(x, y).getPuntos());
 				eliminarGrafico(getComponente(x, y));
