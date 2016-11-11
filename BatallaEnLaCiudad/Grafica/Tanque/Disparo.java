@@ -128,4 +128,10 @@ public class Disparo extends ComponenteGrafico{
 	public void colicion(int deQuienEs) {
 		
 	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

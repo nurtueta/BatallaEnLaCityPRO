@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Basico extends Enemigo{
@@ -58,6 +59,12 @@ public class Basico extends Enemigo{
 
 	public int getPuntos() {
 		return 100;
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

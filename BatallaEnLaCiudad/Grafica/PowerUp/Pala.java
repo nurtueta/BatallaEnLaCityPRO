@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Pala extends PowerUp{
@@ -20,8 +21,16 @@ public class Pala extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1)
+		if(deQuienEs == 1){
 			logica.powerUpPala();
+			System.out.println("PowerUp PALA");
+		}
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

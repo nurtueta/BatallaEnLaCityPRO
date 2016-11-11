@@ -3,6 +3,7 @@ package Logica.Hilos;
 import java.util.ArrayList;
 
 import Grafica.*;
+import Grafica.Bloque.Piso;
 import Grafica.PowerUp.PowerUp;
 import Grafica.Tanque.*;
 import Logica.Logica;
@@ -53,9 +54,11 @@ public class HiloPowerUps extends Thread{
 				
 				if(jugadorX == powerX && jugadorY == powerY){
 						miPowerUp.colicion(j.getDeQuienEs());
-						miLogica.eliminarColicion(powerX, powerY, miPowerUp.getDeQuienEs());
+						miLogica.addPuntaje(miPowerUp.getPuntos());
+						miLogica.eliminarGrafico(miPowerUp);
+						miLogica.agregarGrafico(new Piso(powerX,powerY));
 					}
-				}		
+				}
 						
 		}catch(InterruptedException e){ e.printStackTrace();}
 		

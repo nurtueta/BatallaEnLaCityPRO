@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+
 public class Piso extends Bloque{
 
 	public Piso(int x,int y) {
@@ -37,5 +39,11 @@ public class Piso extends Bloque{
 
 	public void colicion(int deQuienEs) {
 		
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

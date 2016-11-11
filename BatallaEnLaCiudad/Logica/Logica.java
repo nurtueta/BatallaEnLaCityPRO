@@ -483,6 +483,52 @@ public class Logica {
 	 */
 	public void powerUpPala(){
 		//Controlar Bloques alrededor del 'Aguila'
+		ComponenteGrafico [] base = getBase();
+			//Recorro las componentes que rodean al aguila para mejorar/reparar
+			for(ComponenteGrafico c : base){
+				//Se invoca al metodo mejorar que devuelve != null solo para los mejorables
+				ComponenteGrafico nuevaComponente = c.mejorar();
+				if(nuevaComponente != null){
+					//reemplazo graficamente las componentes
+					eliminarGrafico(c);
+					agregarGrafico(nuevaComponente);
+					//actualizo la matriz
+					setComponente(nuevaComponente.getPosicionX(),nuevaComponente.getPosicionY(),nuevaComponente);
+				}
+			}
+			
+			//Ejecucion del hilo timer
+			
+			HiloTimer espera =new HiloTimer(this,20000);
+			espera.start();
+			
+			//Vuelvo a rodear el aguila de ladrillos
+			for(ComponenteGrafico c : base){
+				ComponenteGrafico nuevoLadrillo = new Ladrillo(c.getPosicionX(),c.getPosicionY());
+					//reemplazo graficamente las componentes
+					eliminarGrafico(c);
+					agregarGrafico(nuevoLadrillo);					
+					//actualizo la matriz
+					setComponente(nuevoLadrillo.getPosicionX(),nuevoLadrillo.getPosicionY(),nuevoLadrillo);
+				
+			}
+	}
+	
+	/**
+	 * Obtengo y devuelvo en un arreglo las 5 componentes que rodean al aguila para reparaciones o mejoras.
+	 * @return ComponenteGrafico []
+	 */
+	private ComponenteGrafico [] getBase(){
+		
+		ComponenteGrafico [] base = new ComponenteGrafico [5];
+		//Guardo en el arreglo las componentes que rodean el aguila como estructura auxiliar para recorrer.
+		base[0] = getComponente(19,8);
+		base[1] = getComponente(18,8);
+		base[2] = getComponente(18,9);
+		base[3] = getComponente(18,10);
+		base[4] = getComponente(19,10);
+		
+		return base;
 	}
 	
 	/**

@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class VidaTanque extends PowerUp{
@@ -20,8 +21,16 @@ public class VidaTanque extends PowerUp{
 	
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1)
+		if(deQuienEs == 1){
 			logica.powerUpTanque();
+			System.out.println("PowerUp VIDATANQUE");
+		}
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

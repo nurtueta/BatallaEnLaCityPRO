@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+
 public class Agua extends Bloque {
 
 	public Agua(int x,int y) {
@@ -38,5 +40,11 @@ public class Agua extends Bloque {
 
 	public void colicion(int deQuienEs) {
 		
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

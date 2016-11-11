@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+
 public class Acero extends Bloque{
 
 	public Acero(int x,int y) {
@@ -40,6 +42,11 @@ public class Acero extends Bloque{
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==4)
 			vida--;
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		return null;
 	}
 
 }

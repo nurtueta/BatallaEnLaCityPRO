@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+
 public class Aguila extends Bloque {
 	
 	public Aguila(int x, int y){
@@ -40,6 +42,12 @@ public class Aguila extends Bloque {
 
 	public void colicion(int deQuienEs) {
 		vida=0;
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

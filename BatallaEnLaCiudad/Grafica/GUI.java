@@ -155,7 +155,7 @@ public class GUI extends JFrame {
 	 public void agregarGrafico(ComponenteGrafico x){
 	  	contentPane.add(x,new Integer(x.getDepth()));
 	 }
-	    
+	 
 	 public	JLabel getPanelPuntaje(){
 	   	return panelPuntaje;
 	 }

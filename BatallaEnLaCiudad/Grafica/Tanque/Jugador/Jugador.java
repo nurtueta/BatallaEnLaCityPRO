@@ -172,6 +172,12 @@ public class Jugador extends Tanque{
 			break;
 		}
 	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

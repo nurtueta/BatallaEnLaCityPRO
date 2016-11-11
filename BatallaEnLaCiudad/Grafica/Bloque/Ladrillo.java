@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
+
 public class Ladrillo extends Bloque{
 	
 	public Ladrillo(int x,int y) {
@@ -39,6 +41,12 @@ public class Ladrillo extends Bloque{
 	public void colicion(int deQuienEs) {
 		vida--;
 		
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

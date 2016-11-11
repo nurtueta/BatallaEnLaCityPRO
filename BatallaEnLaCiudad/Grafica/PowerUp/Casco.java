@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Casco extends PowerUp{
@@ -21,10 +22,18 @@ public class Casco extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1)
+		if(deQuienEs == 1){
 			logica.powerUpCasco();
+			System.out.println("PowerUp CASCO");
+		}
 
 		
+	}
+
+	@Override
+	public ComponenteGrafico mejorar() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
