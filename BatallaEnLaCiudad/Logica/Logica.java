@@ -151,7 +151,6 @@ public class Logica {
 	 * Actualiza el panel del puntaje
 	 */
 	public void actualizarPanel(){
-		System.out.println("asdad asd a");
 		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
 		grafica.getPanelPuntaje().updateUI();
 		repintarPanel();
@@ -414,6 +413,7 @@ public class Logica {
 				crearPowerUp();
 				enemigosMatados = 0;
 			}
+			miJugador.subirNivel();
 			crearEnenmigo();
 		}
 	}

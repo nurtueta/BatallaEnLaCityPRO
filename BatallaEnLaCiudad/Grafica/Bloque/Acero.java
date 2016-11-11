@@ -38,7 +38,7 @@ public class Acero extends Bloque{
 	}
 
 	public void colicion(int deQuienEs) {
-		if(deQuienEs==4)
+		if(deQuienEs==2)
 			vida--;
 	}
 
