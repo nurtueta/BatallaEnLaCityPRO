@@ -21,13 +21,12 @@ public class Estrella extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1){
+		if(deQuienEs != 0){
 			logica.powerUpEstrella();
-			System.out.println("PowerUp ESTRELLA");
+			vida=0;
 		}
 	}
 
-	@Override
 	public ComponenteGrafico mejorar() {
 		// TODO Auto-generated method stub
 		return null;

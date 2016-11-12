@@ -1,4 +1,4 @@
-package Logica.Hilos.PowerUp;
+package Logica.Hilo.PowerUp;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,6 @@
-package Logica.Hilos.PowerUp;
+package Logica.Hilo.PowerUp;
 
 import Grafica.ComponenteGrafico;
-import Grafica.PowerUp.PowerUp;
 import Logica.Logica;
 
 public class HiloMantenerPowerUp extends HiloPowerUp{

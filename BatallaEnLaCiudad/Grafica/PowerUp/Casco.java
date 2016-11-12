@@ -13,26 +13,20 @@ public class Casco extends PowerUp{
 	public Casco(int x, int y,Logica l){
 		super(x,y,2,l);
 		logica=l;
-
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpCasco.png"));
-
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1){
+		if(deQuienEs !=0){
 			logica.powerUpCasco();
-			System.out.println("PowerUp CASCO");
+			vida=0;
 		}
-
-		
 	}
 
-	@Override
 	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

@@ -1,4 +1,4 @@
-package Logica.Hilos.Movimiento;
+package Logica.Hilo.Movimiento;
 
 import Grafica.ComponenteGrafico;
 import Grafica.Bloque.Piso;

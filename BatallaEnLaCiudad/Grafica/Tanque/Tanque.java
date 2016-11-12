@@ -3,8 +3,7 @@ package Grafica.Tanque;
 
 import Grafica.ComponenteGrafico;
 import Logica.Logica;
-import Logica.Hilos.Movimiento.Movimiento;
-import Logica.Hilos.Movimiento.MovimientoFluido;
+import Logica.Hilo.Movimiento.*;
 
 public abstract class Tanque extends ComponenteGrafico {
 	/*Constructor*/

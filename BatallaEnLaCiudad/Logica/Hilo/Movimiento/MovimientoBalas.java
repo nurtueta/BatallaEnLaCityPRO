@@ -1,4 +1,4 @@
-package Logica.Hilos.Movimiento;
+package Logica.Hilo.Movimiento;
 
 import java.util.ArrayList;
 

@@ -1,14 +1,14 @@
-package Logica.Hilos.PowerUp;
+package Logica.Hilo.PowerUp;
 
 import java.util.ArrayList;
 
 import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
-public class HiloTiempoEspera extends HiloPowerUp{
+public class HiloPala extends HiloPowerUp{
 	protected int tiempo;
 	
-	public HiloTiempoEspera(Logica l,int x){
+	public HiloPala(Logica l,int x){
 		super(l);
 		tiempo=x;
 	}
@@ -20,14 +20,7 @@ public class HiloTiempoEspera extends HiloPowerUp{
 
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
-		miLogica.finalizar();
 		this.stop();
 	}
-
-	public void addBala(ComponenteGrafico x) {
-		
-	}
-	
-	public void addEnemigo(ComponenteGrafico x){}
 
 }

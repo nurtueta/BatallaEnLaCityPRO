@@ -11,14 +11,9 @@ import Grafica.PowerUp.*;
 import Grafica.Tanque.*;
 import Grafica.Tanque.Enemigo.*;
 import Grafica.Tanque.Jugador.*;
-import Logica.Hilos.*;
-import Logica.Hilos.Movimiento.Movimiento;
-import Logica.Hilos.Movimiento.MovimientoBalas;
-import Logica.Hilos.Movimiento.MovimientoEnemigos;
-import Logica.Hilos.PowerUp.HiloMantenerPowerUp;
-import Logica.Hilos.PowerUp.HiloPala;
-import Logica.Hilos.PowerUp.HiloPowerUp;
-import Logica.Hilos.PowerUp.HiloTiempoEspera;
+import Logica.Hilo.*;
+import Logica.Hilo.Movimiento.*;
+import Logica.Hilo.PowerUp.*;
 
 public class Logica {
 	
@@ -31,9 +26,10 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	private Movimiento hiloDisparoEnemigo;
-	private HiloPowerUp tiempoEsperaParaFinalizar;
+	private HiloTiempoEspera tiempoEsperaParaFinalizar;
 	private HiloPowerUp hiloMantenerPowerUp;
 	private HiloPowerUp powerUpPala;
+	private HiloPowerUp powerUpCasco;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -308,6 +304,10 @@ public class Logica {
 		}
 	}
 	
+	public void setCasco(boolean x){
+		miJugador.usaCasco(x);
+	}
+	
 	/* ---------------------------------Enemigo----------------------------------*/
 	
 	/**
@@ -500,7 +500,9 @@ public class Logica {
 	 * El jugador se hace invulnerable por 5 segundos
 	 */
 	public void powerUpCasco(){
-		miJugador.usaCasco(true);
+		setCasco(true);
+		powerUpCasco=new HiloPowerUpCasco(this);
+		powerUpCasco.start();
 	}
 	
 	
