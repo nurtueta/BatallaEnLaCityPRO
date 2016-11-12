@@ -6,6 +6,14 @@ public class HiloTiempoEspera extends Thread{
 	protected int tiempo;
 	protected Logica miLogica;
 	
+	public	HiloTiempoEspera(int i){
+		try {
+			sleep(i);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public HiloTiempoEspera(Logica l){
 		miLogica=l;
 	}

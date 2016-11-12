@@ -34,7 +34,7 @@ public class Logica {
 	private HiloPowerUp powerUpGranada;
 	
 	private int puntaje=0;
-	private int enemigosMatados;
+	private int enemigosMatados=0;
 	private int muertesAcumuladas;
 	private int []respawn;
 	private boolean termina;
@@ -97,7 +97,7 @@ public class Logica {
 	public void generacionDeMapaLogico(){
 	  	FileReader fi;
 		try {
-			fi = new FileReader("archivo/Hello2.txt");
+			fi = new FileReader("archivo/Mapa.txt");
 	        BufferedReader b = new BufferedReader(fi);
 	        String cadena;
 	        int j=0;
@@ -261,7 +261,8 @@ public class Logica {
 	 */
 	public void addPuntaje(int puntos){
 		puntaje+=puntos;
-		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
+		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
+		grafica.getPanelRestantes().setText("Restan "+ (16-muertesAcumuladas)+" naves");
 		repintarPanel();
 	}
 	

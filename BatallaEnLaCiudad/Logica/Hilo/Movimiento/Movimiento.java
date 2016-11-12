@@ -13,6 +13,7 @@ public abstract class Movimiento extends Thread{
 	protected ArrayList<ComponenteGrafico> balas;
 	protected ArrayList<ComponenteGrafico> enemigos;
 	
+	
 	public Movimiento(Logica logic)
 	{
 		miLogica = logic;
