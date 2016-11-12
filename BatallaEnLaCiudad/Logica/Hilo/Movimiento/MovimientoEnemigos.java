@@ -34,16 +34,17 @@ public class MovimientoEnemigos extends Movimiento{
 							sleep(20);
 							direccion = (int) (rnd.nextInt(4)+1);
 							accion= (int) (rnd.nextInt(4));
-							if(accion!=0){
+							
 								if(enemigo.getVida()==0)
 									eliminar.add(enemigo);
 								else
-									enemigo.mover(direccion);
-							}else{
-								if(enemigo.getPuedeMover()){
-									miLogica.crearDisparoEnemigo(enemigo);
-									sleep(20);
-								}
+									if(accion!=0){
+										enemigo.mover(direccion);
+									}else{
+										if(enemigo.getPuedeMover()){
+											miLogica.crearDisparoEnemigo(enemigo);
+											sleep(20);
+										}
 							}
 						}
 						agregarEnemigo=true;
@@ -54,8 +55,7 @@ public class MovimientoEnemigos extends Movimiento{
 						for(ComponenteGrafico bala: enemigosIngresar)
 							enemigos.add(bala);
 						
-						enemigosIngresar=new ArrayList<ComponenteGrafico>();
-						
+						enemigosIngresar=new ArrayList<ComponenteGrafico>();		
 					}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}

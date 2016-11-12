@@ -66,8 +66,8 @@ public class Logica {
 		
 		//creo los respawn
 		respawn=new int[8];
-		respawn[0]=0;respawn[1]=0;respawn[2]=19;respawn[3]=16;respawn[4]=0;
-		respawn[5]=6;respawn[6]=0;respawn[7]=16;
+		respawn[0]=1;respawn[1]=1;respawn[2]=19;respawn[3]=16;respawn[4]=1;
+		respawn[5]=6;respawn[6]=1;respawn[7]=16;
 		
 		detenerTanque=false;
 				

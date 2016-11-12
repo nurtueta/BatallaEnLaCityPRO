@@ -23,12 +23,12 @@ public class MovimientoFluidoDisparo extends Movimiento{
 		this.y=x.getPosicionY();
 		this.d=d;
 		if(x.getVelMovimiento()==1)
-			velocidad=90;
+			velocidad=120;
 		else
 			if(x.getVelMovimiento()==2)
-				velocidad=40;
+				velocidad=80;
 			else
-				velocidad=20;
+				velocidad=40;
 		pixel=5;
 		componente=x;
 	}
