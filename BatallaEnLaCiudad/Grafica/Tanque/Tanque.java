@@ -11,11 +11,11 @@ public abstract class Tanque extends ComponenteGrafico {
 	protected int disparosSimultaneos;
 	protected int velMovimiento;
 	protected int velDisparo;
-<<<<<<< HEAD
+
 	protected int deQuienEs;
-=======
+
 	protected Logica logica;
->>>>>>> origin/master
+
 	protected boolean puedeMover;
 	protected int ultimoDisparo;
 	
