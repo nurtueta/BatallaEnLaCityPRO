@@ -73,7 +73,6 @@ public class Logica {
 		respawn[5]=6;respawn[6]=1;respawn[7]=16;
 		
 		detenerTanque=false;
-<<<<<<< HEAD
 		
 		/*
 		 * Musica Combate
@@ -82,9 +81,7 @@ public class Logica {
 	    musicaJuego = Applet.newAudioClip(url);
 	    musicaJuego.loop();		
 		
-=======
 		eliminarEnemigos=false;
->>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
 		
 		mapa=new ComponenteGrafico[20][20];
 		//creo el mapa
