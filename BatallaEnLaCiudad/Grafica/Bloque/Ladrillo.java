@@ -16,7 +16,7 @@ public class Ladrillo extends Bloque{
 	public Ladrillo(int x,int y,Logica l) {
 		super(x,y,l);
 		profundidad=2;
-		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/ladrillo.png"));
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/asteroid.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=4;

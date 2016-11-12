@@ -28,16 +28,16 @@ public class Blindado extends Enemigo{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/BlindadoDerecha.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/destructorDerecha.png"));
 				break;
 			case 2:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/BlindadoIzquierda.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/destructorIzquierda.png"));
 				break;
 			case 3:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/BlindadoArriba.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/destructorArriba.png"));
 				break;
 			case 4:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/BlindadoAbajo.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/destructorAbajo.png"));
 				break;
 		}
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));

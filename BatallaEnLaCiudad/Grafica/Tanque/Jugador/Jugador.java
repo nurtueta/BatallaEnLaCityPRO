@@ -74,6 +74,7 @@ public class Jugador extends Tanque{
 					this.setIcon(icono);
 					java.net.URL url = main.class.getResource("/archivo/R2D2Scream.wav");
 				    AudioClip clip = Applet.newAudioClip(url);
+				    logica.stopMusic();
 				    clip.play();
 				    new HiloTiempoEspera(2000);
 					

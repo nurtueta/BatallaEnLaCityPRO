@@ -23,6 +23,7 @@ public class Logica {
 	protected ComponenteGrafico miJugador;
 	protected	static java.net.URL url = Disparo.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
 	protected static AudioClip clip = Applet.newAudioClip(url);
+	protected AudioClip musicaJuego;
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	private Movimiento hiloDisparoEnemigo;
@@ -70,7 +71,15 @@ public class Logica {
 		respawn[5]=6;respawn[6]=1;respawn[7]=16;
 		
 		detenerTanque=false;
-				
+		
+		/*
+		 * Musica Combate
+		 */
+		java.net.URL url = main.class.getResource("/archivo/StarWarsBattleTheme.wav");
+	    musicaJuego = Applet.newAudioClip(url);
+	    musicaJuego.loop();		
+		
+		
 		mapa=new ComponenteGrafico[20][20];
 		//creo el mapa
 		generacionDeMapaLogico();
@@ -279,7 +288,9 @@ public class Logica {
 	public void mover(int direccion){
 		miJugador.mover(direccion);
 	}
-	
+	public	void	stopMusic(){
+		musicaJuego.stop();
+	}
 	/**
 	 * Creo al jugador y lo ingreso al mapa logico
 	 */

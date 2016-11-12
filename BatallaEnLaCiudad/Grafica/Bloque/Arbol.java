@@ -17,7 +17,7 @@ public class Arbol extends Bloque{
 	public Arbol(int x,int y,Logica l) {
 		super(x,y,l);
 		profundidad=4;
-		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/arboles.png"));
+		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/nebula.png"));
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=1;

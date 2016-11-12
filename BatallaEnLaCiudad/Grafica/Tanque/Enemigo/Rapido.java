@@ -28,16 +28,16 @@ public class Rapido extends Enemigo{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/RapidoDerecha.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/fastDerecha.jpg"));
 				break;
 			case 2:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/RapidoIzquierda.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/fastIzquierda.jpg"));
 				break;
 			case 3:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/RapidoArriba.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/fastArriba.jpg"));
 				break;
 			case 4:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/RapidoAbajo.png"));
+				fot= new ImageIcon(getClass().getResource("/Imagenes/fastAbajo.jpg"));
 				break;
 		}
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));

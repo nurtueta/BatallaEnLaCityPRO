@@ -60,12 +60,7 @@ public class GUI extends JFrame {
 			contentPane.add(panel);
 			panel.setLayout(null);
 			
-			/*
-			 * Musica de combate
-			 */
-			java.net.URL url = main.class.getResource("/archivo/StarWarsBattleTheme.wav");
-		    musicaJuego = Applet.newAudioClip(url);
-		    musicaJuego.loop();
+			
 			
 			
 			JLabel panelPuntaje_1 = new JLabel();
@@ -205,7 +200,7 @@ public class GUI extends JFrame {
 		 
 		 contentPane.removeAll();
 		 teclado= false;
-		musicaJuego.stop();
+		 
 		if(Victoria){
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
