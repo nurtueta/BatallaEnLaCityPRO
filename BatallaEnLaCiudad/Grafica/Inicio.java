@@ -1,25 +1,15 @@
 package Grafica;
 
-import java.awt.EventQueue;
 import java.awt.Image;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Rectangle;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Color;
-import javax.swing.border.CompoundBorder;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -29,11 +19,7 @@ public class Inicio {
 
 	private JFrame frame;
 	private	AudioClip musicaFondo;
-	/**
-	 * Launch the application.
-	 */
 	
-
 	/**
 	 * Create the application.
 	 */
@@ -42,9 +28,9 @@ public class Inicio {
 	    musicaFondo = Applet.newAudioClip(url);
 	    musicaFondo.loop();
 		
-		
 		initialize();
 	}
+	
 	public	void setVisible(){
 		frame.setVisible(true);
 	}
@@ -62,13 +48,11 @@ public class Inicio {
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(frame.getWidth(), frame.getHeight(), Image.SCALE_DEFAULT));
 		
 		
-		
 		JLabel btnStart = new JLabel("Start!");
 		btnStart.addMouseListener(new MouseAdapter() {
-			@Override
+			
 			public void mouseClicked(MouseEvent arg0) {
-				
-				
+					
 				musicaFondo.stop();
 			    frame.disable();
 			    frame.setVisible(false);
@@ -76,6 +60,7 @@ public class Inicio {
 				juego.setVisible(true);
 			}
 		});
+		
 		btnStart.setForeground(Color.RED);
 		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
@@ -88,11 +73,8 @@ public class Inicio {
 		btnHelp.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 		btnHelp.addMouseListener(new MouseAdapter() {
-			@Override
+			
 			public void mouseClicked(MouseEvent e) {
-				
-				
-				
 				
 				JFrame ayuda = new JFrame("Help!");
 				JLabel help = new JLabel();
@@ -120,8 +102,6 @@ public class Inicio {
 				
 				musicaFondo.stop();
 
-				
-					
 					main creditos;
 					try {
 						String[] s = {"archivo/IntroStory.txt"};
@@ -140,15 +120,11 @@ public class Inicio {
 					}
 					
 				    musicaFondo.play();
-				    
-				
-				
-				
-				
+			
 				JOptionPane.showMessageDialog(frame, "De los creadores de: vamo que zafamo. \n viene... ZAFAMOS2 !");
-
 			}
 		});
+		
 		btnAbout.setForeground(Color.RED);
 		btnAbout.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		btnAbout.setBounds(196, 187, 121, 63);
@@ -157,7 +133,6 @@ public class Inicio {
 		fotito.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 		frame.getContentPane().add(fotito);
 		fotito.setIcon(icono);
-		
 	}
 }
 

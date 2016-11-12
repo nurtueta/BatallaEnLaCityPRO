@@ -15,7 +15,5 @@ public abstract class Enemigo extends Tanque{
 		puedeMover=true;
 	}
 	
-	public int getVelocidadDisparo(){
-		return velDisparo;
-	}
+
 }

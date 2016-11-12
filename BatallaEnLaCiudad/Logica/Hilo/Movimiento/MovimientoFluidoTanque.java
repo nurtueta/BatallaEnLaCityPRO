@@ -6,12 +6,11 @@ import Logica.Logica;
 
 public class MovimientoFluidoTanque extends Movimiento {
 		
-	int x;
-	int y;
-	int d;
-	int velocidad;
-	int pixel;
-	
+	protected int x;
+	protected int y;
+	protected int d;
+	protected int velocidad;
+	protected int pixel;
 	
 	protected ComponenteGrafico componente;
 
@@ -31,6 +30,9 @@ public class MovimientoFluidoTanque extends Movimiento {
 		componente=x;
 	}
 	
+	/**
+	 * mueve el Tanque de A a B
+	 */
 	public void run()
 	{
 		try
@@ -160,7 +162,7 @@ public class MovimientoFluidoTanque extends Movimiento {
 			componente.puedeMover();
 
 			sleep(10);
-			this.stop();
+			stop();
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
 	}

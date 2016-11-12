@@ -1,20 +1,11 @@
 package Grafica.Tanque;
 
-import java.applet.Applet;
 import java.awt.Image;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import java.applet.Applet;
-import java.applet.AudioClip;
-
 import Grafica.ComponenteGrafico;
-import Grafica.Bloque.Bloque;
 import Logica.Logica;
-import Logica.Hilo.Movimiento.Movimiento;
-import Logica.Hilo.Movimiento.MovimientoFluidoDisparo;
-import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
+import Logica.Hilo.Movimiento.*;
 
 public class Disparo extends ComponenteGrafico{
 	/**
@@ -64,18 +55,9 @@ public class Disparo extends ComponenteGrafico{
 		return false;
 	}
 
-	public void recibirDisparo() {
-		
-	}
-
-	public void eliminar() {
-		
-	}
-
-	public void posicionImagen(int i) {
-		
-	}
-	
+	/**
+	 * Muevo el disparo de A a B, hasta que no termina de mover no puedo volverlo a mover.
+	 */
 	public void mover(int direcion){	
 		if(puedeMover){
 			hiloFluido=new MovimientoFluidoDisparo(this, direcion,logica);
@@ -100,15 +82,17 @@ public class Disparo extends ComponenteGrafico{
 		return false;
 	}
 	
-	public boolean puedoIngresarPowerUp(){
-		return false;
-	}
-	
-	public void setDeQuienEsElDisparo(int x){
+	/**
+	 * Setea quien fue el q disparo la bala
+	 */
+	public void setEjecutor(int x){
 		deQuienEsElDisparo=x;
 	}
 	
-	public int getDeQuienEsElDisparo(){
+	/**
+	 * Devuelve quien disparo la bala
+	 */
+	public int getEjecutor(){
 		return deQuienEsElDisparo;
 	}
 	

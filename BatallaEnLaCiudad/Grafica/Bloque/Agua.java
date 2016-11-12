@@ -5,8 +5,6 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import Grafica.ComponenteGrafico;
-
 import Logica.Logica;
 
 
@@ -24,14 +22,6 @@ public class Agua extends Bloque {
 	public boolean movimientoPosible() {
 		return false;
 	}
-	
-	public void posicionImagen(int i) {
-		
-	}
-
-	public void recibirDisparo() {
-		
-	}
 
 	public boolean movimientoPosibleDisparo() {
 		return true;
@@ -42,10 +32,6 @@ public class Agua extends Bloque {
 	}
 
 	public boolean mejorar() {
-		return false;
-	}
-	
-	public boolean puedoIngresarPowerUp(){
 		return false;
 	}
 }

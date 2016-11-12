@@ -4,13 +4,9 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Blindado extends Enemigo{
-
-	private static final long serialVersionUID = 1L;
 	
 	public Blindado(int x,int y,int d,Logica l){
 		super(x,y);

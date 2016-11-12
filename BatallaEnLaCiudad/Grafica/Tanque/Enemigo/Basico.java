@@ -4,14 +4,11 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Basico extends Enemigo{
 
 	/*Constructor*/
-	private static final long serialVersionUID = 1L;
 	
 	public Basico(int x,int y,int d,Logica l){
 		super(x,y);

@@ -16,23 +16,10 @@ public abstract class PowerUp extends ComponenteGrafico{
 		return false;
 	}
 	
-	public void posicionImagen(int i) {
-		
-	}
-
-	public void recibirDisparo() {
-		
-	}
-	
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
 	
-	
-	public boolean puedoIngresarPowerUp(){
-		return false;
-	}
-
 	public boolean mejorar() {
 		return false;
 	}

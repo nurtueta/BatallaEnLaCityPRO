@@ -1,7 +1,6 @@
 package Grafica;
 
 import javax.swing.JLabel;
-
 import Logica.Logica;
 
 public abstract class ComponenteGrafico extends JLabel {
@@ -24,24 +23,18 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	protected Logica logica;
 	
-	
-	/*Constructores*/
-	
-	public	ComponenteGrafico(){}
-	
-	public ComponenteGrafico(int x, int y)
-	{	
+	/*Constructor*/
+	public ComponenteGrafico(int x, int y){	
 		super();
 		miX = x;
 		miY = y;
-		//seteo el componente grafico en el lugar correspondiente
 		pixelX=miX*ancho;
 		pixelY=miY*alto;
 		setBounds(pixelX ,pixelY , ancho, alto);
 		setVisible(true);
 	}
 	
-	/*Comandos*/
+	/*--------------------------------------------------Comandos------------------------------------------------------*/
 	
 	public void setPosicionX(int x){
 		miX=x;	
@@ -60,16 +53,46 @@ public abstract class ComponenteGrafico extends JLabel {
 	public void setY(int y){
 		pixelY=y;
 	}
+
+	public ComponenteGrafico crearDisparo(int x){
+		return null;
+	}
 	
-	/*Consultas*/
+	public void setMovimientoPosible(boolean x){
+		movimientoPosible=x;
+	}
+	
+	public void setDireccion(int d){}
+	
+	public void aumentarVida(){}
+	
+	public void posicionImagen(int i){}
+
+	public void mover(int direccion){}
+	
+	public void subirNivel(){}
+	
+	public void bajarNivel(){}
+	
+	public void setEjecutor(int x){}
+	
+	public void setState(int i){}
+	
+	public void usaCasco(boolean x){}
+	
+	public void puedeMover(){}
+	
+	public abstract boolean mejorar();
+	
+	public abstract void colicion(int deQuienEs);
+	
+	/*--------------------------------------------Consultas------------------------------------------------------*/
 	
 	public int getDireccion(){
 		return direccion;
 	}
 	
-	//devuelvo la posicion en X
-	public int getX()
-	{
+	public int getX(){
 		return pixelX;
 	}
 	
@@ -81,55 +104,26 @@ public abstract class ComponenteGrafico extends JLabel {
 		return miY;
 	}
 	
-	public int getY()
-	{
+	public int getY(){
 		return pixelY;
-	}
-	
-	public void posicionImagen(int i){
-		
-	}
-
-	public void mover(int direccion){
-		
 	}
 	
 	public int getPuntos(){
 		return puntaje;
 	}
-	
+
 	public int getVida(){
 		return vida;
 	}
 	
-	public void aumentarVida(){
-	}
-	
-	public abstract void colicion(int deQuienEs);
-	
-	//pregunnto si es posible mover a esta posicion
-	public abstract boolean movimientoPosible();
-	
-	public abstract boolean movimientoPosibleDisparo();
-	
-	public void setPowerUpDeTanque(int pu){
-		
-	}
-	
-	
-	public void setDeQuienEsElDisparo(int x){
-		
-	}
-	
-	public int getDeQuienEsElDisparo(){
+	public int getEjecutor(){
 		return -1;
 	}
-	public void setDireccion(int d){
-		
-	}
+	
 	public	int getDepth(){
 		return profundidad;
 	}
+	
 	public int getVelMovimiento(){
 		return 0;
 	}
@@ -138,36 +132,20 @@ public abstract class ComponenteGrafico extends JLabel {
 		return 0;
 	}
 	
-	public ComponenteGrafico crearDisparo(int x){
-		return null;
-	}
-	
 	public int getDisparosSimultaneos(){
 		return 0;
 	}
 	
-	public void setMovimientoPosible(boolean x){
-		movimientoPosible=x;
-	}
-	
-	public void subirNivel(){}
-	
-	public void bajarNivel(){}
-	
 	public int getNivel(){
 		return 0;
 	}
-	public void setState(int i){}
-	
-	public abstract boolean mejorar();
-	
-	public void usaCasco(boolean x){}
-	
-	public abstract boolean puedoIngresarPowerUp();
-	
-	public void puedeMover(){}
 	
 	public boolean getPuedeMover(){
 		return false;
 	}
+	
+	public abstract boolean movimientoPosible();
+	
+	public abstract boolean movimientoPosibleDisparo();
+	
 }

@@ -9,15 +9,17 @@ import Logica.Logica;
 public class MovimientoBalas extends Movimiento{
 	
 	protected ArrayList<ComponenteGrafico> balasIngresar;
-	boolean agregarBala;
-	ArrayList<ComponenteGrafico> eliminar;
+	protected boolean agregarBala;
+	protected ArrayList<ComponenteGrafico> eliminar;
 	
 	public MovimientoBalas(Logica l){
 		super(l);
 		balasIngresar=new ArrayList<ComponenteGrafico>();
 		agregarBala=true;//lo uso para saber si puede agregar una bala a la lista
 	}
-	
+	/**
+	 * Se encarga de mover todas las balas del juego
+	 */
 	public void run()
 	{	
 		while(!miLogica.finDelJuego()){

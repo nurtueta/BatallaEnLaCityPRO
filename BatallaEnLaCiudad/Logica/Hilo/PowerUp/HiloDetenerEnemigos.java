@@ -8,6 +8,9 @@ public class HiloDetenerEnemigos extends HiloPowerUp{
 		super(l);
 	}
 	
+	/**
+	 * Detiene a los enemigos por 5 segundos, luego los vuelve a dejar en libertad.
+	 */
 	public void run()
 	{
 		try{

@@ -21,9 +21,7 @@ public class GUI extends JFrame {
 	 private JLabel panelVidas;
 	 private JLabel panelNivel;
 	 private boolean teclado=true;
-	 private AudioClip musicaJuego;
 	   
-	 
 	    /**
 	     * Create the frame.
 	     */
@@ -63,6 +61,7 @@ public class GUI extends JFrame {
 			panel.setLayout(null);
 			
 			//agrego panel para el puntaje
+	
 			JLabel panelPuntaje_1 = new JLabel();
 			panelPuntaje_1.setVerticalAlignment(SwingConstants.TOP);
 			panelPuntaje_1.setBounds(10, 0, 246, 114);
@@ -74,6 +73,7 @@ public class GUI extends JFrame {
 			this.panelPuntaje=panelPuntaje_1;
 			
 			//agrego panel para enemigos restantes
+			
 			JLabel panelRestantes_2 = new JLabel();
 			panelRestantes_2.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_2.setHorizontalAlignment(SwingConstants.LEFT);
@@ -96,6 +96,7 @@ public class GUI extends JFrame {
 			panelRestantes_3.setText("Restan :");
 			
 			//agrego panel de la vidas
+			
 			JLabel panelRestantes_4 = new JLabel();
 			panelRestantes_4.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_4.setHorizontalAlignment(SwingConstants.LEFT);
@@ -108,6 +109,7 @@ public class GUI extends JFrame {
 			this.panelVidas=panelRestantes_4;
 			
 			//agrego panel de nivel
+			
 			JLabel panelRestantes_5 = new JLabel();
 			panelRestantes_5.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_5.setHorizontalAlignment(SwingConstants.LEFT);
@@ -139,14 +141,10 @@ public class GUI extends JFrame {
 	        
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
-				
-				public void keyReleased1(KeyEvent arg0) {
-					
-				}
+	        	
+				public void keyReleased1(KeyEvent arg0) {}
 
-				public void keyTyped1(KeyEvent arg0) {
-					
-				}
+				public void keyTyped1(KeyEvent arg0) {}
 
 				public void keyPressed(KeyEvent e) {
 					if (teclado){
@@ -159,25 +157,25 @@ public class GUI extends JFrame {
 					 		break;
 						case KeyEvent.VK_DOWN :
 							if(!movio){
-								mapaLogica.mover(4);		//Mover el Jugador hacia Arriba
+								mapaLogica.mover(4);		//Mover el Jugador hacia Abajo
 						 		movio=true;
 						 	}
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				if(!movio){
-						 		mapaLogica.mover(1);
+						 		mapaLogica.mover(1);		//Mover el Jugador hacia Derecha
 						 		movio=true;
 						 	}
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						if(!movio){
-	 							mapaLogica.mover(2);		//Mover el Jugador hacia Arriba
+	 							mapaLogica.mover(2);		//Mover el Jugador hacia Izquierda
 						 		movio=true;
 						 	}	
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						if(!disparo){
-	 							mapaLogica.crearDisparoJugador();
+	 							mapaLogica.crearDisparoJugador();	//Creo disparo del jugador
 	 							disparo=true;
 	 						}
 	 						break; 
@@ -204,13 +202,8 @@ public class GUI extends JFrame {
 					}
 				}
 
-				@Override
-				public void keyTyped(KeyEvent arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				
+				public void keyTyped(KeyEvent arg0) {}
+			
 	        }
 				);	       	        
 	    	}
@@ -256,8 +249,8 @@ public class GUI extends JFrame {
 			algo.setPreferredSize(contentPane.getPreferredSize());
 			algo.setIcon(icono);
 			contentPane.add(algo);
-		}
-		else{
+			
+		}else{
 			
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
@@ -273,8 +266,5 @@ public class GUI extends JFrame {
 		    clip.play();
 		}
 		contentPane.repaint();
-
 	 }
-
-	
 }

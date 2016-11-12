@@ -25,15 +25,6 @@ public class Ladrillo extends Bloque{
 	public boolean movimientoPosible() {
 		return false;
 	}
-
-	public void posicionImagen(int i) {
-		
-	}
-
-	public void recibirDisparo() {
-		setVisible(false);
-	}
-
 	
 	public boolean movimientoPosibleDisparo() {
 		return false;
@@ -41,15 +32,9 @@ public class Ladrillo extends Bloque{
 
 	public void colicion(int deQuienEs) {
 		vida--;
-		
 	}
 
 	public boolean mejorar() {
 		return true;
 	}
-	
-	public boolean puedoIngresarPowerUp(){
-		return false;
-	}
-
 }

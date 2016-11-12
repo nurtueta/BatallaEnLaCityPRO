@@ -12,6 +12,9 @@ public class HiloMantenerPowerUp extends HiloPowerUp{
 		powerUp=p;
 	}
 	
+	/**
+	 * Mantiene el PowerUp vivo 8 segundos. si nadie lo agarra lo elimina
+	 */
 	public void run()
 	{
 		try{

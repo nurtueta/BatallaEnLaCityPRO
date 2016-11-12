@@ -28,31 +28,25 @@ public class main extends Frame
   private	AudioClip clip;
   private	boolean termino =false;
 
-  public static void main (String[] args) throws IOException
-  {
-	  //System.out.println(args.length);
+  public static void main (String[] args) throws IOException {
+		
 	  main Pic;
 	  if (args.length!=0)
 		  Pic = new main(args[0]);
 	  else
 		  Pic = new main ("archivo/IntroStory.txt");
-
-      //try
-      //{ Thread.sleep(500);}
-      //catch (InterruptedException e){}
-    
-    Pic.show();
-    Pic.movePic ();
-    Pic.disable();
-    Pic.setVisible(false);
-    Inicio juego = new Inicio();
-    juego.setVisible();
+		
+	  Pic.show();
+	  Pic.movePic ();
+	  Pic.disable();		
+	  Pic.setVisible(false);
+	  Inicio juego = new Inicio();
+	  juego.setVisible();
   }
 
   public main(String s) throws IOException
   {
     super ("StarWasIntro");
-
 
     java.net.URL url = main.class.getResource("/archivo/Star_Wars_Music_Theme.wav");
     clip = Applet.newAudioClip(url);
@@ -60,8 +54,7 @@ public class main extends Frame
     
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){
-    	   
-    	   
+    	    	   
     	   System.exit(0);}});
     //this.setExtendedState(MAXIMIZED_BOTH);
     setSize (800, 600);
@@ -77,7 +70,6 @@ public class main extends Frame
     //for (int a = 0; a < 3600; a++)
     while (!termino)
     {
-
       try
       { Thread.sleep(10);}
       catch (InterruptedException e){}
@@ -90,25 +82,21 @@ public class main extends Frame
   			termino=true;
   			
   		}
-  	});
-      
-      
+  	});      
     }
-    clip.stop();
-    
+    clip.stop();    
   }
-
 }
 
 class CvStory extends Canvas
 {
-  private String [] storyTxt;
-  private double [][] pixels, pixels3D, beforeRotate;
-  private int [][] stars;
-  private int storySize, maxX, maxY;
-  private int numPixels = 0;
-  private boolean readData = false;
-  Random generator = new Random ();
+	  private String [] storyTxt;
+	  private double [][] pixels, pixels3D, beforeRotate;
+	  private int [][] stars;
+	  private int storySize, maxX, maxY;
+	  private int numPixels = 0;
+	  private boolean readData = false;
+	  private Random generator = new Random ();
   
   CvStory (String s) throws IOException
   {
@@ -153,7 +141,6 @@ class CvStory extends Canvas
 
           numPixels = numPixels + 1;
           
-          //System.out.println(numPixels);
           }
 
   }

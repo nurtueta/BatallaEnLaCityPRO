@@ -1,6 +1,5 @@
 package Logica.Hilo.PowerUp;
 
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class HiloPowerUpCasco extends HiloPowerUp{
@@ -9,6 +8,9 @@ public class HiloPowerUpCasco extends HiloPowerUp{
 		super(l);
 	}
 	
+	/**
+	 * Le coloca un casco de invulnerabilidad al Jugador
+	 */
 	public void run()
 	{
 		try{

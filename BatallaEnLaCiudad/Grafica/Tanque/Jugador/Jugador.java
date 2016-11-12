@@ -17,7 +17,7 @@ public class Jugador extends Tanque{
 	/*Variables*/
 	
 	protected boolean casco;
-	protected Nivel nivel;
+	protected Nivel nivel; //Indica el nivel del jugador
 	
 	/*Constructor*/
 	
@@ -53,12 +53,17 @@ public class Jugador extends Tanque{
 		this.setIcon(icono);
 	}
 	
+	/**
+	 * Activa o desactiva el casco que lo hace invulnerable
+	 */
 	public void usaCasco(boolean x){
 		casco=x;
 	}
 	
 	/*Consultas*/
-	
+	/**
+	 * coliciono el jugador, si tiene mas de nivel 1 y se murio, lo creo de nuevo. si es nivel perfi el juego.
+	 */
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==0){
 			if(!casco){
@@ -95,7 +100,7 @@ public class Jugador extends Tanque{
 	}
 	
 	public void bajarNivel(){
-		Nivel nuevoNivel = new Nivel1();
+		nivel = new Nivel1();
 	}
 		
 	public int getVida(){

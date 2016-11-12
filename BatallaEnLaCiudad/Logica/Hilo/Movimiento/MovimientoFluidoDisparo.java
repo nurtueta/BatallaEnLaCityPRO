@@ -1,19 +1,15 @@
 package Logica.Hilo.Movimiento;
 
-import java.util.ArrayList;
-
 import Grafica.ComponenteGrafico;
-import Grafica.Bloque.Piso;
-import Grafica.Tanque.*;
 import Logica.Logica;
 
 public class MovimientoFluidoDisparo extends Movimiento{
 	
-	int x;
-	int y;
-	int d;
-	int velocidad;
-	int pixel;	
+	protected int x;
+	protected int y;
+	protected int d;
+	protected int velocidad;
+	protected int pixel;	
 	
 	protected ComponenteGrafico componente;
 	
@@ -33,6 +29,9 @@ public class MovimientoFluidoDisparo extends Movimiento{
 		componente=x;
 	}
 	
+	/**
+	 * Mueve un disparo de A a B, si coliciona ejecuta la colicion.
+	 */
 	public void run()
 	{	
 		try{
@@ -182,7 +181,7 @@ public class MovimientoFluidoDisparo extends Movimiento{
 					}
 				}
 			if(!movio && seCreo){
-				miLogica.eliminarColicion(x,y,componente.getDeQuienEsElDisparo());
+				miLogica.eliminarColicion(x,y,componente.getEjecutor());
 				miLogica.eliminarGrafico(componente);
 				componente.colicion(0);
 			}else
@@ -193,7 +192,8 @@ public class MovimientoFluidoDisparo extends Movimiento{
 					componente.puedeMover();
 				}
 			miLogica.actualizarPanel();
-			
+		
+		stop();			
 		}catch(InterruptedException e){ e.printStackTrace();}
 	}
 
