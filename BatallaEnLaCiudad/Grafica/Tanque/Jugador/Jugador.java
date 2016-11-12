@@ -31,10 +31,6 @@ public class Jugador extends Tanque{
 		logica=l;
 		posicionImagen(1);
 		casco=false;
-		//velMovimiento=2;
-		//velDisparo=1;
-		//disparosSimultaneos=1;
-		//vida=1;
 		nivel = new Nivel1();
 		deQuienEs=1;
 		state=1;

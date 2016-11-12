@@ -131,6 +131,10 @@ public abstract class ComponenteGrafico extends JLabel {
 		return 0;
 	}
 	
+	public int getVelocidadDisparo(){
+		return 0;
+	}
+	
 	public ComponenteGrafico crearDisparo(){
 		return null;
 	}

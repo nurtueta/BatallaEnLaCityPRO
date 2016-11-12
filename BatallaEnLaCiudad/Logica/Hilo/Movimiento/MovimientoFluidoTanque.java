@@ -24,9 +24,9 @@ public class MovimientoFluidoTanque extends Movimiento {
 			velocidad=15;
 		else
 			if(x.getVelMovimiento()==2)
-				velocidad =15;
+				velocidad =12;
 			else
-				velocidad=15;
+				velocidad=9;
 		pixel=2;
 		componente=x;
 	}

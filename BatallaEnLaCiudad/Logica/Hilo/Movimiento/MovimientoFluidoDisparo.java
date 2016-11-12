@@ -22,13 +22,13 @@ public class MovimientoFluidoDisparo extends Movimiento{
 		this.x=x.getPosicionX();
 		this.y=x.getPosicionY();
 		this.d=d;
-		if(x.getVelMovimiento()==1)
-			velocidad=12;
+		if(x.getVelocidadDisparo()==1)
+			velocidad=13;
 		else
-			if(x.getVelMovimiento()==2)
-				velocidad=12;
+			if(x.getVelocidadDisparo()==2)
+				velocidad=10;
 			else
-				velocidad=12;
+				velocidad=7;
 		pixel=2;
 		componente=x;
 	}
