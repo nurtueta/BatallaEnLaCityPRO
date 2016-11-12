@@ -171,7 +171,7 @@ public class GUI extends JFrame {
 		mapaLogica=null;
 		
 		if(Victoria){
-			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victoria.png"));
+			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
 			JLabel algo = new JLabel();
 			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
