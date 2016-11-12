@@ -11,9 +11,11 @@ public class Nivel1 extends Nivel{
 		return nuevo;
 	}
 
+	/*
 	@Override
 	public Nivel bajarNivel() {
 		return null;
 	}
+	*/
 
 }

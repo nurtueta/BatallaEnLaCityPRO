@@ -38,6 +38,6 @@ public abstract class Nivel {
 	
 	public abstract Nivel mejorarNivel();
 	
-	public abstract Nivel bajarNivel();
+	//public abstract Nivel bajarNivel();
 	
 }
