@@ -12,7 +12,6 @@ import Grafica.main;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
 import Logica.Hilo.Movimiento.MovimientoBalas;
-import Logica.Hilo.Movimiento.MovimientoFluido;
 import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
 
 public class Jugador extends Tanque{
@@ -78,7 +77,7 @@ public class Jugador extends Tanque{
 					java.net.URL url = main.class.getResource("/archivo/R2D2Scream.wav");
 				    AudioClip clip = Applet.newAudioClip(url);
 				    clip.play();
-				    MovimientoFluido aux = new MovimientoFluido();
+				  //  MovimientoFluido aux = new MovimientoFluido();
 					
 					
 					logica.finalizarJuego(false);
