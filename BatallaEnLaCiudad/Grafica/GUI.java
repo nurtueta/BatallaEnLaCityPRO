@@ -17,6 +17,7 @@ public class GUI extends JFrame {
 	 private boolean disparo;
 	 private boolean movio;
 	 private JLabel panelPuntaje;
+	 private	JLabel panelRestantes;
 	 private boolean teclado=true;
 	   
 	 
@@ -62,13 +63,25 @@ public class GUI extends JFrame {
 			
 			JLabel panelPuntaje_1 = new JLabel();
 			panelPuntaje_1.setVerticalAlignment(SwingConstants.TOP);
-			panelPuntaje_1.setBounds(10, 0, 208, 114);
+			panelPuntaje_1.setBounds(10, 0, 246, 114);
 			panel.add(panelPuntaje_1);
 			panelPuntaje_1.setFont(new Font("Harrington", Font.ITALIC, 36));
 			panelPuntaje_1.setForeground(Color.RED);
 			contentPane.setLayer(panelPuntaje_1, 5);
 			panelPuntaje_1.setText("Puntos: \n");
 			this.panelPuntaje=panelPuntaje_1;
+			
+			JLabel panelRestantes_1 = new JLabel();
+			panelRestantes_1.setVerticalAlignment(SwingConstants.TOP);
+			panelRestantes_1.setHorizontalAlignment(SwingConstants.CENTER);
+			panelRestantes_1.setBounds(10, 117, 277, 188);
+			panel.add(panelRestantes_1);
+			
+			panelRestantes_1.setFont(new Font("Harrington", Font.ITALIC, 36));
+			panelRestantes_1.setForeground(Color.RED);
+			contentPane.setLayer(panelRestantes_1, 5);
+			panelRestantes_1.setText("Naves \n Destruidas: \n");
+			this.panelRestantes=panelRestantes_1;
 			
 			JLabel panelDerecha = new JLabel("");
 			panelDerecha.setBounds(0, 0, 300, 600);
@@ -77,7 +90,6 @@ public class GUI extends JFrame {
 			 fot = new ImageIcon(getClass().getResource("/Imagenes/panelDerecha.jpg"));
 			 icono = new ImageIcon(fot.getImage().getScaledInstance(300, this.getHeight(), Image.SCALE_DEFAULT));
 			panelDerecha.setIcon(icono);
-	        
 			
 			mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
@@ -175,6 +187,9 @@ public class GUI extends JFrame {
 	   	return panelPuntaje;
 	 }
 	    
+	 public	JLabel getPanelRestantes(){
+		 return panelRestantes;
+	 }
 	 public	JLayeredPane getContentPane(){
 	  	return contentPane;
 	 }
@@ -212,4 +227,6 @@ public class GUI extends JFrame {
 		contentPane.repaint();
 
 	 }
+
+	
 }

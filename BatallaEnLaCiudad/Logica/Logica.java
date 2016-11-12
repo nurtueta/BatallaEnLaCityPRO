@@ -33,7 +33,7 @@ public class Logica {
 	private HiloPowerUp powerUpTimer;
 	
 	private int puntaje=0;
-	private int enemigosMatados;
+	private int enemigosMatados=0;
 	private int muertesAcumuladas;
 	private int []respawn;
 	private boolean termina;
@@ -259,6 +259,7 @@ public class Logica {
 	public void addPuntaje(int puntos){
 		puntaje+=puntos;
 		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
+		grafica.getPanelRestantes().setText("Restan "+ enemigosMatados+" naves");
 		repintarPanel();
 	}
 	
