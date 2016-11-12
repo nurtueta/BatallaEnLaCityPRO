@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import Grafica.ComponenteGrafico;
+import Grafica.Bloque.Piso;
 import Logica.Logica;
 
 public class MovimientoEnemigos extends Movimiento{
@@ -48,6 +49,7 @@ public class MovimientoEnemigos extends Movimiento{
 									}
 							}else{
 								eliminar.add(enemigo);
+								miLogica.setComponente(new Piso(enemigo.getPosicionX(), enemigo.getPosicionY(),miLogica));
 								miLogica.eliminarGrafico(enemigo);
 							}
 						}
