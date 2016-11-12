@@ -31,10 +31,6 @@ public class Jugador extends Tanque{
 		logica=l;
 		posicionImagen(1);
 		casco=false;
-		//velMovimiento=2;
-		//velDisparo=1;
-		//disparosSimultaneos=1;
-		//vida=1;
 		nivel = new Nivel1();
 		deQuienEs=1;
 		state=1;
@@ -94,117 +90,14 @@ public class Jugador extends Tanque{
 	}
 	
 	public void subirNivel(){
-		/*
-		switch(state){
-		case 1:
-			velMovimiento=3;
-			velDisparo=2;
-			disparosSimultaneos=1;
-			vida=1;
-			deQuienEs=1;
-			state=2;
-			break;
-		case 2:
-			velMovimiento=2;
-			velDisparo=2;
-			disparosSimultaneos=2;
-			vida=2;
-			deQuienEs=1;
-			state=3;
-			break;
-		case 3:
-			velMovimiento=2;
-			velDisparo=3;
-			disparosSimultaneos=3;
-			vida=4;
-			deQuienEs=2;
-			state=4;
-			break;
-		}
-		*/
 		nivel = nivel.mejorarNivel();
-		
-		//if(nivel.getVelocidadMov()==3)
-		//	System.out.println("Subio la veloc de movimiento, SUBI correctamente a nivel 2");
 	}
 	
 	public void bajarNivel(){
-		/*
-		switch(state){
-		case 2:
-			velMovimiento=2;
-			velDisparo=1;
-			disparosSimultaneos=1;
-			vida=1;
-			deQuienEs=1;
-			state=1;
-			break;
-		case 3:
-			velMovimiento=3;
-			velDisparo=2;
-			disparosSimultaneos=1;
-			vida=1;
-			deQuienEs=1;
-			state=2;
-			break;
-		case 4:
-			velMovimiento=2;
-			velDisparo=2;
-			disparosSimultaneos=2;
-			vida=2;
-			deQuienEs=1;
-			state=3;
-			break;
-		}
-		*/
 		Nivel nuevoNivel = nivel.bajarNivel();
 		
 		if(nuevoNivel != null)
 			nivel = nuevoNivel;
-		
-		//if(nivel.getVelocidadMov()==2)
-		//	System.out.println("Bajo la veloc de movimiento, BAJO correctamente a nivel 1");
-	}
-
-	public int getState(){
-		return state;
-	}
-	
-	public void setState(int i){
-		switch(i){
-		case 1:
-			velMovimiento=2;
-			velDisparo=1;
-			disparosSimultaneos=1;
-			vida=1;
-			deQuienEs=1;
-			state=1;
-			break;
-		case 2:
-			velMovimiento=3;
-			velDisparo=2;
-			disparosSimultaneos=1;
-			vida=1;
-			deQuienEs=1;
-			state=2;
-			break;
-		case 3:
-			velMovimiento=2;
-			velDisparo=2;
-			disparosSimultaneos=2;
-			vida=2;
-			deQuienEs=1;
-			state=3;
-			break;
-		case 4:
-			velMovimiento=2;
-			velDisparo=3;
-			disparosSimultaneos=3;
-			vida=4;
-			deQuienEs=2;
-			state=4;
-			break;
-		}
 	}
 	
 	public int getVida(){
