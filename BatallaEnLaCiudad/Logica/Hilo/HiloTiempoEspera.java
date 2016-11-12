@@ -9,11 +9,9 @@ public class HiloTiempoEspera extends Thread{
 	public	HiloTiempoEspera(int i){
 		try {
 			sleep(i);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (InterruptedException e) {e.printStackTrace();}
 	}
+	
 	public HiloTiempoEspera(Logica l){
 		miLogica=l;
 	}

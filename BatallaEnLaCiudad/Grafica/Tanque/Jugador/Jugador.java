@@ -80,8 +80,6 @@ public class Jugador extends Tanque{
 				    logica.stopMusic();
 				    clip.play();
 				    new HiloTiempoEspera(2000);
-					
-					
 				    clip.play();		
 					logica.finalizarJuego(false);
 				}

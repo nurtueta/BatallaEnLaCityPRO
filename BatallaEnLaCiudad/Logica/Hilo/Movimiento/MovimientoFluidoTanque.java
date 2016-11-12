@@ -21,13 +21,13 @@ public class MovimientoFluidoTanque extends Movimiento {
 		this.y=x.getPosicionY();
 		this.d=d;
 		if(x.getVelMovimiento()==1)
-			velocidad=80;
+			velocidad=15;
 		else
 			if(x.getVelMovimiento()==2)
-				velocidad=50;
+				velocidad =15;
 			else
-				velocidad=30;
-		pixel=5;
+				velocidad=15;
+		pixel=2;
 		componente=x;
 	}
 	
@@ -68,7 +68,7 @@ public class MovimientoFluidoTanque extends Movimiento {
 			if(movio){
 				int pixelX=componente.getX();
 				int pixelY=componente.getY();
-				for(int i=0;i<3;i++){
+				for(int i=0;i<7;i++){
 					switch (d) {
 						case 1:
 							pixelX+=pixel;
@@ -119,30 +119,32 @@ public class MovimientoFluidoTanque extends Movimiento {
 					miLogica.setComponente(new Piso(x,y,miLogica));
 					break;
 				}
-				for(int i=0;i<3;i++){
-					switch (d) {
-						case 1:
-							pixelX+=pixel;
-							componente.setX(pixelX);
-							sleep(velocidad);
-							break;
-						case 2:
-							pixelX-=pixel;
-							componente.setX(pixelX);
-							sleep(velocidad);
-							break;
-						case 3:
-							pixelY-=pixel;
-							componente.setY(pixelY);
-							sleep(velocidad);
-							break;
-						case 4:
-							pixelY+=pixel;
-							componente.setY(pixelY);
-							sleep(velocidad);
-							break;
+				if(componente.getVida()!=0){
+					for(int i=0;i<8;i++){
+						switch (d) {
+							case 1:
+								pixelX+=pixel;
+								componente.setX(pixelX);
+								sleep(velocidad);
+								break;
+							case 2:
+								pixelX-=pixel;
+								componente.setX(pixelX);
+								sleep(velocidad);
+								break;
+							case 3:
+								pixelY-=pixel;
+								componente.setY(pixelY);
+								sleep(velocidad);
+								break;
+							case 4:
+								pixelY+=pixel;
+								componente.setY(pixelY);
+								sleep(velocidad);
+								break;
+						}
+						miLogica.actualizarPanel();
 					}
-					miLogica.actualizarPanel();
 				}
 			}
 			

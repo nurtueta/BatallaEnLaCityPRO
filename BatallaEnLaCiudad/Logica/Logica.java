@@ -528,7 +528,10 @@ public class Logica {
 		eliminarEnemigos=false;
 		hiloEnemigos = new MovimientoEnemigos(this);
 		hiloEnemigos.start();
-		muertesAcumuladas+=4;
+		if(muertesAcumuladas<12)
+			muertesAcumuladas+=4;
+		else
+			muertesAcumuladas=16;
 		crearEnemigoInicio();
 		
 	}
