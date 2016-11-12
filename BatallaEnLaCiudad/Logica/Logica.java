@@ -106,7 +106,7 @@ public class Logica {
 	public void generacionDeMapaLogico(){
 	  	FileReader fi;
 		try {
-			fi = new FileReader("archivo/Mapa.txt");
+			fi = new FileReader("archivo/Hello2.txt");
 	        BufferedReader b = new BufferedReader(fi);
 	        String cadena;
 	        int j=0;
