@@ -15,7 +15,7 @@ public class HiloMantenerPowerUp extends HiloPowerUp{
 	public void run()
 	{
 		try{
-			sleep(5000);
+			sleep(8000);
 			if(powerUp.getVida()!=0 && !miLogica.finDelJuego())
 				miLogica.eliminarPowerUp(powerUp);
 

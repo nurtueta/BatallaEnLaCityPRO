@@ -1,34 +1,22 @@
 package Logica.Hilo;
 
-import java.util.ArrayList;
-
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
-import Logica.Hilo.PowerUp.HiloPowerUp;
 
 public class HiloTiempoEspera extends Thread{
 	protected int tiempo;
 	protected Logica miLogica;
 	
-	public HiloTiempoEspera(Logica l,int x){
-		tiempo=x;
+	public HiloTiempoEspera(Logica l){
+		miLogica=l;
 	}
 	
 	public void run()
 	{
 		try{
-			this.sleep(tiempo);
-
+			sleep(200);
+			miLogica.finalizar();
 		}catch(InterruptedException e){ e.printStackTrace();}
-		
-		miLogica.finalizar();
-		this.stop();
+		stop();
 	}
-
-	public void addBala(ComponenteGrafico x) {
-		
-	}
-	
-	public void addEnemigo(ComponenteGrafico x){}
 
 }

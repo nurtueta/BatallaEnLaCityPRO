@@ -11,7 +11,7 @@ public class HiloDetenerEnemigos extends HiloPowerUp{
 	public void run()
 	{
 		try{
-			sleep(7000);
+			sleep(5000);
 			if(!miLogica.finDelJuego())
 				miLogica.setDetenerTanque(false);
 		}catch(InterruptedException e){ e.printStackTrace();}

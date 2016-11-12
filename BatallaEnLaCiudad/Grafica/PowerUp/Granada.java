@@ -11,8 +11,7 @@ import Logica.Logica;
 public class Granada extends PowerUp {
 
 	public Granada(int x, int y,Logica l){
-		super(x,y,1,l);
-		logica=l;
+		super(x,y,l);
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpGranada.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));

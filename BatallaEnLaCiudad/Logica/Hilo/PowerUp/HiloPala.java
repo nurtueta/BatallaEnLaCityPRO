@@ -8,17 +8,15 @@ import Grafica.Bloque.Ladrillo;
 import Logica.Logica;
 
 public class HiloPala extends HiloPowerUp{
-	protected int tiempo;
 	
-	public HiloPala(Logica l,int x){
+	public HiloPala(Logica l){
 		super(l);
-		tiempo=x;
 	}
 	
 	public void run()
 	{
 		try{
-			sleep(tiempo);
+			sleep(10000);
 			for(ComponenteGrafico c : miLogica.getBase())
 				if(!miLogica.finDelJuego())
 					if(c.mejorar()){

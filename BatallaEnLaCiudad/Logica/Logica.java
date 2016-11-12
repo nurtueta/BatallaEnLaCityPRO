@@ -30,6 +30,7 @@ public class Logica {
 	private HiloPowerUp hiloMantenerPowerUp;
 	private HiloPowerUp powerUpPala;
 	private HiloPowerUp powerUpCasco;
+	private HiloPowerUp powerUpTimer;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -205,7 +206,7 @@ public class Logica {
 	public void finalizarJuego(boolean x){
 		termina=true;
 		porQueTermina=x;
-		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this,200);
+		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
 		tiempoEsperaParaFinalizar.start();
 	}
 	
@@ -422,7 +423,6 @@ public class Logica {
 				crearPowerUp();
 				enemigosMatados = 0;
 			}
-			miJugador.subirNivel();
 			crearEnenmigo();
 		}
 	}
@@ -523,7 +523,7 @@ public class Logica {
 				agregarGrafico(getComponente(c.getPosicionX(), c.getPosicionY()));
 			}
 		}
-		powerUpPala=new HiloPala(this,10000);
+		powerUpPala=new HiloPala(this);
 		powerUpPala.start();
 	}
 	
@@ -561,6 +561,8 @@ public class Logica {
 	 */
 	public void powerUpTimer(){
 		setDetenerTanque(true);
+		powerUpTimer=new HiloDetenerEnemigos(this);
+		powerUpTimer.start();
 	}
 	
 	public void setDetenerTanque(boolean x){
