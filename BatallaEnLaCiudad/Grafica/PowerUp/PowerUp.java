@@ -42,4 +42,7 @@ public abstract class PowerUp extends ComponenteGrafico{
 		return false;
 	}
 
+	public boolean mejorar() {
+		return false;
+	}
 }

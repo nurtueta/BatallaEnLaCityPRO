@@ -47,8 +47,8 @@ public class Aguila extends Bloque {
 		logica.finalizarJuego(false);
 	}
 
-	public ComponenteGrafico mejorar() {
-		return null;
+	public boolean mejorar() {
+		return false;
 	}
 	
 	public boolean puedoIngresarPowerUp(){

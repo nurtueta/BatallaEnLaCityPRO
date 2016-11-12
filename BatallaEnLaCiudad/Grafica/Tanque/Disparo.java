@@ -129,8 +129,8 @@ public class Disparo extends ComponenteGrafico{
 		
 	}
 
-	public ComponenteGrafico mejorar() {
-		return null;
+	public boolean mejorar() {
+		return false;
 	}
 	
 	public boolean puedoIngresarPowerUp(){

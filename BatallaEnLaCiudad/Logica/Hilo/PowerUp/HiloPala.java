@@ -3,6 +3,8 @@ package Logica.Hilo.PowerUp;
 import java.util.ArrayList;
 
 import Grafica.ComponenteGrafico;
+import Grafica.Bloque.Acero;
+import Grafica.Bloque.Ladrillo;
 import Logica.Logica;
 
 public class HiloPala extends HiloPowerUp{
@@ -16,11 +18,16 @@ public class HiloPala extends HiloPowerUp{
 	public void run()
 	{
 		try{
-			this.sleep(tiempo);
-
+			sleep(tiempo);
+			if(!miLogica.finDelJuego())
+				for(ComponenteGrafico c : miLogica.getBase())
+					if(c.mejorar()){
+						miLogica.eliminarGrafico(c);
+						miLogica.setComponente(new Ladrillo(c.getPosicionX(), c.getPosicionY(),miLogica));
+						miLogica.agregarGrafico(miLogica.getComponente(c.getPosicionX(), c.getPosicionY()));
+					}
 		}catch(InterruptedException e){ e.printStackTrace();}
-		
-		this.stop();
+		stop();
 	}
 
 }

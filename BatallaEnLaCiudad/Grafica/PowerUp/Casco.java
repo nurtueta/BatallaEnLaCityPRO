@@ -25,10 +25,5 @@ public class Casco extends PowerUp{
 			vida=0;
 		}
 	}
-
-	public ComponenteGrafico mejorar() {
-		return null;
-	}
-	
 	
 }

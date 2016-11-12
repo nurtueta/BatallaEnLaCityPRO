@@ -27,10 +27,5 @@ public class Timer extends PowerUp{
 		}
 	}
 
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

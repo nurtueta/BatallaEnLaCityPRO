@@ -55,10 +55,5 @@ public class Rapido extends Enemigo{
 		return 200;
 	}
 
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

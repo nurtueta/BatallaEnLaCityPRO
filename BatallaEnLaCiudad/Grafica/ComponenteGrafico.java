@@ -161,7 +161,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	}
 	public void setState(int i){}
 	
-	public abstract ComponenteGrafico mejorar();
+	public abstract boolean mejorar();
 	
 	public void usaCasco(boolean x){}
 	

@@ -26,11 +26,5 @@ public class Estrella extends PowerUp{
 			vida=0;
 		}
 	}
-
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 }

@@ -147,7 +147,9 @@ public class Logica {
 	 * @param y coordenada en el eje y
 	 * @param p componente a ingresar
 	 */
-	public void setComponente(int x,int y,ComponenteGrafico c){
+	public void setComponente(ComponenteGrafico c){
+		int x=c.getPosicionX();
+		int y=c.getPosicionY();
 		mapa[y][x]=c;
 	}
 	
@@ -354,7 +356,7 @@ public class Logica {
 				break;
 		}
 		if(getComponente(x, y).movimientoPosible()){
-			setComponente(x, y, enemigo);
+			setComponente(enemigo);
 			enemigo.setVisible(true);
 			hiloEnemigos.addEnemigo(enemigo);
 		}else
@@ -462,7 +464,7 @@ public class Logica {
 			break;
 		}
 		
-		setComponente(localizarX, localizarY, miPowerUp);
+		setComponente(miPowerUp);
 		miPowerUp.setVisible(true);
 		agregarGrafico(miPowerUp);
 		return miPowerUp;
@@ -505,49 +507,28 @@ public class Logica {
 		powerUpCasco.start();
 	}
 	
-	
 	/**
 	 * Cambian las paredes de la base por acero por 20 segundos,
 	 * pasados los 20 segundos se vuelven a poner paredes comunes al 100%.
 	 */
 	public void powerUpPala(){
-		//Controlar Bloques alrededor del 'Aguila'
 		ComponenteGrafico [] base = getBase();
-			//Recorro las componentes que rodean al aguila para mejorar/reparar
-			for(ComponenteGrafico c : base){
-				//Se invoca al metodo mejorar que devuelve != null solo para los mejorables
-				ComponenteGrafico nuevaComponente = c.mejorar();
-				if(nuevaComponente != null){
-					//reemplazo graficamente las componentes
-					eliminarGrafico(c);
-					agregarGrafico(nuevaComponente);
-					//actualizo la matriz
-					setComponente(nuevaComponente.getPosicionX(),nuevaComponente.getPosicionY(),nuevaComponente);
-				}
+		for(ComponenteGrafico c : base){
+			if(c.mejorar()){
+				eliminarGrafico(c);
+				setComponente(new Acero(c.getPosicionX(), c.getPosicionY(),this));
+				agregarGrafico(getComponente(c.getPosicionX(), c.getPosicionY()));
 			}
-			
-			//Ejecucion del hilo timer
-			
-			powerUpPala=new HiloPala(this,20000);
-			powerUpPala.start();
-			
-			//Vuelvo a rodear el aguila de ladrillos
-			for(ComponenteGrafico c : base){
-				ComponenteGrafico nuevoLadrillo = new Ladrillo(c.getPosicionX(),c.getPosicionY(),this);
-					//reemplazo graficamente las componentes
-					eliminarGrafico(c);
-					agregarGrafico(nuevoLadrillo);					
-					//actualizo la matriz
-					setComponente(nuevoLadrillo.getPosicionX(),nuevoLadrillo.getPosicionY(),nuevoLadrillo);
-				
-			}
+		}
+		powerUpPala=new HiloPala(this,10000);
+		powerUpPala.start();
 	}
 	
 	/**
 	 * Obtengo y devuelvo en un arreglo las 5 componentes que rodean al aguila para reparaciones o mejoras.
 	 * @return ComponenteGrafico []
 	 */
-	private ComponenteGrafico [] getBase(){
+	public ComponenteGrafico [] getBase(){
 		
 		ComponenteGrafico [] base = new ComponenteGrafico [5];
 		//Guardo en el arreglo las componentes que rodean el aguila como estructura auxiliar para recorrer.

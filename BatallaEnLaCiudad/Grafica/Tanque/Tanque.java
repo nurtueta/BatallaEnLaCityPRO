@@ -107,4 +107,8 @@ public abstract class Tanque extends ComponenteGrafico {
 		return false;
 	}
 	
+	public boolean mejorar() {
+		return false;
+	}
+	
 }

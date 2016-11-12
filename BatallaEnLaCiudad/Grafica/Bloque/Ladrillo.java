@@ -47,8 +47,8 @@ public class Ladrillo extends Bloque{
 		
 	}
 
-	public ComponenteGrafico mejorar() {
-		return null;
+	public boolean mejorar() {
+		return true;
 	}
 	
 	public boolean puedoIngresarPowerUp(){

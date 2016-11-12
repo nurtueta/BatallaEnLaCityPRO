@@ -47,8 +47,8 @@ public class Arbol extends Bloque{
 		
 	}
 
-	public ComponenteGrafico mejorar() {
-		return null;
+	public boolean mejorar() {
+		return false;
 	}
 
 	public boolean puedoIngresarPowerUp(){
