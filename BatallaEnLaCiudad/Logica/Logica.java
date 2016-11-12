@@ -240,7 +240,6 @@ public class Logica {
 	 * @param deQuienEs indica si disparo enemigo (0) o jugador (1)
 	 */
 	public void eliminarColicion(int x,int y,int deQuienEs){
-		System.out.println("eliminarColicion: "+x+" "+y+" "+deQuienEs);
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			addPuntaje(getComponente(x, y).getPuntos());
@@ -540,8 +539,10 @@ public class Logica {
 	
 	public void terminarPowerUpGranada(){
 		eliminarEnemigos=false;
-		if(muertesAcumuladas<12)
+		if(muertesAcumuladas<12){
+			
 			muertesAcumuladas+=4;
+		}
 		else
 			finalizarJuego(true);
 		crearEnemigoInicio();

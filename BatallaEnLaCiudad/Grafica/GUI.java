@@ -38,7 +38,7 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        setBounds(100,100,900,600);
+	        setBounds(100,100,900,630);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setVisible(true);
@@ -82,7 +82,7 @@ public class GUI extends JFrame {
 			panelRestantes_1.setFont(new Font("Harrington", Font.ITALIC, 36));
 			panelRestantes_1.setForeground(Color.RED);
 			contentPane.setLayer(panelRestantes_1, 5);
-			panelRestantes_1.setText("Restan 16 naves:");
+			panelRestantes_1.setText("Restan \n 16 naves:");
 			this.panelRestantes=panelRestantes_1;
 			
 			JLabel panelDerecha = new JLabel("");
@@ -96,6 +96,7 @@ public class GUI extends JFrame {
 			mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
 	        mapaLogica.crearEnemigoInicio();
+	        mapaLogica.addPuntaje(0);
 	        
 	        setVisible(true);
 	        

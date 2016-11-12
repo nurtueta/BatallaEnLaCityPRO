@@ -49,6 +49,7 @@ public class MovimientoEnemigos extends Movimiento{
 									}
 							}else{
 								eliminar.add(enemigo);
+								miLogica.addPuntaje(enemigo.getPuntos());
 								miLogica.setComponente(new Piso(enemigo.getPosicionX(), enemigo.getPosicionY(),miLogica));
 								miLogica.eliminarGrafico(enemigo);
 							}

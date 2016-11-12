@@ -21,6 +21,7 @@ public class Casco extends PowerUp{
 	public void colicion(int deQuienEs) {
 		if(deQuienEs !=0){
 			vida=0;
+			logica.addPuntaje(500);
 			logica.powerUpCasco();
 		}
 	}
