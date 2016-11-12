@@ -87,7 +87,7 @@ public class GUI extends JFrame {
 			panelRestantes_1.setFont(new Font("Harrington", Font.ITALIC, 36));
 			panelRestantes_1.setForeground(Color.RED);
 			contentPane.setLayer(panelRestantes_1, 5);
-			panelRestantes_1.setText("Naves \n Destruidas: \n");
+			panelRestantes_1.setText("Restan 16 naves:");
 			this.panelRestantes=panelRestantes_1;
 			
 			JLabel panelDerecha = new JLabel("");

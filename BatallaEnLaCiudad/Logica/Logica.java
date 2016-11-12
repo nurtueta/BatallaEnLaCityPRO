@@ -259,7 +259,7 @@ public class Logica {
 	public void addPuntaje(int puntos){
 		puntaje+=puntos;
 		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
-		grafica.getPanelRestantes().setText("Restan "+ enemigosMatados+" naves");
+		grafica.getPanelRestantes().setText("Restan "+ (16-muertesAcumuladas)+" naves");
 		repintarPanel();
 	}
 	
