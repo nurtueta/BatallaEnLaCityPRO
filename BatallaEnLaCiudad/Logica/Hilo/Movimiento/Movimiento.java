@@ -1,4 +1,4 @@
-package Logica.Hilos;
+package Logica.Hilo.Movimiento;
 
 import java.util.ArrayList;
 
@@ -18,16 +18,6 @@ public abstract class Movimiento extends Thread{
 		miLogica = logic;
 		balas=new ArrayList<ComponenteGrafico>();
 		enemigos=new ArrayList<ComponenteGrafico>();
-	}
-	
-	public void setLogica(Logica l)
-	{
-		miLogica = l;
-	}
-	
-	public void inicio() {
-		miLogica.actualizarPanel();
-		this.start();
 	}
 	
 	public abstract void addBala(ComponenteGrafico x);

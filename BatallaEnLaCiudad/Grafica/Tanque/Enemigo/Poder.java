@@ -54,9 +54,4 @@ public class Poder extends Enemigo{
 		return 300;
 	}
 
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

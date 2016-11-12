@@ -5,12 +5,11 @@ import Logica.Logica;
 
 public abstract class PowerUp extends ComponenteGrafico{
 	
-	protected int codigo;
-	
-	public PowerUp(int x, int y,int codigo,Logica l){
+	public PowerUp(int x, int y,Logica l){
 		super(x,y);
 		logica=l;
 		profundidad=5;
+		vida=1;
 	}
 
 	public boolean movimientoPosible() {
@@ -30,11 +29,15 @@ public abstract class PowerUp extends ComponenteGrafico{
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return true;
+		return false;
 	}
 	
-	public int getCodigo(){
-		return codigo;
+	
+	public boolean puedoIngresarPowerUp(){
+		return false;
 	}
 
+	public boolean mejorar() {
+		return false;
+	}
 }

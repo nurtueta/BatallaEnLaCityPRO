@@ -1,4 +1,4 @@
-package Logica.Hilos;
+package Logica.Hilo.Movimiento;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,8 +27,8 @@ public class MovimientoEnemigos extends Movimiento{
 		try{
 			while(!miLogica.finDelJuego()){
 					
-					sleep(400);
-					if(!miLogica.finDelJuego()){
+					sleep(700);
+					if(!miLogica.finDelJuego() && !miLogica.getDetenerTanque()){
 						eliminar=new ArrayList<ComponenteGrafico>();
 						agregarEnemigo=false;
 						for(ComponenteGrafico enemigo: enemigos){
@@ -50,8 +50,8 @@ public class MovimientoEnemigos extends Movimiento{
 							enemigos.add(bala);
 						enemigosIngresar=new ArrayList<ComponenteGrafico>();
 					}
-					sleep(400);
-					if(!miLogica.finDelJuego()){
+					sleep(700);
+					if(!miLogica.finDelJuego() && !miLogica.getDetenerTanque()){
 						agregarEnemigo=false;
 						for(ComponenteGrafico enemigo: enemigos){
 							sleep(5);

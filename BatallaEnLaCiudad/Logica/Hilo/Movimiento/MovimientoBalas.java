@@ -1,4 +1,4 @@
-package Logica.Hilos;
+package Logica.Hilo.Movimiento;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,6 @@ public class MovimientoBalas extends Movimiento{
 				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
-		eliminar=new ArrayList<ComponenteGrafico>();
 	}
 
 	public void addBala(ComponenteGrafico x) {

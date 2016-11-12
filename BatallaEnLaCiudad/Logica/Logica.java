@@ -11,7 +11,9 @@ import Grafica.PowerUp.*;
 import Grafica.Tanque.*;
 import Grafica.Tanque.Enemigo.*;
 import Grafica.Tanque.Jugador.*;
-import Logica.Hilos.*;
+import Logica.Hilo.*;
+import Logica.Hilo.Movimiento.*;
+import Logica.Hilo.PowerUp.*;
 
 public class Logica {
 	
@@ -24,8 +26,11 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	private Movimiento hiloDisparoEnemigo;
-	private Movimiento tiempoEsperaParaFinalizar;
-	private HiloPowerUps hiloPowerup;
+	private HiloTiempoEspera tiempoEsperaParaFinalizar;
+	private HiloPowerUp hiloMantenerPowerUp;
+	private HiloPowerUp powerUpPala;
+	private HiloPowerUp powerUpCasco;
+	private HiloPowerUp powerUpTimer;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -33,6 +38,7 @@ public class Logica {
 	private int []respawn;
 	private boolean termina;
 	private boolean porQueTermina;
+	private boolean detenerTanque;
 
 	
 	
@@ -62,6 +68,8 @@ public class Logica {
 		respawn=new int[8];
 		respawn[0]=0;respawn[1]=0;respawn[2]=19;respawn[3]=16;respawn[4]=0;
 		respawn[5]=6;respawn[6]=0;respawn[7]=16;
+		
+		detenerTanque=false;
 				
 		mapa=new ComponenteGrafico[20][20];
 		//creo el mapa
@@ -143,7 +151,9 @@ public class Logica {
 	 * @param y coordenada en el eje y
 	 * @param p componente a ingresar
 	 */
-	public void setComponente(int x,int y,ComponenteGrafico c){
+	public void setComponente(ComponenteGrafico c){
+		int x=c.getPosicionX();
+		int y=c.getPosicionY();
 		mapa[y][x]=c;
 	}
 	
@@ -196,7 +206,7 @@ public class Logica {
 	public void finalizarJuego(boolean x){
 		termina=true;
 		porQueTermina=x;
-		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this,200);
+		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
 		tiempoEsperaParaFinalizar.start();
 	}
 	
@@ -300,6 +310,10 @@ public class Logica {
 		}
 	}
 	
+	public void setCasco(boolean x){
+		miJugador.usaCasco(x);
+	}
+	
 	/* ---------------------------------Enemigo----------------------------------*/
 	
 	/**
@@ -346,7 +360,7 @@ public class Logica {
 				break;
 		}
 		if(getComponente(x, y).movimientoPosible()){
-			setComponente(x, y, enemigo);
+			setComponente(enemigo);
 			enemigo.setVisible(true);
 			hiloEnemigos.addEnemigo(enemigo);
 		}else
@@ -409,7 +423,6 @@ public class Logica {
 				crearPowerUp();
 				enemigosMatados = 0;
 			}
-			miJugador.subirNivel();
 			crearEnenmigo();
 		}
 	}
@@ -417,13 +430,20 @@ public class Logica {
 	/* ---------------------------------PowerUp----------------------------------*/
 	
 	/**
-	 * Creo un PowerUp random
+	 * Creo un PowerUp random y lo agrego al mapa
 	 * @return PowerUp creado
 	 */
 	private ComponenteGrafico obtenerPowerUp(){
 		int tipo = (int) new Random().nextInt(6)+1;
-		int localizarX = (int) new Random().nextInt(20);
-		int localizarY = (int) new Random().nextInt(20);
+		boolean espacioVacio=false;
+		int localizarX=0;
+		int localizarY=0;
+		while(!espacioVacio){
+			localizarX = (int) new Random().nextInt(20);
+			localizarY = (int) new Random().nextInt(20);
+			if(getComponente(localizarX, localizarY).puedoIngresarPowerUp())
+				espacioVacio=true;
+		}
 		
 		PowerUp miPowerUp=null;;
 		switch (tipo){
@@ -446,17 +466,32 @@ public class Logica {
 			miPowerUp = new VidaTanque(localizarX,localizarY,this);
 			break;
 		}
+		
+		setComponente(miPowerUp);
+		miPowerUp.setVisible(true);
+		agregarGrafico(miPowerUp);
 		return miPowerUp;
 	}
 	
 	/**
-	 * Creo un PowerUp y lo agrego al mapa, si no se agarra por 5 segundos desaparece;
+	 * Creo un PowerUp, si no se agarra por 5 segundos desaparece;
 	 * si se agarra entonces se ejecuta
 	 */
 	public void crearPowerUp(){
 		ComponenteGrafico p=obtenerPowerUp();
-		//crear hilo y ingresar a la grafica
-		agregarGrafico(p);
+		hiloMantenerPowerUp=new HiloMantenerPowerUp(this,p);
+		hiloMantenerPowerUp.start();
+	}
+	
+	/**
+	 * Elimina el PowerUp en caso de no haberse agarrado.
+	 */
+	public void eliminarPowerUp(ComponenteGrafico p){
+		int x=p.getPosicionX();
+		int y=p.getPosicionY();
+		eliminarGrafico(getComponente(x, y));
+		mapa[y][x]=new Piso(x, y,this);
+		agregarGrafico(getComponente(x, y));
 	}
 	
 	/**
@@ -470,7 +505,9 @@ public class Logica {
 	 * El jugador se hace invulnerable por 5 segundos
 	 */
 	public void powerUpCasco(){
-		miJugador.usaCasco(true);
+		setCasco(true);
+		powerUpCasco=new HiloPowerUpCasco(this);
+		powerUpCasco.start();
 	}
 	
 	/**
@@ -478,51 +515,29 @@ public class Logica {
 	 * pasados los 20 segundos se vuelven a poner paredes comunes al 100%.
 	 */
 	public void powerUpPala(){
-		//Controlar Bloques alrededor del 'Aguila'
 		ComponenteGrafico [] base = getBase();
-			//Recorro las componentes que rodean al aguila para mejorar/reparar
-			for(ComponenteGrafico c : base){
-				//Se invoca al metodo mejorar que devuelve != null solo para los mejorables
-				ComponenteGrafico nuevaComponente = c.mejorar();
-				if(nuevaComponente != null){
-					//reemplazo graficamente las componentes
-					eliminarGrafico(c);
-					agregarGrafico(nuevaComponente);
-					//actualizo la matriz
-					setComponente(nuevaComponente.getPosicionX(),nuevaComponente.getPosicionY(),nuevaComponente);
-				}
+		for(ComponenteGrafico c : base){
+			if(c.mejorar()){
+				eliminarGrafico(c);
+				setComponente(new Acero(c.getPosicionX(), c.getPosicionY(),this));
+				agregarGrafico(getComponente(c.getPosicionX(), c.getPosicionY()));
 			}
-			
-			//Ejecucion del hilo timer
-			
-			HiloTimer espera =new HiloTimer(this,20000);
-			espera.start();
-			
-			//Vuelvo a rodear el aguila de ladrillos
-			for(ComponenteGrafico c : base){
-				ComponenteGrafico nuevoLadrillo = new Ladrillo(c.getPosicionX(),c.getPosicionY(),this);
-					//reemplazo graficamente las componentes
-					eliminarGrafico(c);
-					agregarGrafico(nuevoLadrillo);					
-					//actualizo la matriz
-					setComponente(nuevoLadrillo.getPosicionX(),nuevoLadrillo.getPosicionY(),nuevoLadrillo);
-				
-			}
+		}
+		powerUpPala=new HiloPala(this);
+		powerUpPala.start();
 	}
 	
 	/**
 	 * Obtengo y devuelvo en un arreglo las 5 componentes que rodean al aguila para reparaciones o mejoras.
 	 * @return ComponenteGrafico []
 	 */
-	private ComponenteGrafico [] getBase(){
-		
+	public ComponenteGrafico [] getBase(){
 		ComponenteGrafico [] base = new ComponenteGrafico [5];
-		//Guardo en el arreglo las componentes que rodean el aguila como estructura auxiliar para recorrer.
-		base[0] = getComponente(19,8);
-		base[1] = getComponente(18,8);
-		base[2] = getComponente(18,9);
-		base[3] = getComponente(18,10);
-		base[4] = getComponente(19,10);
+		base[0] = getComponente(8,19);
+		base[1] = getComponente(8,18);
+		base[2] = getComponente(9,18);
+		base[3] = getComponente(10,18);
+		base[4] = getComponente(10,19);
 		
 		return base;
 	}
@@ -545,17 +560,18 @@ public class Logica {
 	 * Detiene a todos los enemigos por 5 segundos
 	 */
 	public void powerUpTimer(){
-		// Movimiento posible de todos = false
-		//HiloTimer h = new HiloTimer();
-		//h.start();
-		// Movimiento posible de todos = true;
+		setDetenerTanque(true);
+		powerUpTimer=new HiloDetenerEnemigos(this);
+		powerUpTimer.start();
 	}
 	
-	/**
-	 * Elimina el PowerUp en caso de no haberse agarrado.
-	 */
-	public void eliminarPowerUps(){
-		hiloPowerup.stop();
+	public void setDetenerTanque(boolean x){
+		detenerTanque=x;
 	}
+	
+	public boolean getDetenerTanque(){
+		return detenerTanque;
+	}
+	
 	
 }

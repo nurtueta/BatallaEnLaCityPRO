@@ -11,8 +11,7 @@ import Logica.Logica;
 public class Estrella extends PowerUp{
 
 	public Estrella (int x, int y,Logica l){
-		super(x,y,4,l);
-		logica=l;
+		super(x,y,l);
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpEstrella.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -21,17 +20,10 @@ public class Estrella extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1){
+		if(deQuienEs != 0){
+			vida=0;
 			logica.powerUpEstrella();
-			System.out.println("PowerUp ESTRELLA");
 		}
 	}
-
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 }

@@ -8,8 +8,8 @@ import javax.swing.ImageIcon;
 import Grafica.ComponenteGrafico;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
-import Logica.Hilos.MovimientoBalas;
-import Logica.Hilos.MovimientoFluido;
+import Logica.Hilo.Movimiento.MovimientoBalas;
+import Logica.Hilo.Movimiento.MovimientoFluido;
 
 public class Jugador extends Tanque{
 	
@@ -175,12 +175,5 @@ public class Jugador extends Tanque{
 			break;
 		}
 	}
-
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 }

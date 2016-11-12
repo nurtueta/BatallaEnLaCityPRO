@@ -11,7 +11,7 @@ import Logica.Logica;
 public class VidaTanque extends PowerUp{
 
 	public VidaTanque(int x, int y,Logica l){
-		super(x,y,5,l);
+		super(x,y,l);
 		ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/PowerUpTanque.png"));
 
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
@@ -20,16 +20,11 @@ public class VidaTanque extends PowerUp{
 	
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1){
+		if(deQuienEs!=0){
+			vida=0;
 			logica.powerUpTanque();
-			System.out.println("PowerUp VIDATANQUE");
 		}
 	}
 
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

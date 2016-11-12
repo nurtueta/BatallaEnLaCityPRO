@@ -168,7 +168,6 @@ public class GUI extends JFrame {
 		 
 		 contentPane.removeAll();
 		 teclado= false;
-		mapaLogica=null;
 		
 		if(Victoria){
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victory.png"));

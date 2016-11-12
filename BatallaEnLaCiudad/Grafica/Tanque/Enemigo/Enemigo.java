@@ -1,9 +1,6 @@
 package Grafica.Tanque.Enemigo;
 
-import Grafica.ComponenteGrafico;
 import Grafica.Tanque.Tanque;
-import Logica.Hilos.Movimiento;
-import Logica.Hilos.MovimientoBalas;
 
 public abstract class Enemigo extends Tanque{
 	

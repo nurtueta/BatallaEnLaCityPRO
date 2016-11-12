@@ -55,10 +55,4 @@ public class Blindado extends Enemigo{
 	public int getPuntos(){
 		return 400;
 	}
-
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

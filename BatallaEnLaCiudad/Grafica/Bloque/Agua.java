@@ -45,9 +45,11 @@ public class Agua extends Bloque {
 		
 	}
 
-	@Override
-	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean mejorar() {
+		return false;
+	}
+	
+	public boolean puedoIngresarPowerUp(){
+		return false;
 	}
 }

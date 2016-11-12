@@ -1,4 +1,4 @@
-package Logica.Hilos;
+package Logica.Hilo.Movimiento;
 
 import Grafica.ComponenteGrafico;
 import Grafica.Bloque.Piso;
@@ -83,28 +83,32 @@ public class MovimientoFluido extends Movimiento {
 				}
 				switch(d){
 					case 1:
-						miLogica.setComponente(x+1, y, componente);
-						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						x++;
+						componente.setPosicionX(x);
+						miLogica.setComponente(componente);
+						miLogica.setComponente(new Piso(x-1,y,miLogica));
 						break;
 					case 2:
-						miLogica.setComponente(x-1, y, componente);
-						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						x--;
+						componente.setPosicionX(x);
+						miLogica.setComponente(componente);
+						miLogica.setComponente(new Piso(x+1,y,miLogica));
 						break;
 					case 3:
-						miLogica.setComponente(x, y-1, componente);
-						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						y--;
+						componente.setPosicionY(y);
+						miLogica.setComponente(componente);
+						miLogica.setComponente(new Piso(x,y+1,miLogica));
 						break;						
 					case 4:
-						miLogica.setComponente(x, y+1, componente);
-						miLogica.setComponente(x, y,new Piso(x,y,miLogica));
 						y++;
+						componente.setPosicionY(y);
+						miLogica.setComponente(componente);
+						miLogica.setComponente(new Piso(x,y-1,miLogica));
 						break;	
 				}
-				componente.setPosicionX(x);
-				componente.setPosicionY(y);
+				
+				
 			}
 			componente.setPuedeMover();
 			this.stop();
