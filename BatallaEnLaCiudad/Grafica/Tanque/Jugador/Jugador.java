@@ -64,16 +64,20 @@ public class Jugador extends Tanque{
 			if(!casco){
 				nivel.bajarVida();
 				if(nivel.getVida()==0){
-					ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
-					Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-					this.setIcon(icono);
-					java.net.URL url = main.class.getResource("/archivo/R2D2Scream.wav");
-				    AudioClip clip = Applet.newAudioClip(url);
-				    logica.stopMusic();
-				    clip.play();
-				    new HiloTiempoEspera(2000);
-				    clip.play();		
-					logica.finalizarJuego(false);
+					if(getNivel()==4){
+						logica.crearJugador();
+					}else{
+						ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
+						Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+						this.setIcon(icono);
+						java.net.URL url = main.class.getResource("/archivo/R2D2Scream.wav");
+					    AudioClip clip = Applet.newAudioClip(url);
+					    logica.stopMusic();
+					    clip.play();
+					    new HiloTiempoEspera(2000);
+					    clip.play();		
+						logica.finalizarJuego(false);
+					}
 				}
 				else
 					bajarNivel();
