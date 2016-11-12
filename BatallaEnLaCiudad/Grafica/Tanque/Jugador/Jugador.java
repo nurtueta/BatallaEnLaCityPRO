@@ -42,7 +42,7 @@ public class Jugador extends Tanque{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingArriba.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingDerecha.png"));
 				break;
 			case 2:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingIzquierda.png"));

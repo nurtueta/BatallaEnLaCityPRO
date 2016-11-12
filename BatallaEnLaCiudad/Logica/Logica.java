@@ -258,7 +258,7 @@ public class Logica {
 	 */
 	public void addPuntaje(int puntos){
 		puntaje+=puntos;
-		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
+		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
 		repintarPanel();
 	}
 	

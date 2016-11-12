@@ -36,7 +36,7 @@ public class GUI extends JFrame {
 	        
 	        //setteo del panel contenedor
 	        
-	        setBounds(100,100,800,630);
+	        setBounds(100,100,900,630);
 	        contentPane = new JLayeredPane();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        contentPane.setVisible(true);
@@ -54,25 +54,32 @@ public class GUI extends JFrame {
 			contentPane.setLayer(fondo, 1);
 			
 			JPanel panel = new JPanel();
-			panel.setBounds(600, 0, 194, 600);
+			panel.setBounds(600, 0, 321, 600);
 			contentPane.add(panel);
 			panel.setLayout(null);
 			
 			
 			
 			JLabel panelPuntaje_1 = new JLabel();
-			panelPuntaje_1.setBounds(34, 5, 121, 43);
+			panelPuntaje_1.setVerticalAlignment(SwingConstants.TOP);
+			panelPuntaje_1.setBounds(10, 0, 208, 114);
 			panel.add(panelPuntaje_1);
 			panelPuntaje_1.setFont(new Font("Harrington", Font.ITALIC, 36));
 			panelPuntaje_1.setForeground(Color.RED);
 			contentPane.setLayer(panelPuntaje_1, 5);
-			panelPuntaje_1.setText("Puntos:");
+			panelPuntaje_1.setText("Puntos: \n");
 			this.panelPuntaje=panelPuntaje_1;
 			
 			JLabel panelDerecha = new JLabel("");
-			panelDerecha.setBounds(0, 0, 200, 600);
+			panelDerecha.setBounds(0, 0, 300, 600);
 			panel.add(panelDerecha);
-	        mapaLogica.generarPanel();
+			
+			 fot = new ImageIcon(getClass().getResource("/Imagenes/panelDerecha.jpg"));
+			 icono = new ImageIcon(fot.getImage().getScaledInstance(300, this.getHeight(), Image.SCALE_DEFAULT));
+			panelDerecha.setIcon(icono);
+	        
+			
+			mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
 	        mapaLogica.crearEnemigoInicio();
 	        
