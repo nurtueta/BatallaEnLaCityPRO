@@ -64,7 +64,7 @@ public class main extends Frame
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});
     //this.setExtendedState(MAXIMIZED_BOTH);
-    setSize (600, 500);
+    setBounds(100, 100, 900, 600);
     canvas = new CvStory();
     
     add (canvas);
