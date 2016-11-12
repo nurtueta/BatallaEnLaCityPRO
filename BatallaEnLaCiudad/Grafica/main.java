@@ -18,7 +18,6 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
 
-import javax.swing.JOptionPane;
 
 import java.util.Random;
 
@@ -31,8 +30,12 @@ public class main extends Frame
 
   public static void main (String[] args) throws IOException
   {
-
-    main Pic = new main ("archivo/IntroStory.txt");
+	  //System.out.println(args.length);
+	  main Pic;
+	  if (args.length!=0)
+		  Pic = new main(args[0]);
+	  else
+		  Pic = new main ("archivo/IntroStory.txt");
 
       //try
       //{ Thread.sleep(500);}
@@ -56,7 +59,10 @@ public class main extends Frame
     clip.play();
     
     addWindowListener (new WindowAdapter ()
-       {public void windowClosing (WindowEvent e){System.exit(0);}});
+       {public void windowClosing (WindowEvent e){
+    	   
+    	   
+    	   System.exit(0);}});
     //this.setExtendedState(MAXIMIZED_BOTH);
     setSize (800, 600);
     canvas = new CvStory("archivo/IntroStory.txt");

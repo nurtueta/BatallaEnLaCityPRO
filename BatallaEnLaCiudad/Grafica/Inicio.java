@@ -116,25 +116,32 @@ public class Inicio {
 		JLabel btnAbout = new JLabel("About");
 		btnAbout.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e)  {
 				
 				musicaFondo.stop();
 
-				try {
+				
 					
-					main creditos = new main("/archivo/creditos.txt");
-					creditos.setVisible(true);
-					creditos.setBounds(100,100,800,600);
-					creditos.show();
-					creditos.movePic ();
-					creditos.disable();
-				    creditos.setVisible(false);
+					main creditos;
+					try {
+						String[] s = {"archivo/IntroStory.txt"};
+						main.main(s);
+						//creditos = new main("archivo/IntroStory.txt");
+						/*creditos.setBounds(100,100,800,600);
+						creditos.show();
+
+						creditos.setVisible(true);
+						creditos.movePic ();
+						creditos.disable();
+					    creditos.setVisible(false);*/
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				    musicaFondo.play();
 				    
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				
 				
 				
 				
