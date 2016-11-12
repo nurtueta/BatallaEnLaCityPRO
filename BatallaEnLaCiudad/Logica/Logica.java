@@ -21,7 +21,7 @@ public class Logica {
 	
 	protected ComponenteGrafico[][] mapa;
 	protected ComponenteGrafico miJugador;
-	protected	static java.net.URL url = Disparo.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
+	protected static java.net.URL url = Disparo.class.getResource("/archivo/StarWarsBlasterSoundEffect.wav");
 	protected static AudioClip clip = Applet.newAudioClip(url);
 	protected AudioClip musicaJuego;
 	private Movimiento hiloEnemigos;
