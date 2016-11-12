@@ -26,7 +26,7 @@ public class MovimientoEnemigos extends Movimiento{
 	public void run()
 	{
 		try{
-			while(!miLogica.finDelJuego()){
+			while(!miLogica.finDelJuego() && !miLogica.eliminarTodosLosEnemigos()){
 					if(!miLogica.getDetenerTanque()){
 						eliminar=new ArrayList<ComponenteGrafico>();
 						agregarEnemigo=false;
@@ -59,6 +59,15 @@ public class MovimientoEnemigos extends Movimiento{
 					}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
+		eliminar=new ArrayList<ComponenteGrafico>();
+		for(ComponenteGrafico enemigo: enemigos){
+			eliminar.add(enemigo);
+			miLogica.eliminarGrafico(enemigo);
+		}
+		for(ComponenteGrafico enemigo: eliminar)
+			enemigos.remove(enemigo);
+			
+		stop();
 	}
 	
 	public void addEnemigo(ComponenteGrafico x) {
