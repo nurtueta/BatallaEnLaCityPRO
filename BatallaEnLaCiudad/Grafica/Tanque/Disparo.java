@@ -23,14 +23,14 @@ public class Disparo extends ComponenteGrafico{
 	protected int deQuienEs;
 	protected Movimiento hiloFluido;
 	protected boolean puedeMover;
+	protected int deQuienEsElDisparo;
 	
-	public Disparo(int x,int y,int d,Logica l,int deQuienEs)
+	public Disparo(int x,int y,int d,Logica l)
 	{	
 		super(x,y);
 		profundidad=3;
 		vida=1;
 		puedeMover=true;
-		this.deQuienEs=deQuienEs;
 		logica=l;
 		direccion = d;
 		ImageIcon fot = new ImageIcon();
@@ -103,4 +103,13 @@ public class Disparo extends ComponenteGrafico{
 	public boolean puedoIngresarPowerUp(){
 		return false;
 	}
+	
+	public void setDeQuienEsElDisparo(int x){
+		deQuienEsElDisparo=x;
+	}
+	
+	public int getDeQuienEsElDisparo(){
+		return deQuienEsElDisparo;
+	}
+	
 }

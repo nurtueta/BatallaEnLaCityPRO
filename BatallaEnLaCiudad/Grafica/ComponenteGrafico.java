@@ -117,10 +117,14 @@ public abstract class ComponenteGrafico extends JLabel {
 		
 	}
 	
-	public int getDeQuienEs(){
-		return -1;		
+	
+	public void setDeQuienEsElDisparo(int x){
+		
 	}
 	
+	public int getDeQuienEsElDisparo(){
+		return -1;
+	}
 	public void setDireccion(int d){
 		
 	}

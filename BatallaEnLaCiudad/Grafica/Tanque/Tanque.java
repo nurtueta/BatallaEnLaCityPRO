@@ -11,7 +11,6 @@ public abstract class Tanque extends ComponenteGrafico {
 	protected int disparosSimultaneos;
 	protected int velMovimiento;
 	protected int velDisparo;
-	protected int deQuienEs;
 	protected Logica logica;
 	protected boolean puedeMover;
 	protected int ultimoDisparo;
@@ -45,7 +44,7 @@ public abstract class Tanque extends ComponenteGrafico {
 	public ComponenteGrafico crearDisparo(){
 		boolean seMovio=true;
 		boolean seCreo=true;
-		ComponenteGrafico bala= new Disparo(0,0,direccion,logica,deQuienEs);
+		ComponenteGrafico bala= new Disparo(0,0,direccion,logica);
 		switch (direccion) {
 			case 1: 
 				if(miX!=19){
@@ -85,7 +84,7 @@ public abstract class Tanque extends ComponenteGrafico {
 				break;
 		}
 		if(!seMovio && seCreo){
-			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),deQuienEs);
+			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.getDeQuienEsElDisparo());
 			bala=null;
 		}
 		if(!seCreo)
@@ -112,5 +111,4 @@ public abstract class Tanque extends ComponenteGrafico {
 	public boolean getPuedeMover(){
 		return puedeMover;
 	}
-	
 }

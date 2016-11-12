@@ -9,7 +9,6 @@ public abstract class Enemigo extends Tanque{
 	public	Enemigo(int x,int y){
 		super(x,y);
 		disparosSimultaneos=1;
-		deQuienEs=0;
 	}	
 	
 	public void puedeMover(){

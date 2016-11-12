@@ -21,12 +21,12 @@ public class MovimientoFluidoTanque extends Movimiento {
 		this.y=x.getPosicionY();
 		this.d=d;
 		if(x.getVelMovimiento()==1)
-			velocidad=15;
+			velocidad=17;
 		else
 			if(x.getVelMovimiento()==2)
-				velocidad =12;
+				velocidad =14;
 			else
-				velocidad=9;
+				velocidad=11;
 		pixel=2;
 		componente=x;
 	}
@@ -69,28 +69,33 @@ public class MovimientoFluidoTanque extends Movimiento {
 				int pixelX=componente.getX();
 				int pixelY=componente.getY();
 				for(int i=0;i<7;i++){
-					switch (d) {
-						case 1:
-							pixelX+=pixel;
-							componente.setX(pixelX);
-							sleep(velocidad);
-							break;
-						case 2:
-							pixelX-=pixel;
-							componente.setX(pixelX);
-							sleep(velocidad);
-							break;
-						case 3:
-							pixelY-=pixel;
-							componente.setY(pixelY);
-							sleep(velocidad);
-							break;
-						case 4:
-							pixelY+=pixel;
-							componente.setY(pixelY);
-							sleep(velocidad);
-							break;
+					if(componente.getVida()==0){
+						i=7;
+						d=0;
 					}
+					else
+						switch (d) {
+							case 1:
+								pixelX+=pixel;
+								componente.setX(pixelX);
+								sleep(velocidad);
+								break;
+							case 2:
+								pixelX-=pixel;
+								componente.setX(pixelX);
+								sleep(velocidad);
+								break;
+							case 3:
+								pixelY-=pixel;
+								componente.setY(pixelY);
+								sleep(velocidad);
+								break;
+							case 4:
+								pixelY+=pixel;
+								componente.setY(pixelY);
+								sleep(velocidad);
+								break;
+						}
 					miLogica.actualizarPanel();
 				}
 				switch (d){
@@ -121,28 +126,31 @@ public class MovimientoFluidoTanque extends Movimiento {
 				}
 				if(componente.getVida()!=0){
 					for(int i=0;i<8;i++){
-						switch (d) {
-							case 1:
-								pixelX+=pixel;
-								componente.setX(pixelX);
-								sleep(velocidad);
-								break;
-							case 2:
-								pixelX-=pixel;
-								componente.setX(pixelX);
-								sleep(velocidad);
-								break;
-							case 3:
-								pixelY-=pixel;
-								componente.setY(pixelY);
-								sleep(velocidad);
-								break;
-							case 4:
-								pixelY+=pixel;
-								componente.setY(pixelY);
-								sleep(velocidad);
-								break;
-						}
+						if(componente.getVida()==0)
+							i=7;
+						else
+							switch (d) {
+								case 1:
+									pixelX+=pixel;
+									componente.setX(pixelX);
+									sleep(velocidad);
+									break;
+								case 2:
+									pixelX-=pixel;
+									componente.setX(pixelX);
+									sleep(velocidad);
+									break;
+								case 3:
+									pixelY-=pixel;
+									componente.setY(pixelY);
+									sleep(velocidad);
+									break;
+								case 4:
+									pixelY+=pixel;
+									componente.setY(pixelY);
+									sleep(velocidad);
+									break;
+							}
 						miLogica.actualizarPanel();
 					}
 				}

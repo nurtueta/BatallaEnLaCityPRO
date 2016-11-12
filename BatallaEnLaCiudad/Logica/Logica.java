@@ -238,6 +238,7 @@ public class Logica {
 	 * @param deQuienEs indica si disparo enemigo (0) o jugador (1)
 	 */
 	public void eliminarColicion(int x,int y,int deQuienEs){
+		System.out.println("eliminarColicion: "+x+" "+y+" "+deQuienEs);
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			addPuntaje(getComponente(x, y).getPuntos());
@@ -318,15 +319,17 @@ public class Logica {
 	 */
 	public void crearDisparoJugador(){
 		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
-			//if(miJugador.getPuedeMover()){
 				ComponenteGrafico bala=miJugador.crearDisparo();
-				clip.play();
 				if(bala!=null){
+					clip.play();
+					if(miJugador.getState()==1)
+						bala.setDeQuienEsElDisparo(1);
+					else
+						bala.setDeQuienEsElDisparo(2);
 		    		agregarGrafico(bala);
 		    		repintarPanel();
 		    		hiloDisparoJugador.addBala(bala);
 				}
-			//}
 		}
 	}
 	
@@ -350,6 +353,7 @@ public class Logica {
 	public void crearDisparoEnemigo(ComponenteGrafico x){
     	ComponenteGrafico bala=x.crearDisparo();
     	if(bala!=null){
+    		bala.setDeQuienEsElDisparo(0);
     		agregarGrafico(bala);
     		repintarPanel();
     		hiloDisparoEnemigo.addBala(bala);
@@ -499,8 +503,10 @@ public class Logica {
 	 */
 	public void crearPowerUp(){
 		ComponenteGrafico p=obtenerPowerUp();
-		hiloMantenerPowerUp=new HiloMantenerPowerUp(this,p);
-		hiloMantenerPowerUp.start();
+		if(hiloMantenerPowerUp!=null){
+			hiloMantenerPowerUp=new HiloMantenerPowerUp(this,p);
+			hiloMantenerPowerUp.start();
+		}
 	}
 	
 	/**
@@ -529,12 +535,6 @@ public class Logica {
 	
 	public void terminarPowerUpGranada(){
 		eliminarEnemigos=false;
-		hiloEnemigos = new MovimientoEnemigos(this);
-		hiloEnemigos.start();
-		if(muertesAcumuladas<12)
-			muertesAcumuladas+=4;
-		else
-			muertesAcumuladas=16;
 		crearEnemigoInicio();
 		
 	}
