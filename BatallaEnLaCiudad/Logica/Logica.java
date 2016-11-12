@@ -12,6 +12,13 @@ import Grafica.Tanque.*;
 import Grafica.Tanque.Enemigo.*;
 import Grafica.Tanque.Jugador.*;
 import Logica.Hilos.*;
+import Logica.Hilos.Movimiento.Movimiento;
+import Logica.Hilos.Movimiento.MovimientoBalas;
+import Logica.Hilos.Movimiento.MovimientoEnemigos;
+import Logica.Hilos.PowerUp.HiloMantenerPowerUp;
+import Logica.Hilos.PowerUp.HiloPala;
+import Logica.Hilos.PowerUp.HiloPowerUp;
+import Logica.Hilos.PowerUp.HiloTiempoEspera;
 
 public class Logica {
 	
@@ -24,9 +31,9 @@ public class Logica {
 	private Movimiento hiloEnemigos;
 	private Movimiento hiloDisparoJugador;
 	private Movimiento hiloDisparoEnemigo;
-	private Movimiento tiempoEsperaParaFinalizar;
-	private HiloPowerUps hiloPowerup;
-	private HiloPala powerUpPala;
+	private HiloPowerUp tiempoEsperaParaFinalizar;
+	private HiloPowerUp hiloMantenerPowerUp;
+	private HiloPowerUp powerUpPala;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -418,13 +425,20 @@ public class Logica {
 	/* ---------------------------------PowerUp----------------------------------*/
 	
 	/**
-	 * Creo un PowerUp random
+	 * Creo un PowerUp random y lo agrego al mapa
 	 * @return PowerUp creado
 	 */
 	private ComponenteGrafico obtenerPowerUp(){
 		int tipo = (int) new Random().nextInt(6)+1;
-		int localizarX = (int) new Random().nextInt(20);
-		int localizarY = (int) new Random().nextInt(20);
+		boolean espacioVacio=false;
+		int localizarX=0;
+		int localizarY=0;
+		while(!espacioVacio){
+			localizarX = (int) new Random().nextInt(20);
+			localizarY = (int) new Random().nextInt(20);
+			if(getComponente(localizarX, localizarY).puedoIngresarPowerUp())
+				espacioVacio=true;
+		}
 		
 		PowerUp miPowerUp=null;;
 		switch (tipo){
@@ -447,17 +461,32 @@ public class Logica {
 			miPowerUp = new VidaTanque(localizarX,localizarY,this);
 			break;
 		}
+		
+		setComponente(localizarX, localizarY, miPowerUp);
+		miPowerUp.setVisible(true);
+		agregarGrafico(miPowerUp);
 		return miPowerUp;
 	}
 	
 	/**
-	 * Creo un PowerUp y lo agrego al mapa, si no se agarra por 5 segundos desaparece;
+	 * Creo un PowerUp, si no se agarra por 5 segundos desaparece;
 	 * si se agarra entonces se ejecuta
 	 */
 	public void crearPowerUp(){
 		ComponenteGrafico p=obtenerPowerUp();
-		//crear hilo y ingresar a la grafica
-		agregarGrafico(p);
+		hiloMantenerPowerUp=new HiloMantenerPowerUp(this,p);
+		hiloMantenerPowerUp.start();
+	}
+	
+	/**
+	 * Elimina el PowerUp en caso de no haberse agarrado.
+	 */
+	public void eliminarPowerUp(ComponenteGrafico p){
+		int x=p.getPosicionX();
+		int y=p.getPosicionY();
+		eliminarGrafico(getComponente(x, y));
+		mapa[y][x]=new Piso(x, y,this);
+		agregarGrafico(getComponente(x, y));
 	}
 	
 	/**
@@ -553,11 +582,6 @@ public class Logica {
 		// Movimiento posible de todos = true;
 	}
 	
-	/**
-	 * Elimina el PowerUp en caso de no haberse agarrado.
-	 */
-	public void eliminarPowerUps(){
-		hiloPowerup.stop();
-	}
+	
 	
 }

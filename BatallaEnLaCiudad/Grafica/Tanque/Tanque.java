@@ -2,11 +2,9 @@ package Grafica.Tanque;
 
 
 import Grafica.ComponenteGrafico;
-import Grafica.Bloque.Bloque;
 import Logica.Logica;
-import Logica.Hilos.Movimiento;
-import Logica.Hilos.MovimientoBalas;
-import Logica.Hilos.MovimientoFluido;
+import Logica.Hilos.Movimiento.Movimiento;
+import Logica.Hilos.Movimiento.MovimientoFluido;
 
 public abstract class Tanque extends ComponenteGrafico {
 	/*Constructor*/
@@ -103,6 +101,10 @@ public abstract class Tanque extends ComponenteGrafico {
 	}
 	
 	public boolean movimientoPosibleDisparo() {
+		return false;
+	}
+	
+	public boolean puedoIngresarPowerUp(){
 		return false;
 	}
 	

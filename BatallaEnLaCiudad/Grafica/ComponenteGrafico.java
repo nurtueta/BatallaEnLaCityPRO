@@ -164,4 +164,6 @@ public abstract class ComponenteGrafico extends JLabel {
 	public abstract ComponenteGrafico mejorar();
 	
 	public void usaCasco(boolean x){}
+	
+	public abstract boolean puedoIngresarPowerUp();
 }

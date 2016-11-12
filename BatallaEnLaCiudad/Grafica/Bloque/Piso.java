@@ -45,9 +45,11 @@ public class Piso extends Bloque{
 		
 	}
 
-	@Override
 	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public boolean puedoIngresarPowerUp(){
+		return true;
 	}
 }

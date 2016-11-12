@@ -45,9 +45,12 @@ public class Acero extends Bloque{
 			vida--;
 	}
 
-	@Override
 	public ComponenteGrafico mejorar() {
 		return null;
+	}
+	
+	public boolean puedoIngresarPowerUp(){
+		return false;
 	}
 
 }

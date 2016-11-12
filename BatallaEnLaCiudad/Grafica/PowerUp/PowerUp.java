@@ -11,6 +11,7 @@ public abstract class PowerUp extends ComponenteGrafico{
 		super(x,y);
 		logica=l;
 		profundidad=5;
+		vida=1;
 	}
 
 	public boolean movimientoPosible() {
@@ -35,6 +36,10 @@ public abstract class PowerUp extends ComponenteGrafico{
 	
 	public int getCodigo(){
 		return codigo;
+	}
+	
+	public boolean puedoIngresarPowerUp(){
+		return false;
 	}
 
 }

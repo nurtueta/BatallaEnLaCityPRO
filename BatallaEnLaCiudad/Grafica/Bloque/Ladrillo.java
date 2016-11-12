@@ -47,10 +47,12 @@ public class Ladrillo extends Bloque{
 		
 	}
 
-	@Override
 	public ComponenteGrafico mejorar() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public boolean puedoIngresarPowerUp(){
+		return false;
 	}
 
 }

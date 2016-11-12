@@ -8,8 +8,8 @@ import javax.swing.ImageIcon;
 import Grafica.ComponenteGrafico;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
-import Logica.Hilos.MovimientoBalas;
-import Logica.Hilos.MovimientoFluido;
+import Logica.Hilos.Movimiento.MovimientoBalas;
+import Logica.Hilos.Movimiento.MovimientoFluido;
 
 public class Jugador extends Tanque{
 	
