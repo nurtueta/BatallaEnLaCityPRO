@@ -533,11 +533,11 @@ public class Logica {
 	 */
 	public ComponenteGrafico [] getBase(){
 		ComponenteGrafico [] base = new ComponenteGrafico [5];
-		base[0] = getComponente(19,8);
-		base[1] = getComponente(18,8);
-		base[2] = getComponente(18,9);
-		base[3] = getComponente(18,10);
-		base[4] = getComponente(19,10);
+		base[0] = getComponente(8,19);
+		base[1] = getComponente(8,18);
+		base[2] = getComponente(9,18);
+		base[3] = getComponente(10,18);
+		base[4] = getComponente(10,19);
 		
 		return base;
 	}
