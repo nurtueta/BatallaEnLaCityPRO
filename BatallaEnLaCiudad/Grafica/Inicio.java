@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import java.awt.Font;
@@ -25,7 +27,7 @@ import java.io.IOException;
 public class Inicio {
 
 	private JFrame frame;
-
+	private	AudioClip musicaFondo;
 	/**
 	 * Launch the application.
 	 */
@@ -35,6 +37,11 @@ public class Inicio {
 	 * Create the application.
 	 */
 	public Inicio() {
+		java.net.URL url = main.class.getResource("/archivo/StarWarsCreditsMusic.wav");
+	    musicaFondo = Applet.newAudioClip(url);
+	    musicaFondo.loop();
+		
+		
 		initialize();
 	}
 	public	void setVisible(){
@@ -61,7 +68,7 @@ public class Inicio {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				
-				
+				musicaFondo.stop();
 			    frame.disable();
 			    frame.setVisible(false);
 				GUI juego = new GUI();
@@ -85,6 +92,7 @@ public class Inicio {
 				
 				
 
+				musicaFondo.stop();
 				
 				JFrame ayuda = new JFrame("Help!");
 				JLabel help = new JLabel();
