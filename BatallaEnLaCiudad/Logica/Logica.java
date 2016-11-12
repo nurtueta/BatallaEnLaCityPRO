@@ -32,6 +32,7 @@ public class Logica {
 	private HiloPowerUp powerUpPala;
 	private HiloPowerUp powerUpCasco;
 	private HiloPowerUp powerUpTimer;
+	private HiloPowerUp powerUpGranada;
 	
 	private int puntaje=0;
 	private int enemigosMatados=0;
@@ -40,6 +41,7 @@ public class Logica {
 	private boolean termina;
 	private boolean porQueTermina;
 	private boolean detenerTanque;
+	private boolean eliminarEnemigos;
 
 	
 	
@@ -71,6 +73,7 @@ public class Logica {
 		respawn[5]=6;respawn[6]=1;respawn[7]=16;
 		
 		detenerTanque=false;
+<<<<<<< HEAD
 		
 		/*
 		 * Musica Combate
@@ -79,6 +82,9 @@ public class Logica {
 	    musicaJuego = Applet.newAudioClip(url);
 	    musicaJuego.loop();		
 		
+=======
+		eliminarEnemigos=false;
+>>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
 		
 		mapa=new ComponenteGrafico[20][20];
 		//creo el mapa
@@ -448,7 +454,7 @@ public class Logica {
 	 * @return PowerUp creado
 	 */
 	private ComponenteGrafico obtenerPowerUp(){
-		int tipo = (int) new Random().nextInt(6)+1;
+		int tipo = 3;//(int) new Random().nextInt(6)+1;
 		boolean espacioVacio=false;
 		int localizarX=0;
 		int localizarY=0;
@@ -512,6 +518,21 @@ public class Logica {
 	 * Elimina a todos los enemigos
 	 */
 	public void powerUpGranada(){
+		eliminarEnemigos=true;
+		powerUpGranada=new HiloPowerUpGranada(this);
+		powerUpGranada.start();
+	}
+	
+	public boolean eliminarTodosLosEnemigos(){
+		return eliminarEnemigos;
+	}
+	
+	public void terminarPowerUpGranada(){
+		eliminarEnemigos=false;
+		hiloEnemigos = new MovimientoEnemigos(this);
+		hiloEnemigos.start();
+		muertesAcumuladas+=4;
+		crearEnemigoInicio();
 		
 	}
 	

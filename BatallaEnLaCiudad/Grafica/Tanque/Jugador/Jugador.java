@@ -7,10 +7,12 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Grafica.main;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
-import Logica.Hilo.HiloTiempoEspera;
+import Logica.Hilo.Movimiento.MovimientoBalas;
+import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
 
 public class Jugador extends Tanque{
 	
@@ -42,7 +44,7 @@ public class Jugador extends Tanque{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingDerecha.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingArriba.png"));
 				break;
 			case 2:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingIzquierda.png"));
@@ -74,11 +76,15 @@ public class Jugador extends Tanque{
 					this.setIcon(icono);
 					java.net.URL url = main.class.getResource("/archivo/R2D2Scream.wav");
 				    AudioClip clip = Applet.newAudioClip(url);
+<<<<<<< HEAD
 				    logica.stopMusic();
 				    clip.play();
 				    new HiloTiempoEspera(2000);
 					
 					
+=======
+				    clip.play();		
+>>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
 					logica.finalizarJuego(false);
 				}
 			}

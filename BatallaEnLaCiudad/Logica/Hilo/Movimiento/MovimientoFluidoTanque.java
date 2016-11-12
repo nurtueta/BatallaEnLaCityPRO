@@ -21,7 +21,7 @@ public class MovimientoFluidoTanque extends Movimiento {
 		this.y=x.getPosicionY();
 		this.d=d;
 		if(x.getVelMovimiento()==1)
-			velocidad=70;
+			velocidad=80;
 		else
 			if(x.getVelMovimiento()==2)
 				velocidad=50;
@@ -63,54 +63,86 @@ public class MovimientoFluidoTanque extends Movimiento {
 							}
 						break;
 			}
+			
 			componente.posicionImagen(d);
 			if(movio){
-				for(int i=0;i<5;i++){
+				int pixelX=componente.getX();
+				int pixelY=componente.getY();
+				for(int i=0;i<3;i++){
 					switch (d) {
 						case 1:
-							componente.setX(componente.getX()+pixel);
+							pixelX+=pixel;
+							componente.setX(pixelX);
 							sleep(velocidad);
 							break;
 						case 2:
-							componente.setX(componente.getX()-pixel);
+							pixelX-=pixel;
+							componente.setX(pixelX);
 							sleep(velocidad);
 							break;
 						case 3:
-							componente.setY(componente.getY()-pixel);
+							pixelY-=pixel;
+							componente.setY(pixelY);
 							sleep(velocidad);
 							break;
 						case 4:
-							componente.setY(componente.getY()+pixel);
+							pixelY+=pixel;
+							componente.setY(pixelY);
 							sleep(velocidad);
 							break;
 					}
 					miLogica.actualizarPanel();
 				}
-				switch(d){
-					case 1:
-						x++;
-						componente.setPosicionX(x);
-						miLogica.setComponente(componente);
-						miLogica.setComponente(new Piso(x-1,y,miLogica));
-						break;
-					case 2:
-						x--;
-						componente.setPosicionX(x);
-						miLogica.setComponente(componente);
-						miLogica.setComponente(new Piso(x+1,y,miLogica));
-						break;
-					case 3:
-						y--;
-						componente.setPosicionY(y);
-						miLogica.setComponente(componente);
-						miLogica.setComponente(new Piso(x,y+1,miLogica));
-						break;						
-					case 4:
-						y++;
-						componente.setPosicionY(y);
-						miLogica.setComponente(componente);
-						miLogica.setComponente(new Piso(x,y-1,miLogica));
-						break;
+				switch (d){
+				case 1:
+					componente.setPosicionX(x+1);
+					componente.setX(pixelX);
+					miLogica.setComponente(componente);
+					miLogica.setComponente(new Piso(x,y,miLogica));
+					break;
+				case 2: 
+					componente.setPosicionX(x-1);
+					componente.setX(pixelX);
+					miLogica.setComponente(componente);
+					miLogica.setComponente(new Piso(x,y,miLogica));
+					break;
+				case 3: 
+					componente.setPosicionY(y-1);
+					componente.setY(pixelY);
+					miLogica.setComponente(componente);
+					miLogica.setComponente(new Piso(x,y,miLogica));
+					break;
+				case 4: 
+					componente.setPosicionY(y+1);
+					componente.setY(pixelY);
+					miLogica.setComponente(componente);
+					miLogica.setComponente(new Piso(x,y,miLogica));
+					break;
+				}
+				for(int i=0;i<3;i++){
+					switch (d) {
+						case 1:
+							pixelX+=pixel;
+							componente.setX(pixelX);
+							sleep(velocidad);
+							break;
+						case 2:
+							pixelX-=pixel;
+							componente.setX(pixelX);
+							sleep(velocidad);
+							break;
+						case 3:
+							pixelY-=pixel;
+							componente.setY(pixelY);
+							sleep(velocidad);
+							break;
+						case 4:
+							pixelY+=pixel;
+							componente.setY(pixelY);
+							sleep(velocidad);
+							break;
+					}
+					miLogica.actualizarPanel();
 				}
 			}
 			
