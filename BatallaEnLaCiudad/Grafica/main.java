@@ -27,28 +27,50 @@ public class main extends Frame
   CvStory canvas;
   private	AudioClip clip;
   private	boolean termino =false;
-
+  private Frame yo=this;
+  private int i=0;
+  
   public static void main (String[] args) throws IOException
   {
 	  //System.out.println(args.length);
-	  main Pic;
-	  if (args.length!=0)
-		  Pic = new main(args[0]);
-	  else
-		  Pic = new main ("archivo/IntroStory.txt");
-
+	  main aux = new main();
+	  aux.arrancar();
       //try
       //{ Thread.sleep(500);}
       //catch (InterruptedException e){}
     
-    Pic.show();
-    Pic.movePic ();
-    Pic.disable();
-    Pic.setVisible(false);
-    Inicio juego = new Inicio();
-    juego.setVisible();
+	  //  Inicio juego = new Inicio();
+	   // juego.setVisible();
   }
 
+  public 	void arrancar(){
+	  main Pic;
+	  try {
+		  
+		 if (i==0){
+			 Pic = new main ("archivo/IntroStory.txt");
+			 i++;
+		 }
+		 else
+			 Pic = new main ("archivo/creditos.txt");
+		
+		Pic.show();
+	    Pic.movePic ();
+	    Pic.disable();
+	    Pic.setVisible(false);
+	    Inicio juego = new Inicio();
+	    juego.setVisible();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+	  
+	  
+  }
+  public main (){
+	  super();
+  }
   public main(String s) throws IOException
   {
     super ("StarWasIntro");
@@ -58,16 +80,16 @@ public class main extends Frame
     clip = Applet.newAudioClip(url);
     clip.play();
     
+    this.enable();
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){
     	   
-    	   
-    	   System.exit(0);}});
+    	  System.exit(0);
+    	   }});
     //this.setExtendedState(MAXIMIZED_BOTH);
     setSize (800, 600);
-    canvas = new CvStory("archivo/IntroStory.txt");
-    setBounds(100, 100, 900, 630);
     canvas = new CvStory(s);
+    setBounds(100, 100, 900, 630);
     
     add (canvas);
   }
