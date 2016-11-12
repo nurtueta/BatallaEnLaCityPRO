@@ -317,9 +317,6 @@ public class Logica {
 	public void crearJugador(){
     	ingresarJugador();
         agregarGrafico(getJugador());
-        miJugador.subirNivel();
-        miJugador.subirNivel();
-        miJugador.subirNivel();
     }
 	
 	/**
