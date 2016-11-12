@@ -13,7 +13,8 @@ public abstract class Tanque extends ComponenteGrafico {
 	protected int velDisparo;
 	protected int deQuienEs;
 	protected Logica logica;
-	boolean puedeMover;
+	protected boolean puedeMover;
+	protected int ultimoDisparo;
 	
 	protected Movimiento hiloFluido;
 	
@@ -21,15 +22,15 @@ public abstract class Tanque extends ComponenteGrafico {
 	public	Tanque(int x,int y){
 		super(x,y);		
 		puedeMover=true;;
+		ultimoDisparo=1;
 	}
 	
-	public boolean mover(int direccion) {
+	public void mover(int direccion) {
 		if(puedeMover){
-			hiloFluido=new MovimientoFluido(this, direccion,logica);
+			hiloFluido=new MovimientoFluidoTanque(this, direccion,logica);
 			puedeMover=false;
 			hiloFluido.start();
 		}
-		return false;
 	}	
 	
 	public int getVelMovimiento(){
@@ -38,10 +39,6 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	public int getDisparosSimultaneos(){
 		return disparosSimultaneos;
-	}
-
-	public void setPuedeMover(){
-		puedeMover=true;
 	}
 	
 	public ComponenteGrafico crearDisparo(){
@@ -109,6 +106,10 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	public boolean mejorar() {
 		return false;
+	}
+	
+	public boolean getPuedeMover(){
+		return puedeMover;
 	}
 	
 }

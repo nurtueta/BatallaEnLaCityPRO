@@ -34,9 +34,6 @@ public abstract class ComponenteGrafico extends JLabel {
 		super();
 		miX = x;
 		miY = y;
-		movimientoPosible=true;
-		movimientoPosibleDisparo=true;
-		
 		//seteo el componente grafico en el lugar correspondiente
 		pixelX=miX*ancho;
 		pixelY=miY*alto;
@@ -93,8 +90,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		
 	}
 
-	public boolean mover(int direccion){
-		return false;
+	public void mover(int direccion){
+		
 	}
 	
 	public int getPuntos(){
@@ -142,14 +139,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		return 0;
 	}
 	
-	public void setPuedeMover(){
-		movimientoPosible=true;
-		movimientoPosibleDisparo=true;
-	}
-	
-	public void setMovimientoPosible(){
-		movimientoPosible=false;
-		movimientoPosibleDisparo=false;
+	public void setMovimientoPosible(boolean x){
+		movimientoPosible=x;
 	}
 	
 	public void subirNivel(){}
@@ -166,4 +157,10 @@ public abstract class ComponenteGrafico extends JLabel {
 	public void usaCasco(boolean x){}
 	
 	public abstract boolean puedoIngresarPowerUp();
+	
+	public void puedeMover(){}
+	
+	public boolean getPuedeMover(){
+		return false;
+	}
 }

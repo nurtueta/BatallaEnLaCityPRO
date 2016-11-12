@@ -34,9 +34,6 @@ public class Ladrillo extends Bloque{
 		setVisible(false);
 	}
 
-	public boolean mover(int direcion) {
-		return false;
-	}
 	
 	public boolean movimientoPosibleDisparo() {
 		return false;

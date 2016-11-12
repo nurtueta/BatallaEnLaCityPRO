@@ -16,7 +16,7 @@ public class Piso extends Bloque{
 	public Piso(int x,int y,Logica l) {
 		super(x,y,l);
 		profundidad=2;
-		
+		movimientoPosible=true;
 		vida=1;
 	
 	}
@@ -32,13 +32,9 @@ public class Piso extends Bloque{
 	public void recibirDisparo() {
 		
 	}
-
-	public boolean mover(int direcion) {
-		return false;
-	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return movimientoPosibleDisparo;
+		return true;
 	}
 
 	public void colicion(int deQuienEs) {

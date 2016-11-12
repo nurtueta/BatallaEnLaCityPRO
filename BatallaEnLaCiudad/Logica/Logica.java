@@ -300,13 +300,15 @@ public class Logica {
 	 */
 	public void crearDisparoJugador(){
 		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
-			ComponenteGrafico bala=miJugador.crearDisparo();
-			clip.play();
-			if(bala!=null){
-	    		agregarGrafico(bala);
-	    		repintarPanel();
-	    		hiloDisparoJugador.addBala(bala);
-	    	}
+			//if(miJugador.getPuedeMover()){
+				ComponenteGrafico bala=miJugador.crearDisparo();
+				clip.play();
+				if(bala!=null){
+		    		agregarGrafico(bala);
+		    		repintarPanel();
+		    		hiloDisparoJugador.addBala(bala);
+				}
+			//}
 		}
 	}
 	
@@ -342,7 +344,7 @@ public class Logica {
 	 * @param y coordenada y
 	 * @return enemigo creado
 	 */
-	private ComponenteGrafico crearEnemigo(int x,int y){
+	private ComponenteGrafico crearEnemigoRandom(int x,int y){
 		int tipoACrear = (int) new Random().nextInt(4)+1;
 		Enemigo enemigo=null;
 		switch(tipoACrear){
@@ -371,15 +373,15 @@ public class Logica {
 	/**
 	 * Crea un enemigo random y lo ingresa en alguno de los respawn
 	 */
-	public void crearEnenmigo(){
+	public void crearEnemigo(){
 		int tipoACrear;
-		boolean pudoCrear=true;
-		while(pudoCrear){
+		boolean pudoCrear=false;
+		while(!pudoCrear){
 			tipoACrear = (int) new Random().nextInt(4);
-			ComponenteGrafico enemigo=crearEnemigo(respawn[tipoACrear],respawn[tipoACrear+4]);
+			ComponenteGrafico enemigo=crearEnemigoRandom(respawn[tipoACrear],respawn[tipoACrear+4]);
 			if(enemigo!=null){
 				agregarGrafico(enemigo);
-				pudoCrear=false;
+				pudoCrear=true;
 			}
 		}
 	}
@@ -389,19 +391,19 @@ public class Logica {
 	 * cada uno en su respectivo respawn
 	 */
 	public void crearEnemigoInicio(){
-		ComponenteGrafico enemigo=crearEnemigo(respawn[0],respawn[4]);
+		ComponenteGrafico enemigo=crearEnemigoRandom(respawn[0],respawn[4]);
 		if(enemigo!=null){
 			agregarGrafico(enemigo);
 		}
-		enemigo=crearEnemigo(respawn[1],respawn[1+4]);
+		enemigo=crearEnemigoRandom(respawn[1],respawn[1+4]);
 		if(enemigo!=null){
 			agregarGrafico(enemigo);
 		}
-		enemigo=crearEnemigo(respawn[2],respawn[2+4]);
+		enemigo=crearEnemigoRandom(respawn[2],respawn[2+4]);
 		if(enemigo!=null){
 			agregarGrafico(enemigo);
 		}
-		enemigo=crearEnemigo(respawn[3],respawn[3+4]);
+		enemigo=crearEnemigoRandom(respawn[3],respawn[3+4]);
 		if(enemigo!=null){
 			agregarGrafico(enemigo);
 		}
@@ -423,7 +425,7 @@ public class Logica {
 				crearPowerUp();
 				enemigosMatados = 0;
 			}
-			crearEnenmigo();
+			crearEnemigo();
 		}
 	}
 

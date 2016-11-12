@@ -12,21 +12,26 @@ import java.applet.AudioClip;
 import Grafica.ComponenteGrafico;
 import Grafica.Bloque.Bloque;
 import Logica.Logica;
+import Logica.Hilo.Movimiento.Movimiento;
+import Logica.Hilo.Movimiento.MovimientoFluidoDisparo;
+import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
 
 public class Disparo extends ComponenteGrafico{
 	/**
 	 * 
 	 */
 	protected int deQuienEs;
-	protected Logica manejo;
+	protected Movimiento hiloFluido;
+	protected boolean puedeMover;
 	
 	public Disparo(int x,int y,int d,Logica l,int deQuienEs)
 	{	
 		super(x,y);
 		profundidad=3;
-		
+		vida=1;
+		puedeMover=true;
 		this.deQuienEs=deQuienEs;
-		manejo=l;
+		logica=l;
 		direccion = d;
 		ImageIcon fot = new ImageIcon();
 		switch (direccion){
@@ -71,54 +76,16 @@ public class Disparo extends ComponenteGrafico{
 		
 	}
 	
-	public boolean mover(int direcion)
-	{	
-		boolean seMovio=true;
-		boolean seCreo=true;
-		switch (direccion) {
-			case 1: 
-				if(getPosicionX()!=19){
-					this.setPosicionX(getPosicionX()+1);
-					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())     
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-			case 2: 
-				if(getPosicionX()!=0){
-					this.setPosicionX(getPosicionX()-1);
-					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-			case 3: 
-				if(getPosicionY()!=0){
-					this.setPosicionY(getPosicionY()-1);
-					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())	
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-			case 4: 
-				if(getPosicionY()!=19){
-					this.setPosicionY(getPosicionY()+1);
-					if(!manejo.getComponente(this.getPosicionX(), this.getPosicionY()).movimientoPosibleDisparo())
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
+	public void mover(int direcion){	
+		if(puedeMover){
+			hiloFluido=new MovimientoFluidoDisparo(this, direcion,logica);
+			puedeMover=false;
+			hiloFluido.start();
 		}
-		if(!seMovio && seCreo){
-			manejo.eliminarColicion(getPosicionX(),getPosicionY(),deQuienEs);
-			manejo.eliminarGrafico(this);
-		}
-		if(!seCreo){
-			manejo.eliminarGrafico(this);
-			seMovio=false;
-		}
-		manejo.actualizarPanel();
-		return seMovio;
+	}
+	
+	public void puedeMover(){
+		puedeMover=true;
 	}
 	
 	public boolean movimientoPosibleDisparo() {
@@ -126,7 +93,7 @@ public class Disparo extends ComponenteGrafico{
 	}
 
 	public void colicion(int deQuienEs) {
-		
+		vida=0;
 	}
 
 	public boolean mejorar() {

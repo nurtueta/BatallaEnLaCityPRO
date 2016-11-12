@@ -33,10 +33,6 @@ public class Agua extends Bloque {
 		
 	}
 
-	public boolean mover(int direcion) {
-		return false;
-	}
-
 	public boolean movimientoPosibleDisparo() {
 		return true;
 	}
