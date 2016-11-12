@@ -71,6 +71,7 @@ public class MovimientoFluidoTanque extends Movimiento {
 				for(int i=0;i<7;i++){
 					if(componente.getVida()==0){
 						i=7;
+						miLogica.getComponente(x, y+1).setMovimientoPosible(true);
 						d=0;
 					}
 					else
