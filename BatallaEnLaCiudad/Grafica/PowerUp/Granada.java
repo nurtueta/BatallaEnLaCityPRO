@@ -21,9 +21,9 @@ public class Granada extends PowerUp {
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1){
+		if(deQuienEs!=0){
+			vida=0;
 			logica.powerUpGranada();
-			System.out.println("PowerUp GRANADA");
 		}
 	}
 

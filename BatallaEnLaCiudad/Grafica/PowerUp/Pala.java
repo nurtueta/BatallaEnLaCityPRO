@@ -21,9 +21,9 @@ public class Pala extends PowerUp{
 
 	@Override
 	public void colicion(int deQuienEs) {
-		if(deQuienEs == 1){
+		if(deQuienEs != 0){
+			vida=0;
 			logica.powerUpPala();
-			System.out.println("PowerUp PALA");
 		}
 	}
 

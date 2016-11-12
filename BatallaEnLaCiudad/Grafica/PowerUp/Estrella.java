@@ -22,8 +22,8 @@ public class Estrella extends PowerUp{
 	@Override
 	public void colicion(int deQuienEs) {
 		if(deQuienEs != 0){
-			logica.powerUpEstrella();
 			vida=0;
+			logica.powerUpEstrella();
 		}
 	}
 	

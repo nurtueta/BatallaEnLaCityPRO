@@ -37,6 +37,7 @@ public class Logica {
 	private int []respawn;
 	private boolean termina;
 	private boolean porQueTermina;
+	private boolean detenerTanque;
 
 	
 	
@@ -66,6 +67,8 @@ public class Logica {
 		respawn=new int[8];
 		respawn[0]=0;respawn[1]=0;respawn[2]=19;respawn[3]=16;respawn[4]=0;
 		respawn[5]=6;respawn[6]=0;respawn[7]=16;
+		
+		detenerTanque=false;
 				
 		mapa=new ComponenteGrafico[20][20];
 		//creo el mapa
@@ -529,9 +532,7 @@ public class Logica {
 	 * @return ComponenteGrafico []
 	 */
 	public ComponenteGrafico [] getBase(){
-		
 		ComponenteGrafico [] base = new ComponenteGrafico [5];
-		//Guardo en el arreglo las componentes que rodean el aguila como estructura auxiliar para recorrer.
 		base[0] = getComponente(19,8);
 		base[1] = getComponente(18,8);
 		base[2] = getComponente(18,9);
@@ -559,12 +560,16 @@ public class Logica {
 	 * Detiene a todos los enemigos por 5 segundos
 	 */
 	public void powerUpTimer(){
-		// Movimiento posible de todos = false
-		//HiloTimer h = new HiloTimer();
-		//h.start();
-		// Movimiento posible de todos = true;
+		setDetenerTanque(true);
 	}
 	
+	public void setDetenerTanque(boolean x){
+		detenerTanque=x;
+	}
+	
+	public boolean getDetenerTanque(){
+		return detenerTanque;
+	}
 	
 	
 }

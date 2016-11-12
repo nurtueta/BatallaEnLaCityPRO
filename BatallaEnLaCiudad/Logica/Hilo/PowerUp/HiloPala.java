@@ -19,8 +19,8 @@ public class HiloPala extends HiloPowerUp{
 	{
 		try{
 			sleep(tiempo);
-			if(!miLogica.finDelJuego())
-				for(ComponenteGrafico c : miLogica.getBase())
+			for(ComponenteGrafico c : miLogica.getBase())
+				if(!miLogica.finDelJuego())
 					if(c.mejorar()){
 						miLogica.eliminarGrafico(c);
 						miLogica.setComponente(new Ladrillo(c.getPosicionX(), c.getPosicionY(),miLogica));
