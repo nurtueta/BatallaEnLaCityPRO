@@ -98,7 +98,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		return puntaje;
 	}
 	
-	public final int getVida(){
+	public int getVida(){
 		return vida;
 	}
 	

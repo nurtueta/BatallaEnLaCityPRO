@@ -3,7 +3,7 @@ package Grafica.Tanque.Jugador;
 public class Nivel2 extends Nivel{
 
 	public Nivel2() {
-		super(3, 2, -1, 1);
+		super(3, 2, 1, 1);
 	}
 
 	@Override

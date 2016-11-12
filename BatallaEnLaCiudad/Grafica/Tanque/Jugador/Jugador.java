@@ -21,6 +21,7 @@ public class Jugador extends Tanque{
 	
 	protected boolean casco;
 	protected int state;
+	protected Nivel nivel;
 	
 	/*Constructor*/
 	
@@ -30,10 +31,11 @@ public class Jugador extends Tanque{
 		logica=l;
 		posicionImagen(1);
 		casco=false;
-		velMovimiento=2;
-		velDisparo=1;
-		disparosSimultaneos=1;
-		vida=1;
+		//velMovimiento=2;
+		//velDisparo=1;
+		//disparosSimultaneos=1;
+		//vida=1;
+		nivel = new Nivel1();
 		deQuienEs=1;
 		state=1;
 	}
@@ -70,8 +72,8 @@ public class Jugador extends Tanque{
 	public void colicion(int deQuienEs) {
 		if(deQuienEs==0){
 			if(!casco){
-				vida--;
-				if(vida==0){
+				nivel.bajarVida();
+				if(nivel.getVida()==0){
 					ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
 					Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 					this.setIcon(icono);
@@ -92,6 +94,7 @@ public class Jugador extends Tanque{
 	}
 	
 	public void subirNivel(){
+		/*
 		switch(state){
 		case 1:
 			velMovimiento=3;
@@ -118,9 +121,15 @@ public class Jugador extends Tanque{
 			state=4;
 			break;
 		}
+		*/
+		nivel = nivel.mejorarNivel();
+		
+		//if(nivel.getVelocidadMov()==3)
+		//	System.out.println("Subio la veloc de movimiento, SUBI correctamente a nivel 2");
 	}
 	
 	public void bajarNivel(){
+		/*
 		switch(state){
 		case 2:
 			velMovimiento=2;
@@ -147,6 +156,14 @@ public class Jugador extends Tanque{
 			state=3;
 			break;
 		}
+		*/
+		Nivel nuevoNivel = nivel.bajarNivel();
+		
+		if(nuevoNivel != null)
+			nivel = nuevoNivel;
+		
+		//if(nivel.getVelocidadMov()==2)
+		//	System.out.println("Bajo la veloc de movimiento, BAJO correctamente a nivel 1");
 	}
 
 	public int getState(){
@@ -188,6 +205,26 @@ public class Jugador extends Tanque{
 			state=4;
 			break;
 		}
+	}
+	
+	public int getVida(){
+		return nivel.getVida();
+	}
+	
+	public int getDisparosSimultaneos(){
+		return nivel.getDisparosSimultaneos();
+	}
+	
+	public int getVelMovimiento(){
+		return nivel.getVelocidadMov();
+	}
+	
+	public int getVelocidadDisparo(){
+		return nivel.getVelocidadDisparo();
+	}
+	
+	public Nivel getNivel(){
+		return nivel;
 	}
 	
 	public void puedeMover(){

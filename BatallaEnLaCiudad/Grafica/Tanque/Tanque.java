@@ -36,10 +36,11 @@ public abstract class Tanque extends ComponenteGrafico {
 	public int getVelMovimiento(){
 		return velMovimiento;
 	}
-	
+	/*
 	public int getDisparosSimultaneos(){
 		return disparosSimultaneos;
 	}
+	*/
 	
 	public ComponenteGrafico crearDisparo(){
 		boolean seMovio=true;
