@@ -32,7 +32,7 @@ public class main extends Frame
   public static void main (String[] args) throws IOException
   {
 
-    main Pic = new main ();
+    main Pic = new main ("archivo/IntroStory.txt");
 
       //try
       //{ Thread.sleep(500);}
@@ -46,10 +46,9 @@ public class main extends Frame
     juego.setVisible();
   }
 
-  public main() throws IOException
+  public main(String s) throws IOException
   {
     super ("StarWasIntro");
-
 
     
     
@@ -64,8 +63,8 @@ public class main extends Frame
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});
     //this.setExtendedState(MAXIMIZED_BOTH);
-    setSize (600, 500);
-    canvas = new CvStory();
+    setSize (800, 600);
+    canvas = new CvStory("archivo/IntroStory.txt");
     
     add (canvas);
   }
@@ -108,10 +107,10 @@ class CvStory extends Canvas
   private boolean readData = false;
   Random generator = new Random ();
   
-  CvStory () throws IOException
+  CvStory (String s) throws IOException
   {
 	
-	ReadFile f = new ReadFile ("archivo/IntroStory.txt");
+	ReadFile f = new ReadFile (s);
 
     storyTxt = f.getStory ();
     storySize = f.getSize ();
@@ -127,8 +126,8 @@ class CvStory extends Canvas
      stars[a][2] = (Math.abs (generator.nextInt ()) % 3) + 1;
      stars[a][3] = stars[a][2];
      
-     stars[a][0] = (Math.abs (generator.nextInt ()) % 599) + 10;
-     stars[a][1] = (Math.abs (generator.nextInt ()) % 499) + 10;          
+     stars[a][0] = (Math.abs (generator.nextInt ()) % 799) + 10;
+     stars[a][1] = (Math.abs (generator.nextInt ()) % 599) + 10;          
 }
     
     BufferedImage bufferImg = new BufferedImage (650, 900,
@@ -165,8 +164,8 @@ class CvStory extends Canvas
 
     double t = 0.0, Eye = 635.0;
     
-    int originX = maxX / 2,
-        originY = maxY / 2;
+    int originX = (int) ((int)maxX / 2.5),
+        originY = maxY/2 ;
         
     BufferedImage bufferImg = new BufferedImage (getWidth(), getHeight(),
                                                  Image.SCALE_DEFAULT);

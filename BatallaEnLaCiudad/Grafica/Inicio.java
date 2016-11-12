@@ -19,6 +19,7 @@ import java.applet.AudioClip;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -116,6 +117,26 @@ public class Inicio {
 		btnAbout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				musicaFondo.stop();
+
+				try {
+					
+					main creditos = new main("/archivo/creditos.txt");
+					creditos.setVisible(true);
+					creditos.setBounds(100,100,800,600);
+					creditos.show();
+					creditos.movePic ();
+					creditos.disable();
+				    creditos.setVisible(false);
+				    musicaFondo.play();
+				    
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
 				
 				JOptionPane.showMessageDialog(frame, "De los creadores de: vamo que zafamo. \n viene... ZAFAMOS2 !");
 
