@@ -1,11 +1,14 @@
 package Grafica.Tanque.Jugador;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import Grafica.ComponenteGrafico;
+import Grafica.main;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
 import Logica.Hilo.Movimiento.MovimientoBalas;
@@ -41,7 +44,7 @@ public class Jugador extends Tanque{
 		ImageIcon fot=new ImageIcon();
 		switch (i){
 			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingDerecha.png"));
+				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingArriba.png"));
 				break;
 			case 2:
 				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingIzquierda.png"));
@@ -67,8 +70,18 @@ public class Jugador extends Tanque{
 		if(deQuienEs==0){
 			if(!casco){
 				vida--;
-				if(vida==0)
+				if(vida==0){
+					ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
+					Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+					this.setIcon(icono);
+					java.net.URL url = main.class.getResource("/archivo/R2D2Scream.wav");
+				    AudioClip clip = Applet.newAudioClip(url);
+				    clip.play();
+				    MovimientoFluido aux = new MovimientoFluido();
+					
+					
 					logica.finalizarJuego(false);
+				}
 			}
 		}
 	}

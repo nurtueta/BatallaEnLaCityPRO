@@ -15,6 +15,15 @@ public class MovimientoFluido extends Movimiento {
 	
 	protected ComponenteGrafico componente;
 
+	public	MovimientoFluido(){
+		super(null);
+		try {
+			sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public MovimientoFluido(ComponenteGrafico x,int d,Logica l){
 		super(null);
 		this.x=x.getPosicionX();
