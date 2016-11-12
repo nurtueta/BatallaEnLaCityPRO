@@ -18,6 +18,8 @@ public class GUI extends JFrame {
 	 private boolean movio;
 	 private JLabel panelPuntaje;
 	 private JLabel panelRestantes;
+	 private JLabel panelVidas;
+	 private JLabel panelNivel;
 	 private boolean teclado=true;
 	 private AudioClip musicaJuego;
 	   
@@ -60,9 +62,7 @@ public class GUI extends JFrame {
 			contentPane.add(panel);
 			panel.setLayout(null);
 			
-			
-			
-			
+			//agrego panel para el puntaje
 			JLabel panelPuntaje_1 = new JLabel();
 			panelPuntaje_1.setVerticalAlignment(SwingConstants.TOP);
 			panelPuntaje_1.setBounds(10, 0, 246, 114);
@@ -73,12 +73,12 @@ public class GUI extends JFrame {
 			panelPuntaje_1.setText("Puntos: \n");
 			this.panelPuntaje=panelPuntaje_1;
 			
+			//agrego panel para enemigos restantes
 			JLabel panelRestantes_2 = new JLabel();
 			panelRestantes_2.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_2.setHorizontalAlignment(SwingConstants.LEFT);
-			panelRestantes_2.setBounds(10, 167, 277, 188);
+			panelRestantes_2.setBounds(10, 177, 277, 188);
 			panel.add(panelRestantes_2);
-			
 			panelRestantes_2.setFont(new Font("Harrington", Font.ITALIC, 25));
 			panelRestantes_2.setForeground(Color.RED);
 			contentPane.setLayer(panelRestantes_2, 5);
@@ -88,13 +88,37 @@ public class GUI extends JFrame {
 			JLabel panelRestantes_3 = new JLabel();
 			panelRestantes_3.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_3.setHorizontalAlignment(SwingConstants.LEFT);
-			panelRestantes_3.setBounds(10, 140, 277, 188);
+			panelRestantes_3.setBounds(10, 150, 277, 188);
 			panel.add(panelRestantes_3);
-			
 			panelRestantes_3.setFont(new Font("Harrington", Font.ITALIC, 25));
 			panelRestantes_3.setForeground(Color.RED);
 			contentPane.setLayer(panelRestantes_3, 5);
 			panelRestantes_3.setText("Restan :");
+			
+			//agrego panel de la vidas
+			JLabel panelRestantes_4 = new JLabel();
+			panelRestantes_4.setVerticalAlignment(SwingConstants.TOP);
+			panelRestantes_4.setHorizontalAlignment(SwingConstants.LEFT);
+			panelRestantes_4.setBounds(10, 50, 277, 188);
+			panel.add(panelRestantes_4);
+			panelRestantes_4.setFont(new Font("Harrington", Font.ITALIC, 25));
+			panelRestantes_4.setForeground(Color.RED);
+			contentPane.setLayer(panelRestantes_2, 5);
+			panelRestantes_4.setText("Vidas : 0");
+			this.panelVidas=panelRestantes_4;
+			
+			//agrego panel de nivel
+			JLabel panelRestantes_5 = new JLabel();
+			panelRestantes_5.setVerticalAlignment(SwingConstants.TOP);
+			panelRestantes_5.setHorizontalAlignment(SwingConstants.LEFT);
+			panelRestantes_5.setBounds(10, 100, 277, 188);
+			panel.add(panelRestantes_5);
+			panelRestantes_5.setFont(new Font("Harrington", Font.ITALIC, 25));
+			panelRestantes_5.setForeground(Color.RED);
+			contentPane.setLayer(panelRestantes_2, 5);
+			panelRestantes_5.setText("Vidas : 0");
+			this.panelNivel=panelRestantes_5;
+			
 			
 			JLabel panelDerecha = new JLabel("");
 			panelDerecha.setBounds(0, 0, 300, 600);
@@ -107,6 +131,8 @@ public class GUI extends JFrame {
 			mapaLogica.generarPanel();
 	        mapaLogica.crearJugador();
 	        mapaLogica.crearEnemigoInicio();
+	        mapaLogica.addPuntaje(0);
+	        
 	        mapaLogica.addPuntaje(0);
 	        
 	        setVisible(true);
@@ -195,6 +221,14 @@ public class GUI extends JFrame {
 	   
 	 public void agregarGrafico(ComponenteGrafico x){
 	  	contentPane.add(x,new Integer(x.getDepth()));
+	 }
+	 
+	 public JLabel getPanelVidas(){
+		 return panelVidas;
+	 }
+	 
+	 public JLabel getPanelNivel(){
+		 return panelNivel;
 	 }
 	 
 	 public	JLabel getPanelPuntaje(){

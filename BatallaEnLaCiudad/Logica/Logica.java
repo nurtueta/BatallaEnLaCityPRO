@@ -276,6 +276,11 @@ public class Logica {
 			miJugador.aumentarVida();
 		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
 		grafica.getPanelRestantes().setText(""+ (16-muertesAcumuladas)+" naves");
+		if(miJugador.getVida()>=0)
+			grafica.getPanelVidas().setText("Vidas :"+miJugador.getVida());
+		else
+			grafica.getPanelVidas().setText("Vidas :"+0);
+		grafica.getPanelNivel().setText("Nivel : "+miJugador.getNivel());
 		repintarPanel();
 	}
 	
