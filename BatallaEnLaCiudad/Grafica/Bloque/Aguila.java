@@ -39,10 +39,6 @@ public class Aguila extends Bloque {
 		
 	}
 
-	public boolean mover(int direcion) {
-		return false;
-	}
-
 	public void colicion(int deQuienEs) {
 		logica.finalizarJuego(false);
 	}

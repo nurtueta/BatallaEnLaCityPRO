@@ -181,7 +181,7 @@ public class GUI extends JFrame {
 		}
 		else{
 			
-			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory2.jpg"));
+			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory.jpg"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
 			JLabel algo = new JLabel();
 			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());

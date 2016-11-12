@@ -21,6 +21,7 @@ public class Arbol extends Bloque{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=1;
+		movimientoPosible=true;
 	}
 	
 	public boolean movimientoPosible() {
@@ -35,12 +36,8 @@ public class Arbol extends Bloque{
 		
 	}
 	
-	public boolean mover(int direcion) {
-		return false;
-	}
-	
 	public boolean movimientoPosibleDisparo() {
-		return movimientoPosibleDisparo;
+		return true;
 	}
 
 	public void colicion(int deQuienEs) {

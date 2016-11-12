@@ -9,7 +9,7 @@ import Grafica.ComponenteGrafico;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
 import Logica.Hilo.Movimiento.MovimientoBalas;
-import Logica.Hilo.Movimiento.MovimientoFluido;
+import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
 
 public class Jugador extends Tanque{
 	
@@ -174,6 +174,14 @@ public class Jugador extends Tanque{
 			state=4;
 			break;
 		}
+	}
+	
+	public void puedeMover(){
+		puedeMover=true;
+	}
+	
+	public boolean getPuedeMover(){
+		return puedeMover;
 	}
 	
 }

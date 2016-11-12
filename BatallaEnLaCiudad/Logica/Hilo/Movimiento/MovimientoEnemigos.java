@@ -10,6 +10,7 @@ public class MovimientoEnemigos extends Movimiento{
 
 	protected ArrayList<ComponenteGrafico> enemigosIngresar;
 	int direccion;
+	int accion;
 	Random rnd;
 	boolean agregarEnemigo;
 	ArrayList<ComponenteGrafico> eliminar;
@@ -26,49 +27,38 @@ public class MovimientoEnemigos extends Movimiento{
 	{
 		try{
 			while(!miLogica.finDelJuego()){
-					
-					sleep(700);
-					if(!miLogica.finDelJuego() && !miLogica.getDetenerTanque()){
+					if(!miLogica.getDetenerTanque()){
 						eliminar=new ArrayList<ComponenteGrafico>();
 						agregarEnemigo=false;
 						for(ComponenteGrafico enemigo: enemigos){
-							sleep(5);
+							sleep(20);
 							direccion = (int) (rnd.nextInt(4)+1);
-							if(enemigo.getVida()==0)
-								eliminar.add(enemigo);
-							else
-								enemigo.mover(direccion);
+							accion= (int) (rnd.nextInt(4));
+							if(accion!=0){
+								if(enemigo.getVida()==0)
+									eliminar.add(enemigo);
+								else
+									enemigo.mover(direccion);
+							}else{
+								if(enemigo.getPuedeMover()){
+									miLogica.crearDisparoEnemigo(enemigo);
+									sleep(20);
+								}
+							}
 						}
 						agregarEnemigo=true;
 						
-						for(ComponenteGrafico enemigo: eliminar){
-							miLogica.eliminarGrafico(enemigo);
+						for(ComponenteGrafico enemigo: eliminar)
 							enemigos.remove(enemigo);
-						}
 						
 						for(ComponenteGrafico bala: enemigosIngresar)
 							enemigos.add(bala);
-						enemigosIngresar=new ArrayList<ComponenteGrafico>();
-					}
-					sleep(700);
-					if(!miLogica.finDelJuego() && !miLogica.getDetenerTanque()){
-						agregarEnemigo=false;
-						for(ComponenteGrafico enemigo: enemigos){
-							sleep(5);
-							miLogica.crearDisparoEnemigo(enemigo);
-						}
-						agregarEnemigo=true;
 						
-						for(ComponenteGrafico bala: enemigosIngresar)
-							enemigos.add(bala);
 						enemigosIngresar=new ArrayList<ComponenteGrafico>();
+						
 					}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
-	}
-
-	public void addBala(ComponenteGrafico x) {
-		
 	}
 	
 	public void addEnemigo(ComponenteGrafico x) {

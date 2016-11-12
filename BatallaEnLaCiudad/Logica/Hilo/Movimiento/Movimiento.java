@@ -20,9 +20,9 @@ public abstract class Movimiento extends Thread{
 		enemigos=new ArrayList<ComponenteGrafico>();
 	}
 	
-	public abstract void addBala(ComponenteGrafico x);
+	public void addBala(ComponenteGrafico x){}
 	
-	public abstract void addEnemigo(ComponenteGrafico x);
+	public void addEnemigo(ComponenteGrafico x){}
 	
 	public  ArrayList<ComponenteGrafico> getBalas(){
 		return balas;

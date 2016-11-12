@@ -4,7 +4,7 @@ import Grafica.ComponenteGrafico;
 import Grafica.Bloque.Piso;
 import Logica.Logica;
 
-public class MovimientoFluido extends Movimiento {
+public class MovimientoFluidoTanque extends Movimiento {
 		
 	int x;
 	int y;
@@ -15,14 +15,19 @@ public class MovimientoFluido extends Movimiento {
 	
 	protected ComponenteGrafico componente;
 
-	public MovimientoFluido(ComponenteGrafico x,int d,Logica l){
-		super(null);
+	public MovimientoFluidoTanque(ComponenteGrafico x,int d,Logica l){
+		super(l);
 		this.x=x.getPosicionX();
 		this.y=x.getPosicionY();
 		this.d=d;
-		velocidad=30/x.getVelMovimiento();
+		if(x.getVelMovimiento()==1)
+			velocidad=70;
+		else
+			if(x.getVelMovimiento()==2)
+				velocidad=50;
+			else
+				velocidad=30;
 		pixel=5;
-		miLogica=l;
 		componente=x;
 	}
 	
@@ -36,25 +41,25 @@ public class MovimientoFluido extends Movimiento {
 				case 1: if(x<(20-1))
 							if(miLogica.getComponente(x+1, y).movimientoPosible()){
 								movio=true;
-								miLogica.getComponente(x+1, y).setMovimientoPosible();
+								miLogica.getComponente(x+1, y).setMovimientoPosible(false);
 							}
 						break;
 				case 2: if(x>0)
 							if(miLogica.getComponente(x-1, y).movimientoPosible()){
 								movio=true;
-								miLogica.getComponente(x-1, y).setMovimientoPosible();
+								miLogica.getComponente(x-1, y).setMovimientoPosible(false);
 							}
 						break;
 				case 3: if(y>0)
 							if(miLogica.getComponente(x, y-1).movimientoPosible()){
 								movio=true;
-								miLogica.getComponente(x, y-1).setMovimientoPosible();
+								miLogica.getComponente(x, y-1).setMovimientoPosible(false);
 							}
 						break;
 				case 4: if(y<(20-1))
 							if(miLogica.getComponente(x, y+1).movimientoPosible()){
 								movio=true;
-								miLogica.getComponente(x, y+1).setMovimientoPosible();
+								miLogica.getComponente(x, y+1).setMovimientoPosible(false);
 							}
 						break;
 			}
@@ -63,19 +68,19 @@ public class MovimientoFluido extends Movimiento {
 				for(int i=0;i<5;i++){
 					switch (d) {
 						case 1:
-							miLogica.getComponente(x, y).setX(miLogica.getComponente(x, y).getX()+pixel);
+							componente.setX(componente.getX()+pixel);
 							sleep(velocidad);
 							break;
 						case 2:
-							miLogica.getComponente(x, y).setX(miLogica.getComponente(x, y).getX()-pixel);
+							componente.setX(componente.getX()-pixel);
 							sleep(velocidad);
 							break;
 						case 3:
-							miLogica.getComponente(x, y).setY(miLogica.getComponente(x, y).getY()-pixel);
+							componente.setY(componente.getY()-pixel);
 							sleep(velocidad);
 							break;
 						case 4:
-							miLogica.getComponente(x, y).setY(miLogica.getComponente(x, y).getY()+pixel);
+							componente.setY(componente.getY()+pixel);
 							sleep(velocidad);
 							break;
 					}
@@ -105,21 +110,16 @@ public class MovimientoFluido extends Movimiento {
 						componente.setPosicionY(y);
 						miLogica.setComponente(componente);
 						miLogica.setComponente(new Piso(x,y-1,miLogica));
-						break;	
+						break;
 				}
-				
-				
 			}
-			componente.setPuedeMover();
+			
+			componente.puedeMover();
+
+			sleep(10);
 			this.stop();
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
 	}
 
-	public void addBala(ComponenteGrafico x) {
-	}
-	
-	public void addEnemigo(ComponenteGrafico x){}
-
 }
-

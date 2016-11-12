@@ -31,11 +31,7 @@ public class Acero extends Bloque{
 	public void recibirDisparo() {
 		
 	}
-
-	public boolean mover(int direcion) {
-		return false;
-	}
-
+	
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
