@@ -29,7 +29,6 @@ public class Jugador extends Tanque{
 		posicionImagen(1);
 		casco=false;
 		nivel = new Nivel1();
-		deQuienEs=1;
 		state=1;
 	}
 	
@@ -90,7 +89,6 @@ public class Jugador extends Tanque{
 	
 	public void subirNivel(){
 		nivel = nivel.mejorarNivel();
-		System.out.println("SUBI de Nivel");
 	}
 	
 	public void bajarNivel(){

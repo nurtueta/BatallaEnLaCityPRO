@@ -23,12 +23,12 @@ public class MovimientoFluidoDisparo extends Movimiento{
 		this.y=x.getPosicionY();
 		this.d=d;
 		if(x.getVelocidadDisparo()==1)
-			velocidad=13;
+			velocidad=15;
 		else
 			if(x.getVelocidadDisparo()==2)
-				velocidad=10;
+				velocidad=12;
 			else
-				velocidad=7;
+				velocidad=9;
 		pixel=2;
 		componente=x;
 	}
@@ -72,7 +72,7 @@ public class MovimientoFluidoDisparo extends Movimiento{
 							seCreo=false;
 						break;
 			}
-			if(movio){
+			if(movio&&seCreo){
 				int pixelX=componente.getX();
 				int pixelY=componente.getY();
 				for(int i=0;i<7;i++){
@@ -182,7 +182,7 @@ public class MovimientoFluidoDisparo extends Movimiento{
 					}
 				}
 			if(!movio && seCreo){
-				miLogica.eliminarColicion(x,y,componente.getDeQuienEs());
+				miLogica.eliminarColicion(x,y,componente.getDeQuienEsElDisparo());
 				miLogica.eliminarGrafico(componente);
 				componente.colicion(0);
 			}else
