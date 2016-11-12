@@ -67,23 +67,34 @@ public class GUI extends JFrame {
 			panelPuntaje_1.setVerticalAlignment(SwingConstants.TOP);
 			panelPuntaje_1.setBounds(10, 0, 246, 114);
 			panel.add(panelPuntaje_1);
-			panelPuntaje_1.setFont(new Font("Harrington", Font.ITALIC, 36));
+			panelPuntaje_1.setFont(new Font("Harrington", Font.ITALIC, 25));
 			panelPuntaje_1.setForeground(Color.RED);
 			contentPane.setLayer(panelPuntaje_1, 5);
 			panelPuntaje_1.setText("Puntos: \n");
 			this.panelPuntaje=panelPuntaje_1;
 			
-			JLabel panelRestantes_1 = new JLabel();
-			panelRestantes_1.setVerticalAlignment(SwingConstants.TOP);
-			panelRestantes_1.setHorizontalAlignment(SwingConstants.CENTER);
-			panelRestantes_1.setBounds(10, 117, 277, 188);
-			panel.add(panelRestantes_1);
+			JLabel panelRestantes_2 = new JLabel();
+			panelRestantes_2.setVerticalAlignment(SwingConstants.TOP);
+			panelRestantes_2.setHorizontalAlignment(SwingConstants.LEFT);
+			panelRestantes_2.setBounds(10, 167, 277, 188);
+			panel.add(panelRestantes_2);
 			
-			panelRestantes_1.setFont(new Font("Harrington", Font.ITALIC, 36));
-			panelRestantes_1.setForeground(Color.RED);
-			contentPane.setLayer(panelRestantes_1, 5);
-			panelRestantes_1.setText("Restan \n 16 naves:");
-			this.panelRestantes=panelRestantes_1;
+			panelRestantes_2.setFont(new Font("Harrington", Font.ITALIC, 25));
+			panelRestantes_2.setForeground(Color.RED);
+			contentPane.setLayer(panelRestantes_2, 5);
+			panelRestantes_2.setText("16 naves:");
+			this.panelRestantes=panelRestantes_2;
+			
+			JLabel panelRestantes_3 = new JLabel();
+			panelRestantes_3.setVerticalAlignment(SwingConstants.TOP);
+			panelRestantes_3.setHorizontalAlignment(SwingConstants.LEFT);
+			panelRestantes_3.setBounds(10, 140, 277, 188);
+			panel.add(panelRestantes_3);
+			
+			panelRestantes_3.setFont(new Font("Harrington", Font.ITALIC, 25));
+			panelRestantes_3.setForeground(Color.RED);
+			contentPane.setLayer(panelRestantes_3, 5);
+			panelRestantes_3.setText("Restan :");
 			
 			JLabel panelDerecha = new JLabel("");
 			panelDerecha.setBounds(0, 0, 300, 600);
