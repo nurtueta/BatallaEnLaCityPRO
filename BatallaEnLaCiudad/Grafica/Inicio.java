@@ -91,8 +91,7 @@ public class Inicio {
 			public void mouseClicked(MouseEvent e) {
 				
 				
-
-				musicaFondo.stop();
+				
 				
 				JFrame ayuda = new JFrame("Help!");
 				JLabel help = new JLabel();
