@@ -64,7 +64,7 @@ public class Jugador extends Tanque{
 			if(!casco){
 				nivel.bajarVida();
 				if(nivel.getVida()==0){
-					if(getNivel()==4){
+					if(getNivel()>1){
 						logica.crearJugador();
 					}else{
 						ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
@@ -90,7 +90,8 @@ public class Jugador extends Tanque{
 	}
 	
 	public void subirNivel(){
-		nivel = nivel.mejorarNivel();
+		if(nivel.getNivel()!=4)
+			nivel = nivel.mejorarNivel();
 	}
 	
 	public void bajarNivel(){
@@ -99,6 +100,10 @@ public class Jugador extends Tanque{
 		
 	public int getVida(){
 		return nivel.getVida();
+	}
+	
+	public void aumentarVida(){
+		nivel.aumentarVida();
 	}
 	
 	public int getDisparosSimultaneos(){

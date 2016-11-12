@@ -175,8 +175,17 @@ public class Logica {
 	 * Actualiza el panel del puntaje
 	 */
 	public void actualizarPanel(){
-		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
 		grafica.getPanelPuntaje().updateUI();
+		if(puntaje>20000)
+			miJugador.aumentarVida();
+		grafica.getPanelPuntaje().setText("Puntaje: "+puntaje);
+		grafica.getPanelRestantes().setText(""+ (16-muertesAcumuladas)+" naves");
+		if(miJugador.getVida()>=0)
+			grafica.getPanelVidas().setText("Vidas :"+miJugador.getVida());
+		else
+			grafica.getPanelVidas().setText("Vidas :"+0);
+		grafica.getPanelNivel().setText("Nivel : "+miJugador.getNivel());
+		repintarPanel();
 		repintarPanel();
 	}
 	
@@ -218,6 +227,7 @@ public class Logica {
 	 * @param x indica si se gano (true) o perdio (false)
 	 */
 	public void finalizarJuego(boolean x){
+		addPuntaje(0);
 		termina=true;
 		porQueTermina=x;
 		tiempoEsperaParaFinalizar=new HiloTiempoEspera(this);
@@ -272,16 +282,7 @@ public class Logica {
 	 */
 	public void addPuntaje(int puntos){
 		puntaje+=puntos;
-		if(puntaje>20000)
-			miJugador.aumentarVida();
-		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
-		grafica.getPanelRestantes().setText(""+ (16-muertesAcumuladas)+" naves");
-		if(miJugador.getVida()>=0)
-			grafica.getPanelVidas().setText("Vidas :"+miJugador.getVida());
-		else
-			grafica.getPanelVidas().setText("Vidas :"+0);
-		grafica.getPanelNivel().setText("Nivel : "+miJugador.getNivel());
-		repintarPanel();
+		actualizarPanel();		
 	}
 	
 	/*--------------------------------Jugador---------------------------------- */

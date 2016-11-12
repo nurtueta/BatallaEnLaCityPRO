@@ -102,8 +102,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		return vida;
 	}
 	
-	public final void aumentarVida(){
-		vida++;
+	public void aumentarVida(){
 	}
 	
 	public abstract void colicion(int deQuienEs);

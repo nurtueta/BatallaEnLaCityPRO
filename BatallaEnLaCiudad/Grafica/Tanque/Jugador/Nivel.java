@@ -22,6 +22,10 @@ public abstract class Nivel {
 		vida--;
 	}
 	
+	public void aumentarVida(){
+		vida++;
+	}
+	
 	public int getVelocidadMov(){
 		return velMovimiento;
 	}
