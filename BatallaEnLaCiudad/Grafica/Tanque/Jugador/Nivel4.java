@@ -12,6 +12,9 @@ public class Nivel4 extends Nivel{
 		return nuevo;
 	}
 
+	public int getNivel(){
+		return 4;
+	}
 	/*
 	@Override
 	public Nivel bajarNivel() {

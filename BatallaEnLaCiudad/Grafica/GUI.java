@@ -17,9 +17,9 @@ public class GUI extends JFrame {
 	 private boolean disparo;
 	 private boolean movio;
 	 private JLabel panelPuntaje;
-	 private	JLabel panelRestantes;
+	 private JLabel panelRestantes;
 	 private boolean teclado=true;
-	 private	AudioClip musicaJuego;
+	 private AudioClip musicaJuego;
 	   
 	 
 	    /**

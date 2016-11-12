@@ -49,7 +49,6 @@ public class MovimientoEnemigos extends Movimiento{
 							}else{
 								eliminar.add(enemigo);
 								miLogica.eliminarGrafico(enemigo);
-								miLogica.enemigoMurio();
 							}
 						}
 						agregarEnemigo=true;

@@ -319,17 +319,18 @@ public class Logica {
 	 */
 	public void crearDisparoJugador(){
 		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
-				ComponenteGrafico bala=miJugador.crearDisparo();
-				if(bala!=null){
-					clip.play();
-					if(miJugador.getState()==1)
-						bala.setDeQuienEsElDisparo(1);
-					else
-						bala.setDeQuienEsElDisparo(2);
-		    		agregarGrafico(bala);
-		    		repintarPanel();
-		    		hiloDisparoJugador.addBala(bala);
-				}
+			ComponenteGrafico bala;
+			if(miJugador.getNivel()==4)
+				bala=miJugador.crearDisparo(2);
+			else
+				bala=miJugador.crearDisparo(1); 
+			if(bala!=null){
+				clip.play();
+				
+	    		agregarGrafico(bala);
+	    		repintarPanel();
+	    		hiloDisparoJugador.addBala(bala);
+			}
 		}
 	}
 	
@@ -351,9 +352,8 @@ public class Logica {
 	 * @param x enemigo que disparo
 	 */
 	public void crearDisparoEnemigo(ComponenteGrafico x){
-    	ComponenteGrafico bala=x.crearDisparo();
+    	ComponenteGrafico bala=x.crearDisparo(0);
     	if(bala!=null){
-    		bala.setDeQuienEsElDisparo(0);
     		agregarGrafico(bala);
     		repintarPanel();
     		hiloDisparoEnemigo.addBala(bala);
@@ -535,6 +535,7 @@ public class Logica {
 	
 	public void terminarPowerUpGranada(){
 		eliminarEnemigos=false;
+		muertesAcumuladas+=4;
 		crearEnemigoInicio();
 		
 	}

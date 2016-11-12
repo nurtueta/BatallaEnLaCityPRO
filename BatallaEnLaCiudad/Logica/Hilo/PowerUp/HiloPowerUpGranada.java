@@ -16,7 +16,7 @@ public class HiloPowerUpGranada extends HiloPowerUp{
 	public void run()
 	{
 		try{
-			sleep(300);
+			sleep(500);
 			miLogica.terminarPowerUpGranada();
 		}catch(InterruptedException e){ e.printStackTrace();}
 		stop();

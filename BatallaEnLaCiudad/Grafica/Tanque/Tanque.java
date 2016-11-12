@@ -41,7 +41,7 @@ public abstract class Tanque extends ComponenteGrafico {
 	}
 	*/
 	
-	public ComponenteGrafico crearDisparo(){
+	public ComponenteGrafico crearDisparo(int x){
 		boolean seMovio=true;
 		boolean seCreo=true;
 		ComponenteGrafico bala= new Disparo(0,0,direccion,logica);
@@ -83,8 +83,10 @@ public abstract class Tanque extends ComponenteGrafico {
 					seCreo=false;
 				break;
 		}
+		if(seMovio)
+			bala.setDeQuienEsElDisparo(x);
 		if(!seMovio && seCreo){
-			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),bala.getDeQuienEsElDisparo());
+			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),x);
 			bala=null;
 		}
 		if(!seCreo)

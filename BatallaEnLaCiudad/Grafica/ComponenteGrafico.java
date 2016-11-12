@@ -139,7 +139,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		return 0;
 	}
 	
-	public ComponenteGrafico crearDisparo(){
+	public ComponenteGrafico crearDisparo(int x){
 		return null;
 	}
 	
@@ -155,7 +155,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public void bajarNivel(){}
 	
-	public int getState(){
+	public int getNivel(){
 		return 0;
 	}
 	public void setState(int i){}

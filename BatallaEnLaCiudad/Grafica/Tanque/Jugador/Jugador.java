@@ -20,7 +20,6 @@ public class Jugador extends Tanque{
 	/*Variables*/
 	
 	protected boolean casco;
-	protected int state;
 	protected Nivel nivel;
 	
 	/*Constructor*/
@@ -32,7 +31,6 @@ public class Jugador extends Tanque{
 		posicionImagen(1);
 		casco=false;
 		nivel = new Nivel1();
-		state=1;
 	}
 	
 	/*Comandos*/
@@ -97,10 +95,6 @@ public class Jugador extends Tanque{
 	public void bajarNivel(){
 		Nivel nuevoNivel = new Nivel1();
 	}
-
-	public int getState(){
-		return state;
-	}
 		
 	public int getVida(){
 		return nivel.getVida();
@@ -118,8 +112,8 @@ public class Jugador extends Tanque{
 		return nivel.getVelocidadDisparo();
 	}
 	
-	public Nivel getNivel(){
-		return nivel;
+	public int getNivel(){
+		return nivel.getNivel();
 	}
 	
 	public void puedeMover(){
