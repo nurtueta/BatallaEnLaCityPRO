@@ -12,7 +12,6 @@ public abstract class Tanque extends ComponenteGrafico {
 	protected int velMovimiento;
 	protected int velDisparo;
 	protected int deQuienEs;
-	protected Logica logica;
 	protected boolean puedeMover;
 	protected int ultimoDisparo;
 	
@@ -36,11 +35,6 @@ public abstract class Tanque extends ComponenteGrafico {
 	public int getVelMovimiento(){
 		return velMovimiento;
 	}
-	/*
-	public int getDisparosSimultaneos(){
-		return disparosSimultaneos;
-	}
-	*/
 	
 	public ComponenteGrafico crearDisparo(){
 		boolean seMovio=true;

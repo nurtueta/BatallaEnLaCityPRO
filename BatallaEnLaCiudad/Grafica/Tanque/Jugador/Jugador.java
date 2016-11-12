@@ -7,13 +7,10 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import Grafica.ComponenteGrafico;
 import Grafica.main;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
 import Logica.Hilo.HiloTiempoEspera;
-import Logica.Hilo.Movimiento.MovimientoBalas;
-import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
 
 public class Jugador extends Tanque{
 	
