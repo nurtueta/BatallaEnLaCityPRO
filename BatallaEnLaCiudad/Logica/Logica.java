@@ -61,6 +61,8 @@ public class Logica {
 		hiloEnemigos = new MovimientoEnemigos(this); //maneja a los enemigos
 		hiloEnemigos.start();
 		
+		hiloMantenerPowerUp=null;
+		
 		puntaje=0;			 //cuando llega a 20000, sumar una vida
 		enemigosMatados=0;   //cuando llega a 4 creo un powerUp y lo reseteo
 		muertesAcumuladas=0; //al llegar a 16, fin del juego con victoria
@@ -69,8 +71,8 @@ public class Logica {
 		
 		//creo los respawn
 		respawn=new int[8];
-		respawn[0]=1;respawn[1]=1;respawn[2]=19;respawn[3]=16;respawn[4]=1;
-		respawn[5]=6;respawn[6]=1;respawn[7]=16;
+		respawn[0]=3;respawn[1]=10;respawn[2]=19;respawn[3]=16;respawn[4]=4;
+		respawn[5]=10;respawn[6]=1;respawn[7]=16;
 		
 		detenerTanque=false;
 		
@@ -238,7 +240,6 @@ public class Logica {
 	 * @param deQuienEs indica si disparo enemigo (0) o jugador (1)
 	 */
 	public void eliminarColicion(int x,int y,int deQuienEs){
-		System.out.println("eliminarColicion: "+x+" "+y+" "+deQuienEs);
 		getComponente(x, y).colicion(deQuienEs);
 		if(getComponente(x, y).getVida()==0){
 			addPuntaje(getComponente(x, y).getPuntos());
@@ -271,8 +272,10 @@ public class Logica {
 	 */
 	public void addPuntaje(int puntos){
 		puntaje+=puntos;
+		if(puntaje>20000)
+			miJugador.aumentarVida();
 		grafica.getPanelPuntaje().setText("Puntaje: /n"+puntaje);
-		grafica.getPanelRestantes().setText("Restan "+ (16-muertesAcumuladas)+" naves");
+		grafica.getPanelRestantes().setText(""+ (16-muertesAcumuladas)+" naves");
 		repintarPanel();
 	}
 	
@@ -443,7 +446,7 @@ public class Logica {
 		if(muertesAcumuladas == 16)
 			finalizarJuego(true);
 		else{
-			if(enemigosMatados == 4){
+			if(enemigosMatados == 1){
 				crearPowerUp();
 				enemigosMatados = 0;
 			}
@@ -502,8 +505,9 @@ public class Logica {
 	 * si se agarra entonces se ejecuta
 	 */
 	public void crearPowerUp(){
-		ComponenteGrafico p=obtenerPowerUp();
-		if(hiloMantenerPowerUp!=null){
+		
+		if(hiloMantenerPowerUp==null){
+			ComponenteGrafico p=obtenerPowerUp();
 			hiloMantenerPowerUp=new HiloMantenerPowerUp(this,p);
 			hiloMantenerPowerUp.start();
 		}
@@ -513,6 +517,7 @@ public class Logica {
 	 * Elimina el PowerUp en caso de no haberse agarrado.
 	 */
 	public void eliminarPowerUp(ComponenteGrafico p){
+		hiloMantenerPowerUp=null;
 		int x=p.getPosicionX();
 		int y=p.getPosicionY();
 		eliminarGrafico(getComponente(x, y));
@@ -524,6 +529,7 @@ public class Logica {
 	 * Elimina a todos los enemigos
 	 */
 	public void powerUpGranada(){
+		hiloMantenerPowerUp=null;
 		eliminarEnemigos=true;
 		powerUpGranada=new HiloPowerUpGranada(this);
 		powerUpGranada.start();
@@ -535,7 +541,12 @@ public class Logica {
 	
 	public void terminarPowerUpGranada(){
 		eliminarEnemigos=false;
-		muertesAcumuladas+=4;
+		if(muertesAcumuladas<12){
+			
+			muertesAcumuladas+=4;
+		}
+		else
+			finalizarJuego(true);
 		crearEnemigoInicio();
 		
 	}
@@ -554,6 +565,7 @@ public class Logica {
 	 * pasados los 20 segundos se vuelven a poner paredes comunes al 100%.
 	 */
 	public void powerUpPala(){
+		hiloMantenerPowerUp=null;
 		ComponenteGrafico [] base = getBase();
 		for(ComponenteGrafico c : base){
 			if(c.mejorar()){
@@ -585,6 +597,7 @@ public class Logica {
 	 * Aumenta el nivel del Jugador
 	 */
 	public void powerUpEstrella(){
+		hiloMantenerPowerUp=null;
 		miJugador.subirNivel();
 	}
 	
@@ -592,6 +605,7 @@ public class Logica {
 	 * Aumenta una vida al Jugador
 	 */
 	public void powerUpTanque(){
+		hiloMantenerPowerUp=null;
 		miJugador.aumentarVida();
 	}
 	
@@ -599,6 +613,7 @@ public class Logica {
 	 * Detiene a todos los enemigos por 5 segundos
 	 */
 	public void powerUpTimer(){
+		hiloMantenerPowerUp=null;
 		setDetenerTanque(true);
 		powerUpTimer=new HiloDetenerEnemigos(this);
 		powerUpTimer.start();

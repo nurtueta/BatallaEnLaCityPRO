@@ -50,21 +50,18 @@ public class main extends Frame
   {
     super ("StarWasIntro");
 
-    
-    
+
     java.net.URL url = main.class.getResource("/archivo/Star_Wars_Music_Theme.wav");
     clip = Applet.newAudioClip(url);
     clip.play();
-    
-    
-    
-    
     
     addWindowListener (new WindowAdapter ()
        {public void windowClosing (WindowEvent e){System.exit(0);}});
     //this.setExtendedState(MAXIMIZED_BOTH);
     setSize (800, 600);
     canvas = new CvStory("archivo/IntroStory.txt");
+    setBounds(100, 100, 900, 630);
+    canvas = new CvStory(s);
     
     add (canvas);
   }
