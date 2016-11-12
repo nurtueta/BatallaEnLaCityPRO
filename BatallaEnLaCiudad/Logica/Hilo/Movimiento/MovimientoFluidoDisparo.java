@@ -42,7 +42,6 @@ public class MovimientoFluidoDisparo extends Movimiento{
 				case 1: if(x<(19)){
 							if(!miLogica.getComponente(x+1, y).movimientoPosibleDisparo()){
 								movio=false;
-								x++;
 							}
 						}else
 							seCreo=false;
@@ -50,7 +49,6 @@ public class MovimientoFluidoDisparo extends Movimiento{
 				case 2: if(x>0){
 							if(!miLogica.getComponente(x-1, y).movimientoPosibleDisparo()){
 								movio=false;
-								x--;
 							}
 						}else
 							seCreo=false;
@@ -58,7 +56,6 @@ public class MovimientoFluidoDisparo extends Movimiento{
 				case 3: if(y>0){
 							if(!miLogica.getComponente(x, y-1).movimientoPosibleDisparo()){
 								movio=false;
-								y--;
 							}
 						}else
 							seCreo=false;
@@ -66,29 +63,34 @@ public class MovimientoFluidoDisparo extends Movimiento{
 				case 4: if(y<(19)){
 							if(!miLogica.getComponente(x, y+1).movimientoPosibleDisparo()){
 								movio=false;
-								y++;
 							}
 						}else
 							seCreo=false;
 						break;
 			}
 			if(movio){
-				for(int i=0;i<5;i++){
+				int pixelX=componente.getX();
+				int pixelY=componente.getY();
+				for(int i=0;i<3;i++){
 					switch (d) {
 						case 1:
-							componente.setX(componente.getX()+pixel);
+							pixelX+=pixel;
+							componente.setX(pixelX);
 							sleep(velocidad);
 							break;
 						case 2:
-							componente.setX(componente.getX()-pixel);
+							pixelX-=pixel;
+							componente.setX(pixelX);
 							sleep(velocidad);
 							break;
 						case 3:
-							componente.setY(componente.getY()-pixel);
+							pixelY-=pixel;
+							componente.setY(pixelY);
 							sleep(velocidad);
 							break;
 						case 4:
-							componente.setY(componente.getY()+pixel);
+							pixelY+=pixel;
+							componente.setY(pixelY);
 							sleep(velocidad);
 							break;
 					}
@@ -111,6 +113,32 @@ public class MovimientoFluidoDisparo extends Movimiento{
 					y++;
 					componente.setPosicionY(y);
 					break;	
+				}
+				miLogica.actualizarPanel();
+				for(int i=0;i<3;i++){
+					switch (d) {
+						case 1:
+							pixelX+=pixel;
+							componente.setX(pixelX);
+							sleep(velocidad);
+							break;
+						case 2:
+							pixelX-=pixel;
+							componente.setX(pixelX);
+							sleep(velocidad);
+							break;
+						case 3:
+							pixelY-=pixel;
+							componente.setY(pixelY);
+							sleep(velocidad);
+							break;
+						case 4:
+							pixelY+=pixel;
+							componente.setY(pixelY);
+							sleep(velocidad);
+							break;
+					}
+					miLogica.actualizarPanel();
 				}
 			}
 			if(!movio && seCreo){
