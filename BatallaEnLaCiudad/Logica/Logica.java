@@ -26,6 +26,7 @@ public class Logica {
 	private Movimiento hiloDisparoEnemigo;
 	private Movimiento tiempoEsperaParaFinalizar;
 	private HiloPowerUps hiloPowerup;
+	private HiloPala powerUpPala;
 	
 	private int puntaje=0;
 	private int enemigosMatados;
@@ -473,6 +474,7 @@ public class Logica {
 		miJugador.usaCasco(true);
 	}
 	
+	
 	/**
 	 * Cambian las paredes de la base por acero por 20 segundos,
 	 * pasados los 20 segundos se vuelven a poner paredes comunes al 100%.
@@ -495,8 +497,8 @@ public class Logica {
 			
 			//Ejecucion del hilo timer
 			
-			HiloTimer espera =new HiloTimer(this,20000);
-			espera.start();
+			powerUpPala=new HiloPala(this,20000);
+			powerUpPala.start();
 			
 			//Vuelvo a rodear el aguila de ladrillos
 			for(ComponenteGrafico c : base){
