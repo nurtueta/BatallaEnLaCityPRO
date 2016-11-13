@@ -244,6 +244,11 @@ public class GUI extends JFrame {
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
 			JLabel algo = new JLabel();
+			
+			java.net.URL url = GUI.class.getResource("/archivo/StarWarsVictory.wav");
+		    AudioClip clip = Applet.newAudioClip(url);
+		    clip.play();
+		    
 			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
 			algo.setBounds(0, 0, this.getWidth(), this.getHeight());
 			algo.setPreferredSize(contentPane.getPreferredSize());
