@@ -5,6 +5,8 @@ import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,12 +18,13 @@ public class GUI extends JFrame {
 	 private Logica mapaLogica;
 	 private boolean disparo;
 	 private boolean movio;
-	 private JLabel panelPuntaje;
+	 private JLabel panelPuntaje,btnRestart;
 	 private JLabel panelRestantes;
 	 private JLabel panelVidas;
 	 private JLabel panelNivel;
+	 private AudioClip musicaJuego;
 	 private boolean teclado=true;
-	   
+	 private JFrame yo=this;
 	    /**
 	     * Create the frame.
 	     */
@@ -46,14 +49,42 @@ public class GUI extends JFrame {
 	        contentPane.setLayout(null);
 	        getContentPane().setLayout(null);
 	        contentPane.setLayout(null);
+	        JLabel fondo = new JLabel();
 	        ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/fondo.jpg"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
-			JLabel fondo = new JLabel();
-			fondo.setVisible(true);
-			fondo.setIcon(icono);
-			fondo.setBounds(0,0,600,600);
-			contentPane.add(fondo);
-			contentPane.setLayer(fondo, 1);
+	        fondo.setVisible(true);
+	        fondo.setIcon(icono);
+	        fondo.setBounds(0,0,600,600);
+	        contentPane.add(fondo);
+	        contentPane.setLayer(fondo, 1);
+	        
+	        
+	        btnRestart = new JLabel();
+			btnRestart.setText("Restart");
+			btnRestart.setBounds(0, 0, 179, 77);
+			contentPane.add(btnRestart);
+			btnRestart.setForeground(Color.RED);
+			btnRestart.setFont(new Font("Times New Roman", Font.ITALIC, 26));
+	        btnRestart.setVisible(false);
+			btnRestart.disable();
+	        btnRestart.addMouseListener(new MouseAdapter() {
+	        				@Override
+	        				public void mouseClicked(MouseEvent arg0) {
+	        					contentPane.removeAll();
+	        					Inicio juego = new Inicio();
+	        					juego.setVisible();
+	        					
+	        					musicaJuego.stop();
+	        					yo.dispose();
+	        
+	        					
+	        					
+	        					
+	        				}
+	        			});
+
+	        			
+	        
 			
 			JPanel panel = new JPanel();
 			panel.setBounds(600, 0, 321, 600);
@@ -236,18 +267,21 @@ public class GUI extends JFrame {
 	 }
 	    
 	 public void terminarJuego(boolean Victoria){
-		 
+		 mapaLogica.stopMusic();
 		 contentPane.removeAll();
 		 teclado= false;
-		 
+		 contentPane.add(btnRestart);
+		 btnRestart.enable();
+		 btnRestart.setVisible(true);
+		 yo=this;
 		if(Victoria){
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
 			JLabel algo = new JLabel();
 			
 			java.net.URL url = GUI.class.getResource("/archivo/StarWarsVictory.wav");
-		    AudioClip clip = Applet.newAudioClip(url);
-		    clip.play();
+		     musicaJuego = Applet.newAudioClip(url);
+		    musicaJuego.play();
 		    
 			this.setBounds(100, 100, this.getWidth()+200, this.getHeight());
 			algo.setBounds(0, 0, this.getWidth(), this.getHeight());
@@ -267,8 +301,8 @@ public class GUI extends JFrame {
 			contentPane.add(algo);
 			
 			java.net.URL url = GUI.class.getResource("/archivo/StarWarsImperialMarch.wav");
-		    AudioClip clip = Applet.newAudioClip(url);
-		    clip.play();
+		     musicaJuego = Applet.newAudioClip(url);
+		    musicaJuego.play();
 		}
 		contentPane.repaint();
 	 }
