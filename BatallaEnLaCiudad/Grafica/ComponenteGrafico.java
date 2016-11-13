@@ -7,6 +7,8 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	/*Variables*/
 	
+	
+	
 	protected final int alto  = 30;
 	protected final int ancho = 30;
 	protected int miX,miY;
