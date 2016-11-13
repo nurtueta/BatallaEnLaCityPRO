@@ -4,8 +4,6 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Casco extends PowerUp{
@@ -17,7 +15,6 @@ public class Casco extends PowerUp{
 		this.setIcon(icono);
 	}
 
-	@Override
 	public void colicion(int deQuienEs) {
 		if(deQuienEs !=0){
 			vida=0;

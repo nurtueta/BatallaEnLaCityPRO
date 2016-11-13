@@ -449,7 +449,7 @@ public class Logica {
 		if(muertesAcumuladas == 16)
 			finalizarJuego(true);
 		else{
-			if(enemigosMatados == 1){
+			if(enemigosMatados == 4){
 				crearPowerUp();
 				enemigosMatados = 0;
 			}
@@ -464,14 +464,14 @@ public class Logica {
 	 * @return PowerUp creado
 	 */
 	private ComponenteGrafico obtenerPowerUp(){
-		int tipo = 3;//(int) new Random().nextInt(6)+1;
+		int tipo = (int) new Random().nextInt(6)+1;
 		boolean espacioVacio=false;
 		int localizarX=0;
 		int localizarY=0;
 		while(!espacioVacio){
 			localizarX = (int) new Random().nextInt(20);
 			localizarY = (int) new Random().nextInt(20);
-			if(getComponente(localizarX, localizarY).puedoIngresarPowerUp())
+			if(getComponente(localizarX, localizarY).movimientoPosible())
 				espacioVacio=true;
 		}
 		

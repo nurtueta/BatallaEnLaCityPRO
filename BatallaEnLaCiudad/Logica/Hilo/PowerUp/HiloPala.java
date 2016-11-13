@@ -1,9 +1,6 @@
 package Logica.Hilo.PowerUp;
 
-import java.util.ArrayList;
-
 import Grafica.ComponenteGrafico;
-import Grafica.Bloque.Acero;
 import Grafica.Bloque.Ladrillo;
 import Logica.Logica;
 
@@ -13,6 +10,9 @@ public class HiloPala extends HiloPowerUp{
 		super(l);
 	}
 	
+	/**
+	 * mantiene 10 segundos las paredes en acero, luego las convierte en ladrillo.
+	 */
 	public void run()
 	{
 		try{

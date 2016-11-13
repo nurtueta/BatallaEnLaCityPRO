@@ -6,12 +6,11 @@ import Logica.Logica;
 
 public class MovimientoFluidoTanque extends Movimiento {
 		
-	int x;
-	int y;
-	int d;
-	int velocidad;
-	int pixel;
-	
+	protected int x;
+	protected int y;
+	protected int d;
+	protected int velocidad;
+	protected int pixel;
 	
 	protected ComponenteGrafico componente;
 
@@ -31,10 +30,15 @@ public class MovimientoFluidoTanque extends Movimiento {
 		componente=x;
 	}
 	
+	/**
+	 * mueve el Tanque de A a B
+	 */
 	public void run()
 	{
 		try
 		{
+			int auxX=0;
+			int auxY=0;
 			boolean movio=false;
 			miLogica.getComponente(x, y).setDireccion(d);
 			switch (d){
@@ -42,24 +46,32 @@ public class MovimientoFluidoTanque extends Movimiento {
 							if(miLogica.getComponente(x+1, y).movimientoPosible()){
 								movio=true;
 								miLogica.getComponente(x+1, y).setMovimientoPosible(false);
+								auxX=x+1;
+								auxY=y;
 							}
 						break;
 				case 2: if(x>0)
 							if(miLogica.getComponente(x-1, y).movimientoPosible()){
 								movio=true;
 								miLogica.getComponente(x-1, y).setMovimientoPosible(false);
+								auxX=x-1;
+								auxY=y;
 							}
 						break;
 				case 3: if(y>0)
 							if(miLogica.getComponente(x, y-1).movimientoPosible()){
 								movio=true;
 								miLogica.getComponente(x, y-1).setMovimientoPosible(false);
+								auxX=x;
+								auxY=y-1;
 							}
 						break;
 				case 4: if(y<(20-1))
 							if(miLogica.getComponente(x, y+1).movimientoPosible()){
 								movio=true;
 								miLogica.getComponente(x, y+1).setMovimientoPosible(false);
+								auxX=x;
+								auxY=y+1;
 							}
 						break;
 			}
@@ -71,7 +83,7 @@ public class MovimientoFluidoTanque extends Movimiento {
 				for(int i=0;i<7;i++){
 					if(componente.getVida()==0){
 						i=7;
-						miLogica.getComponente(x, y+1).setMovimientoPosible(true);
+						miLogica.getComponente(auxX, auxY).setMovimientoPosible(true);
 						d=0;
 					}
 					else
@@ -158,9 +170,8 @@ public class MovimientoFluidoTanque extends Movimiento {
 			}
 			
 			componente.puedeMover();
-
-			sleep(10);
-			this.stop();
+			sleep(5);
+			stop();
 		}catch(InterruptedException e){ e.printStackTrace();}
 		
 	}

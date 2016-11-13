@@ -4,8 +4,6 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Rapido extends Enemigo{

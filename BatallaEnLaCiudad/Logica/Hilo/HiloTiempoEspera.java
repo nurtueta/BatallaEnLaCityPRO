@@ -16,6 +16,9 @@ public class HiloTiempoEspera extends Thread{
 		miLogica=l;
 	}
 	
+	/**
+	 * Espera 0,2 segundos para finalizar del todo el juego
+	 */
 	public void run()
 	{
 		try{

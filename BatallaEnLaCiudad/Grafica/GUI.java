@@ -9,9 +9,6 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import Logica.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
 
 public class GUI extends JFrame {
 	
@@ -24,11 +21,7 @@ public class GUI extends JFrame {
 	 private JLabel panelVidas;
 	 private JLabel panelNivel;
 	 private boolean teclado=true;
-	 private AudioClip musicaJuego;
-	 private JLabel btnRestart;
-	 private GUI yo;
 	   
-	 
 	    /**
 	     * Create the frame.
 	     */
@@ -57,38 +50,18 @@ public class GUI extends JFrame {
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
 			JLabel fondo = new JLabel();
 			fondo.setVisible(true);
-			
-			 btnRestart = new JLabel("Restart");
-			btnRestart.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					contentPane.removeAll();
-					Inicio juego = new Inicio();
-					juego.setVisible();
-					musicaJuego.stop();
-					yo.dispose();
-
-					
-					
-					
-				}
-			});
-			btnRestart.setBounds(0, 0, 179, 77);
-			contentPane.add(btnRestart);
-			btnRestart.setForeground(Color.RED);
-			btnRestart.setFont(new Font("Times New Roman", Font.ITALIC, 26));
 			fondo.setIcon(icono);
-			fondo.setBounds(-16,-10,600,600);
+			fondo.setBounds(0,0,600,600);
 			contentPane.add(fondo);
 			contentPane.setLayer(fondo, 1);
-			btnRestart.setVisible(false);
-			btnRestart.disable();
+			
 			JPanel panel = new JPanel();
 			panel.setBounds(600, 0, 321, 600);
 			contentPane.add(panel);
 			panel.setLayout(null);
 			
 			//agrego panel para el puntaje
+	
 			JLabel panelPuntaje_1 = new JLabel();
 			panelPuntaje_1.setVerticalAlignment(SwingConstants.TOP);
 			panelPuntaje_1.setBounds(10, 0, 246, 114);
@@ -100,6 +73,7 @@ public class GUI extends JFrame {
 			this.panelPuntaje=panelPuntaje_1;
 			
 			//agrego panel para enemigos restantes
+			
 			JLabel panelRestantes_2 = new JLabel();
 			panelRestantes_2.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_2.setHorizontalAlignment(SwingConstants.LEFT);
@@ -122,6 +96,7 @@ public class GUI extends JFrame {
 			panelRestantes_3.setText("Restan :");
 			
 			//agrego panel de la vidas
+			
 			JLabel panelRestantes_4 = new JLabel();
 			panelRestantes_4.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_4.setHorizontalAlignment(SwingConstants.LEFT);
@@ -134,6 +109,7 @@ public class GUI extends JFrame {
 			this.panelVidas=panelRestantes_4;
 			
 			//agrego panel de nivel
+			
 			JLabel panelRestantes_5 = new JLabel();
 			panelRestantes_5.setVerticalAlignment(SwingConstants.TOP);
 			panelRestantes_5.setHorizontalAlignment(SwingConstants.LEFT);
@@ -165,14 +141,10 @@ public class GUI extends JFrame {
 	        
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
-				
-				public void keyReleased1(KeyEvent arg0) {
-					
-				}
+	        	
+				public void keyReleased1(KeyEvent arg0) {}
 
-				public void keyTyped1(KeyEvent arg0) {
-					
-				}
+				public void keyTyped1(KeyEvent arg0) {}
 
 				public void keyPressed(KeyEvent e) {
 					if (teclado){
@@ -185,25 +157,25 @@ public class GUI extends JFrame {
 					 		break;
 						case KeyEvent.VK_DOWN :
 							if(!movio){
-								mapaLogica.mover(4);		//Mover el Jugador hacia Arriba
+								mapaLogica.mover(4);		//Mover el Jugador hacia Abajo
 						 		movio=true;
 						 	}
 							break;
 	        			case KeyEvent.VK_RIGHT :
 	        				if(!movio){
-						 		mapaLogica.mover(1);
+						 		mapaLogica.mover(1);		//Mover el Jugador hacia Derecha
 						 		movio=true;
 						 	}
 	        				break;
 	 					case KeyEvent.VK_LEFT :
 	 						if(!movio){
-	 							mapaLogica.mover(2);		//Mover el Jugador hacia Arriba
+	 							mapaLogica.mover(2);		//Mover el Jugador hacia Izquierda
 						 		movio=true;
 						 	}	
 	 						break;
 	 					case KeyEvent.VK_SPACE:
 	 						if(!disparo){
-	 							mapaLogica.crearDisparoJugador();
+	 							mapaLogica.crearDisparoJugador();	//Creo disparo del jugador
 	 							disparo=true;
 	 						}
 	 						break; 
@@ -230,13 +202,8 @@ public class GUI extends JFrame {
 					}
 				}
 
-				@Override
-				public void keyTyped(KeyEvent arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				
+				public void keyTyped(KeyEvent arg0) {}
+			
 	        }
 				);	       	        
 	    	}
@@ -269,15 +236,10 @@ public class GUI extends JFrame {
 	 }
 	    
 	 public void terminarJuego(boolean Victoria){
-		 mapaLogica.stopMusic();
-		 yo=this;
 		 
-		// mapaLogica=null;
 		 contentPane.removeAll();
 		 teclado= false;
-		 contentPane.add(btnRestart);
-		 btnRestart.enable();
-		 btnRestart.setVisible(true);
+		 
 		if(Victoria){
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/Victory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
@@ -287,14 +249,8 @@ public class GUI extends JFrame {
 			algo.setPreferredSize(contentPane.getPreferredSize());
 			algo.setIcon(icono);
 			contentPane.add(algo);
-			java.net.URL url = GUI.class.getResource("/archivo/StarWarsVictory.wav");
-		    AudioClip clip = Applet.newAudioClip(url);
-		    musicaJuego=clip;
-		    musicaJuego.play();
 			
-			
-		}
-		else{
+		}else{
 			
 			ImageIcon fot = new ImageIcon(getClass().getResource("/Imagenes/DarthVaderVictory.png"));
 			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(this.getWidth()+200, this.getHeight(), Image.SCALE_DEFAULT));
@@ -307,12 +263,8 @@ public class GUI extends JFrame {
 			
 			java.net.URL url = GUI.class.getResource("/archivo/StarWarsImperialMarch.wav");
 		    AudioClip clip = Applet.newAudioClip(url);
-		    musicaJuego=clip;
-		    musicaJuego.play();
+		    clip.play();
 		}
 		contentPane.repaint();
-
 	 }
-
-	
 }

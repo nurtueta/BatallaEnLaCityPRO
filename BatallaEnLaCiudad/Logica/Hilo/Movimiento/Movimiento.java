@@ -3,7 +3,6 @@ package Logica.Hilo.Movimiento;
 import java.util.ArrayList;
 
 import Grafica.*;
-import Grafica.Tanque.*;
 import Logica.Logica;
 
 

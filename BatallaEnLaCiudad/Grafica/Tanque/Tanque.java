@@ -2,7 +2,6 @@ package Grafica.Tanque;
 
 
 import Grafica.ComponenteGrafico;
-import Logica.Logica;
 import Logica.Hilo.Movimiento.*;
 
 public abstract class Tanque extends ComponenteGrafico {
@@ -11,19 +10,18 @@ public abstract class Tanque extends ComponenteGrafico {
 	protected int disparosSimultaneos;
 	protected int velMovimiento;
 	protected int velDisparo;
-	protected Logica logica;
 	protected boolean puedeMover;
-	protected int ultimoDisparo;
 	
 	protected Movimiento hiloFluido;
-	
 	
 	public	Tanque(int x,int y){
 		super(x,y);		
 		puedeMover=true;;
-		ultimoDisparo=1;
 	}
 	
+	/**
+	 * Mueve el tanque y lo desabilita hasta que termina de moverse
+	 */
 	public void mover(int direccion) {
 		if(puedeMover){
 			hiloFluido=new MovimientoFluidoTanque(this, direccion,logica);
@@ -35,12 +33,15 @@ public abstract class Tanque extends ComponenteGrafico {
 	public int getVelMovimiento(){
 		return velMovimiento;
 	}
-	/*
-	public int getDisparosSimultaneos(){
-		return disparosSimultaneos;
-	}
-	*/
 	
+	public int getVelocidadDisparo(){
+		return velDisparo;
+	}
+	
+	/**
+	 * Crea un disparo disparado por Tanque, si lo puede crear, empieza a moverlo;
+	 * sino, elimina el disparo y con quien coliciono
+	 */
 	public ComponenteGrafico crearDisparo(int x){
 		boolean seMovio=true;
 		boolean seCreo=true;
@@ -84,7 +85,7 @@ public abstract class Tanque extends ComponenteGrafico {
 				break;
 		}
 		if(seMovio)
-			bala.setDeQuienEsElDisparo(x);
+			bala.setEjecutor(x);
 		if(!seMovio && seCreo){
 			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),x);
 			bala=null;
@@ -99,10 +100,6 @@ public abstract class Tanque extends ComponenteGrafico {
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return false;
-	}
-	
-	public boolean puedoIngresarPowerUp(){
 		return false;
 	}
 	
