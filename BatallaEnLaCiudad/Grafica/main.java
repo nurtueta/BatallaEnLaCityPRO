@@ -18,6 +18,7 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
 
+import javax.swing.JOptionPane;
 
 import java.util.Random;
 
@@ -27,69 +28,44 @@ public class main extends Frame
   CvStory canvas;
   private	AudioClip clip;
   private	boolean termino =false;
-<<<<<<< HEAD
-  private Frame yo=this;
-  private int i=0;
-  
+
   public static void main (String[] args) throws IOException
   {
-	  //System.out.println(args.length);
-	  main aux = new main();
-	  aux.arrancar();
+
+    main Pic = new main ();
+
       //try
       //{ Thread.sleep(500);}
       //catch (InterruptedException e){}
     
+    Pic.show();
+    Pic.movePic ();
+    Pic.disable();
+    Pic.setVisible(false);
     Inicio juego = new Inicio();
     juego.setVisible();
   }
-=======
->>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
 
-  public static void main (String[] args) throws IOException {
-		
-<<<<<<< HEAD
-		Pic.show();
-	    Pic.movePic ();
-	    Pic.disable();
-	    Pic.setVisible(false);
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-=======
-	  main Pic;
-	  if (args.length!=0)
-		  Pic = new main(args[0]);
-	  else
-		  Pic = new main ("archivo/IntroStory.txt");
-		
-	  Pic.show();
-	  Pic.movePic ();
-	  Pic.disable();		
-	  Pic.setVisible(false);
-	  Inicio juego = new Inicio();
-	  juego.setVisible();
-  }
->>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
-
-  public main(String s) throws IOException
+  public main() throws IOException
   {
     super ("StarWasIntro");
 
+
+    
+    
     java.net.URL url = main.class.getResource("/archivo/Star_Wars_Music_Theme.wav");
     clip = Applet.newAudioClip(url);
     clip.play();
     
+    
+    
+    
+    
     addWindowListener (new WindowAdapter ()
-       {public void windowClosing (WindowEvent e){
-    	    	   
-    	   System.exit(0);}});
+       {public void windowClosing (WindowEvent e){System.exit(0);}});
     //this.setExtendedState(MAXIMIZED_BOTH);
     setSize (800, 600);
-    canvas = new CvStory("archivo/IntroStory.txt");
-    setBounds(100, 100, 900, 630);
-    canvas = new CvStory(s);
+    canvas = new CvStory();
     
     add (canvas);
   }
@@ -99,6 +75,7 @@ public class main extends Frame
     //for (int a = 0; a < 3600; a++)
     while (!termino)
     {
+
       try
       { Thread.sleep(10);}
       catch (InterruptedException e){}
@@ -111,26 +88,30 @@ public class main extends Frame
   			termino=true;
   			
   		}
-  	});      
+  	});
+      
+      
     }
-    clip.stop();    
+    clip.stop();
+    
   }
+
 }
 
 class CvStory extends Canvas
 {
-	  private String [] storyTxt;
-	  private double [][] pixels, pixels3D, beforeRotate;
-	  private int [][] stars;
-	  private int storySize, maxX, maxY;
-	  private int numPixels = 0;
-	  private boolean readData = false;
-	  private Random generator = new Random ();
+  private String [] storyTxt;
+  private double [][] pixels, pixels3D, beforeRotate;
+  private int [][] stars;
+  private int storySize, maxX, maxY;
+  private int numPixels = 0;
+  private boolean readData = false;
+  Random generator = new Random ();
   
-  CvStory (String s) throws IOException
+  CvStory () throws IOException
   {
 	
-	ReadFile f = new ReadFile (s);
+	ReadFile f = new ReadFile ("archivo/IntroStory.txt");
 
     storyTxt = f.getStory ();
     storySize = f.getSize ();
@@ -170,6 +151,7 @@ class CvStory extends Canvas
 
           numPixels = numPixels + 1;
           
+          //System.out.println(numPixels);
           }
 
   }

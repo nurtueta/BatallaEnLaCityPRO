@@ -1,10 +1,5 @@
-<<<<<<< HEAD
             Battle Star
-        Episodio 1: La Republica ataca
-=======
-                 Battle Star
-    Episodio 1: La amenaza de Biondi
->>>>>>> branch 'master' of https://github.com/nurtueta/BatallaEnLaCityPRO.git
+       Episodio 1: La Republica ataca
 
 Hace mucho mucho tiempo, en una galaxia
 muy muy lejana. La republica amenaza
