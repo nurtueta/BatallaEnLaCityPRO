@@ -39,8 +39,8 @@ public class main extends Frame
       //{ Thread.sleep(500);}
       //catch (InterruptedException e){}
     
-	  //  Inicio juego = new Inicio();
-	   // juego.setVisible();
+    Inicio juego = new Inicio();
+    juego.setVisible();
   }
 
   public 	void arrancar(){
@@ -58,8 +58,6 @@ public class main extends Frame
 	    Pic.movePic ();
 	    Pic.disable();
 	    Pic.setVisible(false);
-	    Inicio juego = new Inicio();
-	    juego.setVisible();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
