@@ -39,11 +39,11 @@ public class MovimientoEnemigos extends Movimiento{
 					sleep(10);
 					if( !miLogica.eliminarTodosLosEnemigos()){
 						direccion = (int) (rnd.nextInt(4)+1);
-						accion= (int) (rnd.nextInt(4));
+						accion= (int) (rnd.nextInt(6));
 						if(enemigo.getVida()==0)
 							eliminar.add(enemigo);
 						else
-							if(accion!=0){
+							if(accion<2){
 								enemigo.mover(direccion);
 							}else{
 								if(enemigo.getPuedeMover()){
