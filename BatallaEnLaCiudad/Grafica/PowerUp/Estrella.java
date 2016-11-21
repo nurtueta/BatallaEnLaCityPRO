@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Estrella extends PowerUp{
@@ -14,13 +16,12 @@ public class Estrella extends PowerUp{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 	}
-
-	public void colicion(int deQuienEs) {
-		if(deQuienEs != 0){
-			vida=0;
-			logica.addPuntaje(500);
-			logica.powerUpEstrella();
-		}
-	}
 	
+	public boolean movimientoPosible(){
+		vida=0;
+		logica.addPuntaje(500);
+		logica.powerUpEstrella();
+		logica.eliminarPowerUp(this);
+		return true;
+	}
 }

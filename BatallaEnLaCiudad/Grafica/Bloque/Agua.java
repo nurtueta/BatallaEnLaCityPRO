@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 
@@ -18,16 +19,12 @@ public class Agua extends Bloque {
 		this.setIcon(icono);
 		vida=1;
 	}
-	
-	public boolean movimientoPosible() {
-		return false;
-	}
 
 	public boolean movimientoPosibleDisparo() {
 		return true;
 	}
 
-	public void colicion(int deQuienEs) {
+	public void colicion(ComponenteGrafico x) {
 		
 	}
 

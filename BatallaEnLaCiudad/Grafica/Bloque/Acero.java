@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Acero extends Bloque{
@@ -18,16 +20,12 @@ public class Acero extends Bloque{
 
 	}
 	
-	public boolean movimientoPosible() {
-		return false;
-	}
-	
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
 
-	public void colicion(int deQuienEs) {
-		if(deQuienEs==2)
+	public void colicion(ComponenteGrafico x) {
+		if(x.getNivel()==4)
 			vida--;
 	}
 

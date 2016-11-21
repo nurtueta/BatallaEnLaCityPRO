@@ -7,10 +7,12 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import Grafica.ComponenteGrafico;
 import Grafica.main;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
 import Logica.Hilo.HiloTiempoEspera;
+import Logica.Hilo.Movimiento.MovimientoFluidoTanque;
 
 public class Jugador extends Tanque{
 	
@@ -64,8 +66,8 @@ public class Jugador extends Tanque{
 	/**
 	 * coliciono el jugador, si tiene mas de nivel 1 y se murio, lo creo de nuevo. si es nivel perfi el juego.
 	 */
-	public void colicion(int deQuienEs) {
-		if(deQuienEs==0){
+	public void colicion(ComponenteGrafico x) {
+		if(x!=this){
 			if(!casco){
 				nivel.bajarVida();
 				if(nivel.getVida()==0){
@@ -134,5 +136,16 @@ public class Jugador extends Tanque{
 	public boolean getPuedeMover(){
 		return puedeMover;
 	}
+	
+	/**
+	 * Mueve el tanque y lo desabilita hasta que termina de moverse
+	 */
+	public void mover(int direccion) {
+		if(puedeMover){
+			hiloFluido=new MovimientoFluidoTanque(this, direccion,logica);
+			puedeMover=false;
+			hiloFluido.start();
+		}
+	}	
 	
 }

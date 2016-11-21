@@ -9,4 +9,12 @@ public abstract class Bloque extends ComponenteGrafico
 		super(x,y);	
 		logica=l;
 	}
+	
+	public boolean movimientoPosible() {
+		return false;
+	}
+	
+	public boolean movimientoPosibleEnemigo(){
+		return false;
+	}
 }

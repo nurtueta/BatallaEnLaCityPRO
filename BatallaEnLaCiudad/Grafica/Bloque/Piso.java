@@ -1,5 +1,6 @@
 package Grafica.Bloque;
 
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Piso extends Bloque{
@@ -15,11 +16,15 @@ public class Piso extends Bloque{
 		return movimientoPosible;
 	}
 	
+	public boolean movimientoPosibleEnemigo(){
+		return movimientoPosible;
+	}
+	
 	public boolean movimientoPosibleDisparo() {
 		return true;
 	}
 
-	public void colicion(int deQuienEs) {
+	public void colicion(ComponenteGrafico x) {
 		
 	}
 

@@ -1,6 +1,8 @@
 package Grafica;
 
 import javax.swing.JLabel;
+
+import Grafica.Tanque.Tanque;
 import Logica.Logica;
 
 public abstract class ComponenteGrafico extends JLabel {
@@ -56,7 +58,7 @@ public abstract class ComponenteGrafico extends JLabel {
 		pixelY=y;
 	}
 
-	public ComponenteGrafico crearDisparo(int x){
+	public ComponenteGrafico crearDisparo(){
 		return null;
 	}
 	
@@ -76,7 +78,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public void bajarNivel(){}
 	
-	public void setEjecutor(int x){}
+	public void setEjecutor(ComponenteGrafico tanque){}
 	
 	public void setState(int i){}
 	
@@ -86,7 +88,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	
 	public abstract boolean mejorar();
 	
-	public abstract void colicion(int deQuienEs);
+	public abstract void colicion(ComponenteGrafico e);
 	
 	/*--------------------------------------------Consultas------------------------------------------------------*/
 	
@@ -118,8 +120,8 @@ public abstract class ComponenteGrafico extends JLabel {
 		return vida;
 	}
 	
-	public int getEjecutor(){
-		return -1;
+	public ComponenteGrafico getEjecutor(){
+		return null;
 	}
 	
 	public	int getDepth(){
@@ -149,5 +151,7 @@ public abstract class ComponenteGrafico extends JLabel {
 	public abstract boolean movimientoPosible();
 	
 	public abstract boolean movimientoPosibleDisparo();
+	
+	public abstract boolean movimientoPosibleEnemigo();
 	
 }

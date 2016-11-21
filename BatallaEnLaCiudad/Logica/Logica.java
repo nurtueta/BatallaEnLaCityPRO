@@ -249,8 +249,8 @@ public class Logica {
 	 * @param y coordenada y
 	 * @param deQuienEs indica si disparo enemigo (0) o jugador (1)
 	 */
-	public void eliminarColicion(int x,int y,int deQuienEs){
-		getComponente(x, y).colicion(deQuienEs);
+	public void eliminarColicion(int x,int y,ComponenteGrafico Ejecutor){
+		getComponente(x, y).colicion(Ejecutor);
 		if(getComponente(x, y).getVida()==0){
 			addPuntaje(getComponente(x, y).getPuntos());
 			eliminarGrafico(getComponente(x, y));
@@ -325,14 +325,9 @@ public class Logica {
 	 */
 	public void crearDisparoJugador(){
 		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
-			ComponenteGrafico bala;
-			if(miJugador.getNivel()==4)
-				bala=miJugador.crearDisparo(2);
-			else
-				bala=miJugador.crearDisparo(1); 
+			ComponenteGrafico bala=miJugador.crearDisparo(); 
 			if(bala!=null){
 				clip.play();
-				
 	    		agregarGrafico(bala);
 	    		repintarPanel();
 	    		hiloDisparoJugador.addBala(bala);
@@ -358,7 +353,7 @@ public class Logica {
 	 * @param x enemigo que disparo
 	 */
 	public void crearDisparoEnemigo(ComponenteGrafico x){
-    	ComponenteGrafico bala=x.crearDisparo(0);
+    	ComponenteGrafico bala=x.crearDisparo();
     	if(bala!=null){
     		agregarGrafico(bala);
     		repintarPanel();
@@ -454,6 +449,7 @@ public class Logica {
 				enemigosMatados = 0;
 			}
 			crearEnemigo();
+			crearPowerUp();
 		}
 	}
 

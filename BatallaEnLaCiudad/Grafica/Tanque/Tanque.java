@@ -19,17 +19,6 @@ public abstract class Tanque extends ComponenteGrafico {
 		puedeMover=true;;
 	}
 	
-	/**
-	 * Mueve el tanque y lo desabilita hasta que termina de moverse
-	 */
-	public void mover(int direccion) {
-		if(puedeMover){
-			hiloFluido=new MovimientoFluidoTanque(this, direccion,logica);
-			puedeMover=false;
-			hiloFluido.start();
-		}
-	}	
-	
 	public int getVelMovimiento(){
 		return velMovimiento;
 	}
@@ -42,7 +31,7 @@ public abstract class Tanque extends ComponenteGrafico {
 	 * Crea un disparo disparado por Tanque, si lo puede crear, empieza a moverlo;
 	 * sino, elimina el disparo y con quien coliciono
 	 */
-	public ComponenteGrafico crearDisparo(int x){
+	public ComponenteGrafico crearDisparo(){
 		boolean seMovio=true;
 		boolean seCreo=true;
 		ComponenteGrafico bala= new Disparo(0,0,direccion,logica);
@@ -85,9 +74,9 @@ public abstract class Tanque extends ComponenteGrafico {
 				break;
 		}
 		if(seMovio)
-			bala.setEjecutor(x);
+			bala.setEjecutor(this);
 		if(!seMovio && seCreo){
-			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),x);
+			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),this);
 			bala=null;
 		}
 		if(!seCreo)
@@ -96,6 +85,10 @@ public abstract class Tanque extends ComponenteGrafico {
 	}
 	
 	public boolean movimientoPosible() {
+		return false;
+	}
+	
+	public boolean movimientoPosibleEnemigo(){
 		return false;
 	}
 	

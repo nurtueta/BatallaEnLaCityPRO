@@ -14,11 +14,12 @@ public class Disparo extends ComponenteGrafico{
 	protected int deQuienEs;
 	protected Movimiento hiloFluido;
 	protected boolean puedeMover;
-	protected int deQuienEsElDisparo;
+	protected ComponenteGrafico Tanque;
 	
 	public Disparo(int x,int y,int d,Logica l)
 	{	
 		super(x,y);
+		Tanque=null;
 		profundidad=3;
 		vida=1;
 		puedeMover=true;
@@ -74,10 +75,6 @@ public class Disparo extends ComponenteGrafico{
 		return true;
 	}
 
-	public void colicion(int deQuienEs) {
-		vida=0;
-	}
-
 	public boolean mejorar() {
 		return false;
 	}
@@ -85,15 +82,24 @@ public class Disparo extends ComponenteGrafico{
 	/**
 	 * Setea quien fue el q disparo la bala
 	 */
-	public void setEjecutor(int x){
-		deQuienEsElDisparo=x;
+	
+	public void setEjecutor(ComponenteGrafico x){
+		Tanque=x;
 	}
 	
 	/**
 	 * Devuelve quien disparo la bala
 	 */
-	public int getEjecutor(){
-		return deQuienEsElDisparo;
+	public ComponenteGrafico getEjecutor(){
+		return Tanque;
+	}
+
+	public void colicion(ComponenteGrafico e) {
+		vida=0;
+	}
+
+	public boolean movimientoPosibleEnemigo() {
+		return false;
 	}
 	
 }

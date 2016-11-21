@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class VidaTanque extends PowerUp{
@@ -15,13 +17,11 @@ public class VidaTanque extends PowerUp{
 		this.setIcon(icono);
 	}
 	
-	public void colicion(int deQuienEs) {
-		if(deQuienEs!=0){
-			vida=0;
-			logica.addPuntaje(500);
-			logica.powerUpTanque();
-		}
+	public boolean movimientoPosible(){
+		vida=0;
+		logica.addPuntaje(500);
+		logica.powerUpTanque();
+		logica.eliminarPowerUp(this);
+		return true;
 	}
-
-	
 }

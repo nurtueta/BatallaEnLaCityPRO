@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Pala extends PowerUp{
@@ -15,12 +17,12 @@ public class Pala extends PowerUp{
 		this.setIcon(icono);
 	}
 
-	public void colicion(int deQuienEs) {
-		if(deQuienEs != 0){
-			vida=0;
-			logica.addPuntaje(500);
-			logica.powerUpPala();
-		}
+	public boolean movimientoPosible(){
+		vida=0;
+		logica.addPuntaje(500);
+		logica.powerUpPala();
+		logica.eliminarPowerUp(this);
+		return true;
 	}
 
 	

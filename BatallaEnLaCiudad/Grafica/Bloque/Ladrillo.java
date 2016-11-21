@@ -22,15 +22,11 @@ public class Ladrillo extends Bloque{
 		vida=4;
 	}
 	
-	public boolean movimientoPosible() {
-		return false;
-	}
-	
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
 
-	public void colicion(int deQuienEs) {
+	public void colicion(ComponenteGrafico x) {
 		vida--;
 	}
 

@@ -12,15 +12,19 @@ public abstract class PowerUp extends ComponenteGrafico{
 		vida=1;
 	}
 
-	public boolean movimientoPosible() {
-		return false;
+	public boolean movimientoPosibleEnemigo() {
+		return movimientoPosible;
 	}
 	
 	public boolean movimientoPosibleDisparo() {
-		return false;
+		return true;
 	}
 	
 	public boolean mejorar() {
 		return false;
+	}
+	
+	public void colicion(ComponenteGrafico x){
+		
 	}
 }

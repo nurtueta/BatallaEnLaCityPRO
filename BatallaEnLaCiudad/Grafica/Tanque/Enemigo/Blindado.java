@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Blindado extends Enemigo{
@@ -40,8 +42,8 @@ public class Blindado extends Enemigo{
 		this.setIcon(icono);
 	}
 
-	public void colicion(int deQuienEs) {
-		if(deQuienEs!=0){
+	public void colicion(ComponenteGrafico x) {
+		if(x.getNivel()!=0){
 			vida--;
 			if(vida==0)
 				logica.enemigoMurio(); 

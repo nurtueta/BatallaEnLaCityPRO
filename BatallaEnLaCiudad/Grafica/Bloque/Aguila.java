@@ -3,6 +3,8 @@ package Grafica.Bloque;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Logica.Logica;
 
 public class Aguila extends Bloque {
@@ -17,15 +19,11 @@ public class Aguila extends Bloque {
 		vida=1;
 	}
 
-	public boolean movimientoPosible() {
-		return false;
-	}
-
 	public boolean movimientoPosibleDisparo() {
 		return false;
 	}
 
-	public void colicion(int deQuienEs) {
+	public void colicion(ComponenteGrafico x) {
 		logica.finalizarJuego(false);
 	}
 
