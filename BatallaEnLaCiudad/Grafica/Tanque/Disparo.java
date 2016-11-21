@@ -82,7 +82,6 @@ public class Disparo extends ComponenteGrafico{
 	/**
 	 * Setea quien fue el q disparo la bala
 	 */
-	
 	public void setEjecutor(ComponenteGrafico x){
 		Tanque=x;
 	}
@@ -96,6 +95,7 @@ public class Disparo extends ComponenteGrafico{
 
 	public void colicion(ComponenteGrafico e) {
 		vida=0;
+		e.reducirDisparoAndando();
 	}
 
 	public boolean movimientoPosibleEnemigo() {

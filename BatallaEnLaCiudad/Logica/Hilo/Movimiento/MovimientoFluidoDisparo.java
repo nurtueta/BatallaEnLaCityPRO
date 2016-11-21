@@ -183,11 +183,11 @@ public class MovimientoFluidoDisparo extends Movimiento{
 			if(!movio && seCreo){
 				miLogica.eliminarColicion(x,y,componente.getEjecutor());
 				miLogica.eliminarGrafico(componente);
-				componente.colicion(null);
+				componente.colicion(componente.getEjecutor());
 			}else
 				if(!seCreo){
 					miLogica.eliminarGrafico(componente);
-					componente.colicion(null);
+					componente.colicion(componente.getEjecutor());
 				}else{
 					componente.puedeMover();
 				}

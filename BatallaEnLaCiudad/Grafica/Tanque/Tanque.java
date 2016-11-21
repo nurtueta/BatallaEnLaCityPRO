@@ -11,11 +11,13 @@ public abstract class Tanque extends ComponenteGrafico {
 	protected int velMovimiento;
 	protected int velDisparo;
 	protected boolean puedeMover;
+	protected int disparosAndando;
 	
 	protected Movimiento hiloFluido;
 	
 	public	Tanque(int x,int y){
 		super(x,y);		
+		disparosAndando=0;
 		puedeMover=true;;
 	}
 	
@@ -30,60 +32,7 @@ public abstract class Tanque extends ComponenteGrafico {
 	/**
 	 * Crea un disparo disparado por Tanque, si lo puede crear, empieza a moverlo;
 	 * sino, elimina el disparo y con quien coliciono
-	 */
-	public ComponenteGrafico crearDisparo(){
-		boolean seMovio=true;
-		boolean seCreo=true;
-		ComponenteGrafico bala= new Disparo(0,0,direccion,logica);
-		switch (direccion) {
-			case 1: 
-				if(miX!=19){
-					bala.setPosicionX(miX+1);
-					bala.setPosicionY(miY);
-					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())     
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-			case 2: 
-				if(miX!=0){
-					bala.setPosicionX(miX-1);
-					bala.setPosicionY(miY);
-					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-			case 3: 
-				if(miY!=0){
-					bala.setPosicionY(miY-1);
-					bala.setPosicionX(miX);
-					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())	
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-			case 4: 
-				if(miY!=19){
-					bala.setPosicionY(miY+1);
-					bala.setPosicionX(miX);
-					if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())
-						seMovio=false;
-				}else
-					seCreo=false;
-				break;
-		}
-		if(seMovio)
-			bala.setEjecutor(this);
-		if(!seMovio && seCreo){
-			logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),this);
-			bala=null;
-		}
-		if(!seCreo)
-			bala=null;
-		return bala;
-	}
-	
+	 */	
 	public boolean movimientoPosible() {
 		return false;
 	}
@@ -102,5 +51,9 @@ public abstract class Tanque extends ComponenteGrafico {
 	
 	public boolean getPuedeMover(){
 		return puedeMover;
+	}
+	
+	public void reducirDisparoAndando(){
+		disparosAndando--;
 	}
 }

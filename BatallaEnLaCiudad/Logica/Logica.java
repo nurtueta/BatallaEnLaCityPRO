@@ -324,14 +324,12 @@ public class Logica {
 	 * Creo el disparo del jugador
 	 */
 	public void crearDisparoJugador(){
-		if(hiloDisparoJugador.getBalas().size()<miJugador.getDisparosSimultaneos()){
-			ComponenteGrafico bala=miJugador.crearDisparo(); 
-			if(bala!=null){
-				clip.play();
-	    		agregarGrafico(bala);
-	    		repintarPanel();
-	    		hiloDisparoJugador.addBala(bala);
-			}
+		ComponenteGrafico bala=miJugador.crearDisparo(); 
+		if(bala!=null){
+			clip.play();
+    		agregarGrafico(bala);
+    		repintarPanel();
+    		hiloDisparoJugador.addBala(bala);
 		}
 	}
 	
@@ -449,7 +447,6 @@ public class Logica {
 				enemigosMatados = 0;
 			}
 			crearEnemigo();
-			crearPowerUp();
 		}
 	}
 

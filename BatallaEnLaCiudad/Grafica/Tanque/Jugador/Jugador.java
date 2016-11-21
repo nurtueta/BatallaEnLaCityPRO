@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 
 import Grafica.ComponenteGrafico;
 import Grafica.main;
+import Grafica.Tanque.Disparo;
 import Grafica.Tanque.Tanque;
 import Logica.Logica;
 import Logica.Hilo.HiloTiempoEspera;
@@ -147,5 +148,64 @@ public class Jugador extends Tanque{
 			hiloFluido.start();
 		}
 	}	
+	
+	public ComponenteGrafico crearDisparo(){
+		ComponenteGrafico bala=null;
+		if(disparosAndando<getDisparosSimultaneos()){
+			boolean seMovio=true;
+			boolean seCreo=true;
+			bala= new Disparo(0,0,direccion,logica);
+			switch (direccion) {
+				case 1: 
+					if(miX!=19){
+						bala.setPosicionX(miX+1);
+						bala.setPosicionY(miY);
+						if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())     
+							seMovio=false;
+					}else
+						seCreo=false;
+					break;
+				case 2: 
+					if(miX!=0){
+						bala.setPosicionX(miX-1);
+						bala.setPosicionY(miY);
+						if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())
+							seMovio=false;
+					}else
+						seCreo=false;
+					break;
+				case 3: 
+					if(miY!=0){
+						bala.setPosicionY(miY-1);
+						bala.setPosicionX(miX);
+						if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())	
+							seMovio=false;
+					}else
+						seCreo=false;
+					break;
+				case 4: 
+					if(miY!=19){
+						bala.setPosicionY(miY+1);
+						bala.setPosicionX(miX);
+						if(!logica.getComponente(bala.getPosicionX(), bala.getPosicionY()).movimientoPosibleDisparo())
+							seMovio=false;
+					}else
+						seCreo=false;
+					break;
+			}
+			if(seMovio){
+				bala.setEjecutor(this);
+				disparosAndando++;
+			}
+			if(!seMovio && seCreo){
+				bala.setEjecutor(this);
+				logica.eliminarColicion(bala.getPosicionX(),bala.getPosicionY(),this);
+				bala=null;
+			}
+			if(!seCreo)
+				bala=null;
+		}
+		return bala;
+	}
 	
 }

@@ -17,7 +17,6 @@ public class Acero extends Bloque{
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		this.setIcon(icono);
 		vida=4;
-
 	}
 	
 	public boolean movimientoPosibleDisparo() {
