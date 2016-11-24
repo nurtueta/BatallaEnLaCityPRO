@@ -42,7 +42,7 @@ public class Poder extends Enemigo{
 	}
 
 	public void colicion(ComponenteGrafico x) {
-		if(x.getNivel()!=0){
+		if(x.getEjecutor().daniaEnemigo()){
 			vida=0;
 			logica.enemigoMurio(); 
 		}

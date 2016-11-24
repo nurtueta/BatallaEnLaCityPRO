@@ -87,8 +87,10 @@ public class Jugador extends Tanque{
 						logica.finalizarJuego(false);
 					//}
 				}
-				else
+				else{
 					bajarNivel();
+					logica.resetearNivel();
+				}
 			}
 		}
 	}
@@ -141,6 +143,10 @@ public class Jugador extends Tanque{
 	
 	public boolean getPuedeMover(){
 		return puedeMover;
+	}
+	
+	public boolean daniaEnemigo(){
+		return true;
 	}
 	
 	/**

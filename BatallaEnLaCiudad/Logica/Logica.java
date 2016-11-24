@@ -628,5 +628,8 @@ public class Logica {
 		return detenerTanque;
 	}
 	
+	public void resetearNivel(){
+		nivelJugador = 1;
+	}
 	
 }
