@@ -43,7 +43,7 @@ public class Blindado extends Enemigo{
 	}
 
 	public void colicion(ComponenteGrafico x) {
-		if(x.getEjecutor().daniaEnemigo()){
+		if(x.daniaEnemigo()){
 			vida--;
 			if(vida==0)
 				logica.enemigoMurio(); 

@@ -50,7 +50,7 @@ public class Basico extends Enemigo{
 	/*Consultas*/
 	
 	public void colicion(ComponenteGrafico x) {
-		if(x.getEjecutor().daniaEnemigo()){
+		if(x.daniaEnemigo()){
 			vida = 0;
 			logica.enemigoMurio(); 
 		}
