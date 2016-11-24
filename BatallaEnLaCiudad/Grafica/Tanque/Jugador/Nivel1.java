@@ -12,15 +12,20 @@ public class Nivel1 extends Nivel{
 		return nuevo;
 		
 	}
-
+	/*
 	public int getNivel(){
 		return 1;
 	}
-	/*
+	
 	@Override
 	public Nivel bajarNivel() {
 		return null;
 	}
 	*/
+
+	@Override
+	public boolean rompeAcero() {
+		return false;
+	}
 
 }

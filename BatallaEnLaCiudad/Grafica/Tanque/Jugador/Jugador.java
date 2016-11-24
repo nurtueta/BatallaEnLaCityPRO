@@ -72,9 +72,9 @@ public class Jugador extends Tanque{
 			if(!casco){
 				nivel.bajarVida();
 				if(nivel.getVida()==0){
-					if(getNivel()>1){
-						logica.crearJugador();
-					}else{
+					//if(getNivel()>1){
+						//logica.crearJugador();
+					//}else{
 						ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
 						Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 						this.setIcon(icono);
@@ -85,7 +85,7 @@ public class Jugador extends Tanque{
 					    new HiloTiempoEspera(2000);
 					    clip.play();		
 						logica.finalizarJuego(false);
-					}
+					//}
 				}
 				else
 					bajarNivel();
@@ -98,8 +98,7 @@ public class Jugador extends Tanque{
 	}
 	
 	public void subirNivel(){
-		if(nivel.getNivel()!=4)
-			nivel = nivel.mejorarNivel();
+		nivel = nivel.mejorarNivel();
 	}
 	
 	public void bajarNivel(){
@@ -126,8 +125,14 @@ public class Jugador extends Tanque{
 		return nivel.getVelocidadDisparo();
 	}
 	
+	/*
 	public int getNivel(){
 		return nivel.getNivel();
+	}
+	*/
+	
+	public boolean afectaAcero(){
+		return nivel.rompeAcero();
 	}
 	
 	public void puedeMover(){

@@ -14,7 +14,7 @@ public abstract class Nivel {
 		vida = v;
 	}
 	
-	public abstract int getNivel();
+	//public abstract int getNivel();
 	
 	//Metodos representativos del handle del State
 	
@@ -41,6 +41,8 @@ public abstract class Nivel {
 	public int getVida(){
 		return vida;
 	}
+	
+	public abstract boolean rompeAcero();
 	
 	public abstract Nivel mejorarNivel();
 	

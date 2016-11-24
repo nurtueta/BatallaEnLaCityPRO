@@ -141,12 +141,16 @@ public abstract class ComponenteGrafico extends JLabel {
 	public int getDisparosSimultaneos(){
 		return 0;
 	}
-	
+	/*
 	public int getNivel(){
 		return 0;
 	}
-	
+	*/
 	public boolean getPuedeMover(){
+		return false;
+	}
+	
+	public boolean afectaAcero(){
 		return false;
 	}
 	

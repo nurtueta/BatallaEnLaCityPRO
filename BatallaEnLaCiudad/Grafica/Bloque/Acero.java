@@ -24,7 +24,7 @@ public class Acero extends Bloque{
 	}
 
 	public void colicion(ComponenteGrafico x) {
-		if(x.getNivel()==4)
+		if(x.afectaAcero())
 			vida--;
 	}
 
