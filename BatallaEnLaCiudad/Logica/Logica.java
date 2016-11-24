@@ -37,6 +37,7 @@ public class Logica {
 	private int puntaje=0;
 	private int enemigosMatados=0;
 	private int muertesAcumuladas;
+	private int nivelJugador;
 	private int []respawn;
 	private boolean termina;
 	private boolean porQueTermina;
@@ -51,6 +52,8 @@ public class Logica {
 	
 	public Logica(GUI laGUI){
 		termina=false;
+		
+		nivelJugador = 1;
 		
 		hiloDisparoJugador=new MovimientoBalas(this); //maneja los disparos del jugador
 		hiloDisparoJugador.start();
@@ -184,7 +187,7 @@ public class Logica {
 			grafica.getPanelVidas().setText("Vidas :"+miJugador.getVida());
 		else
 			grafica.getPanelVidas().setText("Vidas :"+0);
-		grafica.getPanelNivel().setText("Nivel : "+miJugador.getNivel());
+		grafica.getPanelNivel().setText("Nivel : "+nivelJugador);
 		repintarPanel();
 		repintarPanel();
 	}
@@ -595,6 +598,8 @@ public class Logica {
 	public void powerUpEstrella(){
 		hiloMantenerPowerUp=null;
 		miJugador.subirNivel();
+		if(nivelJugador != 4)
+			nivelJugador++;
 	}
 	
 	/**
