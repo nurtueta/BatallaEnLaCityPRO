@@ -18,11 +18,12 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.util.StringTokenizer;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import java.util.Random;
 
-public class main extends Frame
+public class main extends JFrame
 {
 
   CvStory canvas;
