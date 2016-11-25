@@ -20,6 +20,7 @@ public class Jugador extends Tanque{
 	/*Variables*/
 	
 	protected boolean casco;
+	protected boolean destruido;
 	protected Nivel nivel; //Indica el nivel del jugador
 	
 	/*Constructor*/
@@ -28,6 +29,7 @@ public class Jugador extends Tanque{
 		super(x,y);
 		profundidad=4;
 		logica=l;
+		destruido=false;
 		posicionImagen(1);
 		casco=false;
 		nivel = new Nivel1();
@@ -36,25 +38,27 @@ public class Jugador extends Tanque{
 	/*Comandos*/
 
 	public void posicionImagen(int i){
-		direccion = i;
-		ImageIcon fot=new ImageIcon();
-		switch (i){
-			case 1:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingDerecha.png"));
-				break;
-			case 2:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingIzquierda.png"));
-				break;
-			case 3:
-				fot =new ImageIcon(getClass().getResource("/Imagenes/XWingArriba.png"));
-				break;
-			case 4:
-				fot= new ImageIcon(getClass().getResource("/Imagenes/XWingAbajo.png"));
-				break;
+		if(!destruido){
+			direccion = i;
+			ImageIcon fot=new ImageIcon();
+			switch (i){
+				case 1:
+					fot =new ImageIcon(getClass().getResource("/Imagenes/XWingDerecha.png"));
+					break;
+				case 2:
+					fot= new ImageIcon(getClass().getResource("/Imagenes/XWingIzquierda.png"));
+					break;
+				case 3:
+					fot =new ImageIcon(getClass().getResource("/Imagenes/XWingArriba.png"));
+					break;
+				case 4:
+					fot= new ImageIcon(getClass().getResource("/Imagenes/XWingAbajo.png"));
+					break;
+			}
+			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+			this.setIcon(icono);
 		}
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		this.setIcon(icono);
-	}
+		}
 	
 	/**
 	 * Activa o desactiva el casco que lo hace invulnerable
@@ -75,6 +79,7 @@ public class Jugador extends Tanque{
 					//if(getNivel()>1){
 						//logica.crearJugador();
 					//}else{
+						destruido=true;
 						ImageIcon fot=new ImageIcon(getClass().getResource("/Imagenes/explosion.gif"));
 						Icon icono = new ImageIcon(fot.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 						this.setIcon(icono);
@@ -83,7 +88,7 @@ public class Jugador extends Tanque{
 					    logica.stopMusic();
 					    clip.play();
 					    new HiloTiempoEspera(2000);
-					    clip.play();		
+					   // clip.play();		
 						logica.finalizarJuego(false);
 					//}
 				}

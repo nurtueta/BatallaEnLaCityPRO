@@ -173,47 +173,38 @@ public class GUI extends JFrame {
 	        //agrego el oyente al teclado en el panel contenedor
 	        this.addKeyListener( new KeyListener() {
 	        	
-				public void keyReleased1(KeyEvent arg0) {}
 
 				public void keyTyped1(KeyEvent arg0) {}
 
 				public void keyPressed(KeyEvent e) {
 					if (teclado){
+						
 					 switch(e.getKeyCode()){
 					 	case KeyEvent.VK_UP :
-					 		if(!movio){
 					 			mapaLogica.mover(3);		//Mover el Jugador hacia Arriba
 						 		movio=true;
-						 	}
+						 		
 					 		break;
 						case KeyEvent.VK_DOWN :
-							if(!movio){
 								mapaLogica.mover(4);		//Mover el Jugador hacia Abajo
 						 		movio=true;
-						 	}
 							break;
 	        			case KeyEvent.VK_RIGHT :
-	        				if(!movio){
 						 		mapaLogica.mover(1);		//Mover el Jugador hacia Derecha
 						 		movio=true;
-						 	}
 	        				break;
 	 					case KeyEvent.VK_LEFT :
-	 						if(!movio){
 	 							mapaLogica.mover(2);		//Mover el Jugador hacia Izquierda
 						 		movio=true;
-						 	}	
 	 						break;
 	 					case KeyEvent.VK_SPACE:
-	 						if(!disparo){
 	 							mapaLogica.crearDisparoJugador();	//Creo disparo del jugador
 	 							disparo=true;
-	 						}
 	 						break; 
 					 }}
 				}
 
-				public void keyReleased(KeyEvent e){
+				/*public void keyReleased(KeyEvent e){
 					switch(e.getKeyCode()){	
 						case KeyEvent.VK_SPACE:
 							disparo=false;
@@ -231,9 +222,15 @@ public class GUI extends JFrame {
 	 						movio=false;
 	 						break;
 					}
-				}
+				}*/
 
 				public void keyTyped(KeyEvent arg0) {}
+
+				@Override
+				public void keyReleased(KeyEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
 			
 	        }
 				);	       	        
