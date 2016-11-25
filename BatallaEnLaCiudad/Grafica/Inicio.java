@@ -112,33 +112,9 @@ public class Inicio {
 				
 				
 				
-				main Pic;
-				try {
-					Pic = new main ();
-
-				    Pic.show();
-				    Pic.movePic ();
-				    Pic.disable();
-				    Pic.setVisible(false);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			      //try
-			      //{ Thread.sleep(500);}
-			      //catch (InterruptedException e){}
-			    
-			    Inicio juego = new Inicio();
-			    juego.setVisible();
 				
-				
-				
-				
-				
-				/*
 				labelAyuda.disable();
-				labelAyuda.setVisible(false);*/
+				labelAyuda.setVisible(false);
 			}
 		});
 		 
