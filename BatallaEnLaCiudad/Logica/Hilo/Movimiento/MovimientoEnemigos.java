@@ -32,43 +32,45 @@ public class MovimientoEnemigos extends Movimiento{
 	{
 		try{
 			while(!miLogica.finDelJuego() ){
-					
-				eliminar=new ArrayList<ComponenteGrafico>();
-				agregarEnemigo=false;
-				for(ComponenteGrafico enemigo: enemigos){
-					sleep(40);
-					if( !miLogica.eliminarTodosLosEnemigos()){
-						if(enemigo.getVida()==0)
-							eliminar.add(enemigo);
-						else{
-							direccion = (int) (rnd.nextInt(4)+1);
-							accion= (int) (rnd.nextInt(6));
-							if(accion==0||accion==1)
-								enemigo.mover(direccion);
-							else
-								if(accion==2||accion==3)
-									enemigo.mover(enemigo.getDireccion());
+				if(!miLogica.getDetenerTanque()){
+						
+					eliminar=new ArrayList<ComponenteGrafico>();
+					agregarEnemigo=false;
+					for(ComponenteGrafico enemigo: enemigos){
+						sleep(40);
+						if( !miLogica.eliminarTodosLosEnemigos()){
+							if(enemigo.getVida()==0)
+								eliminar.add(enemigo);
+							else{
+								direccion = (int) (rnd.nextInt(4)+1);
+								accion= (int) (rnd.nextInt(6));
+								if(accion==0||accion==1)
+									enemigo.mover(direccion);
 								else
-									if(enemigo.getPuedeMover())
-										miLogica.crearDisparoEnemigo(enemigo);
+									if(accion==2||accion==3)
+										enemigo.mover(enemigo.getDireccion());
+									else
+										if(enemigo.getPuedeMover())
+											miLogica.crearDisparoEnemigo(enemigo);
+							}
+						}else{
+							eliminar.add(enemigo);
+							miLogica.addPuntaje(enemigo.getPuntos());
+							miLogica.setComponente(new Piso(enemigo.getPosicionX(), enemigo.getPosicionY(),miLogica));
+							miLogica.eliminarGrafico(enemigo);
 						}
-					}else{
-						eliminar.add(enemigo);
-						miLogica.addPuntaje(enemigo.getPuntos());
-						miLogica.setComponente(new Piso(enemigo.getPosicionX(), enemigo.getPosicionY(),miLogica));
-						miLogica.eliminarGrafico(enemigo);
 					}
-				}
-				agregarEnemigo=true;
-				
-				for(ComponenteGrafico enemigo: eliminar)
-					enemigos.remove(enemigo);
-				
-				for(ComponenteGrafico bala: enemigosIngresar)
-					enemigos.add(bala);
-				
-				enemigosIngresar=new ArrayList<ComponenteGrafico>();		
+					agregarEnemigo=true;
 					
+					for(ComponenteGrafico enemigo: eliminar)
+						enemigos.remove(enemigo);
+					
+					for(ComponenteGrafico bala: enemigosIngresar)
+						enemigos.add(bala);
+					
+					enemigosIngresar=new ArrayList<ComponenteGrafico>();		
+						
+				}
 			}
 		}catch(InterruptedException e){ e.printStackTrace();}
 		eliminar=new ArrayList<ComponenteGrafico>();
