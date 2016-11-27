@@ -214,7 +214,7 @@ class CvStory extends Canvas
     }
 
       try
-      { Thread.sleep(10);}
+      { Thread.sleep(1);}
       catch (InterruptedException e){}
 
     g.drawImage (bufferImg, 0, 0, this);
