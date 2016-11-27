@@ -49,7 +49,7 @@ public class main extends JFrame
 
   public main() throws IOException
   {
-    super ("StarWasIntro");
+    super ("Battle Star");
 
 
     

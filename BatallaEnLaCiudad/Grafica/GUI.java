@@ -36,7 +36,7 @@ public class GUI extends JFrame {
 	    	
 	        //seteo inicial
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        this.setTitle("Battle City 2016");
+	        this.setTitle("Battle Star");
 	        this.setResizable(false);
 	        
 	        //setteo del panel contenedor

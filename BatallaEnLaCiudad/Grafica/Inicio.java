@@ -54,7 +54,7 @@ public class Inicio {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Battle Wars!"); 
+		frame = new JFrame("Battle Star"); 
 		frame.setBounds(100, 100, 900, 630);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
